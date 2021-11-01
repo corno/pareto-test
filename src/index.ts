@@ -5,7 +5,7 @@ import {
 import * as chai from "chai"
 import * as assert from "assert"
 
-export function describe(
+export function testset(
     name: string,
     callback: () => void
 ) {
@@ -16,21 +16,29 @@ export function describe(
 }
 
 export function assertEqual<T>(a: T, b: T) {
-    chai.assert.equal(a, b)
+    chai.assert.deepEqual(a, b)
 }
 
-export function it(
+export function testSync(
     name: string,
     callback: () => void,
 ) {
     mit(name, callback)
 }
 
-export function pit<T>(
+export function testAsync<T>(
     name: string,
-    callback: () => Promise<T>,
+    callback: (
+        resolve: () => void
+    ) => void,
 ): void {
-    mit(name, callback)
+    mit(name, () => {
+        return new Promise<null>(resolve => {
+            callback(() => {
+                resolve(null)
+            })
+        })
+    })
 }
 
 export function ok($: {
