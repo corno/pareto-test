@@ -4,8 +4,11 @@
   "description": "\"test functions for pareto\"",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf ./dist && tsc"
+    "build": "rm -rf ./dist && tsc",
+    "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build",
+    "pubMin": "npm run validatePublishReadiness && npm version minor && git push && npm publish",
+    "pubPatch": "npm run validatePublishReadiness && npm version patch && git push && npm publish",
+    "update2latest": "ncu -u --packageFile package.json && nsi && tsc"
   },
   "repository": {
     "type": "git",
