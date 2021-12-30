@@ -1,0 +1,21 @@
+{
+  "author": "Corno",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3",
+    "should": "^13.2.3"
+  },
+  "description": "test functions for pareto",
+  "files": [
+    "./dist"
+  ],
+  "license": "ISC",
+  "main": "dist/index.js",
+  "name": "pareto-test",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/corno/pareto-test.git"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.0.4"
+}

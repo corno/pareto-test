@@ -15,6 +15,11 @@ export function testset(
     )
 }
 
+
+// console.log('\x1b[31m', 'sometext');
+// console.log('sometext2' ,'\x1b[0m');
+// console.log('sometext3');
+
 export function assertEqual<T>(a: T, b: T) {
     chai.assert.deepEqual(a, b)
 }

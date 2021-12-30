@@ -1,33 +1,13 @@
 {
-  "author": "Corno",
-  "dependencies": {
-    "chai": "^4.3.4",
-    "mocha": "^9.1.3",
-    "should": "^13.2.3"
-  },
-  "description": "\"test functions for pareto\"",
-  "devDependencies": {
-    "@types/chai": "^4.2.22",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.11.6"
-  },
-  "files": [
-    "./dist"
-  ],
-  "license": "ISC",
-  "main": "dist/index.js",
-  "name": "pareto-test",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/corno/pareto-test.git"
-  },
   "scripts": {
-    "build": "rm -rf ./dist && tsc",
-    "pubMin": "npm run validatePublishReadiness && npm version minor && git push && npm publish",
-    "pubPatch": "npm run validatePublishReadiness && npm version patch && git push && npm publish",
-    "update2latest": "ncu -u --packageFile package.json && nsi && tsc",
-    "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run build"
-  },
-  "types": "dist/index.d.ts",
-  "version": "0.0.4"
+    "buildPubAndTest": "rm -rf ./pub/dist && tsc -p ./pub && rm -rf ./test/dist && tsc -p ./test",
+    "test": "npm run buildPubAndTest && node ./test/node_modules/mocha/bin/mocha test/dist/esc/bin/index.js",
+    "validatePublishReadiness": "git diff --exit-code && ncu -u --packageFile package.json && npm install && npm run test",
+    "pubMin": "npm run validatePublishReadiness && cd ./pub && npm version minor && git push && npm publish",
+    "pubPatch": "npm run validatePublishReadiness && cd ./pub && npm version patch && git push && cd ./pub/dist && npm publish",
+    "update2latest": "cd ./pub && ncu -u --packageFile package.json && nsi && cd ../test && ncu -u --packageFile package.json && nsi",
+    "updateAndCommit": "npm run validatePublishReadiness && npm run update2latest && npm run test && git commit -am \"u2l\"",
+    "update2latestAndPublishMinor": "npm run updateAndCommit && npm run pubMin",
+    "update2latestAndPublishPath": "npm run updateAndCommit && npm run pubPatch"
+  }
 }
