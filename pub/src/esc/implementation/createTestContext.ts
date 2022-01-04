@@ -7,6 +7,9 @@ import { TestContext } from "../../interface/interfaces/TestContext"
 // console.log('sometext3');
 
 export function createTestContext(
+    $: {
+        numberOfFirstLine: number, //should line numbering start at 0 or at 1?
+    },
     $i: {
         callback: ($i: TestContext) => void,
         log: (str: string) => void,
@@ -15,6 +18,7 @@ export function createTestContext(
         }) => void,
     },
 ): void {
+    const lineOffset = $.numberOfFirstLine
     let errorCount = 0
     $i.callback({
         testset: (
@@ -34,8 +38,8 @@ export function createTestContext(
                             $i.log(`    actual:   '${$.actual}'`)
                             //no newlines expected
                         } else {
-                            let lineCountOfExpected = 0
-                            let lineCountOfActual = 0
+                            let lineCountOfExpected = lineOffset
+                            let lineCountOfActual = lineOffset
                             const writeLine = (
                             ) => {
                                 if ($.fileLocation !== undefined) {

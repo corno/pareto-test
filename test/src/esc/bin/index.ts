@@ -48,6 +48,9 @@ function doTest(
     const expectedLog = $.expectedLog
     pt.createTestContext(
         {
+            numberOfFirstLine: 1,
+        },
+        {
             log: ($) => {
                 out.push($)
             },
@@ -101,10 +104,10 @@ doTest(
         expectedLog: [
             "multiline",
             "  \u001b[31mx\u001b[0m",
-            "    line 3|3",
+            "    line 4|4",
             "      -c",
             "      -",
-            "    line 6|5",
+            "    line 7|6",
             "      +f"
         ]
     }
@@ -120,7 +123,7 @@ doTest(
         expectedLog: [
             "added",
             "  \u001b[31mx\u001b[0m",
-            "    line 1|1",
+            "    line 2|2",
             "      +lineAdded",
             "      +"
         ]
@@ -137,10 +140,10 @@ doTest(
         expectedLog: [
             "replace",
             "  \u001b[31mx\u001b[0m",
-            "    line 1|1",
+            "    line 2|2",
             "      -original",
             "      -",
-            "    line 2|1",
+            "    line 3|2",
             "      +replacement",
             "      +"
         ]
@@ -159,10 +162,10 @@ doTest(
         expectedLog: [
             "withFileLocation",
             "  \u001b[31mx\u001b[0m",
-            "    /foo/bar[0]",
+            "    /foo/bar[1]",
             "      -foo",
             "      -foo",
-            "    /foo/bar[2]",
+            "    /foo/bar[3]",
             "      +bar"
         ]
     }
