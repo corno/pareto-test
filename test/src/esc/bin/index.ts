@@ -101,10 +101,10 @@ doTest(
         expectedLog: [
             "multiline",
             "  \u001b[31mx\u001b[0m",
-            "    line 4|3",
+            "    line 3|3",
             "      -c",
             "      -",
-            "    line 6|6",
+            "    line 6|5",
             "      +f"
         ]
     }
@@ -120,7 +120,7 @@ doTest(
         expectedLog: [
             "added",
             "  \u001b[31mx\u001b[0m",
-            "    line 1|2",
+            "    line 1|1",
             "      +lineAdded",
             "      +"
         ]
@@ -137,12 +137,33 @@ doTest(
         expectedLog: [
             "replace",
             "  \u001b[31mx\u001b[0m",
-            "    line 2|1",
+            "    line 1|1",
             "      -original",
             "      -",
-            "    line 2|2",
+            "    line 2|1",
             "      +replacement",
             "      +"
+        ]
+    }
+)
+
+doTest(
+    {
+        testSetName: "withFileLocation",
+        stringTest: {
+            testName: "x",
+            expected: "foo\nfoo",
+            actual: "bar",
+            fileLocation: "/foo/bar",
+        },
+        expectedLog: [
+            "withFileLocation",
+            "  \u001b[31mx\u001b[0m",
+            "    /foo/bar[0]",
+            "      -foo",
+            "      -foo",
+            "    /foo/bar[2]",
+            "      +bar"
         ]
     }
 )

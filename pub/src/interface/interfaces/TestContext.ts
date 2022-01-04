@@ -3,6 +3,7 @@ export type TestStringParameters = {
     testName: string,
     expected: string,
     actual: string,
+    fileLocation?: string,
 }
 
 export type TestSet = {

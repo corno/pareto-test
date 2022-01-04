@@ -16,7 +16,7 @@ export function createTestContext(
     },
 ): void {
     let errorCount = 0
-    $i.callback( {
+    $i.callback({
         testset: (
             testSetName,
             testSetCallback,
@@ -25,7 +25,7 @@ export function createTestContext(
             testSetCallback({
                 testString: ($) => {
                     if ($.actual !== $.expected) {
-                        errorCount +=1
+                        errorCount += 1
                         const red = "\x1b[31m"
                         const reset = "\x1b[0m"
                         $i.log(`  ${red}${$.testName}${reset}`)
@@ -36,6 +36,14 @@ export function createTestContext(
                         } else {
                             let lineCountOfExpected = 0
                             let lineCountOfActual = 0
+                            const writeLine = (
+                            ) => {
+                                if ($.fileLocation !== undefined) {
+                                    $i.log(`    ${$.fileLocation}[${lineCountOfExpected}]`)
+                                } else {
+                                    $i.log(`    line ${lineCountOfExpected}|${lineCountOfActual}`)
+                                }
+                            }
                             diff.diffLines(
                                 $.expected,
                                 $.actual,
@@ -51,22 +59,22 @@ export function createTestContext(
                                         //added and removed???
                                         throw new Error("unexpected: added and removed")
                                     } else {
-                                        lineCountOfActual += part.count
-                                        $i.log(`    line ${lineCountOfExpected}|${lineCountOfActual}`)
+                                        writeLine()
                                         part.value.split(`\n`).forEach(($) => {
                                             $i.log(`      +${$}`)
                                         })
                                     }
+                                    lineCountOfActual += part.count
                                 } else {
-                                    lineCountOfExpected += part.count
                                     if (part.removed) {
-                                        $i.log(`    line ${lineCountOfExpected}|${lineCountOfActual}`)
+                                        writeLine()
                                         part.value.split(`\n`).forEach(($) => {
                                             $i.log(`      -${$}`)
                                         })
                                     } else {
                                         lineCountOfActual += part.count
                                     }
+                                    lineCountOfExpected += part.count
                                 }
                                 //const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
                                 //console.error(part.value, part.added, part.count, part.removed);
