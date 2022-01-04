@@ -9,6 +9,7 @@ export type TestStringParameters = {
 export type TestSet = {
 
     subset: (
+        $: string,
         $i: ($i: TestSet) => void
     ) => void
     testString: ($: TestStringParameters) => void

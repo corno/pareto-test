@@ -25,16 +25,19 @@ export function createTestContext(
             testSetName,
             testSetCallback,
         ) => {
-            $i.log(testSetName)
+            const log = $i.log
             const red = "\x1b[31m"
             const green = "\x1b[32m"
             const reset = "\x1b[0m"
             function createTestSet(
+                name: string,
                 indentation: string
             ): TestSet {
+                log(`${name}`)
                 return {
-                    subset: ($i) => {
+                    subset: ($, $i) => {
                         $i(createTestSet(
+                            $,
                             indentation += `  `
                         ))
                     },
@@ -122,7 +125,10 @@ export function createTestContext(
                     // },
                 }
             }
-            testSetCallback(createTestSet(`  `))
+            testSetCallback(createTestSet(
+                testSetName,
+                `  `
+                ))
         },
     })
     $i.onEnd({
