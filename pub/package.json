@@ -2,7 +2,7 @@
   "author": "Corno",
   "dependencies": {
     "diff": "^5.0.0",
-    "pareto-runtime": "^0.16.0"
+    "pareto-runtime": "^0.16.1"
   },
   "description": "test functions for pareto",
   "files": [
@@ -16,7 +16,7 @@
     "url": "http://github.com/corno/pareto-test.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "devDependencies": {
     "@types/diff": "^5.0.2"
   }
