@@ -1,16 +1,17 @@
 
-export type Test = {
-    assertEqual: <T>(
-        expected: T,
-        actual: T,
-    ) => void
+export type TestStringParameters = {
+    testName: string,
+    expected: string,
+    actual: string,
 }
 
 export type TestSet = {
-    testSync: (
-        name: string,
-        callback: ($: Test) => void
-    ) => void
+
+    testString: ($: TestStringParameters) => void
+    // testSync: (
+    //     name: string,
+    //     callback: ($: Test) => void
+    // ) => void
 }
 
 export type TestContext = {
