@@ -43,15 +43,17 @@ export function createTestContext(
                     },
                     assert: ($) => {
                         if (!$.condition) {
-                            $i.log(`${indentation}${red}${$.testName}${reset}`)   
+                            $i.log(`${indentation}  ${red}${$.testName}${reset}`)
                             errorCount += 1
                         } else {
-                            $i.log(`${indentation}${green}${$.testName}${reset}`)
+                            $i.log(`${indentation}  ${green}${$.testName}${reset}`)
 
                         }
                     },
                     testString: ($) => {
-                        if ($.actual !== $.expected) {
+                        if ($.actual === $.expected) {
+                            $i.log(`${indentation}  ${green}${$.testName}${reset}`)
+                        } else {
                             errorCount += 1
                             $i.log(`${indentation}  ${red}${$.testName}${reset}`)
                             if ($.expected.indexOf("\n") === -1) {
@@ -105,8 +107,6 @@ export function createTestContext(
                                     //console.error(part.value, part.added, part.count, part.removed);
                                 })
                             }
-                        } else {
-                            $i.log(`${indentation}${green}${$.testName}${reset}`)
                         }
                     },
                     // testSync: (
@@ -128,7 +128,7 @@ export function createTestContext(
             testSetCallback(createTestSet(
                 testSetName,
                 ``
-                ))
+            ))
         },
     })
     $i.onEnd({
