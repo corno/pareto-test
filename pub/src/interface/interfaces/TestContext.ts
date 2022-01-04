@@ -8,7 +8,14 @@ export type TestStringParameters = {
 
 export type TestSet = {
 
+    subset: (
+        $i: ($i: TestSet) => void
+    ) => void
     testString: ($: TestStringParameters) => void
+    assert: ($: {
+        testName: string,
+        condition: boolean,
+    }) => void
     // testSync: (
     //     name: string,
     //     callback: ($: Test) => void
