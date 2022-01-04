@@ -53,10 +53,10 @@ export function createTestContext(
                     testString: ($) => {
                         if ($.actual !== $.expected) {
                             errorCount += 1
-                            $i.log(`${indentation}${red}${$.testName}${reset}`)
+                            $i.log(`${indentation}  ${red}${$.testName}${reset}`)
                             if ($.expected.indexOf("\n") === -1) {
-                                $i.log(`${indentation}  expected: '${$.expected}'`)
-                                $i.log(`${indentation}  actual:   '${$.actual}'`)
+                                $i.log(`${indentation}    expected: '${$.expected}'`)
+                                $i.log(`${indentation}    actual:   '${$.actual}'`)
                                 //no newlines expected
                             } else {
                                 let lineCountOfExpected = lineOffset
@@ -64,9 +64,9 @@ export function createTestContext(
                                 const writeLine = (
                                 ) => {
                                     if ($.fileLocation !== undefined) {
-                                        $i.log(`${indentation}  ${$.fileLocation}[${lineCountOfExpected}]`)
+                                        $i.log(`${indentation}    ${$.fileLocation}[${lineCountOfExpected}]`)
                                     } else {
-                                        $i.log(`${indentation}  line ${lineCountOfExpected}|${lineCountOfActual}`)
+                                        $i.log(`${indentation}    line ${lineCountOfExpected}|${lineCountOfActual}`)
                                     }
                                 }
                                 diff.diffLines(
@@ -86,7 +86,7 @@ export function createTestContext(
                                         } else {
                                             writeLine()
                                             part.value.split(`\n`).forEach(($) => {
-                                                $i.log(`${indentation}    +${$}`)
+                                                $i.log(`${indentation}      +${$}`)
                                             })
                                         }
                                         lineCountOfActual += part.count
@@ -94,7 +94,7 @@ export function createTestContext(
                                         if (part.removed) {
                                             writeLine()
                                             part.value.split(`\n`).forEach(($) => {
-                                                $i.log(`${indentation}    -${$}`)
+                                                $i.log(`${indentation}      -${$}`)
                                             })
                                         } else {
                                             lineCountOfActual += part.count
