@@ -33,12 +33,12 @@ export function createTestContext(
                 name: string,
                 indentation: string
             ): TestSet {
-                log(`${name}`)
+                log(`${indentation}${name}`)
                 return {
                     subset: ($, $i) => {
                         $i(createTestSet(
                             $,
-                            indentation += `  `
+                            indentation + `  `
                         ))
                     },
                     assert: ($) => {
@@ -127,7 +127,7 @@ export function createTestContext(
             }
             testSetCallback(createTestSet(
                 testSetName,
-                `  `
+                ``
                 ))
         },
     })
