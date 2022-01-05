@@ -65,16 +65,19 @@ pt.createTestContext(
             $i.subset(
                 "TEST",
                 ($i) => {
-                    const ts = $i
                     $i.assert({
                         testName: "FOO",
                         condition: false,
                     })
-                    $i.async({
+                    $i.asyncSubset(
+                        {
+                            name: "XXX",
+                        },
+                        {
                         registerListener: ($i) => {
                             setTimeout(
                                 () => {
-                                    ts.assert({
+                                    $i.testSet.assert({
                                         testName: "BAR",
                                         condition: false,
                                     })
@@ -96,7 +99,7 @@ pt.createTestContext(
                 }
             )
             const serializedActual = JSON.stringify(out)
-            const serializedExpected = JSON.stringify(["TEST", "  \u001b[31mFOO\u001b[0m", "  \u001b[31mBAR\u001b[0m"])
+            const serializedExpected = JSON.stringify(["TEST","  \u001b[31mFOO\u001b[0m","  XXX","    \u001b[31mBAR\u001b[0m"])
             if (serializedActual !== serializedExpected) {
                 console.error(serializedExpected)
                 console.error(serializedActual)
@@ -204,8 +207,6 @@ doTest(
         expectEqual: true,
     }
 )
-
-
 
 doTest(
     {

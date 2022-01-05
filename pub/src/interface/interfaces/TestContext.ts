@@ -6,13 +6,14 @@ export type TestStringParameters = {
     fileLocation?: string,
 }
 
-export type AsyncDoneListener = {
+export type AsyncTestSet = {
+    testSet: TestSet
     done: () => void
 }
 
 export type AsyncHandler = {
     registerListener: (
-        $i: AsyncDoneListener
+        $i: AsyncTestSet
     ) => void,
 }
 
@@ -21,18 +22,19 @@ export type TestSet = {
         $: string,
         $i: ($i: TestSet) => void
     ) => void
-    testString: ($: TestStringParameters) => void
+    testString: (
+        $: TestStringParameters
+    ) => void
     assert: ($: {
         testName: string,
         condition: boolean,
     }) => void
-    async: (
+    asyncSubset: (
+        $: {
+            name: string,
+        },
         $i: AsyncHandler
     ) => void
-    // testSync: (
-    //     name: string,
-    //     callback: ($: Test) => void
-    // ) => void
 }
 
 export type TestContext = TestSet

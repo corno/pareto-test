@@ -36,20 +36,31 @@ export function createTestContext(
         ts: TTestSet,
     ): TestSet {
         return {
-            async: ($i) => {
+            asyncSubset: ($, $i) => {
                 incrementNumberOfOpenAsyncTests()
                 let closed = false
-                $i.registerListener(
-                    {
-                        done: () => {
-                            if (closed) {
-                                throw new Error("Unexpected; async is closed twice")
-                            }
-                            closed = true
-                            decrementNumberOfOpenAsyncTests()
+
+
+                const ss: TTestSet = {
+                    elements: []
+                }
+
+                $i.registerListener({
+                    testSet: createTestSet(
+                        ss,
+                    ),
+                    done: () => {
+                        if (closed) {
+                            throw new Error("Unexpected; async is closed twice")
                         }
-                    }
-                )
+                        closed = true
+                        decrementNumberOfOpenAsyncTests()
+                    },
+                })
+                ts.elements.push({
+                    name: $.name,
+                    type: ["subset", ss],
+                })
             },
             subset: ($, $i) => {
                 const ss: TTestSet = {
