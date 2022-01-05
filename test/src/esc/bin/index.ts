@@ -18,7 +18,7 @@ function doTest(
         },
         {
             callback: ($i) => {
-                $i.testset(
+                $i.subset(
                     $.testSetName,
                     ($i) => {
                         $i.testString(
@@ -54,7 +54,7 @@ pt.createTestContext(
     },
     {
         callback: ($i) => {
-            $i.testset(
+            $i.subset(
                 "TEST",
                 ($i) => {
                     const ts = $i

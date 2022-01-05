@@ -1,8 +1,5 @@
 export type TTestResult = {
-    testSets: {
-        name: string,
-        testSet: TTestSet,
-    }[]
+    root: TTestSet
 }
 
 export type TTestSet = {

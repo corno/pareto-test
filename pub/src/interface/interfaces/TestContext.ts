@@ -17,7 +17,6 @@ export type AsyncHandler = {
 }
 
 export type TestSet = {
-
     subset: (
         $: string,
         $i: ($i: TestSet) => void
@@ -36,9 +35,4 @@ export type TestSet = {
     // ) => void
 }
 
-export type TestContext = {
-    testset(
-        name: string,
-        callback: ($: TestSet) => void
-    ): void
-}
+export type TestContext = TestSet
