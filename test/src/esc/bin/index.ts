@@ -29,7 +29,10 @@ function doTest(
             onEnd: ($) => {
                 const out: string[] = []
                 pt.serializeTestResult(
-                    $.result,
+                    {
+                        testResult: $.result,
+                        showSummary: false,
+                    },
                     (str) => {
                         out.push(str)
                     }
@@ -93,7 +96,10 @@ pt.createTestContext(
         },
         onEnd: ($) => {
             pt.serializeTestResult(
-                $.result,
+                {
+                    testResult: $.result,
+                    showSummary: false,
+                },
                 (str) => {
                     out.push(str)
                 }

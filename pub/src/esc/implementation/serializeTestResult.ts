@@ -1,8 +1,12 @@
 import * as pr from "pareto-runtime"
 import { TTestResult, TTestSet } from "../../interface/types"
+import { summarize } from "./summarize"
 
 export function serializeTestResult(
-    $: TTestResult,
+    $: {
+        testResult: TTestResult,
+        showSummary: boolean,
+    },
     log: (str: string) => void,
 ) {
     const red = "\x1b[31m"
@@ -78,7 +82,13 @@ export function serializeTestResult(
         })
     }
     serializeTestSet(
-        $.root,
+        $.testResult.root,
         ``
     )
+    if ($.showSummary) {
+        log(``)
+        const summary = summarize($.testResult)
+        log(`${green}${summary.numberOfTests - summary.numberOfErrors} tests${reset}`)
+        log(`${summary.numberOfErrors > 0 ? red : reset}${summary.numberOfErrors} errors${reset}`)
+    }
 }
