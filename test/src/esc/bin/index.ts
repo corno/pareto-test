@@ -1,17 +1,16 @@
-import * as pr from "pareto-runtime"
 import * as pt from "../../../../pub"
-import { TTestResult, TTestSet } from "../../../../pub/dist/interface/types"
 
 type Test = {
     testSetName: string,
     stringTest: pt.TestStringParameters,
     expectedLog: string[],
+    expectEqual: boolean,
 }
 
 function doTest(
     $: Test,
 ) {
-    const expectedLog = $.expectedLog
+    const test = $
     pt.createTestContext(
         {
             numberOfFirstLine: 1,
@@ -36,11 +35,20 @@ function doTest(
                     }
                 )
                 const serializedActual = JSON.stringify(out)
-                const serializedExpected = JSON.stringify(expectedLog)
-                if (serializedActual !== serializedExpected) {
-                    console.error(serializedExpected)
-                    console.error(serializedActual)
-                    throw new Error("Not equal")
+                const serializedExpected = JSON.stringify(test.expectedLog)
+                console.log(`${test.testSetName}`)
+                if (test.expectEqual) {
+                    if (serializedActual !== serializedExpected) {
+                        console.error(serializedExpected)
+                        console.error(serializedActual)
+                        throw new Error("Not equal")
+                    }
+                } else {
+                    if (serializedActual === serializedExpected) {
+                        console.error(serializedExpected)
+                        console.error(serializedActual)
+                        throw new Error("Not equal")
+                    }
                 }
             }
         },
@@ -111,7 +119,8 @@ doTest(
             "  \u001b[31mx\u001b[0m",
             "    expected: 'expected'",
             "    actual:   'actual'"
-        ]
+        ],
+        expectEqual: true,
     }
 )
 doTest(
@@ -130,7 +139,8 @@ doTest(
             "      -",
             "    line 7|6",
             "      +f"
-        ]
+        ],
+        expectEqual: true,
     }
 )
 doTest(
@@ -147,7 +157,8 @@ doTest(
             "    line 2|2",
             "      +lineAdded",
             "      +"
-        ]
+        ],
+        expectEqual: true,
     }
 )
 doTest(
@@ -167,7 +178,8 @@ doTest(
             "    line 3|2",
             "      +replacement",
             "      +"
-        ]
+        ],
+        expectEqual: true,
     }
 )
 
@@ -188,29 +200,22 @@ doTest(
             "      -foo",
             "    /foo/bar[3]",
             "      +bar"
-        ]
+        ],
+        expectEqual: true,
     }
 )
 
 
 
-let catched = false
-try {
-
-    doTest(
-        {
-            testSetName: "must fail",
-            stringTest: {
-                testName: "x",
-                expected: "",
-                actual: ""
-            },
-            expectedLog: ["not the right log"]
-        }
-    )
-} catch (e) {
-    catched = true
-}
-if (!catched) {
-    throw new Error("should have thrown")
-}
+doTest(
+    {
+        testSetName: "must fail",
+        stringTest: {
+            testName: "x",
+            expected: "",
+            actual: ""
+        },
+        expectedLog: ["not the right log"],
+        expectEqual: false,
+    }
+)

@@ -2,6 +2,11 @@ export type TTestResult = {
     root: TTestSet
 }
 
+export type Summary = {
+    numberOfErrors: number
+    numberOfTests: number
+}
+
 export type TTestSet = {
     elements: TTestElement[]
 }
