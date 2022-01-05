@@ -6,6 +6,16 @@ export type TestStringParameters = {
     fileLocation?: string,
 }
 
+export type AsyncDoneListener = {
+    done: () => void
+}
+
+export type AsyncHandler = {
+    registerListener: (
+        $i: AsyncDoneListener
+    ) => void,
+}
+
 export type TestSet = {
 
     subset: (
@@ -17,6 +27,9 @@ export type TestSet = {
         testName: string,
         condition: boolean,
     }) => void
+    async: (
+        $i: AsyncHandler
+    ) => void
     // testSync: (
     //     name: string,
     //     callback: ($: Test) => void

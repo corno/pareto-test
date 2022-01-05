@@ -1,39 +1,6 @@
+import * as pr from "pareto-runtime"
 import * as pt from "../../../../pub"
-
-// pt.createTestContext(
-//     {
-//         log: console.log,
-//         foundError: () => {
-//             //
-//         }
-//     }
-// ).testset(
-//     "MyTest",
-//     ($) => {
-//         $.testString({
-//             testName: "multiline",
-//             expected: "a\na2\nb\nc\nd\ne\n",
-//             actual:   "a\na2\nb\nd\ne\nf"
-//         })
-//         $.testString({
-//             testName: "addedInbetween",
-//             expected: "line1\nline2",
-//             actual:   "line1\nlineInbeween\nline2"
-//         })
-
-
-//         $.testString({
-//             testName: "fail: string not equal",
-//             expected: "Not Equal",
-//             actual: "Like I said"
-//         })
-//         $.testString({
-//             testName: "success: string equal",
-//             expected: "Equal",
-//             actual: "Equal"
-//         })
-//     }
-// )
+import { TTestResult, TTestSet } from "../../../../pub/dist/interface/types"
 
 type Test = {
     testSetName: string,
@@ -44,16 +11,12 @@ type Test = {
 function doTest(
     $: Test,
 ) {
-    const out: string[] = []
     const expectedLog = $.expectedLog
     pt.createTestContext(
         {
             numberOfFirstLine: 1,
         },
         {
-            log: ($) => {
-                out.push($)
-            },
             callback: ($i) => {
                 $i.testset(
                     $.testSetName,
@@ -65,6 +28,13 @@ function doTest(
                 )
             },
             onEnd: ($) => {
+                const out: string[] = []
+                pt.serializeTestResult(
+                    $.result,
+                    (str) => {
+                        out.push(str)
+                    }
+                )
                 const serializedActual = JSON.stringify(out)
                 const serializedExpected = JSON.stringify(expectedLog)
                 if (serializedActual !== serializedExpected) {
@@ -76,6 +46,57 @@ function doTest(
         },
     )
 }
+
+const out: string[] = []
+pt.createTestContext(
+    {
+        numberOfFirstLine: 1,
+    },
+    {
+        callback: ($i) => {
+            $i.testset(
+                "TEST",
+                ($i) => {
+                    const ts = $i
+                    $i.assert({
+                        testName: "FOO",
+                        condition: false,
+                    })
+                    $i.async({
+                        registerListener: ($i) => {
+                            setTimeout(
+                                () => {
+                                    ts.assert({
+                                        testName: "BAR",
+                                        condition: false,
+                                    })
+                                    $i.done()
+                                },
+                                1000,
+                            )
+
+                        }
+                    })
+                }
+            )
+        },
+        onEnd: ($) => {
+            pt.serializeTestResult(
+                $.result,
+                (str) => {
+                    out.push(str)
+                }
+            )
+            const serializedActual = JSON.stringify(out)
+            const serializedExpected = JSON.stringify(["TEST", "  \u001b[31mFOO\u001b[0m", "  \u001b[31mBAR\u001b[0m"])
+            if (serializedActual !== serializedExpected) {
+                console.error(serializedExpected)
+                console.error(serializedActual)
+                throw new Error("Async Not equal")
+            }
+        }
+    },
+)
 
 doTest(
     {
