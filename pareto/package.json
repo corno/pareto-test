@@ -6,5 +6,8 @@
     "update2latest": "./update2latest.sh",
     "update2latestAndPublishMinor": "./update2latestAndPublish.sh minor",
     "update2latestAndPublishPath": "./update2latestAndPublish.sh patch"
+  },
+  "dependencies": {
+    "pareto-ts-validator": "^0.1.1"
   }
 }
