@@ -3,6 +3,7 @@ import { TestSet } from "../..";
 
 import { createTestContext } from "./createTestContext";
 import { serializeTestResult } from "./serializeTestResult";
+import { summarize } from "./summarize";
 
 export function runTests(
     $i: {
@@ -36,6 +37,9 @@ export function runTests(
                     },
                     $i.log,
                 )
+                if (summarize($.result).numberOfErrors > 0) {
+                    pr.processExit(1)
+                }
             }
         }
     )
