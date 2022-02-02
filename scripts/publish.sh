@@ -8,7 +8,7 @@ git push && \
 git diff --exit-code && \
 
 #make sure latest packages are installed
-$dir/updatePackage.sh ./pub && \
+$dir/updatePackage.sh ../pub && \
 
 #validate that everything is committed
 git diff --exit-code && \
