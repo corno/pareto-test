@@ -22,7 +22,7 @@ newVersion=$(npm version "$1") && \
 popd && \
 
 #commit package.json with new version number
-git add . && \
+git add .. && \
 git commit -m "version bumped to $newVersion" && \
 
 #create a tag
