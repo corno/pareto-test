@@ -16,7 +16,7 @@
     "url": "http://github.com/corno/pareto-test.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "devDependencies": {
     "@types/diff": "^5.0.2"
   }
