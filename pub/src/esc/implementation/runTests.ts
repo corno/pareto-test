@@ -1,10 +1,16 @@
 import * as pr from "pareto-runtime"
+import { TestSet } from "../..";
 
 import { createTestContext } from "./createTestContext";
 import { serializeTestResult } from "./serializeTestResult";
 
 export function runTests(
-    $i: ($: string) => void,
+    $i: {
+        callback: (
+            $i: TestSet,
+        ) => void,
+        log: ($: string) => void,
+    },
 ) {
     let isEnded = false
     pr.subscribeToProcessBeforeExit(($) => {
@@ -18,9 +24,7 @@ export function runTests(
             numberOfFirstLine: 1,
         },
         {
-            callback: ($i) => {
-
-            },
+            callback: $i.callback,
             onEnd: ($) => {
 
                 isEnded = true
@@ -30,7 +34,7 @@ export function runTests(
                         testResult: $.result,
                         showSummary: true,
                     },
-                    $i,
+                    $i.log,
                 )
             }
         }
