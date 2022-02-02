@@ -17,7 +17,7 @@ git diff --exit-code && \
 $dir/buildAndTest.sh && \
 
 #bump version and store in variable
-pushd ./pub && \
+pushd ../pub && \
 newVersion=$(npm version "$1") && \
 popd && \
 
@@ -30,6 +30,6 @@ git tag -a "$newVersion" -m "$newVersion" && \
 git push && \
 
 #publish
-pushd ./pub && \
+pushd ../pub && \
 npm publish && \
 popd
