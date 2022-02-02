@@ -2,7 +2,7 @@
 
 dir=`realpath $(dirname "$0")`
 
-$dir/updatePackage.sh ../pareto
+$dir/updatePackage.sh .
 $dir/updatePackage.sh ../pub
 $dir/updatePackage.sh ../test
 
