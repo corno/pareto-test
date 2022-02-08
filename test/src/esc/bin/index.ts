@@ -1,228 +1,226 @@
+
+import * as pr from "pareto-runtime"
 import * as pt from "../../../../pub"
+import { Test } from "../../interface/types/Test"
 
-type Test = {
-    testSetName: string,
-    stringTest: pt.TestStringParameters,
-    expectedLog: string[],
-    expectEqual: boolean,
-}
+pr.runProgram(
+    () => {
 
-function doTest(
-    $: Test,
-) {
-    const test = $
-    pt.createTestContext(
-        {
-            numberOfFirstLine: 1,
-        },
-        {
-            callback: ($i) => {
-                $i.subset(
-                    $.testSetName,
-                    ($i) => {
-                        $i.testString(
-                            $.stringTest,
+        function doTest(
+            $: Test,
+        ) {
+            const test = $
+            pt.createTestContext(
+                {
+                    numberOfFirstLine: 1,
+                },
+                {
+                    callback: ($i) => {
+                        $i.subset(
+                            $.testSetName,
+                            ($i) => {
+                                $i.testString(
+                                    $.stringTest,
+                                )
+                            }
                         )
-                    }
-                )
-            },
-            onEnd: ($) => {
-                const out: string[] = []
-                pt.serializeTestResult(
-                    {
-                        testResult: $.result,
-                        showSummary: false,
                     },
-                    (str) => {
-                        out.push(str)
+                    onEnd: ($) => {
+                        const out: string[] = []
+                        pt.serializeTestResult(
+                            {
+                                testResult: $.result,
+                                showSummary: false,
+                            },
+                            (str) => {
+                                out.push(str)
+                            }
+                        )
+                        const serializedActual = JSON.stringify(out)
+                        const serializedExpected = JSON.stringify(test.expectedLog)
+                        console.log(`${test.testSetName}`)
+                        if (test.expectEqual) {
+                            if (serializedActual !== serializedExpected) {
+                                console.error(serializedExpected)
+                                console.error(serializedActual)
+                                throw new Error("Not equal")
+                            }
+                        } else {
+                            if (serializedActual === serializedExpected) {
+                                console.error(serializedExpected)
+                                console.error(serializedActual)
+                                throw new Error("Not equal")
+                            }
+                        }
                     }
-                )
-                const serializedActual = JSON.stringify(out)
-                const serializedExpected = JSON.stringify(test.expectedLog)
-                console.log(`${test.testSetName}`)
-                if (test.expectEqual) {
+                },
+            )
+        }
+
+        const out: string[] = []
+        pt.createTestContext(
+            {
+                numberOfFirstLine: 1,
+            },
+            {
+                callback: ($i) => {
+                    $i.subset(
+                        "TEST",
+                        ($i) => {
+                            $i.assert({
+                                testName: "FOO",
+                                condition: false,
+                            })
+                            $i.asyncSubset(
+                                {
+                                    name: "XXX",
+                                },
+                                ($i) => {
+                                    setTimeout(
+                                        () => {
+                                            $i.testSet.assert({
+                                                testName: "BAR",
+                                                condition: false,
+                                            })
+                                            $i.done({})
+                                        },
+                                        1000,
+                                    )
+                                })
+                        }
+                    )
+                },
+                onEnd: ($) => {
+                    pt.serializeTestResult(
+                        {
+                            testResult: $.result,
+                            showSummary: false,
+                        },
+                        (str) => {
+                            out.push(str)
+                        }
+                    )
+                    const serializedActual = JSON.stringify(out)
+                    const serializedExpected = JSON.stringify(["TEST", "  \u001b[31mFOO\u001b[0m", "  XXX", "    \u001b[31mBAR\u001b[0m"])
                     if (serializedActual !== serializedExpected) {
                         console.error(serializedExpected)
                         console.error(serializedActual)
-                        throw new Error("Not equal")
-                    }
-                } else {
-                    if (serializedActual === serializedExpected) {
-                        console.error(serializedExpected)
-                        console.error(serializedActual)
-                        throw new Error("Not equal")
+                        throw new Error("Async Not equal")
                     }
                 }
-            }
-        },
-    )
-}
+            },
+        )
 
-const out: string[] = []
-pt.createTestContext(
-    {
-        numberOfFirstLine: 1,
-    },
-    {
-        callback: ($i) => {
-            $i.subset(
-                "TEST",
-                ($i) => {
-                    $i.assert({
-                        testName: "FOO",
-                        condition: false,
-                    })
-                    $i.asyncSubset(
-                        {
-                            name: "XXX",
-                        },
-                        {
-                        registerListener: ($i) => {
-                            setTimeout(
-                                () => {
-                                    $i.testSet.assert({
-                                        testName: "BAR",
-                                        condition: false,
-                                    })
-                                    $i.done()
-                                },
-                                1000,
-                            )
-
-                        }
-                    })
-                }
-            )
-        },
-        onEnd: ($) => {
-            pt.serializeTestResult(
-                {
-                    testResult: $.result,
-                    showSummary: false,
+        doTest(
+            {
+                testSetName: "single line",
+                stringTest: {
+                    testName: "x",
+                    expected: "expected",
+                    actual: "actual"
                 },
-                (str) => {
-                    out.push(str)
-                }
-            )
-            const serializedActual = JSON.stringify(out)
-            const serializedExpected = JSON.stringify(["TEST","  \u001b[31mFOO\u001b[0m","  XXX","    \u001b[31mBAR\u001b[0m"])
-            if (serializedActual !== serializedExpected) {
-                console.error(serializedExpected)
-                console.error(serializedActual)
-                throw new Error("Async Not equal")
+                expectedLog: [
+                    "single line",
+                    "  \u001b[31mx\u001b[0m",
+                    "    expected: 'expected'",
+                    "    actual:   'actual'"
+                ],
+                expectEqual: true,
             }
-        }
-    },
-)
+        )
+        doTest(
+            {
+                testSetName: "multiline",
+                stringTest: {
+                    testName: "x",
+                    expected: "a\na2\nb\nc\nd\ne\n",
+                    actual: "a\na2\nb\nd\ne\nf"
+                },
+                expectedLog: [
+                    "multiline",
+                    "  \u001b[31mx\u001b[0m",
+                    "    line 4|4",
+                    "      -c",
+                    "      -",
+                    "    line 7|6",
+                    "      +f"
+                ],
+                expectEqual: true,
+            }
+        )
+        doTest(
+            {
+                testSetName: "added",
+                stringTest: {
+                    testName: "x",
+                    expected: "line1\nline2",
+                    actual: "line1\nlineAdded\nline2"
+                },
+                expectedLog: [
+                    "added",
+                    "  \u001b[31mx\u001b[0m",
+                    "    line 2|2",
+                    "      +lineAdded",
+                    "      +"
+                ],
+                expectEqual: true,
+            }
+        )
+        doTest(
+            {
+                testSetName: "replace",
+                stringTest: {
+                    testName: "x",
+                    expected: "line1\noriginal\nline2",
+                    actual: "line1\nreplacement\nline2"
+                },
+                expectedLog: [
+                    "replace",
+                    "  \u001b[31mx\u001b[0m",
+                    "    line 2|2",
+                    "      -original",
+                    "      -",
+                    "    line 3|2",
+                    "      +replacement",
+                    "      +"
+                ],
+                expectEqual: true,
+            }
+        )
 
-doTest(
-    {
-        testSetName: "single line",
-        stringTest: {
-            testName: "x",
-            expected: "expected",
-            actual: "actual"
-        },
-        expectedLog: [
-            "single line",
-            "  \u001b[31mx\u001b[0m",
-            "    expected: 'expected'",
-            "    actual:   'actual'"
-        ],
-        expectEqual: true,
-    }
-)
-doTest(
-    {
-        testSetName: "multiline",
-        stringTest: {
-            testName: "x",
-            expected: "a\na2\nb\nc\nd\ne\n",
-            actual: "a\na2\nb\nd\ne\nf"
-        },
-        expectedLog: [
-            "multiline",
-            "  \u001b[31mx\u001b[0m",
-            "    line 4|4",
-            "      -c",
-            "      -",
-            "    line 7|6",
-            "      +f"
-        ],
-        expectEqual: true,
-    }
-)
-doTest(
-    {
-        testSetName: "added",
-        stringTest: {
-            testName: "x",
-            expected: "line1\nline2",
-            actual: "line1\nlineAdded\nline2"
-        },
-        expectedLog: [
-            "added",
-            "  \u001b[31mx\u001b[0m",
-            "    line 2|2",
-            "      +lineAdded",
-            "      +"
-        ],
-        expectEqual: true,
-    }
-)
-doTest(
-    {
-        testSetName: "replace",
-        stringTest: {
-            testName: "x",
-            expected: "line1\noriginal\nline2",
-            actual: "line1\nreplacement\nline2"
-        },
-        expectedLog: [
-            "replace",
-            "  \u001b[31mx\u001b[0m",
-            "    line 2|2",
-            "      -original",
-            "      -",
-            "    line 3|2",
-            "      +replacement",
-            "      +"
-        ],
-        expectEqual: true,
-    }
-)
+        doTest(
+            {
+                testSetName: "withFileLocation",
+                stringTest: {
+                    testName: "x",
+                    expected: "foo\nfoo",
+                    actual: "bar",
+                    fileLocation: "/foo/bar",
+                },
+                expectedLog: [
+                    "withFileLocation",
+                    "  \u001b[31mx\u001b[0m",
+                    "    /foo/bar[1]",
+                    "      -foo",
+                    "      -foo",
+                    "    /foo/bar[3]",
+                    "      +bar"
+                ],
+                expectEqual: true,
+            }
+        )
 
-doTest(
-    {
-        testSetName: "withFileLocation",
-        stringTest: {
-            testName: "x",
-            expected: "foo\nfoo",
-            actual: "bar",
-            fileLocation: "/foo/bar",
-        },
-        expectedLog: [
-            "withFileLocation",
-            "  \u001b[31mx\u001b[0m",
-            "    /foo/bar[1]",
-            "      -foo",
-            "      -foo",
-            "    /foo/bar[3]",
-            "      +bar"
-        ],
-        expectEqual: true,
-    }
-)
-
-doTest(
-    {
-        testSetName: "must fail",
-        stringTest: {
-            testName: "x",
-            expected: "",
-            actual: ""
-        },
-        expectedLog: ["not the right log"],
-        expectEqual: false,
+        doTest(
+            {
+                testSetName: "must fail",
+                stringTest: {
+                    testName: "x",
+                    expected: "",
+                    actual: ""
+                },
+                expectedLog: ["not the right log"],
+                expectEqual: false,
+            }
+        )
     }
 )

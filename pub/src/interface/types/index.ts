@@ -1,51 +1,58 @@
 export type TTestResult = {
-    root: TTestSet
+    readonly "root": TTestSet
 }
 
-export type Summary = {
-    numberOfErrors: number
-    numberOfTests: number
+export type TSummary = {
+    readonly "numberOfErrors": number
+    readonly "numberOfTests": number
 }
 
 export type TTestSet = {
-    elements: TTestElement[]
+    readonly "elements": TTestElement[]
 }
 
 export type TTestElement = {
-    name: string
-    type:
+    readonly "name": string
+    readonly "type":
     | ["subset", TTestSet]
     | ["assert", {
-        failed: boolean
+        readonly "failed": boolean
     }]
     | ["testString", TTestString]
 }
 
 export type TTestString = {
-    result: TTestStringResult
+    readonly "result": TTestStringResult
 }
 
 export type TTestStringResult =
     | ["success", {}]
     | ["failed", {
-        "multiline": TMultiline
+        readonly "multiline": TMultiline
     }]
 
 export type TMultiline =
     | ["no", {
-        expected: string,
-        actual: string,
+        readonly "expected": string,
+        readonly "actual": string,
     }]
     | ["yes", {
-        fileLocation?: string,
-        parts: TMultilinePart[]
+        readonly "fileLocation"?: string,
+        readonly "parts": TMultilinePart[]
     }]
 
 export type TMultilinePart = {
-    startLineInExpected: number,
-    startLineInActual: number,
-    lines: string[],
-    type:
+    readonly "startLineInExpected": number,
+    readonly "startLineInActual": number,
+    readonly "lines": string[],
+    readonly "type":
     | ["removed", {}]
     | ["added", {}]
+}
+
+export type TTestStringParameters = {
+    readonly "testName": string,
+    readonly "expected": string,
+    readonly "actual": string,
+    readonly "fileLocation"?: string,
 }

@@ -1,10 +1,14 @@
 import * as pr from "pareto-runtime"
-import { Summary, TTestResult, TTestSet } from "../../interface/types";
+import { TSummary, TTestResult, TTestSet } from "../../interface/types";
 
 export function summarize(
     $: TTestResult
-): Summary {
-    const summary: Summary = {
+): TSummary {
+    type SSummary = {
+        "numberOfErrors": number
+        "numberOfTests": number
+    }
+    const summary: SSummary = {
         numberOfErrors: 0,
         numberOfTests: 0,
     }

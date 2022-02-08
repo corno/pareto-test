@@ -1,48 +1,17 @@
 import * as diff from "diff"
 
-import { TestContext, TestSet } from "../../interface/interfaces/TestContext"
+import { ITestContext, ITestSet } from "../../interface/interfaces/TestContext"
 import { TTestResult, TTestSet, TTestStringResult, TMultiline, TMultilinePart } from "../../interface/types"
+import { createCounter } from "../../modules/counter"
 
 
-type Counter = {
-    increment: () => void,
-    decrement: () => void,
-}
-
-function createCounter(
-    callback: ($: Counter) => void,
-    onEnd: () => void,
-) {
-    let counter = 0
-    let ended = false
-    function wrapup() {
-        if (counter === 0) {
-            ended = true
-            onEnd()
-        }
-    }
-    callback({
-        increment: () => {
-            if (ended) {
-                console.error("async call done after context is ended")
-            }
-            counter += 1
-
-        },
-        decrement: () => {
-            counter -= 1
-            wrapup()
-        },
-    })
-    wrapup()
-}
 
 export function createTestContext(
     $: {
         numberOfFirstLine: number, //should line numbering start at 0 or at 1?
     },
     $i: {
-        callback: ($i: TestContext) => void,
+        callback: ($i: ITestContext) => void,
         onEnd: ($: {
             result: TTestResult,
         }) => void,
@@ -59,10 +28,10 @@ export function createTestContext(
 
             function createTestSet(
                 ts: TTestSet,
-            ): TestSet {
+            ): ITestSet {
                 return {
                     asyncSubset: ($, $i) => {
-                        counter.increment()
+                        counter.increment({})
                         let closed = false
         
         
@@ -70,7 +39,7 @@ export function createTestContext(
                             elements: []
                         }
         
-                        $i.registerListener({
+                        $i({
                             testSet: createTestSet(
                                 ss,
                             ),
@@ -79,7 +48,7 @@ export function createTestContext(
                                     throw new Error("Unexpected; async is closed twice")
                                 }
                                 closed = true
-                                counter.decrement()
+                                counter.decrement({})
                             },
                         })
                         ts.elements.push({

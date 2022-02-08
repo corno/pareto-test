@@ -1,5 +1,5 @@
 import * as pr from "pareto-runtime"
-import { TestSet } from "../..";
+import { ITestSet } from "../..";
 
 import { createTestContext } from "./createTestContext";
 import { serializeTestResult } from "./serializeTestResult";
@@ -8,7 +8,7 @@ import { summarize } from "./summarize";
 export function runTests(
     $i: {
         callback: (
-            $i: TestSet,
+            $i: ITestSet,
         ) => void,
         log: ($: string) => void,
     },

@@ -1,5 +1,6 @@
-import { TestContext } from "./TestContext";
+import { ITestContext } from "./TestContext";
 
-export type CreateTestContext = (
-    callback: ($: TestContext) => void
+export type ICreateTestContext = (
+    $: {},
+    callback: ($: ITestContext) => void
 ) => void

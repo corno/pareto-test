@@ -1,40 +1,28 @@
+import { TTestStringParameters } from "../types"
 
-export type TestStringParameters = {
-    testName: string,
-    expected: string,
-    actual: string,
-    fileLocation?: string,
+export type IAsyncTestSet = {
+    readonly "testSet": ITestSet
+    readonly "done": ($: {}) => void
 }
 
-export type AsyncTestSet = {
-    testSet: TestSet
-    done: () => void
-}
-
-export type AsyncHandler = {
-    registerListener: (
-        $i: AsyncTestSet
-    ) => void,
-}
-
-export type TestSet = {
-    subset: (
+export type ITestSet = {
+    readonly "subset": (
         $: string,
-        $i: ($i: TestSet) => void
+        $i: ($i: ITestSet) => void
     ) => void
-    testString: (
-        $: TestStringParameters
+    readonly "testString": (
+        $: TTestStringParameters
     ) => void
-    assert: ($: {
-        testName: string,
-        condition: boolean,
+    readonly "assert": ($: {
+        readonly "testName": string,
+        readonly "condition": boolean,
     }) => void
-    asyncSubset: (
+    readonly "asyncSubset": (
         $: {
-            name: string,
+            readonly "name": string,
         },
-        $i: AsyncHandler
+        $i: ($i: IAsyncTestSet) => void,
     ) => void
 }
 
-export type TestContext = TestSet
+export type ITestContext = ITestSet
