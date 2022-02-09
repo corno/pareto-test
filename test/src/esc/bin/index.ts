@@ -200,10 +200,10 @@ pr.runProgram(
                 expectedLog: [
                     "withFileLocation",
                     "  \u001b[31mx\u001b[0m",
-                    "    /foo/bar[1]",
+                    "    \u001b[36m/foo/bar\u001b[0m:\u001b[33m1\u001b[0m",
                     "      -foo",
                     "      -foo",
-                    "    /foo/bar[3]",
+                    "    \u001b[36m/foo/bar\u001b[0m:\u001b[33m3\u001b[0m",
                     "      +bar"
                 ],
                 expectEqual: true,

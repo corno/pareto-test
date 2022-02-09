@@ -11,6 +11,8 @@ export function serializeTestResult(
 ) {
     const red = "\x1b[31m"
     const green = "\x1b[32m"
+    const yellow = "\x1b[33m"
+    const cyan = "\x1b[36m"
     const reset = "\x1b[0m"
 
     function serializeTestSet(
@@ -54,7 +56,7 @@ export function serializeTestResult(
                                                     const added = $.type[0] === "added"
 
                                                     if (fileLocation !== undefined) {
-                                                        log(`${indentation}  ${fileLocation}[${$.startLineInExpected}]`)
+                                                        log(`${indentation}  ${cyan}${fileLocation}${reset}:${yellow}${$.startLineInExpected}${reset}`)
                                                     } else {
                                                         log(`${indentation}  line ${$.startLineInExpected}|${$.startLineInActual}`)
                                                     }
