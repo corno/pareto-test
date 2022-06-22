@@ -1,7 +1,7 @@
 {
   "author": "Corno",
   "dependencies": {
-    "diff": "^5.0.0",
+    "diff": "^5.1.0",
     "pareto-runtime": "^0.22.0"
   },
   "description": "test functions for pareto",
