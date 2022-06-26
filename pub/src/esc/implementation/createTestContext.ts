@@ -8,7 +8,11 @@ import { createCounter } from "../../modules/counter"
 
 export function createTestContext(
     $: {
-        numberOfFirstLine: number, //should line numbering start at 0 or at 1?
+        /**
+         * when reporting differences in multiline strings,
+         * should line numbering start at 0 or at 1?
+         */
+        numberOfFirstLine: number,
     },
     $i: {
         callback: ($i: ITestContext) => void,

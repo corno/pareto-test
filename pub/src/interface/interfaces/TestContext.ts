@@ -6,22 +6,43 @@ export type IAsyncTestSet = {
 }
 
 export type ITestSet = {
+    /**
+     * create a named subset
+     */
     readonly "subset": (
         $: string,
         $i: ($i: ITestSet) => void
     ) => void
+    /**
+     * test a string for equality
+     */
     readonly "testString": (
         $: TTestStringParameters
     ) => void
-    readonly "assert": ($: {
-        readonly "testName": string,
-        readonly "condition": boolean,
-    }) => void
+    /**
+     * assert a named condition
+     */
+    readonly "assert": (
+        /*the data*/
+        $: {
+            readonly "testName": string,
+            readonly "condition": boolean,
+        }
+    ) => void
+    /**
+     * create an async subset.
+     * An async subset has to be ended by calling $.done()
+     */
     readonly "asyncSubset": (
         $: {
             readonly "name": string,
         },
-        $i: ($i: IAsyncTestSet) => void,
+        $i: (
+            /**
+             * interface
+             */
+            $i: IAsyncTestSet
+        ) => void,
     ) => void
 }
 
