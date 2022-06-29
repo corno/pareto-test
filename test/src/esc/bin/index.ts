@@ -1,6 +1,6 @@
 
 import * as pr from "pareto-runtime"
-import * as pt from "../../../../pub"
+import * as pt from "../../../../lib"
 import { Test } from "../../interface/types/Test"
 
 pr.runProgram(

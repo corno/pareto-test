@@ -10,7 +10,7 @@
   ],
   "license": "ISC",
   "main": "dist/index.js",
-  "name": "pareto-test",
+  "name": "pareto-test-lib",
   "repository": {
     "type": "git",
     "url": "http://github.com/corno/pareto-test.git"
@@ -19,5 +19,6 @@
   "version": "0.11.2",
   "devDependencies": {
     "@types/diff": "^5.0.2"
-  }
+  },
+  "content-fingerprint": "378198e3a7ca8545a093d97a73fba1a1fbf7d982"
 }

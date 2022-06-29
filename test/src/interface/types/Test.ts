@@ -1,4 +1,4 @@
-import * as pt from "../../../../pub"
+import * as pt from "../../../../lib"
 
 export type Test = {
     readonly "testSetName": string,
