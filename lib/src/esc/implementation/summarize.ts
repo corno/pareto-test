@@ -1,4 +1,4 @@
-import * as pr from "pareto-runtime"
+import * as pl from "pareto-lang-lib"
 import { TSummary, TTestResult, TTestSet } from "../../interface/types";
 
 export function summarize(
@@ -18,7 +18,7 @@ export function summarize(
         $.elements.forEach(($) => {
             switch ($.type[0]) {
                 case "assert":
-                    pr.cc($.type[1], ($) => {
+                    pl.cc($.type[1], ($) => {
                         summary.numberOfTests += 1
                         if ($.failed) {
                             summary.numberOfErrors += 1
@@ -26,12 +26,12 @@ export function summarize(
                     })
                     break
                 case "subset":
-                    pr.cc($.type[1], ($) => {
+                    pl.cc($.type[1], ($) => {
                         summarizeTestSet($)
                     })
                     break
                 case "testString":
-                    pr.cc($.type[1], ($) => {
+                    pl.cc($.type[1], ($) => {
                         summary.numberOfTests += 1
                         if ($.result[0] === "failed") {
                             summary.numberOfErrors += 1
@@ -39,7 +39,7 @@ export function summarize(
                         
                     })
                     break
-                default: pr.au($.type[0])
+                default: pl.au($.type[0])
             }
         })
     }

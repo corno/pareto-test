@@ -1,5 +1,6 @@
 
 import * as pr from "pareto-runtime"
+import * as pl from "pareto-lang-lib"
 import * as pt from "../../../../lib"
 import { Test } from "../../interface/types/Test"
 
@@ -36,8 +37,8 @@ pr.runProgram(
                                 out.push(str)
                             }
                         )
-                        const serializedActual = JSON.stringify(out)
-                        const serializedExpected = JSON.stringify(test.expectedLog)
+                        const serializedActual = pr.JSONstringify(out)
+                        const serializedExpected = pr.JSONstringify(test.expectedLog)
                         console.log(`${test.testSetName}`)
                         if (test.expectEqual) {
                             if (serializedActual !== serializedExpected) {
