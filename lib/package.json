@@ -1,7 +1,6 @@
 {
   "author": "Corno",
   "dependencies": {
-    "diff": "^5.1.0",
     "pareto-diff-api": "^0.1.0",
     "pareto-lang-lib": "^0.7.0",
     "pareto-runtime": "^0.23.0",
@@ -20,5 +19,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.13.0",
-  "content-fingerprint": "da402092c37a7153b83621a7e1e85dce77d542a2"
+  "content-fingerprint": "3b438bdb7ace30eea6709e6d98d5a185140bc54f"
 }
