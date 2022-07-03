@@ -1,5 +1,6 @@
 import * as pr from "pareto-runtime"
 import { ITestSet } from "../..";
+import * as diffAPI from "pareto-diff-api"
 
 import { createTestContext } from "./createTestContext";
 import { serializeTestResult } from "./serializeTestResult";
@@ -12,6 +13,7 @@ export function runTests(
         ) => void,
         log: ($: string) => void,
     },
+    diff: diffAPI.API,
 ) {
     let isEnded = false
     pr.subscribeToProcessBeforeExit(($) => {
@@ -41,6 +43,7 @@ export function runTests(
                     pr.processExit(1)
                 }
             }
-        }
+        },
+        diff,
     )
 }

@@ -1,4 +1,4 @@
-import * as diff from "./diff"
+import * as diffAPI from "pareto-diff-api"
 
 import { ITestContext, ITestSet } from "../../interface/interfaces/TestContext"
 import { TTestResult, TTestSet, TTestStringResult, TMultiline, TMultilinePart } from "../../interface/types"
@@ -20,6 +20,7 @@ export function createTestContext(
             result: TTestResult,
         }) => void,
     },
+    diff: diffAPI.API,
 ): void {
     const testResult: TTestResult = {
         root: {

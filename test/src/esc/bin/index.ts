@@ -1,12 +1,24 @@
 
 import * as pr from "pareto-runtime"
-import * as pl from "pareto-lang-lib"
 import * as pt from "../../../../lib"
 import { Test } from "../../interface/types/Test"
+import * as diffLib from "pareto-diff-lib"
 
 pr.runProgram(
     () => {
 
+        const stdout = pr.createStdOut()
+        const stderr = pr.createStdErr()
+
+        function log(msg: string) {
+            stdout.write(msg)
+            stdout.write("\n")
+        }
+        function error(msg: string) {
+            stderr.write(msg)
+            stderr.write("\n")
+        }
+        
         function doTest(
             $: Test,
         ) {
@@ -39,22 +51,23 @@ pr.runProgram(
                         )
                         const serializedActual = pr.JSONstringify(out)
                         const serializedExpected = pr.JSONstringify(test.expectedLog)
-                        console.log(`${test.testSetName}`)
+                        log(`${test.testSetName}`)
                         if (test.expectEqual) {
                             if (serializedActual !== serializedExpected) {
-                                console.error(serializedExpected)
-                                console.error(serializedActual)
+                                error(serializedExpected)
+                                error(serializedActual)
                                 throw new Error("Not equal")
                             }
                         } else {
                             if (serializedActual === serializedExpected) {
-                                console.error(serializedExpected)
-                                console.error(serializedActual)
+                                error(serializedExpected)
+                                error(serializedActual)
                                 throw new Error("Not equal")
                             }
                         }
                     }
                 },
+                diffLib.init(),
             )
         }
 
@@ -101,15 +114,16 @@ pr.runProgram(
                             out.push(str)
                         }
                     )
-                    const serializedActual = JSON.stringify(out)
-                    const serializedExpected = JSON.stringify(["TEST", "  \u001b[31mFOO\u001b[0m", "  XXX", "    \u001b[31mBAR\u001b[0m"])
+                    const serializedActual = pr.JSONstringify(out)
+                    const serializedExpected = pr.JSONstringify(["TEST", "  \u001b[31mFOO\u001b[0m", "  XXX", "    \u001b[31mBAR\u001b[0m"])
                     if (serializedActual !== serializedExpected) {
-                        console.error(serializedExpected)
-                        console.error(serializedActual)
+                        error(serializedExpected)
+                        error(serializedActual)
                         throw new Error("Async Not equal")
                     }
                 }
             },
+            diffLib.init()
         )
 
         doTest(
