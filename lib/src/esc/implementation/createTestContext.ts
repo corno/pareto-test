@@ -1,7 +1,6 @@
 import * as diffAPI from "pareto-diff-api"
 
-import { ITestContext, ITestSet } from "../../interface/interfaces/TestContext"
-import { TTestResult, TTestSet, TTestStringResult, TMultiline, TMultilinePart } from "../../interface/types"
+import api from "pareto-test-api"
 import { createCounter } from "../../modules/counter"
 
 
@@ -15,14 +14,14 @@ export function createTestContext(
         numberOfFirstLine: number,
     },
     $i: {
-        callback: ($i: ITestContext) => void,
+        callback: ($i: api.ITestContext) => void,
         onEnd: ($: {
-            result: TTestResult,
+            result: api.TTestResult,
         }) => void,
     },
     diff: diffAPI.API,
 ): void {
-    const testResult: TTestResult = {
+    const testResult: api.TTestResult = {
         root: {
             elements: []
         }
@@ -32,15 +31,15 @@ export function createTestContext(
         (counter) => {
 
             function createTestSet(
-                ts: TTestSet,
-            ): ITestSet {
+                ts: api.TTestSet,
+            ): api.ITestSet {
                 return {
                     asyncSubset: ($, $i) => {
                         counter.increment({})
                         let closed = false
         
         
-                        const ss: TTestSet = {
+                        const ss: api.TTestSet = {
                             elements: []
                         }
         
@@ -62,7 +61,7 @@ export function createTestContext(
                         })
                     },
                     subset: ($, $i) => {
-                        const ss: TTestSet = {
+                        const ss: api.TTestSet = {
                             elements: []
                         }
         
@@ -86,20 +85,20 @@ export function createTestContext(
                         ts.elements.push({
                             name: $.testName,
                             type: ["testString", {
-                                result: ((): TTestStringResult => {
+                                result: ((): api.TTestStringResult => {
         
                                     if ($.actual === $.expected) {
                                         return ["success", {}]
                                     } else {
                                         return ["failed", {
-                                            multiline: ((): TMultiline => {
+                                            multiline: ((): api.TMultiline => {
                                                 if ($.expected.indexOf("\n") === -1) {
                                                     return ["no", {
                                                         expected: $.expected,
                                                         actual: $.actual,
                                                     }]
                                                 } else {
-                                                    const parts: TMultilinePart[] = []
+                                                    const parts: api.TMultilinePart[] = []
         
                                                     let lineCountOfExpected = lineOffset
                                                     let lineCountOfActual = lineOffset

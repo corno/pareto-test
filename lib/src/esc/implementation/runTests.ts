@@ -1,5 +1,5 @@
 import * as pr from "pareto-runtime"
-import { ITestSet } from "../..";
+import * as api from "pareto-test-api"
 import * as diffAPI from "pareto-diff-api"
 
 import { createTestContext } from "./createTestContext";
@@ -9,7 +9,7 @@ import { summarize } from "./summarize";
 export function runTests(
     $i: {
         callback: (
-            $i: ITestSet,
+            $i: api.ITestSet,
         ) => void,
         log: ($: string) => void,
     },

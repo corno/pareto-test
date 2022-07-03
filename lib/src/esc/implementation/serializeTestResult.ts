@@ -1,10 +1,10 @@
 import * as pl from "pareto-lang-lib"
-import { TTestResult, TTestSet } from "../../interface/types"
+import * as api from "pareto-test-api"
 import { summarize } from "./summarize"
 
 export function serializeTestResult(
     $: {
-        testResult: TTestResult,
+        testResult: api.TTestResult,
         showSummary: boolean,
     },
     log: (str: string) => void,
@@ -16,7 +16,7 @@ export function serializeTestResult(
     const reset = "\x1b[0m"
 
     function serializeTestSet(
-        $: TTestSet,
+        $: api.TTestSet,
         indentation: string,
     ) {
         $.elements.forEach(($) => {

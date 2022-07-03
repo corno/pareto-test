@@ -1,9 +1,9 @@
 import * as pl from "pareto-lang-lib"
-import { TSummary, TTestResult, TTestSet } from "../../interface/types";
+import * as api from "pareto-test-api"
 
 export function summarize(
-    $: TTestResult
-): TSummary {
+    $: api.TTestResult
+): api.TSummary {
     type SSummary = {
         "numberOfErrors": number
         "numberOfTests": number
@@ -13,7 +13,7 @@ export function summarize(
         numberOfTests: 0,
     }
     function summarizeTestSet(
-        $: TTestSet
+        $: api.TTestSet
     ): void {
         $.elements.forEach(($) => {
             switch ($.type[0]) {

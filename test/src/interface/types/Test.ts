@@ -1,4 +1,4 @@
-import * as pt from "../../../../lib"
+import * as pt from "pareto-test-api"
 
 export type Test = {
     readonly "testSetName": string,
