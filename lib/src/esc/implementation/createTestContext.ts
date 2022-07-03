@@ -1,4 +1,4 @@
-import * as diff from "diff"
+import * as diff from "./diff"
 
 import { ITestContext, ITestSet } from "../../interface/interfaces/TestContext"
 import { TTestResult, TTestSet, TTestStringResult, TMultiline, TMultilinePart } from "../../interface/types"

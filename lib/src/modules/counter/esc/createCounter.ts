@@ -15,7 +15,7 @@ export function createCounter(
     callback({
         increment: () => {
             if (ended) {
-                console.error("async call done after context is ended")
+                throw new Error("async call done after context is ended")
             }
             counter += 1
 
