@@ -3,8 +3,8 @@
   "dependencies": {
     "pareto-diff-api": "^0.1.0",
     "pareto-lang-lib": "^0.8.0",
-    "pareto-runtime": "^0.23.0",
-    "pareto-test-api": "^0.1.0"
+    "pareto-runtime": "^0.24.0",
+    "pareto-test-api": "^0.2.0"
   },
   "description": "test functions for pareto",
   "files": [
@@ -19,5 +19,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.13.1",
-  "content-fingerprint": "9579637ac4db76769e2e49c48415c395b38b0568"
+  "content-fingerprint": "634c75d601b1a8683aabe0de53a1387c05bb16d7"
 }

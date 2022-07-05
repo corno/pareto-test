@@ -15,36 +15,33 @@ export function summarize(
     function summarizeTestSet(
         $: api.TTestSet
     ): void {
-        $.elements.forEach(($) => {
-            switch ($.type[0]) {
-                case "assert":
-                    pl.cc($.type[1], ($) => {
-                        summary.numberOfTests += 1
-                        if ($.failed) {
-                            summary.numberOfErrors += 1
-                        }
-                    })
-                    break
+        $.elements.toArray().forEach(($) => {
+            switch ($.value.type[0]) {
                 case "subset":
-                    pl.cc($.type[1], ($) => {
+                    pl.cc($.value.type[1], ($) => {
                         summarizeTestSet($)
                     })
                     break
-                case "testString":
-                    pl.cc($.type[1], ($) => {
+                case "test":
+                    pl.cc($.value.type[1], ($) => {
                         summary.numberOfTests += 1
-                        if ($.result[0] === "failed") {
+                        if (!$.success) {
                             summary.numberOfErrors += 1
                         }
                         
                     })
                     break
-                default: pl.au($.type[0])
+                default: pl.au($.value.type[0])
             }
         })
     }
-    summarizeTestSet(
-        $.root,
-    )
+    if ($.root.type[0] === "test") {
+        throw new Error("!!!")
+    } else {
+        summarizeTestSet(
+            $.root.type[1],
+        )
+
+    }
     return summary
 }
