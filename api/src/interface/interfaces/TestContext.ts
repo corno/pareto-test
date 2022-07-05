@@ -1,4 +1,4 @@
-import { TTestStringParameters } from "../types"
+import { TTestStringParameters } from "../types/TestResult"
 
 export type IAsyncTestSet = {
     readonly "testSet": ITestSet
