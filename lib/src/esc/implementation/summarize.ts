@@ -28,20 +28,15 @@ export function summarize(
                         if (!$.success) {
                             summary.numberOfErrors += 1
                         }
-                        
+
                     })
                     break
                 default: pl.au($.value.type[0])
             }
         })
     }
-    if ($.root.type[0] === "test") {
-        throw new Error("!!!")
-    } else {
-        summarizeTestSet(
-            $.root.type[1],
-        )
-
-    }
+    summarizeTestSet(
+        $.root,
+    )
     return summary
 }

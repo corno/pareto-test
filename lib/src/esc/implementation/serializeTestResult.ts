@@ -34,7 +34,7 @@ export function serializeTestResult(
                                 pl.cc($.type[1], ($) => {
                                 })
                                 break
-                            case "assert":
+                            case "boolean":
                                 pl.cc($.type[1], ($) => {
                                 })
                                 break
@@ -99,15 +99,11 @@ export function serializeTestResult(
             }
         })
     }
-    if ($.testResult.root.type[0] === "test") {
-        throw new Error("!!!")
-    } else {
-        serializeTestSet(
-            $.testResult.root.type[1],
-            ``
-        )
+    serializeTestSet(
+        $.testResult.root,
+        ``
+    )
 
-    }
     if ($.showSummary) {
         log(``)
         const summary = summarize($.testResult)
