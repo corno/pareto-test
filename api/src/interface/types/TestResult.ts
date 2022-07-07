@@ -10,7 +10,7 @@ export type TTestElement = {
     | ["test", {
         success: boolean
         type:
-        | ["assert", {
+        | ["boolean", {
         }]
         | ["simple string", {
             readonly "expected": string,
@@ -33,5 +33,5 @@ export type TMultilinePart = {
 }
 
 export type TTestResult = {
-    readonly "root": TTestElement
+    readonly "root": TTestSet
 }
