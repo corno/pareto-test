@@ -12,7 +12,7 @@
     "url": "http://github.com/corno/pareto-test.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "dependencies": {
     "pareto-lang-api": "^0.6.0"
   },
