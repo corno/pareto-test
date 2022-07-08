@@ -1,4 +1,4 @@
-import { File, WriteFile, Unlink } from "../../modules/fs/HandledFilesystem"
+import { File, WriteFile, Unlink } from "pareto-handledfilesystem-api"
 import * as asyncAPI from "pareto-async-api"
 import * as afAPI from "pareto-async-functions-api"
 import * as diffAPI from "pareto-diff-api"

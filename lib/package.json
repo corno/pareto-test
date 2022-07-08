@@ -3,7 +3,8 @@
   "dependencies": {
     "pareto-async-functions-api": "^0.8.0",
     "pareto-diff-api": "^0.1.0",
-    "pareto-filesystem-api": "^0.9.0",
+    "pareto-filesystem-api": "^0.13.0",
+    "pareto-handledfilesystem-api": "^0.7.0",
     "pareto-lang-lib": "^0.8.0",
     "pareto-runtime": "^0.24.0",
     "pareto-test-api": "^0.4.0"
@@ -21,5 +22,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.15.0",
-  "content-fingerprint": "2d5edcf8987a2783258c0f4364d65c33f5994ecb"
+  "content-fingerprint": "d63f2df2496d4a62ed747dde7c97415082b54f84"
 }
