@@ -21,6 +21,6 @@
     "url": "http://github.com/corno/pareto-test.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "content-fingerprint": "d63f2df2496d4a62ed747dde7c97415082b54f84"
 }
