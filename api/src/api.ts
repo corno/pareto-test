@@ -1,4 +1,4 @@
-import * as asyncAPI from "pareto-async-api"
+import * as pa from "pareto-api-core"
 import { TSummary } from "./interface/types/Summary"
 import { TTestElement, TTestResult } from "./interface/types/TestResult"
 
@@ -20,7 +20,7 @@ export type ValidateFile = (
     fileName: string,
     extension: string,
     actualData: string,
-) => asyncAPI.IAsync<TTestElement>
+) => pa.IAsync<TTestElement>
 
 export type API = {
     serializeTestResult: SerializeTestResult

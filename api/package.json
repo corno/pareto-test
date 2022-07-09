@@ -13,5 +13,8 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.5.0",
-  "content-fingerprint": "ac497c35fcf938313eeccaa6c96faf2e318b58dd"
+  "dependencies": {
+    "pareto-api-core": "^0.1.0"
+  },
+  "content-fingerprint": "9d0f431921225774897a855ad103d3788c1cb8d1"
 }
