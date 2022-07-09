@@ -1,11 +1,12 @@
 {
   "author": "Corno",
   "dependencies": {
+    "pareto-api-core": "^0.1.0",
     "pareto-async-functions-api": "^0.9.0",
     "pareto-diff-api": "^0.1.0",
     "pareto-filesystem-api": "^0.15.0",
     "pareto-handledfilesystem-api": "^0.8.0",
-    "pareto-lib-core": "^0.4.0",
+    "pareto-lib-core": "^0.5.0",
     "pareto-runtime": "^0.24.0",
     "pareto-test-api": "^0.6.0"
   },
@@ -22,5 +23,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.18.0",
-  "content-fingerprint": "720510a2732be310120b13daa665fca116e8631a"
+  "content-fingerprint": "4f9838c795cb51afa027e9a6a7f40a2027898b24"
 }

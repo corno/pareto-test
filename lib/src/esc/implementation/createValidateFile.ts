@@ -1,4 +1,4 @@
-import * as pl from "pareto-lib-core"
+import * as pa from "pareto-api-core"
 import { File, WriteFile, Unlink } from "pareto-handledfilesystem-api"
 import * as afAPI from "pareto-async-functions-api"
 import * as diffAPI from "pareto-diff-api"
@@ -17,10 +17,10 @@ export function createValidateFile(
         fileName: string,
         extension: string,
         actualData: string,
-    ): pl.IAsync<ta.TTestElement> => {
+    ): pa.IAsync<ta.TTestElement> => {
         return file(
             [path, `${fileName}.expected.${extension}`],
-            (expectedData): pl.IAsync<ta.TTestElement> => {
+            (expectedData): pa.IAsync<ta.TTestElement> => {
                 const actualFileName = `${fileName}.actual.${extension}`
                 if (actualData !== expectedData) {
                     writeFile(
