@@ -23,3 +23,9 @@ interface String {
     //toUpperCase(): string
     //padStart():
 }
+
+interface ErrorConstructor {
+    new(message?: string): Error
+}
+
+declare let Error: ErrorConstructor;
