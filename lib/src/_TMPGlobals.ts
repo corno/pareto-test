@@ -2,6 +2,8 @@ interface Array<T> {
     //pop: () => T
     //includes(v: T): boolean
     length: number
+    push(v: T): void
+
     //join(separator: string): string
     //pop(): undefined | T
     //concat(array: T[]): T[]
