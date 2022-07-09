@@ -1,11 +1,10 @@
 {
   "author": "Corno",
   "dependencies": {
-    "pareto-async-functions-api": "^0.8.0",
+    "pareto-async-functions-api": "^0.9.0",
     "pareto-diff-api": "^0.1.0",
-    "pareto-filesystem-api": "^0.13.0",
-    "pareto-handledfilesystem-api": "^0.7.0",
-    "pareto-lang-lib": "^0.8.0",
+    "pareto-filesystem-api": "^0.15.0",
+    "pareto-handledfilesystem-api": "^0.8.0",
     "pareto-runtime": "^0.24.0",
     "pareto-test-api": "^0.4.0"
   },
