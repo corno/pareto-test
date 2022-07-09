@@ -7,7 +7,7 @@
     "pareto-handledfilesystem-api": "^0.8.0",
     "pareto-lib-core": "^0.4.0",
     "pareto-runtime": "^0.24.0",
-    "pareto-test-api": "^0.4.0"
+    "pareto-test-api": "^0.6.0"
   },
   "description": "test functions for pareto",
   "files": [
@@ -22,5 +22,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.17.0",
-  "content-fingerprint": "eaf4817cf20e420b45a7023ae251c9d86bfc8b67"
+  "content-fingerprint": "720510a2732be310120b13daa665fca116e8631a"
 }
