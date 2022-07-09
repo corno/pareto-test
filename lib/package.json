@@ -5,6 +5,7 @@
     "pareto-diff-api": "^0.1.0",
     "pareto-filesystem-api": "^0.15.0",
     "pareto-handledfilesystem-api": "^0.8.0",
+    "pareto-lib-core": "^0.4.0",
     "pareto-runtime": "^0.24.0",
     "pareto-test-api": "^0.4.0"
   },
@@ -21,5 +22,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.16.0",
-  "content-fingerprint": "d63f2df2496d4a62ed747dde7c97415082b54f84"
+  "content-fingerprint": "eaf4817cf20e420b45a7023ae251c9d86bfc8b67"
 }

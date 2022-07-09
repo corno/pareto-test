@@ -13,7 +13,5 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.4.0",
-  "dependencies": {
-  },
-  "content-fingerprint": "e7933faf2a5a48b0903eb0067c8f5ab845240634"
+  "content-fingerprint": "ac497c35fcf938313eeccaa6c96faf2e318b58dd"
 }

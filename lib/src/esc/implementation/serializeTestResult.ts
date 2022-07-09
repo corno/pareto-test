@@ -1,4 +1,4 @@
-import * as pl from "pareto-lang-lib"
+import * as pl from "pareto-lib-core"
 import * as api from "pareto-test-api"
 import { summarize } from "./summarize"
 
