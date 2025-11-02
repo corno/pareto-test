@@ -4,10 +4,10 @@ import * as _ea from 'exupery-core-alg'
 import { execSync } from 'child_process'
 import * as path from 'path'
 import * as fs from 'fs'
-import { TestRunner } from "./interface/testrunner"
+import { Test_Runner, Test_Runners } from "./interface/testrunner"
 
 export const run_tests = (
-    tests: _et.Dictionary<TestRunner>,
+    tests: Test_Runners,
     overwrite_expected: boolean,
     test_dir: string
 ) => {
@@ -44,7 +44,7 @@ export const run_tests = (
     tests.map(($, key) => {
 
         try {
-            const success = test_runner($, key, overwrite_expected)
+            const success = test_runner($, key, overwrite_expected, test_dir)
             if (success) {
                 passed_tests++
             } else {
@@ -94,14 +94,17 @@ function to_snake_case(str: string): string {
     return str.toLowerCase().replace(/\s+/g, '_')
 }
 
-export const test_runner = ($p: TestRunner, name: string, overwrite_expected: boolean): boolean => {
-    const data_dir = path.join(__dirname, '../../../data')
-    const test_data_dir = path.join(data_dir, 'test')
-    const fixtures_dir = path.join(test_data_dir, 'fixtures')
+export const test_runner = (
+    $p: Test_Runner,
+     name: string, 
+     overwrite_expected: boolean,
+     test_dir: string
+    ): boolean => {
+    const fixtures_dir = path.join(test_dir, 'fixtures')
     const test_dir_name = to_snake_case(name)
     const input_dir = path.join(fixtures_dir, test_dir_name)
-    const expected_dir = path.join(test_data_dir, 'expected')
-    const actual_dir = path.join(test_data_dir, 'actual')
+    const expected_dir = path.join(test_dir, 'expected')
+    const actual_dir = path.join(test_dir, 'actual')
 
     console.log('='.repeat(60))
     console.log(`Running test: ${name}\n`)
@@ -158,7 +161,7 @@ export const test_runner = ($p: TestRunner, name: string, overwrite_expected: bo
             const input_content = fs.readFileSync(input_path, 'utf8')
 
             // Transform input to output
-            const output_content = $p.transformer(input_content, base_name)
+            const output_content = $p.transformer(input_content)
 
             // If overwrite expected, write to expected directory
             if (overwrite_expected) {
