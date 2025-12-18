@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "description": "A testing framework for Pareto projects",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "dist"
   ],
   "dependencies": {
-    "exupery-core-alg": "^0.5.14",
+    "exupery-core-alg": "^0.5.15",
     "exupery-core-async": "^0.3.75",
     "exupery-core-dev": "^0.3.2",
     "exupery-resources": "^0.3.32",

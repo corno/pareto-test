@@ -10,7 +10,7 @@ import * as generic from "../interface/generic"
 export const run_transformer_tests_with_parameters = <Input, Parameters, Expected>(tests: _et.Dictionary<generic.Transformer_With_Parameters<Input, Parameters, Expected>>, implementation: ($: Input, parameters: Parameters) => Expected): generic.Results => {
     return tests.map(($) => {
         return ['test', {
-            'passed': implementation($.input, $.parameters) === $.expected
+            'passed': implementation($.input.input, $.input.parameters) === $.expected
         }]
     })
 }
@@ -23,52 +23,69 @@ export const run_transformer_tests_without_parameters = <Input, Expected>($: _et
     })
 }
 
-export const run_refiner_tests_with_parameters = <Input, Parameters, Expected>(tests: _et.Dictionary<generic.Refiner_With_Parameters<Input, Parameters, Expected>>, implementation: ($: Input, parameters: Parameters, abort: (error: string) => never) => Expected): generic.Results => {
+export const run_refiner_tests_with_parameters = <Input, Parameters, Expected_Output, Expected_Error>(tests: _et.Dictionary<generic.Refiner_With_Parameters<Input, Parameters, Expected_Output, Expected_Error>>, implementation: ($: Input, parameters: Parameters, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
     return tests.map(($) => {
-        try {
-            const actual = implementation($.input, $.parameters, (error: string) => _ea.deprecated_panic(error))
-            return ['test', {
-                'passed': $.expected.transform(
-                    ($) => actual === $,
-                    () => false
-                )
-            }]
-        } catch {
-            return ['test', {
-                'passed': $.expected.transform(
-                    () => false,
-                    () => true
-                )
-            }]
-        }
+        const expected = $.expected
+        const x = _ea.create_refinement_context<Expected_Output, Expected_Error>(
+            (abort) => implementation($.input.input, $.input.parameters, abort)
+        )
+        return ['test', {
+            'passed': x.transform(
+                ($) => {
+                    const output = $
+                    return _ea.cc(expected, ($) => {
+                        switch ($[0]) {
+                            case 'output': return _ea.ss($, ($) => output === $)
+                            case 'error': return _ea.ss($, ($) => false)
+                            default: return _ea.au($[0])
+                        }
+                    })
+                },
+                ($) => {
+                    const error = $
+                    return _ea.cc(expected, ($) => {
+                        switch ($[0]) {
+                            case 'output': return _ea.ss($, ($) => false)
+                            case 'error': return _ea.ss($, ($) => error === $)
+                            default: return _ea.au($[0])
+                        }
+                    })
+                },
+            )
+        }]
     })
 }
 
-export const run_refiner_tests_without_parameters = <Input, Expected>($: _et.Dictionary<generic.Refiner_Without_Parameters<Input, Expected>>, implementation: ($: Input, abort: (error: string) => never) => Expected): generic.Results => {
+export const run_refiner_tests_without_parameters = <Input, Expected_Output, Expected_Error>($: _et.Dictionary<generic.Refiner_Without_Parameters<Input, Expected_Output, Expected_Error>>, implementation: ($: Input, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
     return $.map(($) => {
-        try {
-            const actual = implementation($.input, (error: string) => _ea.deprecated_panic(error))
-            $.expected.map(
+        const expected = $.expected
+        const x = _ea.create_refinement_context<Expected_Output, Expected_Error>(
+            (abort) => implementation($.input, abort)
+        )
+        return ['test', {
+            'passed': x.transform(
                 ($) => {
-                    if (actual !== $) {
-                        _ed.log_debug_message(`Expected value does not match actual value: ${actual}`, () => { })
-                    }
-                }
+                    const output = $
+                    return _ea.cc(expected, ($) => {
+                        switch ($[0]) {
+                            case 'output': return _ea.ss($, ($) => output === $)
+                            case 'error': return _ea.ss($, ($) => false)
+                            default: return _ea.au($[0])
+                        }
+                    })
+                },
+                ($) => {
+                    const error = $
+                    return _ea.cc(expected, ($) => {
+                        switch ($[0]) {
+                            case 'output': return _ea.ss($, ($) => false)
+                            case 'error': return _ea.ss($, ($) => error === $)
+                            default: return _ea.au($[0])
+                        }
+                    })
+                },
             )
-            return ['test', {
-                'passed': $.expected.transform(
-                    ($) => actual === $,
-                    () => false
-                )
-            }]
-        } catch {
-            return ['test', {
-                'passed': $.expected.transform(
-                    () => false,
-                    () => true
-                )
-            }]
-        }
+        }]
     })
 }
 
