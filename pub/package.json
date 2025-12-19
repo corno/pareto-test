@@ -11,7 +11,7 @@
     "exupery-core-alg": "^0.5.15",
     "exupery-core-async": "^0.3.75",
     "exupery-core-dev": "^0.3.2",
-    "exupery-resources": "^0.3.32",
+    "exupery-resources": "^0.3.34",
     "pareto-fountain-pen": "^0.3.13"
   }
 }
