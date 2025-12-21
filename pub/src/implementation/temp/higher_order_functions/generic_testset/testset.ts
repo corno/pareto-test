@@ -1,8 +1,8 @@
 import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 
-import * as d_in from "../../interface/data/generic_testset"
-import * as d_out from "../../interface/data/test_result"
+import * as d_in from "../../../../interface/data/generic_testset"
+import * as d_out from "../../../../interface/data/test_result"
 
 export type Test_Group_Shorthand = { [key: string]: Test_Node_Shorthand }
 
