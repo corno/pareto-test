@@ -33,7 +33,24 @@ export type Individual_Test_Result__result =
 
 export type Tested =
     | ['passed', null]
-    | ['failed', {
-        'expected': string,
-        'actual': string,
-    }]
+    | ['failed', Failed]
+
+export type Failed =
+    | ['transform', Transform_Failure]
+    | ['refine', Refine_Failure]
+
+export type Transform_Failure =
+    | ['initialization', string]
+    | ['unexpected output', Unexpected_Data]
+
+export type Unexpected_Data = {
+    'expected': string,
+    'actual': string,
+}
+
+export type Refine_Failure =
+    | ['initialization', string]
+    | ['should have failed but succeeded', string]
+    | ['should have succeeded but failed', string]
+    | ['unexpected output', Unexpected_Data]
+    | ['unexpected error', Unexpected_Data]

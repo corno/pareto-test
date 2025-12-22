@@ -1,5 +1,14 @@
 import * as _et from 'exupery-core-types'
 
+
+
+/**
+ * this data structure is the result of merging 2 file structures:
+ * - the main file structure, which contains the test inputs
+ * - the expected file structure, which contains the expected outputs
+ * 
+ * 
+ */
 export type Group = _et.Dictionary<Node>
 
 export type Node =
@@ -10,7 +19,7 @@ export type Node =
 
 export type Node__test = {
     'input': string
-    'expected': Node__test__expected
+    'matched expected output': Node__test__expected
 }
 
 export type Node__test__expected =
@@ -19,6 +28,7 @@ export type Node__test__expected =
     ]
 
 export type Node__test__expected__invalid =
+    | ['required input suffix missing', string]
     | ['does not exist', null]
     | ['is not an individual test', null]
 

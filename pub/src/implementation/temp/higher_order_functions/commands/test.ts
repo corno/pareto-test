@@ -25,6 +25,7 @@ import * as t_test_result_to_fountain_pen from "../../../transformers/test_resul
 import * as t_test_result_to_summary from "../../../transformers/test_result_2/summary"
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
 
 import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/flatten"
 
@@ -51,7 +52,10 @@ export type My_Error =
     | ['command line', null]
     | ['writing to stdout', null]
     | ['read directory content', d_directory_content.Error]
-    | ['failed tests', d_test_result.Test_Group_Result]
+    | ['failed tests', {
+        'path': string
+        'tests': d_test_result.Test_Group_Result
+    }]
 
 
 export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Group>) => Procedure = (x) => _easync.create_command_procedure(
@@ -67,7 +71,7 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
 
                         //write the path to stdout
                         $cr['write to stdout'].execute(
-                            `Testing with data from: ${$v['path to test data']}\n`,
+                            `Testing with data from: ${t_path_to_text.Context_Path($v['path to test data'])}\n`,
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
@@ -84,6 +88,7 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
                             ),
                             $v,
                             ($v, $parent) => {
+                                const path_to_test_data = $parent['path to test data']
                                 return [
 
 
@@ -103,9 +108,12 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
 
                                             const test_results = x(
                                                 t_directory_content_to_generic_testset.Group(
-                                                    $parent, {
-                                                    'expected': $v
-                                                }
+                                                    $parent,
+                                                    {
+                                                        'expected': $v,
+                                                        'suffix to be appended to expected': _ea.not_set(),
+                                                        'suffix to be removed from input': _ea.not_set(),
+                                                    }
                                                 )
                                             )
 
@@ -129,7 +137,11 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
                                                                 'lines': o_flatten(_ea.list_literal([
                                                                     t_fountain_pen_to_lines.Group_Part(
                                                                         t_test_result_to_fountain_pen.Test_Group_Result(
-                                                                            test_results
+                                                                            test_results,
+                                                                            {
+                                                                                'path to test data': t_path_to_text.Context_Path(path_to_test_data),
+                                                                                'path to test': ``
+                                                                            }
                                                                         ),
                                                                         {
                                                                             'indentation': `   `
@@ -144,8 +156,10 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
                                                         )
                                                     ],
                                                     [
-
-                                                        _easync.p.fail(['failed tests', test_results])
+                                                        _easync.p.fail(['failed tests', {
+                                                            'path': t_path_to_text.Context_Path(path_to_test_data),
+                                                            'tests': test_results
+                                                        }])
                                                     ]
                                                 ),
                                             ]
@@ -172,14 +186,18 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
                             case 'failed tests': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
                                 t_fountain_pen_to_lines.Group_Part(
                                     t_test_result_to_fountain_pen.Test_Group_Result(
-                                        $
+                                        $.tests,
+                                        {
+                                            'path to test data': $.path,
+                                            'path to test': ``
+                                        }
                                     ),
                                     {
                                         'indentation': `   `
                                     }
                                 ),
                                 _ea.list_literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
-                                    $,
+                                    $.tests,
                                     {
                                         'include passed tests': false,
                                         'include structural problems': true,
