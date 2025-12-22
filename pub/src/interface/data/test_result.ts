@@ -16,9 +16,9 @@ export type Test_Node_Result__group__result =
     | ['source invalid',
         | ['not a group', null]
         | ['missing', null] // the tester expected this test group, but it was not found
-        | ['problem with expected', d_generic.Node__group__invalid]
+        | ['problem with expected', d_generic.Node__directory__invalid]
     ]
-    | ['tested', Test_Group_Result]
+    | ['source valid', Test_Group_Result]
 
 export type Individual_Test_Result = {
     'result': Individual_Test_Result__result
@@ -26,7 +26,7 @@ export type Individual_Test_Result = {
 export type Individual_Test_Result__result =
     | ['source invalid',
         | ['not an individual test', null]
-        | ['problem with expected', d_generic.Node__test__expected__invalid]
+        | ['problem with expected', d_generic.Node__file__expected__invalid]
     ]
     | ['tested', Tested
     ]

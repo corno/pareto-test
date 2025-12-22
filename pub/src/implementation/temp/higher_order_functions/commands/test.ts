@@ -29,6 +29,9 @@ import * as t_path_to_text from "exupery-resources/dist/implementation/transform
 
 import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/flatten"
 
+import * as temp from "../generic_testset/temp"
+
+
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
@@ -58,7 +61,13 @@ export type My_Error =
     }]
 
 
-export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Group>) => Procedure = (x) => _easync.create_command_procedure(
+export const $$ = (
+    $: {
+        'astn to astn': _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory>
+        'text to astn': _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory>
+        'astn to text': _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory>
+    }
+): Procedure => _easync.create_command_procedure(
     ($p, $cr, $qr) => [
 
         _easync.p.create_error_handling_context<d_main.Error, My_Error>(
@@ -106,18 +115,78 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
                                         $v,
                                         ($v, $parent) => {
 
-                                            const test_results = x(
-                                                t_directory_content_to_generic_testset.Group(
-                                                    $parent,
-                                                    {
-                                                        'expected': $v,
-                                                        'suffix to be appended to expected': _ea.not_set(),
-                                                        'suffix to be removed from input': _ea.not_set(),
+                                            const test_results: d_test_result.Test_Group_Result = _ea.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory> }>({
+                                                'astn_to_astn': {
+                                                    'transformer': $['astn to astn'],
+                                                    'suffix': {
+                                                        'to be appended to expected': _ea.not_set(),
+                                                        'to be removed from input': _ea.not_set(),
                                                     }
-                                                )
-                                            )
+                                                },
+                                                'text_to_astn': {
+                                                    'transformer': $['text to astn'],
+                                                    'suffix': {
+                                                        'to be appended to expected': _ea.set(`.astn`),
+                                                        'to be removed from input': _ea.not_set(),
+                                                    }
+                                                },
+                                                'astn_to_text': {
+                                                    'transformer': $['astn to text'],
+                                                    'suffix': {
+                                                        'to be appended to expected': _ea.not_set(),
+                                                        'to be removed from input': _ea.set(`.astn`),
+                                                    }
+                                                },
+                                            }).map(($, key): d_test_result.Test_Node_Result => {
+                                                const the_func = ($x: {
+                                                    'input': d_directory_content.Directory,
+                                                    'expected': d_directory_content.Directory,
+                                                }) => $.transformer(t_directory_content_to_generic_testset.Group(
+                                                    $x.input,
+                                                    {
+                                                        'expected': $x.expected,
+                                                        'suffix settings': $.suffix,
+                                                    }
+                                                ))
+                                                const expected_node = $v.__get_entry(key)
+                                                const input_node = $parent.__get_entry(key)
+                                                return ['group', {
+                                                    'result': input_node.transform(
+                                                        ($): d_test_result.Test_Node_Result__group__result => {
+                                                            return _ea.cc($, ($): d_test_result.Test_Node_Result__group__result => {
+                                                                switch ($[0]) {
+                                                                    case 'directory': return _ea.ss($, ($) => {
+                                                                        const input_dir = $
+                                                                        return expected_node.transform(
+                                                                            ($): d_test_result.Test_Node_Result__group__result => {
+                                                                                return _ea.cc($, ($): d_test_result.Test_Node_Result__group__result => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'directory': return _ea.ss($, ($) => {
+                                                                                            const expected_dir = $
+                                                                                            return ['source valid', the_func(
+                                                                                                {
+                                                                                                    'input': input_dir,
+                                                                                                    'expected': expected_dir,
+                                                                                                }
+                                                                                            )]
+                                                                                        })
+                                                                                        default: return ['source invalid', ['problem with expected', ['node for expected is not a directory', null]]]
+                                                                                    }
+                                                                                })
+                                                                            },
+                                                                            (): d_test_result.Test_Node_Result__group__result => ['source invalid', ['problem with expected', ['directory for expected does not exist', null]]]
+                                                                        )
+                                                                    })
+                                                                    default: return ['source invalid', ['not a group', null]]
+                                                                }
+                                                            })
+                                                        },
+                                                        (): d_test_result.Test_Node_Result__group__result => ['source invalid', ['missing', null]]
+                                                    )
+                                                }]
+                                            })
 
-                                            const failed_tests = t_test_result_to_summary.Test_Group_Result(
+                                            const number_of_failed_tests = t_test_result_to_summary.Test_Group_Result(
                                                 test_results,
                                                 {
                                                     'include passed tests': false,
@@ -130,7 +199,7 @@ export const $$: (x: _et.Transformer<d_test_result.Test_Group_Result, d_generic_
                                             return [
 
                                                 _easync.p.if_(
-                                                    failed_tests === 0,
+                                                    number_of_failed_tests === 0,
                                                     [
                                                         $cr['log'].execute(
                                                             {

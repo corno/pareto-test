@@ -24,8 +24,8 @@
 //                                         ($) => _ea.cc($, ($) => {
 //                                             switch ($[0]) {
 //                                                 case 'file': return _ea.ss($, ($) => ['valid', $])
-//                                                 case 'directory': return _ea.ss($, ($) => ['is not an individual test', null])
-//                                                 case 'other': return _ea.ss($, ($) => ['is not an individual test', null])
+//                                                 case 'directory': return _ea.ss($, ($) => ['is not a file', null])
+//                                                 case 'other': return _ea.ss($, ($) => ['is not a file', null])
 //                                                 default: return _ea.au($[0])
 //                                             }
 //                                         }),

@@ -10,15 +10,14 @@ export type Parameters = {
     'include structural problems': boolean
 }
 
-export const Test_Group_Result: _et.Transformer_With_Parameters<d_out.Test_count, d_in.Test_Group_Result, Parameters> = ($, $p) => {
+export const Test_Node_Result: _et.Transformer_With_Parameters<d_out.Test_count, d_in.Test_Node_Result, Parameters> = ($, $p) => {
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
-    let count = 0
-    $.map(($): number => _ea.cc($, ($) => {
+    return _ea.cc($, ($) => {
         switch ($[0]) {
             case 'group': return _ea.ss($, ($) => _ea.cc($, ($) => _ea.cc($.result, ($) => {
                 switch ($[0]) {
                     case 'source invalid': return _ea.ss($, ($) => structural_problem_incrementer)
-                    case 'tested': return _ea.ss($, ($) => Test_Group_Result($, $p))
+                    case 'source valid': return _ea.ss($, ($) => Test_Group_Result($, $p))
                     default: return _ea.au($[0])
                 }
             })))
@@ -37,6 +36,11 @@ export const Test_Group_Result: _et.Transformer_With_Parameters<d_out.Test_count
             }))
             default: return _ea.au($[0])
         }
-    })).map(($) => count += $)
+    })
+}
+
+export const Test_Group_Result: _et.Transformer_With_Parameters<d_out.Test_count, d_in.Test_Group_Result, Parameters> = ($, $p) => {
+    let count = 0
+    $.map(($): number => Test_Node_Result($, $p)).map(($) => count += $)
     return count
 }

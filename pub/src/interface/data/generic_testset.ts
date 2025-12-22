@@ -9,34 +9,36 @@ import * as _et from 'exupery-core-types'
  * 
  * 
  */
-export type Group = _et.Dictionary<Node>
+export type Directory = _et.Dictionary<Node>
 
 export type Node =
     | ['other', null]
-    | ['test', Node__test]
-    | ['group', Node__group]
+    | ['file', Node__file]
+    | ['directory', Node__directory]
 
 
-export type Node__test = {
+export type Node__file = {
     'input': string
-    'matched expected output': Node__test__expected
+    'matching': Node__file__expected
 }
 
-export type Node__test__expected =
+export type Node__file__expected =
     | ['valid', string]
-    | ['invalid', Node__test__expected__invalid
+    | ['invalid', Node__file__expected__invalid
     ]
 
-export type Node__test__expected__invalid =
+export type Node__file__expected__invalid =
     | ['required input suffix missing', string]
-    | ['does not exist', null]
-    | ['is not an individual test', null]
-
-export type Node__group =
-    | ['valid', Group]
-    | ['invalid', Node__group__invalid
+    | ['expected',
+        | ['does not exist', null]
+        | ['is not a file', null]
     ]
-    
-export type Node__group__invalid =
-    | ['expected does not exist', null]
-    | ['expected is not a group', null]
+
+export type Node__directory =
+    | ['valid', Directory]
+    | ['invalid', Node__directory__invalid
+    ]
+
+export type Node__directory__invalid =
+    | ['directory for expected does not exist', null]
+    | ['node for expected is not a directory', null]
