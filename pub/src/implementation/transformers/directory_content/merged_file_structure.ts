@@ -1,7 +1,7 @@
 import * as _et from "exupery-core-types"
 import * as _ea from "exupery-core-alg"
 
-import * as d_in from "exupery-resources/dist/interface/algorithms/queries/directory_content"
+import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../interface/data/merged_filesystem_nodes"
 
 export const Directory: _et.Transformer_With_Parameters<d_out.Valid_Directory, d_in.Directory, {

@@ -3,7 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-dev'
 
 import * as d_in from "../../../interface/data/test_result"
-import * as d_out from "exupery-resources/dist/interface/algorithms/queries/directory_content"
+import * as d_out from "exupery-resources/dist/interface/to_be_generated/directory_content"
 
 import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
 import { $$ as op_dictionary_is_empty } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/dictionary/is_empty"

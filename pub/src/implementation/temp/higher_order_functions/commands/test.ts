@@ -9,7 +9,8 @@ import * as d_log from "exupery-resources/dist/interface/generated/pareto/schema
 import * as d_write_to_stdout from "exupery-resources/dist/interface/generated/pareto/schemas/write_to_stdout/data_types/source"
 import * as d_read_directory from "exupery-resources/dist/interface/generated/pareto/schemas/read_directory/data_types/source"
 import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
-import * as d_directory_content from "exupery-resources/dist/interface/algorithms/queries/directory_content"
+import * as d_read_directory_content from "exupery-resources/dist/interface/algorithms/queries/read_directory_content"
+import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_test_result from "../../../../interface/data/test_result"
 
 import * as d_generic_testset from "../../../../interface/data/generic_testset"
@@ -39,7 +40,7 @@ const ENDCOLOR = "\x1b[0m"
 export type Query_Resources = {
     'read directory': _et.Query<d_read_directory.Result, d_read_directory.Error, d_read_directory.Parameters>
     'read file': _et.Query<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
-    'read directory content': _et.Query<d_directory_content.Result, d_directory_content.Error, d_directory_content.Parameters>
+    'read directory content': _et.Query<d_read_directory_content.Result, d_read_directory_content.Error, d_read_directory_content.Parameters>
 }
 
 export type Command_Resources = {
@@ -54,7 +55,7 @@ export type Procedure = _et.Command_Procedure<d_main.Error, d_main.Parameters, C
 export type My_Error =
     | ['command line', null]
     | ['writing to stdout', null]
-    | ['read directory content', d_directory_content.Error]
+    | ['read directory content', d_read_directory_content.Error]
     | ['failed tests', {
         'path': string
         'tests': d_test_result.Test_Group_Result

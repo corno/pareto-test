@@ -1,6 +1,6 @@
 import * as _et from 'exupery-core-types'
 
-import * as d_directory_content from "exupery-resources/dist/interface/algorithms/queries/directory_content"
+import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
 
 export type Node =
     | ['file', {
