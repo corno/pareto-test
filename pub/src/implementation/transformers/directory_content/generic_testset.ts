@@ -4,7 +4,7 @@ import * as _ea from "exupery-core-alg"
 import * as d_in from "exupery-resources/dist/interface/algorithms/queries/directory_content"
 import * as d_out from "../../../interface/data/generic_testset"
 
-
+import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
 
 const remove_suffix = ($: string, suffix: string): _et.Optional_Value<string> => {
     let suffix_matches = true
@@ -56,74 +56,104 @@ export type Suffix_Settings = {
 }
 
 
-export const Group: _et.Transformer_With_Parameters<d_out.Directory, d_in.Directory, Parameters> = ($, $p) => {
-    return $.map(($, key) => {
-        return _ea.cc($, ($): d_out.Node => {
-            switch ($[0]) {
-                case 'other': return _ea.ss($, ($): d_out.Node => {
-                    return _ea.deprecated_panic(`expected a file or a directory`)
-                })
-                case 'file': return _ea.ss($, ($): d_out.Node => {
+export const Directory: _et.Transformer_With_Parameters<d_out.Directory, d_in.Directory, Parameters> = ($, $p) => {
+    return {
+        'nodes': $.map(($, key) => {
+            return _ea.cc($, ($): d_out.Node => {
+                switch ($[0]) {
+                    case 'other': return _ea.ss($, ($): d_out.Node => {
+                        return _ea.deprecated_panic(`expected a file or a directory`)
+                    })
+                    case 'file': return _ea.ss($, ($): d_out.Node => {
 
 
 
-                    const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-                        const expected_node = $p.expected.__get_entry($ + $p['suffix settings']['to be appended to expected'].transform(
-                            ($) => $,
-                            () => ``
-                        ))
-                        return expected_node.transform(
-                            ($) => _ea.cc($, ($): d_out.Node__file__expected => {
+                        const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
+                            const expected_node = $p.expected.__get_entry($ + $p['suffix settings']['to be appended to expected'].transform(
+                                ($) => $,
+                                () => ``
+                            ))
+                            return expected_node.transform(
+                                ($) => _ea.cc($, ($): d_out.Node__file__expected => {
+                                    switch ($[0]) {
+                                        case 'file': return _ea.ss($, ($) => ['valid', $])
+                                        case 'directory': return _ea.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+                                        case 'other': return _ea.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+                                        default: return _ea.au($[0])
+                                    }
+                                }),
+                                (): d_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
+                            )
+                        }
+
+                        const top_node = $
+                        return ['file', {
+                            'input': top_node,
+                            'matching': $p['suffix settings']['to be removed from input'].transform(
+                                ($) => {
+                                    return remove_suffix(key, $).transform(
+                                        ($): d_out.Node__file__expected => get_matching_expect_file($),
+                                        (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
+
+                                    )
+                                },
+                                (): d_out.Node__file__expected => get_matching_expect_file(key)
+                            )
+                        }]
+                    })
+                    case 'directory': return _ea.ss($, ($) => {
+                        const expected_node = $p.expected.__get_entry(key)
+                        const input_node = $
+                        return ['directory', expected_node.transform(
+                            ($) => _ea.cc($, ($) => {
                                 switch ($[0]) {
-                                    case 'file': return _ea.ss($, ($) => ['valid', $])
-                                    case 'directory': return _ea.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-                                    case 'other': return _ea.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+                                    case 'other': return _ea.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
+                                    case 'file': return _ea.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
+                                    case 'directory': return _ea.ss($, ($) => ['valid', Directory(
+                                        input_node,
+                                        {
+                                            'expected': $,
+                                            'suffix settings': $p['suffix settings'],
+                                        }
+                                    )])
                                     default: return _ea.au($[0])
                                 }
                             }),
-                            (): d_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
-                        )
-                    }
+                            () => ['invalid', ['directory for expected does not exist', null]]
+                        )]
+                    })
+                    default: return _ea.au($[0])
+                }
+            })
+        }),
+        // 'superfluous nodes': _ea.block(() => {
+        //     const temp: { [key: string]: null } = {}
+        //     $.map(($, key) => {
+        //         const key_of_expected = _ea.cc($, ($): string => {
+        //             switch ($[0]) {
 
-                    const top_node = $
-                    return ['file', {
-                        'input': top_node,
-                        'matching': $p['suffix settings']['to be removed from input'].transform(
-                            ($) => {
-                                return remove_suffix(key, $).transform(
-                                    ($): d_out.Node__file__expected => get_matching_expect_file($),
-                                    (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
+        //                 case 'other': return _ea.ss($, ($) => key)
+        //                 case 'file': return _ea.ss($, ($): string => $p['suffix settings']['to be removed from input'].transform(
+        //                     ($) => {
+        //                         return remove_suffix(key, $).transform(
+        //                             ($) => $,
+        //                             () => key
 
-                                )
-                            },
-                            (): d_out.Node__file__expected => get_matching_expect_file(key)
-                        )
-                    }]
-                })
-                case 'directory': return _ea.ss($, ($) => {
-                    const expected_node = $p.expected.__get_entry(key)
-                    const input_node = $
-                    return ['directory', expected_node.transform(
-                        ($) => _ea.cc($, ($) => {
-                            switch ($[0]) {
-                                case 'other': return _ea.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-                                case 'file': return _ea.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-                                case 'directory': return _ea.ss($, ($) => ['valid', Group(
-                                    input_node,
-                                    {
-                                        'expected': $,
-                                        'suffix settings': $p['suffix settings'],
-                                    }
-                                )])
-                                default: return _ea.au($[0])
-                            }
-                        }),
-                        () => ['invalid', ['directory for expected does not exist', null]]
-                    )]
-                })
-                default: return _ea.au($[0])
-            }
-        })
-    })
+        //                         )
+        //                     },
+        //                     () => key
+        //                 ))
+        //                 case 'directory': return _ea.ss($, ($) => key)
+        //                 default: return _ea.au($[0])
+        //             }
+        //         })
+        //         temp[key_of_expected] = null
+        //     })
+        //     const main = _ea.dictionary_literal(temp)
+        //     return op_filter_dictionary($p.expected.map(($, key) => {
+        //         return main.__get_entry(key).map(() => null)
+        //     }))
+        // })
+    }
 }
 

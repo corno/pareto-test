@@ -3,10 +3,25 @@ import * as _ea from 'exupery-core-alg'
 
 import * as d_out from "../../../../interface/data/test_result"
 
+import * as d_astn_target from "../../../../interface/generated/pareto/core/astn_target"
+import * as d_astn_source from "../../../../interface/generated/pareto/core/astn_source"
+import * as d_parse_result from "../../../../interface/generated/pareto/core/parse_result"
+
+
 import * as temp from "./temp"
 
-export type Test_Group_Shorthand = { [key: string]: temp.Directory_to_Test_Group_Result_Transformer }
+import * as s_serialize from "../../../generated/pareto/generic/serialize"
+import * as p_parse from "../../../generated/pareto/generic/parse/parse"
+import * as p_authoring_parse from "astn/dist/implementation/algorithms/refiners/authoring_parse_tree/text/refiners"
 
+export const test_group = ($: { [key: string]: temp.Directory_to_Test_Group_Result_Transformer }): temp.Directory_to_Test_Group_Result_Transformer => {
+    return temp.create_group_transformer(_ea.dictionary_literal($).map(($2) => _ea.cc($2, ($): temp.Directory_to_Test_Group_Result_Transformer => {
+        return $
+    })))
+}
+
+export const parse = ($: string): _et.Refinement_Result<d_astn_source._T_Document, d_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
+export const serialize = s_serialize.Document
 
 export const transformer = (
     transformer: (
@@ -14,7 +29,7 @@ export const transformer = (
         abort: ($: string) => never
     ) => string
 ): temp.Directory_to_Test_Group_Result_Transformer => {
-    return ($) => $.map(($, key): d_out.Test_Node_Result => {
+    return ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
         return temp.create_individual_test_transformer(
             ($p) => _ea.create_refinement_context<d_out.Tested, string>(
                 (abort) => {
@@ -38,16 +53,6 @@ export const transformer = (
     })
 }
 
-
-
-export const test_group = ($: Test_Group_Shorthand): temp.Directory_to_Test_Group_Result_Transformer => {
-    const x: _et.Dictionary<temp.Directory_to_Test_Group_Result_Transformer> = _ea.dictionary_literal($).map(($2) => _ea.cc($2, ($): temp.Directory_to_Test_Group_Result_Transformer => {
-        return $
-    }))
-    return temp.create_group_transformer(x)
-}
-
-
 export const refiner = (
     refiner: (
         $: string,
@@ -58,7 +63,7 @@ export const refiner = (
     ) => string
 ): temp.Directory_to_Test_Group_Result_Transformer => {
 
-    const x = (expect_error: boolean): temp.Directory_to_Test_Group_Result_Transformer => ($) => $.map(($, key): d_out.Test_Node_Result => {
+    const x = (expect_error: boolean): temp.Directory_to_Test_Group_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
         return temp.create_individual_test_transformer(
             ($p) => _ea.create_refinement_context<d_out.Tested, string>(
                 (initialize_abort) => {
@@ -104,18 +109,3 @@ export const refiner = (
         "success": x(false)
     }))
 }
-
-export const example = test_group(
-    {
-        "static-html": test_group(
-            {
-                "fountain-pen": refiner(
-                    ($, abort) => _ea.deprecated_panic(),
-                ),
-                "fountain-pen2": transformer(
-                    ($, abort) => _ea.deprecated_panic(),
-                ),
-            }
-        )
-    },
-)

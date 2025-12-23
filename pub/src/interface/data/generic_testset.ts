@@ -9,7 +9,10 @@ import * as _et from 'exupery-core-types'
  * 
  * 
  */
-export type Directory = _et.Dictionary<Node>
+export type Directory = {
+    'nodes': _et.Dictionary<Node>
+    // 'superfluous nodes': _et.Dictionary<null>
+}
 
 export type Node =
     | ['other', null]

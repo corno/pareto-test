@@ -51,7 +51,7 @@ export const create_group_transformer = ($: _et.Dictionary<Directory_to_Test_Gro
     return (dir_group) => $.map(($, key) => {
         const group_to_test_group_result = $
         return ['group', {
-            'result': _ea.block(() => dir_group.__get_entry(key).transform(
+            'result': _ea.block(() => dir_group.nodes.__get_entry(key).transform(
                 ($): d_out.Test_Node_Result__group__result => _ea.cc($, ($): d_out.Test_Node_Result__group__result => {
                     switch ($[0]) {
                         case 'directory': return _ea.ss($, ($) => _ea.cc($, ($) => {

@@ -141,7 +141,7 @@ export const $$ = (
                                                 const the_func = ($x: {
                                                     'input': d_directory_content.Directory,
                                                     'expected': d_directory_content.Directory,
-                                                }) => $.transformer(t_directory_content_to_generic_testset.Group(
+                                                }) => $.transformer(t_directory_content_to_generic_testset.Directory(
                                                     $x.input,
                                                     {
                                                         'expected': $x.expected,
