@@ -13,7 +13,11 @@ export type Command_Resources = {
     'log': _et.Command<null, d_log.Parameters>,
 }
 
-export type Signature = _et.Command_Procedure<null, d_test.Results, Command_Resources, Query_Resources>
+export type Parameters = {
+    'test results': d_test.Results,
+}
+
+export type Signature = _et.Command_Procedure<null, Parameters, Command_Resources, Query_Resources>
 
 import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/dictionary/is_empty"
 import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
@@ -44,12 +48,12 @@ export const $$: Signature = _easync.create_command_procedure(
             ($) => $,
         ),
         _easync.p.if_(
-            has_passed($p),
+            has_passed($p['test results']),
             [
                 $cr.log.execute(
                     {
                         'lines': op_flatten(_ea.list_literal([
-                            t_test_result_to_text.Results($p),
+                            t_test_result_to_text.Results($p['test results']),
                             _ea.list_literal([
                                 ``,
                                 `all tests successful.`
@@ -61,12 +65,12 @@ export const $$: Signature = _easync.create_command_procedure(
             ]
         ),
         _easync.p.if_(
-            !has_passed($p),
+            !has_passed($p['test results']),
             [
                 $cr['log error'].execute(
                     {
                         'lines': op_flatten(_ea.list_literal([
-                            t_test_result_to_text.Results($p),
+                            t_test_result_to_text.Results($p['test results']),
                             _ea.list_literal([
                                 ``,
                                 `some tests failed`
@@ -75,6 +79,13 @@ export const $$: Signature = _easync.create_command_procedure(
                     },
                     ($) => $,
                 ),
+                // $cr['write directory content'].execute(
+                //     {
+                //         'path': 
+                //         'content': $p,
+                //     },
+                //     ($): d_write_directory_content.Error => ['writing test failures', $],
+                // ),
             ]
         )
     ]

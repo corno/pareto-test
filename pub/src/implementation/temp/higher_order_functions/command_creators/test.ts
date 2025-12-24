@@ -12,6 +12,7 @@ import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/
 import * as d_read_directory_content from "exupery-resources/dist/interface/algorithms/queries/read_directory_content"
 import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_test_result from "../../../../interface/data/test_result"
+import * as d_write_directory_content from "exupery-resources/dist/interface/algorithms/commands/write_directory_content"
 
 import * as d_generic_testset from "../../../../interface/data/generic_testset"
 
@@ -20,10 +21,12 @@ import * as r_test_command_refiner from "../../../refiners/test_command/refiners
 import * as t_directory_content_to_generic_testset from "../../../transformers/directory_content/generic_testset"
 // import * as t_generic_testset_to_test_result from "../transformers/generic_testset/test_result"
 import * as t_fountain_pen_to_lines from "pareto-fountain-pen/dist/implementation/algorithms/transformations/block/lines"
-import * as t_directory_content_to_fountain_pen from "../../../transformers/directory_content/fountain_pen"
+import * as t_read_directory_content_to_fountain_pen from "../../../transformers/read_directory_content/fountain_pen"
+import * as t_write_directory_content_to_fountain_pen from "../../../transformers/write_directory_content/fountain_pen"
 
 import * as t_test_result_to_fountain_pen from "../../../transformers/test_result_2/fountain_pen"
 import * as t_test_result_to_summary from "../../../transformers/test_result_2/summary"
+import * as t_test_result_to_actual_tree from "../../../transformers/test_result_2/actual_tree"
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
 import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
@@ -47,6 +50,7 @@ export type Command_Resources = {
     'write to stdout': _et.Command<null, d_write_to_stdout.Parameters>
     'log error': _et.Command<null, d_log_error.Parameters>
     'log': _et.Command<null, d_log.Parameters>
+    'write directory content': _et.Command<d_write_directory_content.Error, d_write_directory_content.Parameters>,
 }
 
 export type Procedure = _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources>
@@ -56,6 +60,7 @@ export type My_Error =
     | ['command line', null]
     | ['writing to stdout', null]
     | ['read directory content', d_read_directory_content.Error]
+    | ['write directory content', d_write_directory_content.Error]
     | ['failed tests', {
         'path': string
         'tests': d_test_result.Test_Group_Result
@@ -226,6 +231,18 @@ export const $$ = (
                                                         )
                                                     ],
                                                     [
+                                                        $cr['write directory content'].execute(
+                                                            {
+                                                                'directory': t_test_result_to_actual_tree.Test_Group_Result(
+                                                                    test_results,
+                                                                ),
+                                                                'path': t_path_to_path.create_node_path(
+                                                                    path_to_test_data,
+                                                                    `actual`,
+                                                                ),
+                                                            },
+                                                            ($): My_Error => ['write directory content', $],
+                                                        ),
                                                         _easync.p.fail(['failed tests', {
                                                             'path': t_path_to_text.Context_Path(path_to_test_data),
                                                             'tests': test_results
@@ -251,7 +268,11 @@ export const $$ = (
                             case 'writing to stdout': return _ea.ss($, ($) => _ea.list_literal([`stdout error`]))
                             case 'read directory content': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
                                 _ea.list_literal([`read dir error`]),
-                                t_fountain_pen_to_lines.Block_Part(t_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
+                                t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
+                            ])))
+                            case 'write directory content': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
+                                _ea.list_literal([`write dir error`]),
+                                t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
                             ])))
                             case 'failed tests': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
                                 t_fountain_pen_to_lines.Group_Part(
