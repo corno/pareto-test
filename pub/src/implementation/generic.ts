@@ -7,7 +7,7 @@ import * as d_log from "exupery-resources/dist/interface/generated/pareto/schema
 
 import * as generic from "../interface/generic"
 
-export const run_transformer_tests_with_parameters = <Input, Parameters, Expected>(tests: _et.Dictionary<generic.Transformer_With_Parameters<Input, Parameters, Expected>>, implementation: ($: Input, parameters: Parameters) => Expected): generic.Results => {
+export const run_transformer_tests_with_parameters = <Input, Expected, Parameters>(tests: _et.Dictionary<generic.Transformer_With_Parameters<Input, Expected, Parameters>>, implementation: ($: Input, parameters: Parameters) => Expected): generic.Results => {
     return tests.map(($) => {
         return ['test', {
             'passed': implementation($.input.input, $.input.parameters) === $.expected
@@ -23,7 +23,7 @@ export const run_transformer_tests_without_parameters = <Input, Expected>($: _et
     })
 }
 
-export const run_refiner_tests_with_parameters = <Input, Parameters, Expected_Output, Expected_Error>(tests: _et.Dictionary<generic.Refiner_With_Parameters<Input, Parameters, Expected_Output, Expected_Error>>, implementation: ($: Input, parameters: Parameters, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
+export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Error, Input, Parameters>(tests: _et.Dictionary<generic.Refiner_With_Parameters<Expected_Output, Expected_Error, Input, Parameters>>, implementation: ($: Input, parameters: Parameters, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
     return tests.map(($) => {
         const expected = $.expected
         const x = _ea.create_refinement_context<Expected_Output, Expected_Error>(
@@ -56,7 +56,7 @@ export const run_refiner_tests_with_parameters = <Input, Parameters, Expected_Ou
     })
 }
 
-export const run_refiner_tests_without_parameters = <Input, Expected_Output, Expected_Error>($: _et.Dictionary<generic.Refiner_Without_Parameters<Input, Expected_Output, Expected_Error>>, implementation: ($: Input, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
+export const run_refiner_tests_without_parameters = <Expected_Output, Expected_Error, Input>($: _et.Dictionary<generic.Refiner_Without_Parameters<Expected_Output, Expected_Error, Input>>, implementation: ($: Input, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
     return $.map(($) => {
         const expected = $.expected
         const x = _ea.create_refinement_context<Expected_Output, Expected_Error>(
