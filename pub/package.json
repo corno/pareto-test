@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.27",
+  "version": "0.13.29",
   "description": "A testing framework for Pareto projects",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,6 +13,6 @@
     "exupery-core-async": "^0.3.78",
     "exupery-core-dev": "^0.3.3",
     "exupery-resources": "^0.3.47",
-    "pareto-fountain-pen": "^0.3.15"
+    "pareto-fountain-pen": "^0.3.17"
   }
 }
