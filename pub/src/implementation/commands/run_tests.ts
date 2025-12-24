@@ -17,7 +17,7 @@ export type Parameters = {
     'test results': d_test.Results,
 }
 
-export type Signature = _et.Command_Procedure<null, Parameters, Command_Resources, Query_Resources>
+export type Signature = _et.Command_Procedure<_et.Command<null, Parameters>, Command_Resources, Query_Resources>
 
 import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/is_empty"
 import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"

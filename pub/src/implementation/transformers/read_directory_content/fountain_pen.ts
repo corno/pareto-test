@@ -2,11 +2,11 @@ import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-dev'
 
-import * as d_in from "exupery-resources/dist/interface/algorithms/queries/read_directory_content"
+import * as d_in from "exupery-resources/dist/interface/to_be_generated/read_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
-import * as t_read_directory_to_fountain_pen from "exupery-resources/dist/implementation/transformers/read_directory/fountain_pen"
-import * as t_read_file_to_fountain_pen from "exupery-resources/dist/implementation/transformers/read_file/fountain_pen"
+import * as t_read_directory_to_fountain_pen from "exupery-resources/dist/implementation/transformers/schemas/read_directory/fountain_pen"
+import * as t_read_file_to_fountain_pen from "exupery-resources/dist/implementation/transformers/schemas/read_file/fountain_pen"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 

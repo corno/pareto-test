@@ -3,16 +3,16 @@ import * as _easync from 'exupery-core-async'
 import * as _et from 'exupery-core-types'
 import * as _ed from 'exupery-core-dev'
 
-import * as d_main from "exupery-resources/dist/interface/temp_main"
+import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 import * as d_write_to_stdout from "exupery-resources/dist/interface/generated/pareto/schemas/write_to_stdout/data_types/source"
 import * as d_read_directory from "exupery-resources/dist/interface/generated/pareto/schemas/read_directory/data_types/source"
 import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
-import * as d_read_directory_content from "exupery-resources/dist/interface/algorithms/queries/read_directory_content"
+import * as d_read_directory_content from "exupery-resources/dist/interface/to_be_generated/read_directory_content"
 import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_test_result from "../../../../interface/data/test_result"
-import * as d_write_directory_content from "exupery-resources/dist/interface/algorithms/commands/write_directory_content"
+import * as d_write_directory_content from "exupery-resources/dist/interface/to_be_generated/write_directory_content"
 
 import * as d_generic_testset from "../../../../interface/data/generic_testset"
 
@@ -28,8 +28,8 @@ import * as t_test_result_to_fountain_pen from "../../../transformers/test_resul
 import * as t_test_result_to_summary from "../../../transformers/test_result_2/summary"
 import * as t_test_result_to_actual_tree from "../../../transformers/test_result_2/actual_tree"
 
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
-import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
+import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
 
 import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
@@ -53,7 +53,7 @@ export type Command_Resources = {
     'write directory content': _et.Command<d_write_directory_content.Error, d_write_directory_content.Parameters>,
 }
 
-export type Procedure = _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources>
+export type Procedure = _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources>
 
 
 export type My_Error =
@@ -86,7 +86,7 @@ export const $$ = (
 
                         //write the path to stdout
                         $cr['write to stdout'].execute(
-                            `Testing with data from: ${t_path_to_text.Context_Path($v['path to test data'])}\n`,
+                            `Testing with data from: ${s_path.Context_Path($v['path to test data'])}\n`,
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
@@ -214,7 +214,7 @@ export const $$ = (
                                                                         t_test_result_to_fountain_pen.Test_Group_Result(
                                                                             test_results,
                                                                             {
-                                                                                'path to test data': t_path_to_text.Context_Path(path_to_test_data),
+                                                                                'path to test data': s_path.Context_Path(path_to_test_data),
                                                                                 'path to test': ``
                                                                             }
                                                                         ),
@@ -246,7 +246,7 @@ export const $$ = (
                                                             ($): My_Error => ['write directory content', $],
                                                         ),
                                                         _easync.p.fail(['failed tests', {
-                                                            'path': t_path_to_text.Context_Path(path_to_test_data),
+                                                            'path': s_path.Context_Path(path_to_test_data),
                                                             'tests': test_results
                                                         }])
                                                     ]
