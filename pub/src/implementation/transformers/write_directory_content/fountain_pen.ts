@@ -10,9 +10,9 @@ import * as t_write_file_to_fountain_pen from "exupery-resources/dist/implementa
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-export const Error: _et.Transformer<d_out.Block_Part, d_in.Error> = ($) => _ea.cc($, ($) => {
+export const Error: _et.Transformer_New<d_in.Error, d_out.Block_Part> = ($) => _ea.cc($, ($) => {
     switch ($[0]) {
-        case 'directory content processing': return _ea.ss($, ($) => sh.b.sub([
+        case 'directory content': return _ea.ss($, ($) => sh.b.sub([
             sh.b.indent([
                 sh.g.sub($.deprecated_to_array(() => 0).map(($) => sh.g.nested_block([
                     sh.b.snippet($.key),
@@ -27,7 +27,7 @@ export const Error: _et.Transformer<d_out.Block_Part, d_in.Error> = ($) => _ea.c
                 ])))
             ])
         ]))
-        case 'make directory': return _ea.ss($, ($) => t_make_directory_to_fountain_pen.Error($))
+        // case 'make directory': return _ea.ss($, ($) => t_make_directory_to_fountain_pen.Error($))
         default: return _ea.au($[0])
     }
 })

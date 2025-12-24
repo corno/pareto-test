@@ -12,7 +12,7 @@ const op_cast_to_non_empty_dictionary = <T>($: _et.Dictionary<T>): _et.Optional_
     return op_dictionary_is_empty($) ? _ea.not_set() : _ea.set($)
 }
 
-export const Test_Node_Result: _et.Transformer<_et.Optional_Value<d_out.Node>, d_in.Test_Node_Result> = ($) => {
+export const Test_Node_Result: _et.Transformer_New<d_in.Test_Node_Result, _et.Optional_Value<d_out.Node>> = ($) => {
     return _ea.cc($, ($): _et.Optional_Value<d_out.Node> => {
         switch ($[0]) {
             case 'group': return _ea.ss($, ($) => _ea.cc($, ($) => _ea.cc($.result, ($) => {
@@ -61,6 +61,6 @@ export const Test_Node_Result: _et.Transformer<_et.Optional_Value<d_out.Node>, d
     })
 }
 
-export const Test_Group_Result: _et.Transformer<d_out.Directory, d_in.Test_Group_Result> = ($) => {
+export const Test_Group_Result: _et.Transformer_New<d_in.Test_Group_Result, d_out.Directory> = ($) => {
     return op_filter_dictionary($.map(($) => Test_Node_Result($)))
 }

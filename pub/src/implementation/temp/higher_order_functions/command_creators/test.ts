@@ -69,9 +69,9 @@ export type My_Error =
 
 export const $$ = (
     $: {
-        'astn to astn': _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory>
-        'text to astn': _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory>
-        'astn to text': _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory>
+        'astn to astn': _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'text to astn': _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'astn to text': _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result>
     }
 ): Procedure => _easync.create_command_procedure(
     ($p, $cr, $qr) => [
@@ -121,7 +121,7 @@ export const $$ = (
                                         $v,
                                         ($v, $parent) => {
 
-                                            const test_results: d_test_result.Test_Group_Result = _ea.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _et.Transformer<d_test_result.Test_Group_Result, d_generic_testset.Directory> }>({
+                                            const test_results: d_test_result.Test_Group_Result = _ea.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result> }>({
                                                 'astn_to_astn': {
                                                     'transformer': $['astn to astn'],
                                                     'suffix': {
@@ -236,9 +236,11 @@ export const $$ = (
                                                                 'directory': t_test_result_to_actual_tree.Test_Group_Result(
                                                                     test_results,
                                                                 ),
-                                                                'path': t_path_to_path.create_node_path(
+                                                                'path': t_path_to_path.extend_context_path(
                                                                     path_to_test_data,
-                                                                    `actual`,
+                                                                    {
+                                                                        'addition': _ea.list_literal([`actual`]),
+                                                                    },
                                                                 ),
                                                             },
                                                             ($): My_Error => ['write directory content', $],

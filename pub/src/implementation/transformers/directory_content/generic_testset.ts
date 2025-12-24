@@ -56,7 +56,7 @@ export type Suffix_Settings = {
 }
 
 
-export const Directory: _et.Transformer_With_Parameters<d_out.Directory, d_in.Directory, Parameters> = ($, $p) => {
+export const Directory: _et.Transformer_New_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => {
     return {
         'nodes': $.map(($, key) => {
             return _ea.cc($, ($): d_out.Node => {
