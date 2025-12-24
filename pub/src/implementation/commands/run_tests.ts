@@ -19,9 +19,9 @@ export type Parameters = {
 
 export type Signature = _et.Command_Procedure<null, Parameters, Command_Resources, Query_Resources>
 
-import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/dictionary/is_empty"
-import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
-import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/flatten"
+import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/is_empty"
+import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
+import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
 import * as t_test_result_to_text from "../transformers/test_result/lines"
 

@@ -4,7 +4,7 @@ import * as _ea from "exupery-core-alg"
 import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../interface/data/generic_testset"
 
-import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
+import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
 
 const remove_suffix = ($: string, suffix: string): _et.Optional_Value<string> => {
     let suffix_matches = true
@@ -56,7 +56,7 @@ export type Suffix_Settings = {
 }
 
 
-export const Directory: _et.Transformer_New_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => {
+export const Directory: _et.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => {
     return {
         'nodes': $.map(($, key) => {
             return _ea.cc($, ($): d_out.Node => {

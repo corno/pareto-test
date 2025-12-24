@@ -10,7 +10,7 @@ import * as t_read_file_to_fountain_pen from "exupery-resources/dist/implementat
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-export const Error: _et.Transformer_New<d_in.Error, d_out.Block_Part> = ($) => _ea.cc($, ($) => {
+export const Error: _et.Transformer<d_in.Error, d_out.Block_Part> = ($) => _ea.cc($, ($) => {
     switch ($[0]) {
         case 'directory content processing': return _ea.ss($, ($) => sh.b.sub([
             sh.b.indent([

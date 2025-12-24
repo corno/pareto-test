@@ -10,7 +10,7 @@ export type Parameters = {
     'include structural problems': boolean
 }
 
-export const Test_Node_Result: _et.Transformer_New_With_Parameters<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Node_Result: _et.Transformer_With_Parameters<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
     return _ea.cc($, ($) => {
         switch ($[0]) {
@@ -39,7 +39,7 @@ export const Test_Node_Result: _et.Transformer_New_With_Parameters<d_in.Test_Nod
     })
 }
 
-export const Test_Group_Result: _et.Transformer_New_With_Parameters<d_in.Test_Group_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Group_Result: _et.Transformer_With_Parameters<d_in.Test_Group_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
     $.map(($): number => Test_Node_Result($, $p)).map(($) => count += $)
     return count

@@ -31,7 +31,7 @@ import * as t_test_result_to_actual_tree from "../../../transformers/test_result
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
 import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
 
-import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/flatten"
+import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
 import * as temp from "../generic_testset/temp"
 
@@ -69,9 +69,9 @@ export type My_Error =
 
 export const $$ = (
     $: {
-        'astn to astn': _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result>
-        'text to astn': _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result>
-        'astn to text': _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'astn to astn': _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'text to astn': _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'astn to text': _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
     }
 ): Procedure => _easync.create_command_procedure(
     ($p, $cr, $qr) => [
@@ -121,7 +121,7 @@ export const $$ = (
                                         $v,
                                         ($v, $parent) => {
 
-                                            const test_results: d_test_result.Test_Group_Result = _ea.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _et.Transformer_New<d_generic_testset.Directory, d_test_result.Test_Group_Result> }>({
+                                            const test_results: d_test_result.Test_Group_Result = _ea.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result> }>({
                                                 'astn_to_astn': {
                                                     'transformer': $['astn to astn'],
                                                     'suffix': {
