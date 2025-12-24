@@ -11,22 +11,22 @@ import * as d_read_directory from "exupery-resources/dist/interface/generated/pa
 import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
 import * as d_read_directory_content from "exupery-resources/dist/interface/to_be_generated/read_directory_content"
 import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
-import * as d_test_result from "../../../../interface/data/test_result"
+import * as d_test_result from "../../../../interface/to_be_generated/test_result"
 import * as d_write_directory_content from "exupery-resources/dist/interface/to_be_generated/write_directory_content"
 
-import * as d_generic_testset from "../../../../interface/data/generic_testset"
+import * as d_generic_testset from "../../../../interface/to_be_generated/generic_testset"
 
 import * as r_test_command_refiner from "../../../refiners/test_command/refiners"
 
-import * as t_directory_content_to_generic_testset from "../../../transformers/directory_content/generic_testset"
+import * as t_directory_content_to_generic_testset from "../../../transformers/schemas/directory_content/generic_testset"
 // import * as t_generic_testset_to_test_result from "../transformers/generic_testset/test_result"
 import * as t_fountain_pen_to_lines from "pareto-fountain-pen/dist/implementation/algorithms/transformations/block/lines"
-import * as t_read_directory_content_to_fountain_pen from "../../../transformers/read_directory_content/fountain_pen"
-import * as t_write_directory_content_to_fountain_pen from "../../../transformers/write_directory_content/fountain_pen"
+import * as t_read_directory_content_to_fountain_pen from "../../../transformers/schemas/read_directory_content/fountain_pen"
+import * as t_write_directory_content_to_fountain_pen from "../../../transformers/schemas/write_directory_content/fountain_pen"
 
-import * as t_test_result_to_fountain_pen from "../../../transformers/test_result_2/fountain_pen"
-import * as t_test_result_to_summary from "../../../transformers/test_result_2/summary"
-import * as t_test_result_to_actual_tree from "../../../transformers/test_result_2/actual_tree"
+import * as t_test_result_to_fountain_pen from "../../../transformers/schemas/test_result_2/fountain_pen"
+import * as t_test_result_to_summary from "../../../transformers/schemas/test_result_2/summary"
+import * as t_test_result_to_actual_tree from "../../../transformers/schemas/test_result_2/actual_tree"
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"

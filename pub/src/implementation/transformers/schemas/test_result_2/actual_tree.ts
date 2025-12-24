@@ -2,7 +2,7 @@ import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-dev'
 
-import * as d_in from "../../../interface/data/test_result"
+import * as d_in from "../../../../interface/to_be_generated/test_result"
 import * as d_out from "exupery-resources/dist/interface/to_be_generated/directory_content"
 
 import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"

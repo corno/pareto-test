@@ -1,7 +1,7 @@
 import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 
-import * as d_out from "../../../../interface/data/test_result"
+import * as d_out from "../../../../interface/to_be_generated/test_result"
 
 import * as d_astn_target from "../../../../interface/generated/pareto/core/astn_target"
 import * as d_astn_source from "../../../../interface/generated/pareto/core/astn_source"

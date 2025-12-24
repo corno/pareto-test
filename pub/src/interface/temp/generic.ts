@@ -28,7 +28,6 @@ export type Refiner_With_Parameters<Expected_Result, Expected_Error, Input, Para
 
 // Type definitions for test results
 
-
 export type Results = Branch
 
 export type Branch = _et.Dictionary<Result_Entry>

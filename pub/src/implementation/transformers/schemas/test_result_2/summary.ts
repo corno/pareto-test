@@ -2,8 +2,8 @@ import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-dev'
 
-import * as d_in from "../../../interface/data/test_result"
-import * as d_out from "../../../interface/data/summary"
+import * as d_in from "../../../../interface/to_be_generated/test_result"
+import * as d_out from "../../../../interface/to_be_generated/summary"
 
 export type Parameters = {
     'include passed tests': boolean

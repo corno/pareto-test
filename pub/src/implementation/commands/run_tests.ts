@@ -2,7 +2,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _easync from 'exupery-core-async'
 
-import * as d_test from "../../interface/generic"
+import * as d_test from "../../interface/temp/generic"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 
@@ -23,7 +23,7 @@ import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementatio
 import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
 import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
-import * as t_test_result_to_text from "../transformers/test_result/lines"
+import * as t_test_result_to_text from "../transformers/schemas/test_result/lines"
 
 const has_passed = (results: d_test.Results): boolean => {
     return op_is_empty(op_filter<null>(results.map(($) => {

@@ -5,7 +5,7 @@ import * as _easync from 'exupery-core-async'
 
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 
-import * as generic from "../interface/generic"
+import * as generic from "../interface/temp/generic"
 
 export const run_transformer_tests_with_parameters = <Input, Expected, Parameters>(tests: _et.Dictionary<generic.Transformer_With_Parameters<Input, Expected, Parameters>>, implementation: ($: Input, parameters: Parameters) => Expected): generic.Results => {
     return tests.map(($) => {

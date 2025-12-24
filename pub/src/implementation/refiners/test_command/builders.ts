@@ -1,6 +1,6 @@
 import * as _ea from 'exupery-core-alg'
 
-import * as d from "../../../interface/data/test_command"
+import * as d from "../../../interface/to_be_generated/test_command"
 
 import * as core from "../../../temp_core"
 
