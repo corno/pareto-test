@@ -33,7 +33,7 @@ import * as s_path from "exupery-resources/dist/implementation/serializers/schem
 
 import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
-import * as temp from "../generic_testset/temp"
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
 
 const RED = "\x1b[31m"
@@ -53,7 +53,7 @@ export type Command_Resources = {
     'write directory content': _et.Command<d_write_directory_content.Error, d_write_directory_content.Parameters>,
 }
 
-export type Procedure = _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources>
+export type Procedure = _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources>
 
 
 export type My_Error =
