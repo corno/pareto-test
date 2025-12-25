@@ -12,7 +12,6 @@ import * as temp from "./temp"
 
 import * as s_serialize from "../../../generated/pareto/generic/serialize"
 import * as p_parse from "../../../generated/pareto/generic/parse/parse"
-import * as p_authoring_parse from "astn/dist/implementation/refiners/authoring_parse_tree/text/refiners"
 
 export const test_group = ($: { [key: string]: temp.Directory_to_Test_Group_Result_Transformer }): temp.Directory_to_Test_Group_Result_Transformer => {
     return temp.create_group_transformer(_ea.dictionary_literal($).map(($2) => _ea.cc($2, ($): temp.Directory_to_Test_Group_Result_Transformer => {
