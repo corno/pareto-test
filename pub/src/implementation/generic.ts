@@ -7,6 +7,15 @@ import * as d_log from "exupery-resources/dist/interface/generated/pareto/schema
 
 import * as generic from "../interface/temp/generic"
 
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+
+export type Resources = {
+    'commands': {
+        'log error': resources_exupery.commands.log_error
+        'log': resources_exupery.commands.log
+    }
+}
+
 export const run_transformer_tests_with_parameters = <Input, Expected, Parameters>(tests: _et.Dictionary<generic.Transformer_With_Parameters<Input, Expected, Parameters>>, implementation: ($: Input, parameters: Parameters) => Expected): generic.Results => {
     return tests.map(($) => {
         return ['test', {
@@ -90,10 +99,3 @@ export const run_refiner_tests_without_parameters = <Expected_Output, Expected_E
 }
 
 
-
-export type Resources = {
-    'commands': {
-        'log error': _et.Command<d_log.Parameters, null>
-        'log': _et.Command<d_log.Parameters, null>
-    }
-}

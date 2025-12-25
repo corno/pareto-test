@@ -6,18 +6,23 @@ import * as d_test from "../../interface/temp/generic"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 
-export type Query_Resources = null
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
-export type Command_Resources = {
-    'log error': _et.Command<null, d_log_error.Parameters>,
-    'log': _et.Command<null, d_log.Parameters>,
-}
 
 export type Parameters = {
     'test results': d_test.Results,
 }
 
-export type Signature = _et.Command_Procedure<_et.Command<null, Parameters>, Command_Resources, Query_Resources>
+export type Command = _et.Command<null, Parameters>
+
+export type Signature = _et.Command_Procedure<
+    Command,
+    {
+        'log error': resources_exupery.commands.log_error,
+        'log': resources_exupery.commands.log,
+    },
+    null
+>
 
 import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/is_empty"
 import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"

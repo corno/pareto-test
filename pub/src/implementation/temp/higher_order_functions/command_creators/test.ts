@@ -33,27 +33,26 @@ import * as s_path from "exupery-resources/dist/implementation/serializers/schem
 
 import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
-import * as resources_exupery from "exupery-resources/dist/interface/resources"
-
-
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
 
-export type Query_Resources = {
-    'read directory': _et.Query<d_read_directory.Result, d_read_directory.Error, d_read_directory.Parameters>
-    'read file': _et.Query<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
-    'read directory content': _et.Query<d_read_directory_content.Result, d_read_directory_content.Error, d_read_directory_content.Parameters>
-}
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
-export type Command_Resources = {
-    'write to stdout': _et.Command<null, d_write_to_stdout.Parameters>
-    'log error': _et.Command<null, d_log_error.Parameters>
-    'log': _et.Command<null, d_log.Parameters>
-    'write directory content': _et.Command<d_write_directory_content.Error, d_write_directory_content.Parameters>,
-}
-
-export type Procedure = _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources>
+export type Procedure = _et.Command_Procedure<
+    resources_exupery.commands.main,
+    {
+        'write to stdout': resources_exupery.commands.write_to_stdout
+        'log error': resources_exupery.commands.log_error
+        'log': resources_exupery.commands.log
+        'write directory content': resources_exupery.commands.write_directory_content,
+    },
+    {
+        'read directory': resources_exupery.queries.read_directory
+        'read file': resources_exupery.queries.read_file
+        'read directory content': resources_exupery.queries.read_directory_content
+    }
+>
 
 
 export type My_Error =
