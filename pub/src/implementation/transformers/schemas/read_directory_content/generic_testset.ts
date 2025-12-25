@@ -2,7 +2,7 @@ import * as _et from "exupery-core-types"
 import * as _ea from "exupery-core-alg"
 
 import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
-import * as d_out from "../../../interface/to_be_generated/generic_testset"
+import * as d_out from "../../../../interface/to_be_generated/generic_testset"
 
 const remove_suffix = ($: string, suffix: string): _et.Optional_Value<string> => {
     let suffix_matches = true
