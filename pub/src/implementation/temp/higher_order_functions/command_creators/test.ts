@@ -19,7 +19,6 @@ import * as d_generic_testset from "../../../../interface/to_be_generated/generi
 import * as r_test_command_refiner from "../../../refiners/test_command/refiners"
 
 import * as t_directory_content_to_generic_testset from "../../../transformers/schemas/directory_content/generic_testset"
-// import * as t_generic_testset_to_test_result from "../transformers/generic_testset/test_result"
 import * as t_fountain_pen_to_lines from "pareto-fountain-pen/dist/implementation/transformers/schemas/block/lines"
 import * as t_read_directory_content_to_fountain_pen from "../../../transformers/schemas/read_directory_content/fountain_pen"
 import * as t_write_directory_content_to_fountain_pen from "../../../transformers/schemas/write_directory_content/fountain_pen"
