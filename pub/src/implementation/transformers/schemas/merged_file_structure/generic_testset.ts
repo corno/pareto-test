@@ -10,7 +10,7 @@
 //             case 'invalid': return _ea.ss($, ($): d_out.Node__group => ['expected does not exist'])
 //             case 'valid': return _ea.ss($, ($) => {
 //                 return $.map(($, key) => {
-//                     const expected_node = $p.expected.__get_entry(key)
+//                     const expected_node = $p.expected.get_entry(key)
 //                     return _ea.cc($, ($): d_out.Node => {
 //                         switch ($[0]) {
 //                             case 'other': return _ea.ss($, ($): d_out.Node => {

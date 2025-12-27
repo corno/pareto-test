@@ -14,10 +14,10 @@ export const Results = ($: d_in.Results): d_out.Group => {
 
 
 export const Branch = ($: d_in.Results): d_out.Group_Part => {
-    return sh.g.sub($.deprecated_to_array(() => 0).map(($) => sh.g.nested_block([
-        sh.b.snippet($.key),
+    return sh.g.sub($.to_list(($, key) => sh.g.nested_block([
+        sh.b.snippet(key),
         sh.b.snippet(": "),
-        _ea.cc($.value, ($) => {
+        _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'test': return _ea.ss($, ($) => $.passed
                     ? sh.b.snippet("✅ PASS")

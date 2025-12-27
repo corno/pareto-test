@@ -152,8 +152,8 @@ export const $$ = (
                                                         'suffix settings': $.suffix,
                                                     }
                                                 ))
-                                                const expected_node = $v.__get_entry(key)
-                                                const input_node = $parent.__get_entry(key)
+                                                const expected_node = $v.get_entry(key)
+                                                const input_node = $parent.get_entry(key)
                                                 return ['group', {
                                                     'result': input_node.transform(
                                                         ($): d_test_result.Test_Node_Result__group__result => {

@@ -9,8 +9,8 @@ const remove_suffix = ($: string, suffix: string): _et.Optional_Value<string> =>
     const stripped = _ea.build_text(($i) => {
         const main_as_characters = _ea.text_to_character_list($)
         const suffix_as_characters = _ea.text_to_character_list(suffix)
-        const main_length = main_as_characters.__get_number_of_elements()
-        const suffix_length = suffix_as_characters.__get_number_of_elements()
+        const main_length = main_as_characters.get_number_of_elements()
+        const suffix_length = suffix_as_characters.get_number_of_elements()
         let index = -1
         main_as_characters.__for_each(($) => {
             index += 1
@@ -67,7 +67,7 @@ export const Directory: _et.Transformer_With_Parameters<d_in.Directory, d_out.Di
 
 
                         const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-                            const expected_node = $p.expected.__get_entry($ + $p['suffix settings']['to be appended to expected'].transform(
+                            const expected_node = $p.expected.get_entry($ + $p['suffix settings']['to be appended to expected'].transform(
                                 ($) => $,
                                 () => ``
                             ))
@@ -100,7 +100,7 @@ export const Directory: _et.Transformer_With_Parameters<d_in.Directory, d_out.Di
                         }]
                     })
                     case 'directory': return _ea.ss($, ($) => {
-                        const expected_node = $p.expected.__get_entry(key)
+                        const expected_node = $p.expected.get_entry(key)
                         const input_node = $
                         return ['directory', expected_node.transform(
                             ($) => _ea.cc($, ($) => {
@@ -149,7 +149,7 @@ export const Directory: _et.Transformer_With_Parameters<d_in.Directory, d_out.Di
         //     })
         //     const main = _ea.dictionary_literal(temp)
         //     return op_filter_dictionary($p.expected.map(($, key) => {
-        //         return main.__get_entry(key).map(() => null)
+        //         return main.get_entry(key).map(() => null)
         //     }))
         // })
     }

@@ -22,12 +22,12 @@ export const Directory: _et.Transformer_With_Parameters<d_in.Directory, d_out.Va
                 })
                 case 'file': return _ea.ss($, ($): d_out.Node => {
                     return ['file', {
-                        'support': support_directory.__get_entry(key + $p['support suffix'])
+                        'support': support_directory.get_entry(key + $p['support suffix'])
                     }]
                 })
                 case 'directory': return _ea.ss($, ($) => {
                     const main_node = $
-                    return ['directory', support_directory.__get_entry(key).transform(
+                    return ['directory', support_directory.get_entry(key).transform(
                         ($): d_out.Directory => _ea.cc($, ($) => {
                             switch ($[0]) {
                                 case 'directory': return _ea.ss($, ($) => ['valid', Directory(

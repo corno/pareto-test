@@ -201,5 +201,5 @@ export const Test_Group_Result = (
                 default: return _ea.au($[0])
             }
         })
-    ])).deprecated_to_array(() => 0).map(($) => $.value))
+    ])).to_list(($, key) => $))
 }
