@@ -30,8 +30,6 @@ import * as t_test_result_to_actual_tree from "../../../transformers/schemas/tes
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
 
-import { $$ as o_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
-
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
@@ -207,7 +205,7 @@ export const $$ = (
                                                     [
                                                         $cr['log'].execute(
                                                             {
-                                                                'lines': o_flatten(_ea.list_literal([
+                                                                'lines': _ea.list_literal([
                                                                     t_fountain_pen_to_lines.Group_Part(
                                                                         t_test_result_to_fountain_pen.Test_Group_Result(
                                                                             test_results,
@@ -222,7 +220,7 @@ export const $$ = (
                                                                     ),
                                                                     _ea.list_literal([``]),
                                                                     _ea.list_literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
-                                                                ]))
+                                                                ]).flatten(($) => $)
 
                                                             },
                                                             ($): My_Error => ['writing to stdout', null]
@@ -266,15 +264,15 @@ export const $$ = (
                         switch ($[0]) {
                             case 'command line': return _ea.ss($, ($) => _ea.list_literal([`command line error`]))
                             case 'writing to stdout': return _ea.ss($, ($) => _ea.list_literal([`stdout error`]))
-                            case 'read directory content': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
+                            case 'read directory content': return _ea.ss($, ($) => _ea.list_literal([
                                 _ea.list_literal([`read dir error`]),
                                 t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
-                            ])))
-                            case 'write directory content': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
+                            ])).flatten(($) => $)   
+                            case 'write directory content': return _ea.ss($, ($) => _ea.list_literal([
                                 _ea.list_literal([`write dir error`]),
                                 t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
-                            ])))
-                            case 'failed tests': return _ea.ss($, ($) => o_flatten(_ea.list_literal([
+                            ])).flatten(($) => $)
+                            case 'failed tests': return _ea.ss($, ($) => _ea.list_literal([
                                 t_fountain_pen_to_lines.Group_Part(
                                     t_test_result_to_fountain_pen.Test_Group_Result(
                                         $.tests,
@@ -294,7 +292,7 @@ export const $$ = (
                                         'include structural problems': true,
                                     }
                                 )} test failed${ENDCOLOR}`]),
-                            ])))
+                            ]).flatten(($) => $))
                             default: return _ea.au($[0])
                         }
                     })

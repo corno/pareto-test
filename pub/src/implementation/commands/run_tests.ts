@@ -24,8 +24,6 @@ export type Signature = _et.Command_Procedure<
     null
 >
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
-
 import * as t_test_result_to_text from "../transformers/schemas/test_result/lines"
 
 const has_passed = (results: d_test.Results): boolean => {
@@ -55,13 +53,13 @@ export const $$: Signature = _easync.create_command_procedure(
             [
                 $cr.log.execute(
                     {
-                        'lines': op_flatten(_ea.list_literal([
+                        'lines': _ea.list_literal([
                             t_test_result_to_text.Results($p['test results']),
                             _ea.list_literal([
                                 ``,
                                 `all tests successful.`
                             ]),
-                        ]))
+                        ]).flatten(($) => $)
                     },
                     ($) => $,
                 ),
@@ -72,13 +70,13 @@ export const $$: Signature = _easync.create_command_procedure(
             [
                 $cr['log error'].execute(
                     {
-                        'lines': op_flatten(_ea.list_literal([
+                        'lines': _ea.list_literal([
                             t_test_result_to_text.Results($p['test results']),
                             _ea.list_literal([
                                 ``,
                                 `some tests failed`
                             ]),
-                        ]))
+                        ]).flatten(($) => $)
                     },
                     ($) => $,
                 ),
