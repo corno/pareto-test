@@ -24,14 +24,12 @@ export type Signature = _et.Command_Procedure<
     null
 >
 
-import { $$ as op_is_empty } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/is_empty"
-import { $$ as op_filter } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
 import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
 import * as t_test_result_to_text from "../transformers/schemas/test_result/lines"
 
 const has_passed = (results: d_test.Results): boolean => {
-    return op_is_empty(op_filter<null>(results.map(($) => {
+    return results.filter<null>(($) => {
         return _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'test': return _ea.ss($, ($) => $.passed ? _ea.not_set() : _ea.set(null))
@@ -39,7 +37,7 @@ const has_passed = (results: d_test.Results): boolean => {
                 default: return _ea.au($[0])
             }
         })
-    })))
+    }).is_empty()
 }
 
 export const $$: Signature = _easync.create_command_procedure(

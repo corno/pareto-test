@@ -5,11 +5,9 @@ import * as _ed from 'exupery-core-dev'
 import * as d_in from "../../../../interface/to_be_generated/test_result"
 import * as d_out from "exupery-resources/dist/interface/to_be_generated/directory_content"
 
-import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
-import { $$ as op_dictionary_is_empty } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/is_empty"
 
 const op_cast_to_non_empty_dictionary = <T>($: _et.Dictionary<T>): _et.Optional_Value<_et.Dictionary<T>> => {
-    return op_dictionary_is_empty($) ? _ea.not_set() : _ea.set($)
+    return $.is_empty() ? _ea.not_set() : _ea.set($)
 }
 
 export const Test_Node_Result: _et.Transformer<d_in.Test_Node_Result, _et.Optional_Value<d_out.Node>> = ($) => {
@@ -62,5 +60,5 @@ export const Test_Node_Result: _et.Transformer<d_in.Test_Node_Result, _et.Option
 }
 
 export const Test_Group_Result: _et.Transformer<d_in.Test_Group_Result, d_out.Directory> = ($) => {
-    return op_filter_dictionary($.map(($) => Test_Node_Result($)))
+    return $.filter(($) => Test_Node_Result($))
 }
