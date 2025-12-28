@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "astn": "^0.113.17",
-    "exupery-core-alg": "^0.5.18",
+    "exupery-core-alg": "^0.5.19",
     "exupery-core-async": "^0.3.79",
     "exupery-core-dev": "^0.3.3",
     "exupery-resources": "^0.3.53",
