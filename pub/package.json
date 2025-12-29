@@ -9,7 +9,7 @@
   ],
   "dependencies": {
     "astn": "^0.113.18",
-    "exupery-resources": "^0.3.54",
+    "exupery-resources": "^0.3.55",
     "pareto-fountain-pen": "^0.3.20"
   }
 }
