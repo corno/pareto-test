@@ -1,4 +1,4 @@
-import * as _et from 'exupery-core-types'
+import * as _pi from 'pareto-core-interface'
 
 
 
@@ -10,8 +10,8 @@ import * as _et from 'exupery-core-types'
  * 
  */
 export type Directory = {
-    'nodes': _et.Dictionary<Node>
-    // 'superfluous nodes': _et.Dictionary<null>
+    'nodes': _pi.Dictionary<Node>
+    // 'superfluous nodes': _pi.Dictionary<null>
 }
 
 export type Node =

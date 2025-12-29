@@ -1,5 +1,6 @@
-import * as _ea from 'exupery-core-alg' 
-import * as _et from 'exupery-core-types'
+import * as _ea from 'pareto-core-deserializer'
+import * as _pinternals from 'pareto-core-internals'
+import * as _et from 'pareto-core-interface'
 
 import * as _out from "../../../../../interface/generated/pareto/core/token"
 
@@ -526,7 +527,7 @@ export const Delimited_String = (string_iterator: String_Iterator, is_end_charac
                                     $i['add character'](get_char())
                                     $i['add character'](get_char())
                                     $i['add character'](get_char())
-                                }), () => _ea.deprecated_panic('unreachable')))
+                                }), () => _pinternals.panic(`unreachable`)))
                                 break
                             default:
                                 return throw_lexer_error(

@@ -1,6 +1,6 @@
-import * as _ea from 'exupery-core-alg'
-import * as _et from 'exupery-core-types'
-import * as _easync from 'exupery-core-async'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
+import * as _pc from 'pareto-core-command'
 
 import * as d_test from "../../interface/temp/generic"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
@@ -13,9 +13,9 @@ export type Parameters = {
     'test results': d_test.Results,
 }
 
-export type Command = _et.Command<null, Parameters>
+export type Command = _pi.Command<null, Parameters>
 
-export type Signature = _et.Command_Procedure<
+export type Signature = _pi.Command_Procedure<
     Command,
     {
         'log error': resources_exupery.commands.log_error,
@@ -28,34 +28,34 @@ import * as t_test_result_to_text from "../transformers/schemas/test_result/line
 
 const has_passed = (results: d_test.Results): boolean => {
     return results.filter<null>(($) => {
-        return _ea.cc($, ($) => {
+        return _pt.cc($, ($) => {
             switch ($[0]) {
-                case 'test': return _ea.ss($, ($) => $.passed ? _ea.not_set() : _ea.set(null))
-                case 'group': return _ea.ss($, ($) => has_passed($) ? _ea.not_set() : _ea.set(null))
-                default: return _ea.au($[0])
+                case 'test': return _pt.ss($, ($) => $.passed ? _pt.not_set() : _pt.set(null))
+                case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.not_set() : _pt.set(null))
+                default: return _pt.au($[0])
             }
         })
     }).is_empty()
 }
 
-export const $$: Signature = _easync.create_command_procedure(
+export const $$: Signature = _pc.create_command_procedure(
     ($p, $cr) => [
         $cr.log.execute(
             {
-                'lines': _ea.list_literal([
+                'lines': _pt.list_literal([
                     `Running tests...`,
                 ])
             },
             ($) => $,
         ),
-        _easync.p.if_(
+        _pc.if_(
             has_passed($p['test results']),
             [
                 $cr.log.execute(
                     {
-                        'lines': _ea.list_literal([
+                        'lines': _pt.list_literal([
                             t_test_result_to_text.Results($p['test results']),
-                            _ea.list_literal([
+                            _pt.list_literal([
                                 ``,
                                 `all tests successful.`
                             ]),
@@ -65,14 +65,14 @@ export const $$: Signature = _easync.create_command_procedure(
                 ),
             ]
         ),
-        _easync.p.if_(
+        _pc.if_(
             !has_passed($p['test results']),
             [
                 $cr['log error'].execute(
                     {
-                        'lines': _ea.list_literal([
+                        'lines': _pt.list_literal([
                             t_test_result_to_text.Results($p['test results']),
-                            _ea.list_literal([
+                            _pt.list_literal([
                                 ``,
                                 `some tests failed`
                             ]),

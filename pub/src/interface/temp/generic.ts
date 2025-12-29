@@ -1,4 +1,4 @@
-import * as _et from 'exupery-core-types'
+import * as _pi from 'pareto-core-interface'
 
 export type Input_And_Expected<In, Expected> = {
     'input': In
@@ -30,7 +30,7 @@ export type Refiner_With_Parameters<Expected_Result, Expected_Error, Input, Para
 
 export type Results = Branch
 
-export type Branch = _et.Dictionary<Result_Entry>
+export type Branch = _pi.Dictionary<Result_Entry>
 
 export type Result_Entry =
     | ['test', {

@@ -1,7 +1,7 @@
-import * as _ea from 'exupery-core-alg'
-import * as _easync from 'exupery-core-async'
-import * as _et from 'exupery-core-types'
-import * as _ed from 'exupery-core-dev'
+import * as _pt from 'pareto-core-transformer'
+import * as _pc from 'pareto-core-command'
+import * as _pi from 'pareto-core-interface'
+import * as _ed from 'pareto-core-dev'
 
 import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
@@ -36,7 +36,7 @@ const ENDCOLOR = "\x1b[0m"
 
 import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
-export type Procedure = _et.Command_Procedure<
+export type Procedure = _pi.Command_Procedure<
     resources_exupery.commands.main,
     {
         'write to stdout': resources_exupery.commands.write_to_stdout
@@ -65,17 +65,17 @@ export type My_Error =
 
 export const $$ = (
     $: {
-        'astn to astn': _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
-        'text to astn': _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
-        'astn to text': _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'astn to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'text to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
     }
-): Procedure => _easync.create_command_procedure(
+): Procedure => _pc.create_command_procedure(
     ($p, $cr, $qr) => [
 
-        _easync.p.create_error_handling_context<d_main.Error, My_Error>(
+        _pc.create_error_handling_context<d_main.Error, My_Error>(
             [
 
-                _easync.p.refine_with_error_transformation(
+                _pc.refine_with_error_transformation(
                     r_test_command_refiner.Parameters($p.arguments),
                     ($): My_Error => ['command line', null],
                     ($v) => [
@@ -87,7 +87,7 @@ export const $$ = (
                         ),
 
                         //read input dir
-                        _easync.p.query_stacked(
+                        _pc.query_stacked(
                             $qr['read directory content'](
                                 {
                                     'path': t_path_to_path.create_node_path(
@@ -104,7 +104,7 @@ export const $$ = (
 
 
                                     //read expected dir
-                                    _easync.p.query_stacked(
+                                    _pc.query_stacked(
                                         $qr['read directory content'](
                                             {
                                                 'path': t_path_to_path.create_node_path(
@@ -117,26 +117,26 @@ export const $$ = (
                                         $v,
                                         ($v, $parent) => {
 
-                                            const test_results: d_test_result.Test_Group_Result = _ea.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _et.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result> }>({
+                                            const test_results: d_test_result.Test_Group_Result = _pt.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result> }>({
                                                 'astn_to_astn': {
                                                     'transformer': $['astn to astn'],
                                                     'suffix': {
-                                                        'to be appended to expected': _ea.not_set(),
-                                                        'to be removed from input': _ea.not_set(),
+                                                        'to be appended to expected': _pt.not_set(),
+                                                        'to be removed from input': _pt.not_set(),
                                                     }
                                                 },
                                                 'text_to_astn': {
                                                     'transformer': $['text to astn'],
                                                     'suffix': {
-                                                        'to be appended to expected': _ea.set(`.astn`),
-                                                        'to be removed from input': _ea.not_set(),
+                                                        'to be appended to expected': _pt.set(`.astn`),
+                                                        'to be removed from input': _pt.not_set(),
                                                     }
                                                 },
                                                 'astn_to_text': {
                                                     'transformer': $['astn to text'],
                                                     'suffix': {
-                                                        'to be appended to expected': _ea.not_set(),
-                                                        'to be removed from input': _ea.set(`.astn`),
+                                                        'to be appended to expected': _pt.not_set(),
+                                                        'to be removed from input': _pt.set(`.astn`),
                                                     }
                                                 },
                                             }).map(($, key): d_test_result.Test_Node_Result => {
@@ -155,15 +155,15 @@ export const $$ = (
                                                 return ['group', {
                                                     'result': input_node.transform(
                                                         ($): d_test_result.Test_Node_Result__group__result => {
-                                                            return _ea.cc($, ($): d_test_result.Test_Node_Result__group__result => {
+                                                            return _pt.cc($, ($): d_test_result.Test_Node_Result__group__result => {
                                                                 switch ($[0]) {
-                                                                    case 'directory': return _ea.ss($, ($) => {
+                                                                    case 'directory': return _pt.ss($, ($) => {
                                                                         const input_dir = $
                                                                         return expected_node.transform(
                                                                             ($): d_test_result.Test_Node_Result__group__result => {
-                                                                                return _ea.cc($, ($): d_test_result.Test_Node_Result__group__result => {
+                                                                                return _pt.cc($, ($): d_test_result.Test_Node_Result__group__result => {
                                                                                     switch ($[0]) {
-                                                                                        case 'directory': return _ea.ss($, ($) => {
+                                                                                        case 'directory': return _pt.ss($, ($) => {
                                                                                             const expected_dir = $
                                                                                             return ['source valid', the_func(
                                                                                                 {
@@ -200,12 +200,12 @@ export const $$ = (
 
                                             return [
 
-                                                _easync.p.if_(
+                                                _pc.if_(
                                                     number_of_failed_tests === 0,
                                                     [
                                                         $cr['log'].execute(
                                                             {
-                                                                'lines': _ea.list_literal([
+                                                                'lines': _pt.list_literal([
                                                                     t_fountain_pen_to_lines.Group_Part(
                                                                         t_test_result_to_fountain_pen.Test_Group_Result(
                                                                             test_results,
@@ -218,8 +218,8 @@ export const $$ = (
                                                                             'indentation': `   `
                                                                         }
                                                                     ),
-                                                                    _ea.list_literal([``]),
-                                                                    _ea.list_literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
+                                                                    _pt.list_literal([``]),
+                                                                    _pt.list_literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
                                                                 ]).flatten(($) => $)
 
                                                             },
@@ -235,13 +235,13 @@ export const $$ = (
                                                                 'path': t_path_to_path.extend_context_path(
                                                                     path_to_test_data,
                                                                     {
-                                                                        'addition': _ea.list_literal([`actual`]),
+                                                                        'addition': `actual`,
                                                                     },
                                                                 ),
                                                             },
                                                             ($): My_Error => ['write directory content', $],
                                                         ),
-                                                        _easync.p.fail(['failed tests', {
+                                                        _pc.fail(['failed tests', {
                                                             'path': s_path.Context_Path(path_to_test_data),
                                                             'tests': test_results
                                                         }])
@@ -260,19 +260,19 @@ export const $$ = (
             ],
             ($) => $cr['log error'].execute(
                 {
-                    'lines': _ea.cc($, ($) => {
+                    'lines': _pt.cc($, ($) => {
                         switch ($[0]) {
-                            case 'command line': return _ea.ss($, ($) => _ea.list_literal([`command line error`]))
-                            case 'writing to stdout': return _ea.ss($, ($) => _ea.list_literal([`stdout error`]))
-                            case 'read directory content': return _ea.ss($, ($) => _ea.list_literal([
-                                _ea.list_literal([`read dir error`]),
+                            case 'command line': return _pt.ss($, ($) => _pt.list_literal([`command line error`]))
+                            case 'writing to stdout': return _pt.ss($, ($) => _pt.list_literal([`stdout error`]))
+                            case 'read directory content': return _pt.ss($, ($) => _pt.list_literal([
+                                _pt.list_literal([`read dir error`]),
                                 t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
                             ])).flatten(($) => $)   
-                            case 'write directory content': return _ea.ss($, ($) => _ea.list_literal([
-                                _ea.list_literal([`write dir error`]),
+                            case 'write directory content': return _pt.ss($, ($) => _pt.list_literal([
+                                _pt.list_literal([`write dir error`]),
                                 t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
                             ])).flatten(($) => $)
-                            case 'failed tests': return _ea.ss($, ($) => _ea.list_literal([
+                            case 'failed tests': return _pt.ss($, ($) => _pt.list_literal([
                                 t_fountain_pen_to_lines.Group_Part(
                                     t_test_result_to_fountain_pen.Test_Group_Result(
                                         $.tests,
@@ -285,7 +285,7 @@ export const $$ = (
                                         'indentation': `   `
                                     }
                                 ),
-                                _ea.list_literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
+                                _pt.list_literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
                                     $.tests,
                                     {
                                         'include passed tests': false,
@@ -293,7 +293,7 @@ export const $$ = (
                                     }
                                 )} test failed${ENDCOLOR}`]),
                             ]).flatten(($) => $))
-                            default: return _ea.au($[0])
+                            default: return _pt.au($[0])
                         }
                     })
                 },

@@ -1,5 +1,4 @@
-import * as _ea from 'exupery-core-alg'
-import * as _et from 'exupery-core-types'
+import * as _et from 'pareto-core-interface'
 
 import * as si from "./string_iterator"
 

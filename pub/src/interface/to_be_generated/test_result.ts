@@ -1,8 +1,8 @@
-import * as _et from 'exupery-core-types'
+import * as _pi from 'pareto-core-interface'
 
 import * as d_generic from "./generic_testset"
 
-export type Test_Group_Result = _et.Dictionary<Test_Node_Result>
+export type Test_Group_Result = _pi.Dictionary<Test_Node_Result>
 
 export type Test_Node_Result =
     | ['group', Test_Node_Result__group]

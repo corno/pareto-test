@@ -1,6 +1,6 @@
-import * as _et from 'exupery-core-types'
-import * as _ea from 'exupery-core-alg'
-import * as _ed from 'exupery-core-dev'
+import * as _pi from 'pareto-core-interface'
+import * as _pt from 'pareto-core-transformer'
+import * as _ed from 'pareto-core-dev'
 
 import * as d_in from "../../../../interface/to_be_generated/test_result"
 import * as d_out from "../../../../interface/to_be_generated/summary"
@@ -10,36 +10,36 @@ export type Parameters = {
     'include structural problems': boolean
 }
 
-export const Test_Node_Result: _et.Transformer_With_Parameters<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
-    return _ea.cc($, ($) => {
+    return _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'group': return _ea.ss($, ($) => _ea.cc($, ($) => _ea.cc($.result, ($) => {
+            case 'group': return _pt.ss($, ($) => _pt.cc($, ($) => _pt.cc($.result, ($) => {
                 switch ($[0]) {
-                    case 'source invalid': return _ea.ss($, ($) => structural_problem_incrementer)
-                    case 'source valid': return _ea.ss($, ($) => Test_Group_Result($, $p))
-                    default: return _ea.au($[0])
+                    case 'source invalid': return _pt.ss($, ($) => structural_problem_incrementer)
+                    case 'source valid': return _pt.ss($, ($) => Test_Group_Result($, $p))
+                    default: return _pt.au($[0])
                 }
             })))
-            case 'individual test': return _ea.ss($, ($) => _ea.cc($.result, ($) => {
+            case 'individual test': return _pt.ss($, ($) => _pt.cc($.result, ($) => {
                 switch ($[0]) {
-                    case 'source invalid': return _ea.ss($, ($) => structural_problem_incrementer)
-                    case 'tested': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                    case 'source invalid': return _pt.ss($, ($) => structural_problem_incrementer)
+                    case 'tested': return _pt.ss($, ($) => _pt.cc($, ($) => {
                         switch ($[0]) {
-                            case 'passed': return _ea.ss($, ($) => $p['include passed tests'] ? 1 : 0)
-                            case 'failed': return _ea.ss($, ($) => 1)
-                            default: return _ea.au($[0])
+                            case 'passed': return _pt.ss($, ($) => $p['include passed tests'] ? 1 : 0)
+                            case 'failed': return _pt.ss($, ($) => 1)
+                            default: return _pt.au($[0])
                         }
                     }))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 }
 
-export const Test_Group_Result: _et.Transformer_With_Parameters<d_in.Test_Group_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Group_Result: _pi.Transformer_With_Parameters<d_in.Test_Group_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
     $.map(($): number => Test_Node_Result($, $p)).map(($) => count += $)
     return count
