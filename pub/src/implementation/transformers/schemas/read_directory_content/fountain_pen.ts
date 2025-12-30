@@ -1,6 +1,5 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
-import * as _ed from 'pareto-core-dev'
 
 import * as d_in from "exupery-resources/dist/interface/to_be_generated/read_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"

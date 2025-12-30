@@ -1,14 +1,8 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pc from 'pareto-core-command'
 import * as _pi from 'pareto-core-interface'
-import * as _ed from 'pareto-core-dev'
 
 import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
-import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
-import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
-import * as d_write_to_stdout from "exupery-resources/dist/interface/generated/pareto/schemas/write_to_stdout/data_types/source"
-import * as d_read_directory from "exupery-resources/dist/interface/generated/pareto/schemas/read_directory/data_types/source"
-import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
 import * as d_read_directory_content from "exupery-resources/dist/interface/to_be_generated/read_directory_content"
 import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_test_result from "../../../../interface/to_be_generated/test_result"
