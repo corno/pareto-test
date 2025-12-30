@@ -69,9 +69,11 @@ export const $$ = (
         _pc.create_error_handling_context<d_main.Error, My_Error>(
             [
 
-                _pc.refine_with_error_transformation(
-                    r_test_command_refiner.Parameters($p.arguments),
-                    ($): My_Error => ['command line', null],
+                _pc.refine_without_error_transformation(
+                    (abort) => r_test_command_refiner.Parameters(
+                        $p,
+                        ($) => abort(['command line', null])
+                    ),
                     ($v) => [
 
                         //write the path to stdout

@@ -13,7 +13,7 @@
 //                     return _pt.cc($, ($): d_out.Node => {
 //                         switch ($[0]) {
 //                             case 'other': return _pt.ss($, ($): d_out.Node => {
-//                                 return _pt.deprecated_panic(`expected a file or a directory`)
+//                                 return _pinternals.panic(`expected a file or a directory`)
 //                             })
 //                             case 'file': return _pt.ss($, ($): d_out.Node => {
 //                                 const top_node = $

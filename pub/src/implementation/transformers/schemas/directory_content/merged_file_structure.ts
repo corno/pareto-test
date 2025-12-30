@@ -1,5 +1,6 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
+import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../interface/to_be_generated/merged_filesystem_nodes"
@@ -18,7 +19,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
         return _pt.cc($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _pt.ss($, ($): d_out.Node => {
-                    return _pt.deprecated_panic(`expected a file or a directory`)
+                    return _pinternals.panic(`expected a file or a directory`)
                 })
                 case 'file': return _pt.ss($, ($): d_out.Node => {
                     return ['file', {
