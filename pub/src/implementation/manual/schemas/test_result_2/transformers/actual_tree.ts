@@ -1,7 +1,7 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
 
-import * as d_in from "../../../../interface/to_be_generated/test_result"
+import * as d_in from "../../../../../interface/to_be_generated/test_result"
 import * as d_out from "exupery-resources/dist/interface/to_be_generated/directory_content"
 
 

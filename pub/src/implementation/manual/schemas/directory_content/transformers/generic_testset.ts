@@ -4,7 +4,7 @@ import * as _pds from 'pareto-core-deserializer'
 import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
-import * as d_out from "../../../../interface/to_be_generated/generic_testset"
+import * as d_out from "../../../../../interface/to_be_generated/generic_testset"
 
 const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> => {
     let suffix_matches = true

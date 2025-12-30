@@ -1,7 +1,7 @@
 import * as _pt from 'pareto-core-transformer'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
-import * as d_in from "../../../../interface/temp/generic"
+import * as d_in from "../../../../../interface/temp/generic"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 

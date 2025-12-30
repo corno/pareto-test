@@ -1,7 +1,7 @@
 import * as _pt from 'pareto-core-refiner'
 import * as _pi from 'pareto-core-interface'
 
-import * as d from "../../../interface/to_be_generated/test_command"
+import * as d from "../../../../../interface/to_be_generated/test_command"
 
 
 const consume_current = <T>(iterator: _pi.Iterator<T>): _pi.Optional_Value<T> => {

@@ -2,7 +2,7 @@ import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pc from 'pareto-core-command'
 
-import * as d_test from "../../interface/temp/generic"
+import * as d_test from "../../../interface/temp/generic"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 
@@ -24,7 +24,7 @@ export type Signature = _pi.Command_Procedure<
     null
 >
 
-import * as t_test_result_to_text from "../transformers/schemas/test_result/lines"
+import * as t_test_result_to_text from "../schemas/test_result/transformers/lines"
 
 const has_passed = (results: d_test.Results): boolean => {
     return results.filter<null>(($) => {

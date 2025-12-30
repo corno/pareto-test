@@ -10,16 +10,16 @@ import * as d_write_directory_content from "exupery-resources/dist/interface/to_
 
 import * as d_generic_testset from "../../../../interface/to_be_generated/generic_testset"
 
-import * as r_test_command_refiner from "../../../refiners/test_command/refiners"
+import * as r_test_command_refiner from "../../../manual/schemas/test_command/refiners/refiners"
 
-import * as t_directory_content_to_generic_testset from "../../../transformers/schemas/directory_content/generic_testset"
+import * as t_directory_content_to_generic_testset from "../../../manual/schemas/directory_content/transformers/generic_testset"
 import * as t_fountain_pen_to_lines from "pareto-fountain-pen/dist/implementation/transformers/schemas/block/lines"
-import * as t_read_directory_content_to_fountain_pen from "../../../transformers/schemas/read_directory_content/fountain_pen"
-import * as t_write_directory_content_to_fountain_pen from "../../../transformers/schemas/write_directory_content/fountain_pen"
+import * as t_read_directory_content_to_fountain_pen from "../../../manual/schemas/read_directory_content/transformers/fountain_pen"
+import * as t_write_directory_content_to_fountain_pen from "../../../manual/schemas/write_directory_content/transformers/fountain_pen"
 
-import * as t_test_result_to_fountain_pen from "../../../transformers/schemas/test_result_2/fountain_pen"
-import * as t_test_result_to_summary from "../../../transformers/schemas/test_result_2/summary"
-import * as t_test_result_to_actual_tree from "../../../transformers/schemas/test_result_2/actual_tree"
+import * as t_test_result_to_fountain_pen from "../../../manual/schemas/test_result_2/transformers/fountain_pen"
+import * as t_test_result_to_summary from "../../../manual/schemas/test_result_2/transformers/summary"
+import * as t_test_result_to_actual_tree from "../../../manual/schemas/test_result_2/transformers/actual_tree"
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
