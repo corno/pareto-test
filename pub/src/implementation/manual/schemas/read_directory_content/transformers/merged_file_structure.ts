@@ -3,7 +3,7 @@ import * as _pt from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
-import * as d_out from "../../../../interface/to_be_generated/merged_filesystem_nodes"
+import * as d_out from "../../../../../interface/to_be_generated/merged_filesystem_nodes"
 
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Valid_Directory, {
     'support': d_in.Directory
