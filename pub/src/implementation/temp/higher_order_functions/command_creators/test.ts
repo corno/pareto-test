@@ -13,7 +13,7 @@ import * as d_generic_testset from "../../../../interface/to_be_generated/generi
 import * as r_test_command_refiner from "../../../manual/schemas/test_command/refiners/main"
 
 import * as t_directory_content_to_generic_testset from "../../../manual/schemas/directory_content/transformers/generic_testset"
-import * as t_fountain_pen_to_lines from "pareto-fountain-pen/dist/implementation/transformers/schemas/block/lines"
+import * as t_fountain_pen_to_lines from "pareto-fountain-pen/dist/implementation/manual/schemas/block/transformers/lines"
 import * as t_read_directory_content_to_fountain_pen from "../../../manual/schemas/read_directory_content/transformers/fountain_pen"
 import * as t_write_directory_content_to_fountain_pen from "../../../manual/schemas/write_directory_content/transformers/fountain_pen"
 
