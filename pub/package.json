@@ -11,6 +11,6 @@
     "astn": "^0.113.20",
     "astn-sealed": "^0.1.0",
     "pareto-fountain-pen": "^0.3.23",
-    "pareto-resources": "^0.1.2"
+    "pareto-resources": "^0.1.3"
   }
 }
