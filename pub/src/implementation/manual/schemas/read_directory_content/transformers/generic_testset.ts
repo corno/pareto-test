@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core-interface'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pds from 'pareto-core-deserializer'
 import * as _pinternals from 'pareto-core-internals'
 
@@ -31,9 +31,9 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
         })
     })
     if (suffix_matches) {
-        return _pt.set(stripped)
+        return _p.set(stripped)
     }
-    return _pt.set($)
+    return _p.set($)
 }
 
 export type Parameters = {
@@ -59,12 +59,12 @@ export type Suffix_Settings = {
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => {
     return {
         'nodes': $.map(($, key) => {
-            return _pt.cc($, ($): d_out.Node => {
+            return _p.cc($, ($): d_out.Node => {
                 switch ($[0]) {
-                    case 'other': return _pt.ss($, ($): d_out.Node => {
+                    case 'other': return _p.ss($, ($): d_out.Node => {
                         return _pinternals.panic(`expected a file or a directory`)
                     })
-                    case 'file': return _pt.ss($, ($): d_out.Node => {
+                    case 'file': return _p.ss($, ($): d_out.Node => {
 
 
 
@@ -74,12 +74,12 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                                 () => ``
                             ))
                             return expected_node.transform(
-                                ($) => _pt.cc($, ($): d_out.Node__file__expected => {
+                                ($) => _p.cc($, ($): d_out.Node__file__expected => {
                                     switch ($[0]) {
-                                        case 'file': return _pt.ss($, ($) => ['valid', $])
-                                        case 'directory': return _pt.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-                                        case 'other': return _pt.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-                                        default: return _pt.au($[0])
+                                        case 'file': return _p.ss($, ($) => ['valid', $])
+                                        case 'directory': return _p.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+                                        case 'other': return _p.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+                                        default: return _p.au($[0])
                                     }
                                 }),
                                 (): d_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
@@ -101,39 +101,39 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                             )
                         }]
                     })
-                    case 'directory': return _pt.ss($, ($) => {
+                    case 'directory': return _p.ss($, ($) => {
                         const expected_node = $p.expected.get_entry(key)
                         const input_node = $
                         return ['directory', expected_node.transform(
-                            ($) => _pt.cc($, ($) => {
+                            ($) => _p.cc($, ($) => {
                                 switch ($[0]) {
-                                    case 'other': return _pt.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-                                    case 'file': return _pt.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-                                    case 'directory': return _pt.ss($, ($) => ['valid', Directory(
+                                    case 'other': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
+                                    case 'file': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
+                                    case 'directory': return _p.ss($, ($) => ['valid', Directory(
                                         input_node,
                                         {
                                             'expected': $,
                                             'suffix settings': $p['suffix settings'],
                                         }
                                     )])
-                                    default: return _pt.au($[0])
+                                    default: return _p.au($[0])
                                 }
                             }),
                             () => ['invalid', ['directory for expected does not exist', null]]
                         )]
                     })
-                    default: return _pt.au($[0])
+                    default: return _p.au($[0])
                 }
             })
         }),
-        // 'superfluous nodes': _pt.block(() => {
+        // 'superfluous nodes': _p.block(() => {
         //     const temp: { [key: string]: null } = {}
         //     $.map(($, key) => {
-        //         const key_of_expected = _pt.cc($, ($): string => {
+        //         const key_of_expected = _p.cc($, ($): string => {
         //             switch ($[0]) {
 
-        //                 case 'other': return _pt.ss($, ($) => key)
-        //                 case 'file': return _pt.ss($, ($): string => $p['suffix settings']['to be removed from input'].transform(
+        //                 case 'other': return _p.ss($, ($) => key)
+        //                 case 'file': return _p.ss($, ($): string => $p['suffix settings']['to be removed from input'].transform(
         //                     ($) => {
         //                         return remove_suffix(key, $).transform(
         //                             ($) => $,
@@ -143,13 +143,13 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
         //                     },
         //                     () => key
         //                 ))
-        //                 case 'directory': return _pt.ss($, ($) => key)
-        //                 default: return _pt.au($[0])
+        //                 case 'directory': return _p.ss($, ($) => key)
+        //                 default: return _p.au($[0])
         //             }
         //         })
         //         temp[key_of_expected] = null
         //     })
-        //     const main = _pt.dictionary_literal(temp)
+        //     const main = _p.dictionary_literal(temp)
         //     return op_filter_dictionary($p.expected.map(($, key) => {
         //         return main.get_entry(key).map(() => null)
         //     }))

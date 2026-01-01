@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core-interface'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
@@ -16,22 +16,22 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
 }> = ($, $p) => {
     return $.map(($, key) => {
         const support_directory = $p.support
-        return _pt.cc($, ($): d_out.Node => {
+        return _p.cc($, ($): d_out.Node => {
             switch ($[0]) {
-                case 'other': return _pt.ss($, ($): d_out.Node => {
+                case 'other': return _p.ss($, ($): d_out.Node => {
                     return _pinternals.panic(`expected a file or a directory`)
                 })
-                case 'file': return _pt.ss($, ($): d_out.Node => {
+                case 'file': return _p.ss($, ($): d_out.Node => {
                     return ['file', {
                         'support': support_directory.get_entry(key + $p['support suffix'])
                     }]
                 })
-                case 'directory': return _pt.ss($, ($) => {
+                case 'directory': return _p.ss($, ($) => {
                     const main_node = $
                     return ['directory', support_directory.get_entry(key).transform(
-                        ($): d_out.Directory => _pt.cc($, ($) => {
+                        ($): d_out.Directory => _p.cc($, ($) => {
                             switch ($[0]) {
-                                case 'directory': return _pt.ss($, ($) => ['valid', Directory(
+                                case 'directory': return _p.ss($, ($) => ['valid', Directory(
                                     main_node,
                                     {
                                         'support': $,
@@ -49,7 +49,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
                         }]
                     )]
                 })
-                default: return _pt.au($[0])
+                default: return _p.au($[0])
             }
         })
     })

@@ -1,6 +1,6 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
-import * as _pc from 'pareto-core-command'
+import * as _p from 'pareto-core-command'
 
 import * as d_test from "../../../interface/temp/generic"
 import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
@@ -38,7 +38,7 @@ const has_passed = (results: d_test.Results): boolean => {
     }).is_empty()
 }
 
-export const $$: Signature = _pc.create_command_procedure(
+export const $$: Signature = _p.create_command_procedure(
     ($p, $cr) => [
         $cr.log.execute(
             {
@@ -48,7 +48,7 @@ export const $$: Signature = _pc.create_command_procedure(
             },
             ($) => $,
         ),
-        _pc.if_(
+        _p.if_(
             has_passed($p['test results']),
             [
                 $cr.log.execute(
@@ -65,7 +65,7 @@ export const $$: Signature = _pc.create_command_procedure(
                 ),
             ]
         ),
-        _pc.if_(
+        _p.if_(
             !has_passed($p['test results']),
             [
                 $cr['log error'].execute(

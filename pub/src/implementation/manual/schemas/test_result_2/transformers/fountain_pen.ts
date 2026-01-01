@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core-interface'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 
 import * as d_in from "../../../../../interface/to_be_generated/test_result"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
@@ -28,7 +28,7 @@ export const Test_Group_Result = (
     return sh.g.sub($.map(($, key): d_out.Group_Part => sh.g.nested_block([
         sh.b.snippet(key),
         sh.b.snippet(`: `),
-        _pt.cc($, ($) => {
+        _p.cc($, ($) => {
             const do_node_path = (which: string) => sh.g.nested_block([
                 sh.b.snippet($p['path to test data']),
                 sh.b.snippet(`/`),
@@ -38,9 +38,9 @@ export const Test_Group_Result = (
                 sh.b.snippet(key),
             ])
             switch ($[0]) {
-                case 'individual test': return _pt.ss($, ($) => _pt.cc($.result, ($) => {
+                case 'individual test': return _p.ss($, ($) => _p.cc($.result, ($) => {
                     switch ($[0]) {
-                        case 'source invalid': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                        case 'source invalid': return _p.ss($, ($) => _p.cc($, ($) => {
                             switch ($[0]) {
                                 case 'not an individual test': return sh.b.sub([
                                     sh.b.snippet(YELLOW),
@@ -50,9 +50,9 @@ export const Test_Group_Result = (
                                         do_node_path(`input`),
                                     ]),
                                 ])
-                                case 'problem with expected': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                                case 'problem with expected': return _p.ss($, ($) => _p.cc($, ($) => {
                                     switch ($[0]) {
-                                        case 'required input suffix missing': return _pt.ss($, ($) => sh.b.sub([
+                                        case 'required input suffix missing': return _p.ss($, ($) => sh.b.sub([
                                             sh.b.snippet(YELLOW),
                                             sh.b.snippet(`⚠️ does not have the required suffix '`),
                                             sh.b.snippet($),
@@ -62,7 +62,7 @@ export const Test_Group_Result = (
                                                 do_node_path(`input`),
                                             ]),
                                         ]))
-                                        case 'expected': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                                        case 'expected': return _p.ss($, ($) => _p.cc($, ($) => {
                                             switch ($[0]) {
                                                 case 'does not exist': return sh.b.sub([
                                                     sh.b.snippet(YELLOW),
@@ -80,24 +80,24 @@ export const Test_Group_Result = (
                                                         do_node_path(`expected`),
                                                     ]),
                                                 ])
-                                                default: return _pt.au($[0])
+                                                default: return _p.au($[0])
                                             }
                                         }))
 
-                                        default: return _pt.au($[0])
+                                        default: return _p.au($[0])
                                     }
                                 }))
-                                default: return _pt.au($[0])
+                                default: return _p.au($[0])
                             }
                         }))
-                        case 'tested': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                        case 'tested': return _p.ss($, ($) => _p.cc($, ($) => {
                             switch ($[0]) {
                                 case 'passed': return sh.b.sub([
                                     sh.b.snippet(GREEN),
                                     sh.b.snippet(`✅ pass`),
                                     sh.b.snippet(ENDCOLOR),
                                 ])
-                                case 'failed': return _pt.ss($, ($) => sh.b.sub([
+                                case 'failed': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.sub([
                                         sh.b.snippet(RED),
                                         sh.b.snippet(`❌ fail`),
@@ -106,40 +106,40 @@ export const Test_Group_Result = (
                                     sh.b.indent([
                                         do_node_path(`input`),
                                         do_node_path(`expected`),
-                                        _pt.cc($, ($) => {
+                                        _p.cc($, ($) => {
                                             switch ($[0]) {
-                                                case 'transform': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                                                case 'transform': return _p.ss($, ($) => _p.cc($, ($) => {
                                                     switch ($[0]) {
-                                                        case 'initialization': return _pt.ss($, ($) => sh.g.simple_block(`initialization`))
-                                                        case 'unexpected output': return _pt.ss($, ($) => sh.g.simple_block(`unexpected output`))
-                                                        default: return _pt.au($[0])
+                                                        case 'initialization': return _p.ss($, ($) => sh.g.simple_block(`initialization`))
+                                                        case 'unexpected output': return _p.ss($, ($) => sh.g.simple_block(`unexpected output`))
+                                                        default: return _p.au($[0])
                                                     }
                                                 }))
-                                                case 'refine': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                                                case 'refine': return _p.ss($, ($) => _p.cc($, ($) => {
                                                     switch ($[0]) {
-                                                        case 'initialization': return _pt.ss($, ($) => sh.g.simple_block(`initialization`))
-                                                        case 'should have failed but succeeded': return _pt.ss($, ($) => sh.g.simple_block(`should have failed but succeeded`))
-                                                        case 'should have succeeded but failed': return _pt.ss($, ($) => sh.g.simple_block(`should have succeeded but failed`))
-                                                        case 'unexpected output': return _pt.ss($, ($) => sh.g.simple_block(`unexpected output`))
-                                                        case 'unexpected error': return _pt.ss($, ($) => sh.g.simple_block(`unexpected error`))
-                                                        default: return _pt.au($[0])
+                                                        case 'initialization': return _p.ss($, ($) => sh.g.simple_block(`initialization`))
+                                                        case 'should have failed but succeeded': return _p.ss($, ($) => sh.g.simple_block(`should have failed but succeeded`))
+                                                        case 'should have succeeded but failed': return _p.ss($, ($) => sh.g.simple_block(`should have succeeded but failed`))
+                                                        case 'unexpected output': return _p.ss($, ($) => sh.g.simple_block(`unexpected output`))
+                                                        case 'unexpected error': return _p.ss($, ($) => sh.g.simple_block(`unexpected error`))
+                                                        default: return _p.au($[0])
                                                     }
                                                 }))
-                                                default: return _pt.au($[0])
+                                                default: return _p.au($[0])
                                             }
                                         })
                                     ])
                                 ]))
-                                default: return _pt.au($[0])
+                                default: return _p.au($[0])
                             }
                         }))
-                        default: return _pt.au($[0])
+                        default: return _p.au($[0])
                     }
                 }))
-                case 'group': return _pt.ss($, ($) => _pt.cc($.result, ($) => {
+                case 'group': return _p.ss($, ($) => _p.cc($.result, ($) => {
                     switch ($[0]) {
 
-                        case 'source valid': return _pt.ss($, ($) => sh.b.sub([
+                        case 'source valid': return _p.ss($, ($) => sh.b.sub([
                             sh.b.indent([
                                 Test_Group_Result(
                                     $,
@@ -150,7 +150,7 @@ export const Test_Group_Result = (
                                 )
                             ])
                         ]))
-                        case 'source invalid': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                        case 'source invalid': return _p.ss($, ($) => _p.cc($, ($) => {
                             switch ($[0]) {
                                 case 'missing': return sh.b.sub([
                                     sh.b.snippet(YELLOW),
@@ -160,7 +160,7 @@ export const Test_Group_Result = (
                                         do_context_path(`input`),
                                     ]),
                                 ])
-                                case 'problem with expected': return _pt.ss($, ($) => _pt.cc($, ($) => {
+                                case 'problem with expected': return _p.ss($, ($) => _p.cc($, ($) => {
                                     switch ($[0]) {
 
                                         case 'node for expected is not a directory': return sh.b.sub([
@@ -180,10 +180,10 @@ export const Test_Group_Result = (
                                                 do_context_path(`expected`),
                                             ]),
                                         ])
-                                        default: return _pt.au($[0])
+                                        default: return _p.au($[0])
                                     }
                                 }))
-                                case 'not a group': return _pt.ss($, ($) => sh.b.sub([
+                                case 'not a group': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet(YELLOW),
                                     sh.b.snippet(`⚠️ not a directory`),
                                     sh.b.snippet(ENDCOLOR),
@@ -191,13 +191,13 @@ export const Test_Group_Result = (
                                         do_node_path(`input`),
                                     ]),
                                 ]))
-                                default: return _pt.au($[0])
+                                default: return _p.au($[0])
                             }
                         }))
-                        default: return _pt.au($[0])
+                        default: return _p.au($[0])
                     }
                 }))
-                default: return _pt.au($[0])
+                default: return _p.au($[0])
             }
         })
     ])).to_list(($, key) => $))
