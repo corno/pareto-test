@@ -14,7 +14,7 @@ export type Tester = (
 ) => d_out.Tested
 
 
-export type Directory_to_Test_Group_Result_Transformer = ($: d_in.Directory) => d_out.Test_Group_Result
+export type Directory_to_Test_Collection_Result_Transformer = ($: d_in.Directory) => d_out.Test_Collection_Result
 export type Node_to_Test_Node_Result_Transformer = ($: d_in.Node) => d_out.Test_Node_Result
 
 export const create_individual_test_transformer = (
@@ -47,27 +47,28 @@ export const create_individual_test_transformer = (
     }]
 }
 
-export const create_group_transformer = ($: _pi.Dictionary<Directory_to_Test_Group_Result_Transformer>): Directory_to_Test_Group_Result_Transformer => {
+export const create_collection_transformer = (type: 'group' | 'dictionary',$: _pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => {
     return (dir_group) => $.map(($, key) => {
         const group_to_test_group_result = $
-        return ['group', {
+        return ['collection', {
+            'type': type === 'group' ? ['group', null] : ['dictionary', null],
             'result': dir_group.nodes.get_entry(key).transform(
-                ($): d_out.Test_Node_Result__group__result => _pt.cc($, ($): d_out.Test_Node_Result__group__result => {
+                ($): d_out.Test_Node_Result__collection__result => _pt.cc($, ($): d_out.Test_Node_Result__collection__result => {
                     switch ($[0]) {
                         case 'directory': return _pt.ss($, ($) => _pt.cc($, ($) => {
                             switch ($[0]) {
-                                case 'invalid': return _pt.ss($, ($): d_out.Test_Node_Result__group__result => ['source invalid', ['problem with expected', $]])
-                                case 'valid': return _pt.ss($, ($): d_out.Test_Node_Result__group__result => {
+                                case 'invalid': return _pt.ss($, ($): d_out.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', $]])
+                                case 'valid': return _pt.ss($, ($): d_out.Test_Node_Result__collection__result => {
 
                                     return ['source valid', group_to_test_group_result($)]
                                 })
                                 default: return _pt.au($[0])
                             }
                         }))
-                        default: return ['source invalid', ['not a group', null]]
+                        default: return ['source invalid', ['not a collection', null]]
                     }
                 }),
-                (): d_out.Test_Node_Result__group__result => ['source invalid', ['missing', null]],
+                (): d_out.Test_Node_Result__collection__result => ['source invalid', ['missing', null]],
             )
         }]
     })

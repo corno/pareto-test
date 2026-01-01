@@ -53,15 +53,15 @@ export type My_Error =
     | ['write directory content', d_write_directory_content.Error]
     | ['failed tests', {
         'path': string
-        'tests': d_test_result.Test_Group_Result
+        'tests': d_test_result.Test_Collection_Result
     }]
 
 
 export const $$ = (
     $: {
-        'astn to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
-        'text to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
-        'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result>
+        'astn to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+        'text to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+        'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
     }
 ): Procedure => _pc.create_command_procedure(
     ($p, $cr, $qr) => [
@@ -113,7 +113,7 @@ export const $$ = (
                                         $v,
                                         ($v, $parent) => {
 
-                                            const test_results: d_test_result.Test_Group_Result = _pt.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Group_Result> }>({
+                                            const test_results: d_test_result.Test_Collection_Result = _pt.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
                                                 'astn_to_astn': {
                                                     'transformer': $['astn to astn'],
                                                     'suffix': {
@@ -148,16 +148,17 @@ export const $$ = (
                                                 ))
                                                 const expected_node = $v.get_entry(key)
                                                 const input_node = $parent.get_entry(key)
-                                                return ['group', {
+                                                return ['collection', {
+                                                    'type': ['dictionary', null],
                                                     'result': input_node.transform(
-                                                        ($): d_test_result.Test_Node_Result__group__result => {
-                                                            return _pt.cc($, ($): d_test_result.Test_Node_Result__group__result => {
+                                                        ($): d_test_result.Test_Node_Result__collection__result => {
+                                                            return _pt.cc($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                 switch ($[0]) {
                                                                     case 'directory': return _pt.ss($, ($) => {
                                                                         const input_dir = $
                                                                         return expected_node.transform(
-                                                                            ($): d_test_result.Test_Node_Result__group__result => {
-                                                                                return _pt.cc($, ($): d_test_result.Test_Node_Result__group__result => {
+                                                                            ($): d_test_result.Test_Node_Result__collection__result => {
+                                                                                return _pt.cc($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                                     switch ($[0]) {
                                                                                         case 'directory': return _pt.ss($, ($) => {
                                                                                             const expected_dir = $
@@ -172,14 +173,14 @@ export const $$ = (
                                                                                     }
                                                                                 })
                                                                             },
-                                                                            (): d_test_result.Test_Node_Result__group__result => ['source invalid', ['problem with expected', ['directory for expected does not exist', null]]]
+                                                                            (): d_test_result.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', ['directory for expected does not exist', null]]]
                                                                         )
                                                                     })
-                                                                    default: return ['source invalid', ['not a group', null]]
+                                                                    default: return ['source invalid', ['not a collection', null]]
                                                                 }
                                                             })
                                                         },
-                                                        (): d_test_result.Test_Node_Result__group__result => ['source invalid', ['missing', null]]
+                                                        (): d_test_result.Test_Node_Result__collection__result => ['source invalid', ['missing', null]]
                                                     )
                                                 }]
                                             })
@@ -203,7 +204,7 @@ export const $$ = (
                                                             {
                                                                 'lines': _pt.list_literal([
                                                                     t_fountain_pen_to_lines.Group_Part(
-                                                                        t_test_result_to_fountain_pen.Test_Group_Result(
+                                                                        t_test_result_to_fountain_pen.Test_Collection_Result(
                                                                             test_results,
                                                                             {
                                                                                 'path to test data': s_path.Context_Path(path_to_test_data),
@@ -270,7 +271,7 @@ export const $$ = (
                             ])).flatten(($) => $)
                             case 'failed tests': return _pt.ss($, ($) => _pt.list_literal([
                                 t_fountain_pen_to_lines.Group_Part(
-                                    t_test_result_to_fountain_pen.Test_Group_Result(
+                                    t_test_result_to_fountain_pen.Test_Collection_Result(
                                         $.tests,
                                         {
                                             'path to test data': $.path,

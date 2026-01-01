@@ -14,8 +14,8 @@ import * as temp from "./temp"
 import * as s_serialize from "../../../generated/pareto/generic/serialize"
 import * as p_parse from "../../../generated/pareto/generic/parse/parse"
 
-export const test_group = ($: { [key: string]: temp.Directory_to_Test_Group_Result_Transformer }): temp.Directory_to_Test_Group_Result_Transformer => {
-    return temp.create_group_transformer(_pt.dictionary_literal($).map(($2) => _pt.cc($2, ($): temp.Directory_to_Test_Group_Result_Transformer => {
+export const test_collection = (type:'group' | 'dictionary', $: { [key: string]: temp.Directory_to_Test_Collection_Result_Transformer }): temp.Directory_to_Test_Collection_Result_Transformer => {
+    return temp.create_collection_transformer(type, _pt.dictionary_literal($).map(($2) => _pt.cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => {
         return $
     })))
 }
@@ -28,7 +28,7 @@ export const transformer = (
         $: string,
         abort: ($: string) => never
     ) => string
-): temp.Directory_to_Test_Group_Result_Transformer => {
+): temp.Directory_to_Test_Collection_Result_Transformer => {
     return ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
         return temp.create_individual_test_transformer(
             ($p) => _pinternals.deprecated_create_refinement_context<d_out.Tested, string>(
@@ -61,9 +61,9 @@ export const refiner = (
             'refine': ($: string) => never
         }
     ) => string
-): temp.Directory_to_Test_Group_Result_Transformer => {
+): temp.Directory_to_Test_Collection_Result_Transformer => {
 
-    const x = (expect_error: boolean): temp.Directory_to_Test_Group_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
+    const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
         return temp.create_individual_test_transformer(
             ($p) => _pinternals.deprecated_create_refinement_context<d_out.Tested, string>(
                 (initialize_abort) => {
@@ -104,7 +104,7 @@ export const refiner = (
             )
         )($)
     })
-    return temp.create_group_transformer(_pt.dictionary_literal<temp.Directory_to_Test_Group_Result_Transformer>({
+    return temp.create_collection_transformer('dictionary', _pt.dictionary_literal<temp.Directory_to_Test_Collection_Result_Transformer>({
         "error": x(true),
         "success": x(false)
     }))

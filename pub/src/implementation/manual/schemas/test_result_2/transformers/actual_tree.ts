@@ -12,7 +12,7 @@ const op_cast_to_non_empty_dictionary = <T>($: _pi.Dictionary<T>): _pi.Optional_
 export const Test_Node_Result: _pi.Transformer<d_in.Test_Node_Result, _pi.Optional_Value<d_out.Node>> = ($) => {
     return _p.cc($, ($): _pi.Optional_Value<d_out.Node> => {
         switch ($[0]) {
-            case 'group': return _p.ss($, ($) => _p.cc($, ($) => _p.cc($.result, ($) => {
+            case 'collection': return _p.ss($, ($) => _p.cc($, ($) => _p.cc($.result, ($) => {
                 switch ($[0]) {
                     case 'source invalid': return _p.ss($, ($) => _p.not_set())
                     case 'source valid': return _p.ss($, ($): _pi.Optional_Value<d_out.Node> => op_cast_to_non_empty_dictionary(Test_Group_Result($)).map(($) => ['directory', $]))
@@ -58,6 +58,6 @@ export const Test_Node_Result: _pi.Transformer<d_in.Test_Node_Result, _pi.Option
     })
 }
 
-export const Test_Group_Result: _pi.Transformer<d_in.Test_Group_Result, d_out.Directory> = ($) => {
+export const Test_Group_Result: _pi.Transformer<d_in.Test_Collection_Result, d_out.Directory> = ($) => {
     return $.filter(($) => Test_Node_Result($))
 }

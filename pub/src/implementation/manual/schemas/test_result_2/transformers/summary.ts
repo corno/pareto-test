@@ -13,7 +13,7 @@ export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Re
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
     return _p.cc($, ($) => {
         switch ($[0]) {
-            case 'group': return _p.ss($, ($) => _p.cc($, ($) => _p.cc($.result, ($) => {
+            case 'collection': return _p.ss($, ($) => _p.cc($, ($) => _p.cc($.result, ($) => {
                 switch ($[0]) {
                     case 'source invalid': return _p.ss($, ($) => structural_problem_incrementer)
                     case 'source valid': return _p.ss($, ($) => Test_Group_Result($, $p))
@@ -38,7 +38,7 @@ export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Re
     })
 }
 
-export const Test_Group_Result: _pi.Transformer_With_Parameters<d_in.Test_Group_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Group_Result: _pi.Transformer_With_Parameters<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
     $.map(($): number => Test_Node_Result($, $p)).map(($) => count += $)
     return count

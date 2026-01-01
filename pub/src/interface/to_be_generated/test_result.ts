@@ -2,23 +2,26 @@ import * as _pi from 'pareto-core-interface'
 
 import * as d_generic from "./generic_testset"
 
-export type Test_Group_Result = _pi.Dictionary<Test_Node_Result>
+export type Test_Collection_Result = _pi.Dictionary<Test_Node_Result>
 
 export type Test_Node_Result =
-    | ['group', Test_Node_Result__group]
+    | ['collection', Test_Node_Result__collection]
     | ['individual test', Individual_Test_Result]
 
-export type Test_Node_Result__group = {
-    'result': Test_Node_Result__group__result
+export type Test_Node_Result__collection = {
+    'type': 
+    | ['dictionary', null]
+    | ['group', null]
+    'result': Test_Node_Result__collection__result
 }
 
-export type Test_Node_Result__group__result =
+export type Test_Node_Result__collection__result =
     | ['source invalid',
-        | ['not a group', null]
-        | ['missing', null] // the tester expected this test group, but it was not found
+        | ['not a collection', null]
+        | ['missing', null] // the tester expected this test collection, but it was not found
         | ['problem with expected', d_generic.Node__directory__invalid]
     ]
-    | ['source valid', Test_Group_Result]
+    | ['source valid', Test_Collection_Result]
 
 export type Individual_Test_Result = {
     'result': Individual_Test_Result__result
