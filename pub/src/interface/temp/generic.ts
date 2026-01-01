@@ -18,7 +18,7 @@ export type Transformer_With_Parameters<Input, Expected_Output, Parameters> = In
 
 export type Refiner_Without_Parameters<Expected_Result, Expected_Error, Input> = Input_And_Expected<Input, Output_Or_Error<Expected_Result, Expected_Error>>
 
-export type Refiner_With_Parameters<Expected_Result, Expected_Error, Input, Parameters, > = {
+export type Refiner_With_Parameters<Expected_Result, Expected_Error, Input, Parameters> = {
     'input': {
         'input': Input
         'parameters': Parameters

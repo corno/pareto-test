@@ -2,11 +2,11 @@ import * as _pt from 'pareto-core-transformer'
 import * as _pc from 'pareto-core-command'
 import * as _pi from 'pareto-core-interface'
 
-import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
-import * as d_read_directory_content from "exupery-resources/dist/interface/to_be_generated/read_directory_content"
-import * as d_directory_content from "exupery-resources/dist/interface/to_be_generated/directory_content"
+import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
+import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
+import * as d_directory_content from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_test_result from "../../../../interface/to_be_generated/test_result"
-import * as d_write_directory_content from "exupery-resources/dist/interface/to_be_generated/write_directory_content"
+import * as d_write_directory_content from "pareto-resources/dist/interface/to_be_generated/write_directory_content"
 
 import * as d_generic_testset from "../../../../interface/to_be_generated/generic_testset"
 
@@ -21,14 +21,14 @@ import * as t_test_result_to_fountain_pen from "../../../manual/schemas/test_res
 import * as t_test_result_to_summary from "../../../manual/schemas/test_result_2/transformers/summary"
 import * as t_test_result_to_actual_tree from "../../../manual/schemas/test_result_2/transformers/actual_tree"
 
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
-import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
+import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
+import * as s_path from "pareto-resources/dist/implementation/manual/schemas/path/serializers"
 
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
 
-import * as resources_exupery from "exupery-resources/dist/interface/resources"
+import * as resources_exupery from "pareto-resources/dist/interface/resources"
 
 export type Procedure = _pi.Command_Procedure<
     resources_exupery.commands.main,

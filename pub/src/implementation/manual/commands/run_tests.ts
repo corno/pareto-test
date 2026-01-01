@@ -3,10 +3,10 @@ import * as _pi from 'pareto-core-interface'
 import * as _pc from 'pareto-core-command'
 
 import * as d_test from "../../../interface/temp/generic"
-import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
-import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
+import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
+import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 
-import * as resources_exupery from "exupery-resources/dist/interface/resources"
+import * as resources_exupery from "pareto-resources/dist/interface/resources"
 
 
 export type Parameters = {

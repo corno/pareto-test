@@ -2,7 +2,7 @@ import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
 
 import * as d_in from "../../../../../interface/to_be_generated/test_result"
-import * as d_out from "exupery-resources/dist/interface/to_be_generated/directory_content"
+import * as d_out from "pareto-resources/dist/interface/to_be_generated/directory_content"
 
 
 const op_cast_to_non_empty_dictionary = <T>($: _pi.Dictionary<T>): _pi.Optional_Value<_pi.Dictionary<T>> => {

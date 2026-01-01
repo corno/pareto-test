@@ -2,7 +2,7 @@ import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
-import * as d_in from "exupery-resources/dist/interface/to_be_generated/directory_content"
+import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/merged_filesystem_nodes"
 
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Valid_Directory, {

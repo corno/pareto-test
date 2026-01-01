@@ -3,11 +3,11 @@ import * as _pdev from 'pareto-core-dev'
 import * as _pt from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
-import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
+import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 
 import * as generic from "../interface/temp/generic"
 
-import * as resources_exupery from "exupery-resources/dist/interface/resources"
+import * as resources_exupery from "pareto-resources/dist/interface/resources"
 
 export type Resources = {
     'commands': {
@@ -16,7 +16,10 @@ export type Resources = {
     }
 }
 
-export const run_transformer_tests_with_parameters = <Input, Expected, Parameters>(tests: _pi.Dictionary<generic.Transformer_With_Parameters<Input, Expected, Parameters>>, implementation: ($: Input, parameters: Parameters) => Expected): generic.Results => {
+export const run_transformer_tests_with_parameters = <Input, Expected, Parameters>(
+    tests: _pi.Dictionary<generic.Transformer_With_Parameters<Input, Expected, Parameters>>,
+    implementation: _pi.Transformer_With_Parameters<Input, Expected, Parameters>
+): generic.Results => {
     return tests.map(($) => {
         return ['test', {
             'passed': implementation($.input.input, $.input.parameters) === $.expected
@@ -24,7 +27,10 @@ export const run_transformer_tests_with_parameters = <Input, Expected, Parameter
     })
 }
 
-export const run_transformer_tests_without_parameters = <Input, Expected>($: _pi.Dictionary<generic.Transformer<Input, Expected>>, implementation: ($: Input) => Expected): generic.Results => {
+export const run_transformer_tests_without_parameters = <Input, Expected>(
+    $: _pi.Dictionary<generic.Transformer<Input, Expected>>,
+    implementation: _pi.Transformer<Input, Expected>
+): generic.Results => {
     return $.map(($) => {
         return ['test', {
             'passed': implementation($.input) === $.expected
@@ -32,11 +38,14 @@ export const run_transformer_tests_without_parameters = <Input, Expected>($: _pi
     })
 }
 
-export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Error, Input, Parameters>(tests: _pi.Dictionary<generic.Refiner_With_Parameters<Expected_Output, Expected_Error, Input, Parameters>>, implementation: ($: Input, parameters: Parameters, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
+export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Error, Input, Parameters>(
+    tests: _pi.Dictionary<generic.Refiner_With_Parameters<Expected_Output, Expected_Error, Input, Parameters>>,
+    implementation: _pi.Refiner_With_Parameters<Expected_Output, Expected_Error, Input, Parameters>
+): generic.Results => {
     return tests.map(($) => {
         const expected = $.expected
         const x = _pinternals.deprecated_create_refinement_context<Expected_Output, Expected_Error>(
-            (abort) => implementation($.input.input, $.input.parameters, abort)
+            (abort) => implementation($.input.input, abort, $.input.parameters)
         )
         return ['test', {
             'passed': x.transform(
@@ -65,7 +74,10 @@ export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Erro
     })
 }
 
-export const run_refiner_tests_without_parameters = <Expected_Output, Expected_Error, Input>($: _pi.Dictionary<generic.Refiner_Without_Parameters<Expected_Output, Expected_Error, Input>>, implementation: ($: Input, abort: (error: Expected_Error) => never) => Expected_Output): generic.Results => {
+export const run_refiner_tests_without_parameters = <Expected_Output, Expected_Error, Input>(
+    $: _pi.Dictionary<generic.Refiner_Without_Parameters<Expected_Output, Expected_Error, Input>>,
+    implementation: _pi.Refiner<Expected_Output, Expected_Error, Input>
+): generic.Results => {
     return $.map(($) => {
         const expected = $.expected
         const x = _pinternals.deprecated_create_refinement_context<Expected_Output, Expected_Error>(

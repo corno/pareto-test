@@ -10,7 +10,7 @@ const consume_current = <T>(iterator: _pi.Iterator<T>): _pi.Optional_Value<T> =>
     return current
 }
 
-import * as ds_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
+import * as ds_path from "pareto-resources/dist/implementation/manual/schemas/context_path/deserializers"
 
 
 export const Parameters = (
