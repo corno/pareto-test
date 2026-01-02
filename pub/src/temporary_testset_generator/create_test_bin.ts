@@ -29,7 +29,9 @@ const dict_to_test_group_result_transformer = <T>(type: 'group' | 'dictionary', 
 namespace t_package_tester_to_test_group_result_transformer {
 
     export const Package: ($: testers.Package) => Directory_to_Test_Collection_Result_Transformer = ($) => {
-        return dict_to_test_group_result_transformer('dictionary', $.schemas, ($) => Schema($))
+        return dict_to_test_group_result_transformer('group', {
+            "schemas": Schema($.schemas)
+        }, ($) => $)
     }
 
     const xx = ($: testers.Testset_for_set_of_algorithms) => dict_to_test_group_result_transformer('dictionary', $, ($) => $)

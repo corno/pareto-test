@@ -149,7 +149,7 @@ export const $$ = (
                                                 const expected_node = $v.get_entry(key)
                                                 const input_node = $parent.get_entry(key)
                                                 return ['collection', {
-                                                    'type': ['dictionary', null],
+                                                    'type': ['group', null],
                                                     'result': input_node.transform(
                                                         ($): d_test_result.Test_Node_Result__collection__result => {
                                                             return _pt.cc($, ($): d_test_result.Test_Node_Result__collection__result => {
