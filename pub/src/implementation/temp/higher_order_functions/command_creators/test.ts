@@ -197,7 +197,7 @@ export const $$ = (
 
                                             return [
 
-                                                _pc.if_(
+                                                _pc.if_.direct(
                                                     number_of_failed_tests === 0,
                                                     [
                                                         $cr['log'].execute(

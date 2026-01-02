@@ -6,9 +6,9 @@ import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/sche
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-const RED = `\x1b[41m`
+const RED = `\x1b[31m`
 const GREEN = `\x1b[32m`
-const YELLOW = `\x1b[43m`
+const YELLOW = `\x1b[33m`
 const GRAY = `\x1b[90m`
 const CYAN = `\x1b[36m`
 const BLUE = `\x1b[34m`
@@ -61,7 +61,7 @@ export const Test_Collection_Result = (
                             switch ($[0]) {
                                 case 'not an individual test': return sh.b.sub([
                                     sh.b.snippet(YELLOW),
-                                    sh.b.snippet(`not a file: `),
+                                    sh.b.snippet(` not a file: `),
                                     do_node_path(`input`),
                                     sh.b.snippet(ENDCOLOR),
                                 ])
@@ -69,7 +69,7 @@ export const Test_Collection_Result = (
                                     switch ($[0]) {
                                         case 'required input suffix missing': return _p.ss($, ($) => sh.b.sub([
                                             sh.b.snippet(YELLOW),
-                                            sh.b.snippet(`does not have the required suffix '`),
+                                            sh.b.snippet(` does not have the required suffix '`),
                                             sh.b.snippet($),
                                             sh.b.snippet(`': `),
                                             do_node_path(`input`),
@@ -79,13 +79,13 @@ export const Test_Collection_Result = (
                                             switch ($[0]) {
                                                 case 'does not exist': return sh.b.sub([
                                                     sh.b.snippet(YELLOW),
-                                                    sh.b.snippet(`missing in the 'expected' file structure: `),
+                                                    sh.b.snippet(` missing in the 'expected' file structure: `),
                                                     do_context_path(`expected`),
                                                     sh.b.snippet(ENDCOLOR),
                                                 ])
                                                 case 'is not a file': return sh.b.sub([
                                                     sh.b.snippet(YELLOW),
-                                                    sh.b.snippet(`node in 'expected' file structure is not a file: `),
+                                                    sh.b.snippet(` node in 'expected' file structure is not a file: `),
                                                     do_node_path(`expected`),
                                                     sh.b.snippet(ENDCOLOR),
                                                 ])
@@ -103,13 +103,13 @@ export const Test_Collection_Result = (
                             switch ($[0]) {
                                 case 'passed': return sh.b.sub([
                                     sh.b.snippet(GREEN),
-                                    sh.b.snippet(`✅ pass`),
+                                    sh.b.snippet(` ✅ pass`),
                                     sh.b.snippet(ENDCOLOR),
                                 ])
                                 case 'failed': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.sub([
                                         sh.b.snippet(RED),
-                                        sh.b.snippet(`❌ fail`),
+                                        sh.b.snippet(` ❌ fail`),
                                         sh.b.snippet(ENDCOLOR),
                                     ]),
                                     sh.b.indent([
@@ -167,7 +167,7 @@ export const Test_Collection_Result = (
                             switch ($[0]) {
                                 case 'missing': return sh.b.sub([
                                     sh.b.snippet(YELLOW),
-                                    sh.b.snippet(`missing: `),
+                                    sh.b.snippet(` missing: `),
                                     do_context_path(`input`),
                                     sh.b.snippet(ENDCOLOR),
                                 ])
@@ -176,14 +176,14 @@ export const Test_Collection_Result = (
 
                                         case 'node for expected is not a directory': return sh.b.sub([
                                             sh.b.snippet(YELLOW),
-                                            sh.b.snippet(`node in 'expected' file structure is not a directory: `),
+                                            sh.b.snippet(` node in 'expected' file structure is not a directory: `),
                                             do_node_path(`expected`),
                                             sh.b.snippet(ENDCOLOR),
 
                                         ])
                                         case 'directory for expected does not exist': return sh.b.sub([
                                             sh.b.snippet(YELLOW),
-                                            sh.b.snippet(`'missing in 'expected' file structure: `),
+                                            sh.b.snippet(` missing in 'expected' file structure: `),
                                             do_context_path(`expected`),
                                             sh.b.snippet(ENDCOLOR),
                                         ])
@@ -192,7 +192,7 @@ export const Test_Collection_Result = (
                                 }))
                                 case 'not a collection': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet(YELLOW),
-                                    sh.b.snippet(`not a directory: `),
+                                    sh.b.snippet(` not a directory: `),
                                     do_node_path(`input`),
                                     sh.b.snippet(ENDCOLOR),
                                 ]))

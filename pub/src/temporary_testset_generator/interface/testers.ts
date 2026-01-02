@@ -18,4 +18,5 @@ export type Schema = {
         [key: string]: Testset_for_set_of_algorithms
     }
     'serializers'?: Testset_for_set_of_algorithms
+    'text_to_text'?: Testset_for_set_of_algorithms
 }

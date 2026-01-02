@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.44",
+  "version": "0.13.45",
   "description": "A testing framework for Pareto projects",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",

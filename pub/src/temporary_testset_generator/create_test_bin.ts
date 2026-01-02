@@ -40,6 +40,7 @@ namespace t_package_tester_to_test_group_result_transformer {
             "refiners": dict_to_test_group_result_transformer('dictionary', $.refiners, ($) => xx($)),
             "transformers": dict_to_test_group_result_transformer('dictionary', $.transformers, ($) => xx($)),
             "serializers": xx($.serializers),
+            "text_to_text": xx($.text_to_text),
         }, ($) => $)
     }
 

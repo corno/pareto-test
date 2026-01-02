@@ -48,7 +48,7 @@ export const $$: Signature = _p.create_command_procedure(
             },
             ($) => $,
         ),
-        _p.if_(
+        _p.if_.direct(
             has_passed($p['test results']),
             [
                 $cr.log.execute(
@@ -65,7 +65,7 @@ export const $$: Signature = _p.create_command_procedure(
                 ),
             ]
         ),
-        _p.if_(
+        _p.if_.direct(
             !has_passed($p['test results']),
             [
                 $cr['log error'].execute(

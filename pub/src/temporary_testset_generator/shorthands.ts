@@ -98,3 +98,22 @@ export const deserializer = <Output, Deserialize_Error, Initialize_Error>(
     )
 }
 
+
+export const text_to_text = <Deserialize_Error, Initialize_Error>(
+    extension_in: string,
+    extension_out: string,
+    text_to_text: _pi.Text_Deserializer<Deserialize_Error>,
+    serialize_deserialize_error: _pi.Serializer<Deserialize_Error>,
+): Directory_to_Test_Collection_Result_Transformer => {
+    return sh.refiner(
+        ($, abort) => {
+            return text_to_text(
+                $,
+                ($) => abort.refine(
+                    serialize_deserialize_error($)
+                ),
+            )
+        },
+    )
+}
+
