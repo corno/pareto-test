@@ -38,7 +38,7 @@ const has_passed = (results: d_test.Results): boolean => {
     }).is_empty()
 }
 
-export const $$: Signature = _p.create_command_procedure(
+export const $$: Signature = _p.command_procedure(
     ($p, $cr) => [
         $cr.log.execute(
             {

@@ -63,7 +63,7 @@ export const $$ = (
         'text to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
         'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
     }
-): Procedure => _pc.create_command_procedure(
+): Procedure => _pc.command_procedure(
     ($p, $cr, $qr) => [
 
         _pc.create_error_handling_context<d_main.Error, My_Error>(
