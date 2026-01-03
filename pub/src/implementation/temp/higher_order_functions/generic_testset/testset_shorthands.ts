@@ -12,15 +12,15 @@ import * as d_parse_result from "../../../../interface/generated/pareto/core/par
 import * as temp from "./temp"
 
 import * as s_serialize from "../../../generated/pareto/generic/serialize"
-import * as p_parse from "../../../generated/pareto/generic/parse/parse"
+import { transform_refinement_result } from '../../../temp_transform_refinement_result'
 
-export const test_collection = (type:'group' | 'dictionary', $: { [key: string]: temp.Directory_to_Test_Collection_Result_Transformer }): temp.Directory_to_Test_Collection_Result_Transformer => {
+export const test_collection = (type: 'group' | 'dictionary', $: { [key: string]: temp.Directory_to_Test_Collection_Result_Transformer }): temp.Directory_to_Test_Collection_Result_Transformer => {
     return temp.create_collection_transformer(type, _pt.dictionary.literal($).map(($2) => _pt.cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => {
         return $
     })))
 }
 
-export const parse = ($: string): _pi.Deprecated_Refinement_Result<d_astn_source._T_Document, d_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
+// export const parse = ($: string): _pinternals.Refinement_Result<d_astn_source._T_Document, d_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
 export const serialize = s_serialize.Document
 
 export const transformer = (
@@ -31,21 +31,22 @@ export const transformer = (
 ): temp.Directory_to_Test_Collection_Result_Transformer => {
     return ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
         return temp.create_individual_test_transformer(
-            ($p) => _pinternals.deprecated_create_refinement_context<d_out.Tested, string>(
-                (abort) => {
+            ($p) => transform_refinement_result(
+                _pinternals.create_refinement_context<d_out.Tested, string>(
+                    (abort) => {
 
-                    const out = transformer(
-                        $p.input,
-                        abort
-                    )
-                    return out === $p.expected
-                        ? ['passed', null]
-                        : ['failed', ['transform', ['unexpected output', {
-                            'expected': $p.expected,
-                            'actual': out,
-                        }]]]
-                }
-            ).transform<d_out.Tested>(
+                        const out = transformer(
+                            $p.input,
+                            abort
+                        )
+                        return out === $p.expected
+                            ? ['passed', null]
+                            : ['failed', ['transform', ['unexpected output', {
+                                'expected': $p.expected,
+                                'actual': out,
+                            }]]]
+                    }
+                ),
                 ($) => $,
                 ($): d_out.Tested => ['failed', ['transform', ['initialization', $]]],
             )
@@ -65,40 +66,42 @@ export const refiner = (
 
     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => {
         return temp.create_individual_test_transformer(
-            ($p) => _pinternals.deprecated_create_refinement_context<d_out.Tested, string>(
-                (initialize_abort) => {
-                    return _pinternals.deprecated_create_refinement_context<string, string>(
-                        (refine_abort) => refiner(
-                            $p.input,
-                            {
-                                'setup': initialize_abort,
-                                'refine': refine_abort,
-                            }
+            ($p) => transform_refinement_result(
+                _pinternals.create_refinement_context<d_out.Tested, string>(
+                    (initialize_abort) => {
+                        return transform_refinement_result(
+                            _pinternals.create_refinement_context<string, string>(
+                                (refine_abort) => refiner(
+                                    $p.input,
+                                    {
+                                        'setup': initialize_abort,
+                                        'refine': refine_abort,
+                                    }
+                                )
+                            ),
+                            ($): d_out.Tested => {
+                                return expect_error
+                                    ? ['failed', ['refine', ['should have failed but succeeded', $]]]
+                                    : $ === $p.expected
+                                        ? ['passed', null]
+                                        : ['failed', ['refine', ['unexpected output', {
+                                            'expected': $p.expected,
+                                            'actual': $,
+                                        }]]]
+                            },
+                            ($): d_out.Tested => {
+                                return expect_error
+                                    ? $ === $p.expected
+                                        ? ['passed', null]
+                                        : ['failed', ['refine', ['unexpected output', {
+                                            'expected': $p.expected,
+                                            'actual': $,
+                                        }]]]
+                                    : ['failed', ['refine', ['should have succeeded but failed', $]]]
+                            },
                         )
-                    ).transform<d_out.Tested>(
-                        ($): d_out.Tested => {
-                            return expect_error
-                                ? ['failed', ['refine', ['should have failed but succeeded', $]]]
-                                : $ === $p.expected
-                                    ? ['passed', null]
-                                    : ['failed', ['refine', ['unexpected output', {
-                                        'expected': $p.expected,
-                                        'actual': $,
-                                    }]]]
-                        },
-                        ($): d_out.Tested => {
-                            return expect_error
-                                ? $ === $p.expected
-                                    ? ['passed', null]
-                                    : ['failed', ['refine', ['unexpected output', {
-                                        'expected': $p.expected,
-                                        'actual': $,
-                                    }]]]
-                                : ['failed', ['refine', ['should have succeeded but failed', $]]]
-                        },
-                    )
-                }
-            ).transform<d_out.Tested>(
+                    }
+                ),
                 ($) => $,
                 ($): d_out.Tested => ['failed', ['refine', ['initialization', $]]],
             )

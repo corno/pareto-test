@@ -8,6 +8,7 @@ import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas
 import * as generic from "../interface/temp/generic"
 
 import * as resources_exupery from "pareto-resources/dist/interface/resources"
+import { transform_refinement_result } from './temp_transform_refinement_result'
 
 export type Resources = {
     'commands': {
@@ -44,11 +45,12 @@ export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Erro
 ): generic.Results => {
     return tests.map(($) => {
         const expected = $.expected
-        const x = _pinternals.deprecated_create_refinement_context<Expected_Output, Expected_Error>(
-            (abort) => implementation($.input.input, abort, $.input.parameters)
-        )
         return ['test', {
-            'passed': x.transform(
+            'passed': transform_refinement_result(
+
+                _pinternals.create_refinement_context<Expected_Output, Expected_Error>(
+                    (abort) => implementation($.input.input, abort, $.input.parameters)
+                ),
                 ($) => {
                     const output = $
                     return _pt.cc(expected, ($) => {
@@ -80,11 +82,11 @@ export const run_refiner_tests_without_parameters = <Expected_Output, Expected_E
 ): generic.Results => {
     return $.map(($) => {
         const expected = $.expected
-        const x = _pinternals.deprecated_create_refinement_context<Expected_Output, Expected_Error>(
-            (abort) => implementation($.input, abort)
-        )
         return ['test', {
-            'passed': x.transform(
+            'passed': transform_refinement_result(
+                _pinternals.create_refinement_context<Expected_Output, Expected_Error>(
+                    (abort) => implementation($.input, abort)
+                ),
                 ($) => {
                     const output = $
                     return _pt.cc(expected, ($) => {
