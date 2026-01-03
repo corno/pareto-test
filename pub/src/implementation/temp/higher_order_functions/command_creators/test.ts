@@ -113,26 +113,26 @@ export const $$ = (
                                         $v,
                                         ($v, $parent) => {
 
-                                            const test_results: d_test_result.Test_Collection_Result = _pt.dictionary_literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
+                                            const test_results: d_test_result.Test_Collection_Result = _pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
                                                 'astn_to_astn': {
                                                     'transformer': $['astn to astn'],
                                                     'suffix': {
-                                                        'to be appended to expected': _pt.not_set(),
-                                                        'to be removed from input': _pt.not_set(),
+                                                        'to be appended to expected':_pt.optional.not_set(),
+                                                        'to be removed from input':_pt.optional.not_set(),
                                                     }
                                                 },
                                                 'text_to_astn': {
                                                     'transformer': $['text to astn'],
                                                     'suffix': {
-                                                        'to be appended to expected': _pt.set(`.astn`),
-                                                        'to be removed from input': _pt.not_set(),
+                                                        'to be appended to expected':_pt.optional.set(`.astn`),
+                                                        'to be removed from input':_pt.optional.not_set(),
                                                     }
                                                 },
                                                 'astn_to_text': {
                                                     'transformer': $['astn to text'],
                                                     'suffix': {
-                                                        'to be appended to expected': _pt.not_set(),
-                                                        'to be removed from input': _pt.set(`.astn`),
+                                                        'to be appended to expected':_pt.optional.not_set(),
+                                                        'to be removed from input':_pt.optional.set(`.astn`),
                                                     }
                                                 },
                                             }).map(($, key): d_test_result.Test_Node_Result => {
@@ -146,8 +146,8 @@ export const $$ = (
                                                         'suffix settings': $.suffix,
                                                     }
                                                 ))
-                                                const expected_node = $v.get_entry(key)
-                                                const input_node = $parent.get_entry(key)
+                                                const expected_node = $v.get_possible_entry(key)
+                                                const input_node = $parent.get_possible_entry(key)
                                                 return ['collection', {
                                                     'type': ['group', null],
                                                     'result': input_node.transform(
@@ -202,7 +202,7 @@ export const $$ = (
                                                     [
                                                         $cr['log'].execute(
                                                             {
-                                                                'lines': _pt.list_literal([
+                                                                'lines': _pt.list.literal([
                                                                     t_fountain_pen_to_lines.Group_Part(
                                                                         t_test_result_to_fountain_pen.Test_Collection_Result(
                                                                             test_results,
@@ -215,8 +215,8 @@ export const $$ = (
                                                                             'indentation': `   `
                                                                         }
                                                                     ),
-                                                                    _pt.list_literal([``]),
-                                                                    _pt.list_literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
+                                                                    _pt.list.literal([``]),
+                                                                    _pt.list.literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
                                                                 ]).flatten(($) => $)
 
                                                             },
@@ -259,17 +259,17 @@ export const $$ = (
                 {
                     'lines': _pt.cc($, ($) => {
                         switch ($[0]) {
-                            case 'command line': return _pt.ss($, ($) => _pt.list_literal([`command line error`]))
-                            case 'writing to stdout': return _pt.ss($, ($) => _pt.list_literal([`stdout error`]))
-                            case 'read directory content': return _pt.ss($, ($) => _pt.list_literal([
-                                _pt.list_literal([`read dir error`]),
+                            case 'command line': return _pt.ss($, ($) => _pt.list.literal([`command line error`]))
+                            case 'writing to stdout': return _pt.ss($, ($) => _pt.list.literal([`stdout error`]))
+                            case 'read directory content': return _pt.ss($, ($) => _pt.list.literal([
+                                _pt.list.literal([`read dir error`]),
                                 t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
                             ])).flatten(($) => $)   
-                            case 'write directory content': return _pt.ss($, ($) => _pt.list_literal([
-                                _pt.list_literal([`write dir error`]),
+                            case 'write directory content': return _pt.ss($, ($) => _pt.list.literal([
+                                _pt.list.literal([`write dir error`]),
                                 t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
                             ])).flatten(($) => $)
-                            case 'failed tests': return _pt.ss($, ($) => _pt.list_literal([
+                            case 'failed tests': return _pt.ss($, ($) => _pt.list.literal([
                                 t_fountain_pen_to_lines.Group_Part(
                                     t_test_result_to_fountain_pen.Test_Collection_Result(
                                         $.tests,
@@ -282,7 +282,7 @@ export const $$ = (
                                         'indentation': `   `
                                     }
                                 ),
-                                _pt.list_literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
+                                _pt.list.literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
                                     $.tests,
                                     {
                                         'include passed tests': false,

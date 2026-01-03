@@ -25,7 +25,7 @@ export const Whitespace = (string_iterator: String_Iterator): _out._T_Whitespace
 
     const start = string_iterator['create location info']()
     return {
-        'value': _ea.build_text(($i) => {
+        'value': _ea.text.build(($i) => {
             while (true) {
 
 
@@ -83,7 +83,7 @@ export const Trivia = (string_iterator: String_Iterator): _out._T_Trivia => {
 
     return {
         'leading whitespace': Whitespace(string_iterator),
-        'comments': _ea.build_list(($i) => {
+        'comments': _ea.list.build(($i) => {
             while (true) {
                 const $ = string_iterator['get current character']()
                 if ($ === null) {
@@ -116,7 +116,7 @@ export const Trivia = (string_iterator: String_Iterator): _out._T_Trivia => {
                                 }
                                 $i['add element']({
                                     'type': ['line', null],
-                                    'content': _ea.build_text(($i) => {
+                                    'content': _ea.text.build(($i) => {
                                         while (true) {
                                             const $ = string_iterator['get current character']()
                                             if ($ === null) {
@@ -145,7 +145,7 @@ export const Trivia = (string_iterator: String_Iterator): _out._T_Trivia => {
                                 string_iterator['consume character']() // consume the asterisk
                                 $i['add element']({
                                     'type': ['block', null],
-                                    'content': _ea.build_text(($i) => {
+                                    'content': _ea.text.build(($i) => {
                                         let found_asterisk = false
                                         const Character = {
                                             solidus: 0x2F,              // /
@@ -320,7 +320,7 @@ export const Annotated_Token = (st: String_Iterator): _out._T_Annotated_Token =>
                 default:
                     return ['string', {
                         'type': ['undelimited', null],
-                        'value': _ea.build_text(($i) => {
+                        'value': _ea.text.build(($i) => {
                             while (true) {
                                 const $ = st['get current character']()
                                 if ($ === null) {
@@ -401,7 +401,7 @@ export const Delimited_String = (string_iterator: String_Iterator, is_end_charac
 
     }
     const start = string_iterator['create location info']()
-    const txt = _ea.build_text(($i) => {
+    const txt = _ea.text.build(($i) => {
         while (true) {
             const $ = string_iterator['get current character']()
             if ($ === null) {
@@ -499,7 +499,7 @@ export const Delimited_String = (string_iterator: String_Iterator, is_end_charac
                                 break
                             case Character.u:
                                 string_iterator['consume character']()
-                                $i['add character'](op_parse_hexadecimal(_ea.build_text(($i) => {
+                                $i['add character'](op_parse_hexadecimal(_ea.text.build(($i) => {
                                     const get_char = () => {
                                         const char = string_iterator['get current character']()
                                         if (char === null) {
@@ -557,7 +557,7 @@ export const Tokenizer_Result = (
 ): _out._T_Tokenizer_Result => {
     return {
         'leading trivia': Trivia($p['string iterator']),
-        'tokens': _ea.build_list<_out._T_Annotated_Token>($i => {
+        'tokens': _ea.list.build<_out._T_Annotated_Token>($i => {
             while ($p['string iterator']['get current character']() !== null) {
 
                 const token = Annotated_Token($p['string iterator'])

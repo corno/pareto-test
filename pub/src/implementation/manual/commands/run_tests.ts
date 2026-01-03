@@ -30,8 +30,8 @@ const has_passed = (results: d_test.Results): boolean => {
     return results.filter<null>(($) => {
         return _pt.cc($, ($) => {
             switch ($[0]) {
-                case 'test': return _pt.ss($, ($) => $.passed ? _pt.not_set() : _pt.set(null))
-                case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.not_set() : _pt.set(null))
+                case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
+                case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))
                 default: return _pt.au($[0])
             }
         })
@@ -42,7 +42,7 @@ export const $$: Signature = _p.command_procedure(
     ($p, $cr) => [
         $cr.log.execute(
             {
-                'lines': _pt.list_literal([
+                'lines': _pt.list.literal([
                     `Running tests...`,
                 ])
             },
@@ -53,9 +53,9 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr.log.execute(
                     {
-                        'lines': _pt.list_literal([
+                        'lines': _pt.list.literal([
                             t_test_result_to_text.Results($p['test results']),
-                            _pt.list_literal([
+                            _pt.list.literal([
                                 ``,
                                 `all tests successful.`
                             ]),
@@ -70,9 +70,9 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr['log error'].execute(
                     {
-                        'lines': _pt.list_literal([
+                        'lines': _pt.list.literal([
                             t_test_result_to_text.Results($p['test results']),
-                            _pt.list_literal([
+                            _pt.list.literal([
                                 ``,
                                 `some tests failed`
                             ]),

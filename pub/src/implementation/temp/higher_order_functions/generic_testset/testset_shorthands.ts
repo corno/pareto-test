@@ -15,7 +15,7 @@ import * as s_serialize from "../../../generated/pareto/generic/serialize"
 import * as p_parse from "../../../generated/pareto/generic/parse/parse"
 
 export const test_collection = (type:'group' | 'dictionary', $: { [key: string]: temp.Directory_to_Test_Collection_Result_Transformer }): temp.Directory_to_Test_Collection_Result_Transformer => {
-    return temp.create_collection_transformer(type, _pt.dictionary_literal($).map(($2) => _pt.cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => {
+    return temp.create_collection_transformer(type, _pt.dictionary.literal($).map(($2) => _pt.cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => {
         return $
     })))
 }
@@ -104,7 +104,7 @@ export const refiner = (
             )
         )($)
     })
-    return temp.create_collection_transformer('dictionary', _pt.dictionary_literal<temp.Directory_to_Test_Collection_Result_Transformer>({
+    return temp.create_collection_transformer('dictionary', _pt.dictionary.literal<temp.Directory_to_Test_Collection_Result_Transformer>({
         "error": x(true),
         "success": x(false)
     }))

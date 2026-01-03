@@ -17,7 +17,7 @@ export const process_unconstrained_state_group = <Mapped_Value>(
         switch ($[0]) {
             case 'tagged value': return _pr.ss($, ($) => {
                 const data = $.value
-                return $p.states.get_entry(
+                return $p.states.get_possible_entry(
                     $.state.value
                 ).transform(
                     ($) => $(data),
@@ -42,7 +42,7 @@ export const process_unresolved_state_group = <Mapped_Value>(
                 const data = $.value
                 return {
                     'location': $["|"].range,
-                    'state group': $p.states.get_entry(
+                    'state group': $p.states.get_possible_entry(
                         $.state.value
                     ).transform(
                         ($) => $(data),
@@ -91,7 +91,7 @@ export const get_entry = (
     }
 
 ): t._T_Value => {
-    return $.get_entry($p.key).transform(
+    return $.get_possible_entry($p.key).transform(
         ($) => $,
         () => _pr.fixme_abort(`no such entry: ${$p.key}`)
     )
@@ -266,8 +266,8 @@ export const process_optional = <Mapped_Value>(
 ): _pi.Optional_Value<Mapped_Value> => {
     return _pr.cc($, ($) => {
         switch ($[0]) {
-            case 'not set': return _pr.ss($, ($) => _pr.not_set())
-            case 'set optional value': return _pr.ss($, ($) => _pr.set($p.value($.value)))
+            case 'not set': return _pr.ss($, ($) => _pr.optional.not_set())
+            case 'set optional value': return _pr.ss($, ($) => _pr.optional.set($p.value($.value)))
             default: return _pr.fixme_abort(`Unexpected type for nothing: ${$[0]}`)
 
         }

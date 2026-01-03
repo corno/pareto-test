@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.46",
+  "version": "0.13.48",
   "description": "A testing framework for Pareto projects",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
   "dependencies": {
     "astn": "^0.113.20",
     "astn-sealed": "^0.1.0",
-    "pareto-fountain-pen": "^0.3.23",
-    "pareto-resources": "^0.1.4"
+    "pareto-fountain-pen": "^0.3.24",
+    "pareto-resources": "^0.1.6"
   }
 }

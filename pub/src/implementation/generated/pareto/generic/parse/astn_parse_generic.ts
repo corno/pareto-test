@@ -52,7 +52,7 @@ export const create_astn_token_iterator = ($: _source._T_Tokenizer_Result.tokens
     let position = 0
     return {
         'get required token': (pet) => {
-            return $.__get_element_at(position).transform(
+            return $.__get_possible_element_at(position).transform(
                 ($) => $,
                 () => throw_parse_error(
                     ['parser', {

@@ -23,12 +23,12 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
                 })
                 case 'file': return _p.ss($, ($): d_out.Node => {
                     return ['file', {
-                        'support': support_directory.get_entry(key + $p['support suffix'])
+                        'support': support_directory.get_possible_entry(key + $p['support suffix'])
                     }]
                 })
                 case 'directory': return _p.ss($, ($) => {
                     const main_node = $
-                    return ['directory', support_directory.get_entry(key).transform(
+                    return ['directory', support_directory.get_possible_entry(key).transform(
                         ($): d_out.Directory => _p.cc($, ($) => {
                             switch ($[0]) {
                                 case 'directory': return _p.ss($, ($) => ['valid', Directory(

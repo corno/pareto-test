@@ -8,9 +8,9 @@ import * as d_out from "../../../../../interface/to_be_generated/generic_testset
 
 const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> => {
     let suffix_matches = true
-    const stripped = _pds.build_text(($i) => {
-        const main_as_characters = _pds.text_to_character_list($)
-        const suffix_as_characters = _pds.text_to_character_list(suffix)
+    const stripped = _pds.text.build(($i) => {
+        const main_as_characters = _pds.list.from_text($, ($) => $)
+        const suffix_as_characters = _pds.list.from_text(suffix, ($) => $)
         const main_length = main_as_characters.get_number_of_elements()
         const suffix_length = suffix_as_characters.get_number_of_elements()
         let index = -1
@@ -22,7 +22,7 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                suffix_as_characters.__get_element_at(suffix_index).map(($) => {
+                suffix_as_characters.__get_possible_element_at(suffix_index).map(($) => {
                     if (cur_char !== $) {
                         suffix_matches = false
                     }
@@ -31,9 +31,9 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
         })
     })
     if (suffix_matches) {
-        return _p.set(stripped)
+        return _p.optional.set(stripped)
     }
-    return _p.set($)
+    return _p.optional.set($)
 }
 
 export type Parameters = {
@@ -69,7 +69,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
 
 
                         const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-                            const expected_node = $p.expected.get_entry($ + $p['suffix settings']['to be appended to expected'].transform(
+                            const expected_node = $p.expected.get_possible_entry($ + $p['suffix settings']['to be appended to expected'].transform(
                                 ($) => $,
                                 () => ``
                             ))
@@ -102,7 +102,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                         }]
                     })
                     case 'directory': return _p.ss($, ($) => {
-                        const expected_node = $p.expected.get_entry(key)
+                        const expected_node = $p.expected.get_possible_entry(key)
                         const input_node = $
                         return ['directory', expected_node.transform(
                             ($) => _p.cc($, ($) => {
@@ -149,7 +149,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
         //         })
         //         temp[key_of_expected] = null
         //     })
-        //     const main = _p.dictionary_literal(temp)
+        //     const main = _p.dictionary.literal(temp)
         //     return op_filter_dictionary($p.expected.map(($, key) => {
         //         return main.get_entry(key).map(() => null)
         //     }))
