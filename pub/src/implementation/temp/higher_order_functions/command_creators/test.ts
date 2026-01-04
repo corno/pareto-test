@@ -117,22 +117,22 @@ export const $$ = (
                                                 'astn_to_astn': {
                                                     'transformer': $['astn to astn'],
                                                     'suffix': {
-                                                        'to be appended to expected':_pt.optional.not_set(),
-                                                        'to be removed from input':_pt.optional.not_set(),
+                                                        'to be appended to expected': _pt.optional.not_set(),
+                                                        'to be removed from input': _pt.optional.not_set(),
                                                     }
                                                 },
                                                 'text_to_astn': {
                                                     'transformer': $['text to astn'],
                                                     'suffix': {
-                                                        'to be appended to expected':_pt.optional.set(`.astn`),
-                                                        'to be removed from input':_pt.optional.not_set(),
+                                                        'to be appended to expected': _pt.optional.set(`.astn`),
+                                                        'to be removed from input': _pt.optional.not_set(),
                                                     }
                                                 },
                                                 'astn_to_text': {
                                                     'transformer': $['astn to text'],
                                                     'suffix': {
-                                                        'to be appended to expected':_pt.optional.not_set(),
-                                                        'to be removed from input':_pt.optional.set(`.astn`),
+                                                        'to be appended to expected': _pt.optional.not_set(),
+                                                        'to be removed from input': _pt.optional.set(`.astn`),
                                                     }
                                                 },
                                             }).map(($, key): d_test_result.Test_Node_Result => {
@@ -255,49 +255,51 @@ export const $$ = (
                 )
 
             ],
-            ($) => $cr['log error'].execute(
-                {
-                    'lines': _pt.cc($, ($) => {
-                        switch ($[0]) {
-                            case 'command line': return _pt.ss($, ($) => _pt.list.literal([`command line error`]))
-                            case 'writing to stdout': return _pt.ss($, ($) => _pt.list.literal([`stdout error`]))
-                            case 'read directory content': return _pt.ss($, ($) => _pt.list.literal([
-                                _pt.list.literal([`read dir error`]),
-                                t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
-                            ])).flatten(($) => $)   
-                            case 'write directory content': return _pt.ss($, ($) => _pt.list.literal([
-                                _pt.list.literal([`write dir error`]),
-                                t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
-                            ])).flatten(($) => $)
-                            case 'failed tests': return _pt.ss($, ($) => _pt.list.literal([
-                                t_fountain_pen_to_lines.Group_Part(
-                                    t_test_result_to_fountain_pen.Test_Collection_Result(
-                                        $.tests,
+            ($) => [
+                $cr['log error'].execute(
+                    {
+                        'lines': _pt.cc($, ($) => {
+                            switch ($[0]) {
+                                case 'command line': return _pt.ss($, ($) => _pt.list.literal([`command line error`]))
+                                case 'writing to stdout': return _pt.ss($, ($) => _pt.list.literal([`stdout error`]))
+                                case 'read directory content': return _pt.ss($, ($) => _pt.list.literal([
+                                    _pt.list.literal([`read dir error`]),
+                                    t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
+                                ])).flatten(($) => $)
+                                case 'write directory content': return _pt.ss($, ($) => _pt.list.literal([
+                                    _pt.list.literal([`write dir error`]),
+                                    t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
+                                ])).flatten(($) => $)
+                                case 'failed tests': return _pt.ss($, ($) => _pt.list.literal([
+                                    t_fountain_pen_to_lines.Group_Part(
+                                        t_test_result_to_fountain_pen.Test_Collection_Result(
+                                            $.tests,
+                                            {
+                                                'path to test data': $.path,
+                                                'path to test': ``
+                                            }
+                                        ),
                                         {
-                                            'path to test data': $.path,
-                                            'path to test': ``
+                                            'indentation': `   `
                                         }
                                     ),
-                                    {
-                                        'indentation': `   `
-                                    }
-                                ),
-                                _pt.list.literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
-                                    $.tests,
-                                    {
-                                        'include passed tests': false,
-                                        'include structural problems': true,
-                                    }
-                                )} test failed${ENDCOLOR}`]),
-                            ]).flatten(($) => $))
-                            default: return _pt.au($[0])
-                        }
+                                    _pt.list.literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
+                                        $.tests,
+                                        {
+                                            'include passed tests': false,
+                                            'include structural problems': true,
+                                        }
+                                    )} test failed${ENDCOLOR}`]),
+                                ]).flatten(($) => $))
+                                default: return _pt.au($[0])
+                            }
+                        })
+                    },
+                    ($): d_main.Error => ({
+                        'exit code': 2
                     })
-                },
-                ($): d_main.Error => ({
-                    'exit code': 2
-                })
-            ),
+                )
+            ],
             {
                 'exit code': 1
             }
