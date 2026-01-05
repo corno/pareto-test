@@ -1,6 +1,7 @@
-import * as _pt from 'pareto-core-transformer'
 import * as _pc from 'pareto-core-command'
+import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
+import * as _pinternals from 'pareto-core-internals'
 
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
@@ -58,7 +59,7 @@ export type My_Error =
 
 
 export const $$ = (
-    $: {
+    $x: {
         'astn to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
         'text to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
         'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
@@ -74,85 +75,85 @@ export const $$ = (
                         $p,
                         ($) => abort(['command line', null])
                     ),
-                    ($v) => [
+                    ($) => [
 
                         //write the path to stdout
                         $cr['write to stdout'].execute(
-                            `Testing with data from: ${s_path.Context_Path($v['path to test data'])}\n`,
+                            `Testing with data from: ${s_path.Context_Path($['path to test data'])}\n`,
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
-                        //read input dir
-                        _pc.query_stacked(
-                            $qr['read directory content'](
-                                {
-                                    'path': t_path_to_path.create_node_path(
-                                        $v['path to test data'],
-                                        `input`,
-                                    ),
-                                },
-                                ($): My_Error => ['read directory content', $]
-                            ),
-                            $v,
-                            ($v, $parent) => {
-                                const path_to_test_data = $parent['path to test data']
-                                return [
-
-
-                                    //read expected dir
-                                    _pc.query_stacked(
-                                        $qr['read directory content'](
-                                            {
-                                                'path': t_path_to_path.create_node_path(
-                                                    $parent['path to test data'],
-                                                    `expected`,
-                                                ),
-                                            },
-                                            ($): My_Error => ['read directory content', $]
+                        _pinternals.cc($, ($parent) =>
+                            //read input dir
+                            _pc.query(
+                                $qr['read directory content'](
+                                    {
+                                        'path': t_path_to_path.create_node_path(
+                                            $['path to test data'],
+                                            `input`,
                                         ),
-                                        $v,
-                                        ($v, $parent) => {
+                                    },
+                                    ($): My_Error => ['read directory content', $]
+                                ),
+                                ($) => $,
+                                ($) => {
+                                    const path_to_test_data = $parent['path to test data']
+                                    return [
 
-                                            const test_results: d_test_result.Test_Collection_Result = _pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
-                                                'astn_to_astn': {
-                                                    'transformer': $['astn to astn'],
-                                                    'suffix': {
-                                                        'to be appended to expected': _pt.optional.not_set(),
-                                                        'to be removed from input': _pt.optional.not_set(),
-                                                    }
+
+                                        //read expected dir
+                                        _pc.query_stacked(
+                                            $qr['read directory content'](
+                                                {
+                                                    'path': t_path_to_path.create_node_path(
+                                                        $parent['path to test data'],
+                                                        `expected`,
+                                                    ),
                                                 },
-                                                'text_to_astn': {
-                                                    'transformer': $['text to astn'],
-                                                    'suffix': {
-                                                        'to be appended to expected': _pt.optional.set(`.astn`),
-                                                        'to be removed from input': _pt.optional.not_set(),
-                                                    }
-                                                },
-                                                'astn_to_text': {
-                                                    'transformer': $['astn to text'],
-                                                    'suffix': {
-                                                        'to be appended to expected': _pt.optional.not_set(),
-                                                        'to be removed from input': _pt.optional.set(`.astn`),
-                                                    }
-                                                },
-                                            }).map(($, key): d_test_result.Test_Node_Result => {
-                                                const the_func = ($x: {
-                                                    'input': d_directory_content.Directory,
-                                                    'expected': d_directory_content.Directory,
-                                                }) => $.transformer(t_directory_content_to_generic_testset.Directory(
-                                                    $x.input,
-                                                    {
-                                                        'expected': $x.expected,
-                                                        'suffix settings': $.suffix,
-                                                    }
-                                                ))
-                                                const expected_node = $v.get_possible_entry(key)
-                                                const input_node = $parent.get_possible_entry(key)
-                                                return ['collection', {
-                                                    'type': ['group', null],
-                                                    'result': input_node.transform(
-                                                        ($): d_test_result.Test_Node_Result__collection__result => {
-                                                            return _pt.cc($, ($): d_test_result.Test_Node_Result__collection__result => {
+                                                ($): My_Error => ['read directory content', $]
+                                            ),
+                                            $,
+                                            ($v, $parent) => {
+
+                                                const test_results: d_test_result.Test_Collection_Result = _pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
+                                                    'astn_to_astn': {
+                                                        'transformer': $x['astn to astn'],
+                                                        'suffix': {
+                                                            'to be appended to expected': _pt.optional.not_set(),
+                                                            'to be removed from input': _pt.optional.not_set(),
+                                                        }
+                                                    },
+                                                    'text_to_astn': {
+                                                        'transformer': $x['text to astn'],
+                                                        'suffix': {
+                                                            'to be appended to expected': _pt.optional.set(`.astn`),
+                                                            'to be removed from input': _pt.optional.not_set(),
+                                                        }
+                                                    },
+                                                    'astn_to_text': {
+                                                        'transformer': $x['astn to text'],
+                                                        'suffix': {
+                                                            'to be appended to expected': _pt.optional.not_set(),
+                                                            'to be removed from input': _pt.optional.set(`.astn`),
+                                                        }
+                                                    },
+                                                }).map(($, key): d_test_result.Test_Node_Result => {
+                                                    const the_func = ($x: {
+                                                        'input': d_directory_content.Directory,
+                                                        'expected': d_directory_content.Directory,
+                                                    }) => $.transformer(t_directory_content_to_generic_testset.Directory(
+                                                        $x.input,
+                                                        {
+                                                            'expected': $x.expected,
+                                                            'suffix settings': $.suffix,
+                                                        }
+                                                    ))
+                                                    const expected_node = $v.get_possible_entry(key)
+                                                    const input_node = $parent.get_possible_entry(key)
+                                                    return ['collection', {
+                                                        'type': ['group', null],
+                                                        'result': input_node.transform(
+                                                            ($): d_test_result.Test_Node_Result__collection__result => _pt.cc($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                 switch ($[0]) {
                                                                     case 'directory': return _pt.ss($, ($) => {
                                                                         const input_dir = $
@@ -178,79 +179,79 @@ export const $$ = (
                                                                     })
                                                                     default: return ['source invalid', ['not a collection', null]]
                                                                 }
-                                                            })
-                                                        },
-                                                        (): d_test_result.Test_Node_Result__collection__result => ['source invalid', ['missing', null]]
-                                                    )
-                                                }]
-                                            })
+                                                            }),
+                                                            (): d_test_result.Test_Node_Result__collection__result => ['source invalid', ['missing', null]]
+                                                        )
+                                                    }]
+                                                })
 
-                                            const number_of_failed_tests = t_test_result_to_summary.Test_Group_Result(
-                                                test_results,
-                                                {
-                                                    'include passed tests': false,
-                                                    'include structural problems': true,
-                                                }
-                                            )
-
+                                                const number_of_failed_tests = t_test_result_to_summary.Test_Group_Result(
+                                                    test_results,
+                                                    {
+                                                        'include passed tests': false,
+                                                        'include structural problems': true,
+                                                    }
+                                                )
 
 
-                                            return [
 
-                                                _pc.if_.direct(
-                                                    number_of_failed_tests === 0,
-                                                    [
-                                                        $cr['log'].execute(
-                                                            {
-                                                                'lines': _pt.list.literal([
-                                                                    t_fountain_pen_to_lines.Group_Part(
-                                                                        t_test_result_to_fountain_pen.Test_Collection_Result(
-                                                                            test_results,
+                                                return [
+
+                                                    _pc.if_.direct(
+                                                        number_of_failed_tests === 0,
+                                                        [
+                                                            $cr['log'].execute(
+                                                                {
+                                                                    'lines': _pt.list.literal([
+                                                                        t_fountain_pen_to_lines.Group_Part(
+                                                                            t_test_result_to_fountain_pen.Test_Collection_Result(
+                                                                                test_results,
+                                                                                {
+                                                                                    'path to test data': s_path.Context_Path(path_to_test_data),
+                                                                                    'path to test': ``
+                                                                                }
+                                                                            ),
                                                                             {
-                                                                                'path to test data': s_path.Context_Path(path_to_test_data),
-                                                                                'path to test': ``
+                                                                                'indentation': `   `
                                                                             }
                                                                         ),
-                                                                        {
-                                                                            'indentation': `   `
-                                                                        }
+                                                                        _pt.list.literal([``]),
+                                                                        _pt.list.literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
+                                                                    ]).flatten(($) => $)
+
+                                                                },
+                                                                ($): My_Error => ['writing to stdout', null]
+                                                            )
+                                                        ],
+                                                        [
+                                                            $cr['write directory content'].execute(
+                                                                {
+                                                                    'directory': t_test_result_to_actual_tree.Test_Group_Result(
+                                                                        test_results,
                                                                     ),
-                                                                    _pt.list.literal([``]),
-                                                                    _pt.list.literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
-                                                                ]).flatten(($) => $)
+                                                                    'path': t_path_to_path.extend_context_path(
+                                                                        path_to_test_data,
+                                                                        {
+                                                                            'addition': `actual`,
+                                                                        },
+                                                                    ),
+                                                                },
+                                                                ($): My_Error => ['write directory content', $],
+                                                            ),
+                                                            _pc.fail(['failed tests', {
+                                                                'path': s_path.Context_Path(path_to_test_data),
+                                                                'tests': test_results
+                                                            }])
+                                                        ]
+                                                    ),
+                                                ]
+                                            }
+                                        )
 
-                                                            },
-                                                            ($): My_Error => ['writing to stdout', null]
-                                                        )
-                                                    ],
-                                                    [
-                                                        $cr['write directory content'].execute(
-                                                            {
-                                                                'directory': t_test_result_to_actual_tree.Test_Group_Result(
-                                                                    test_results,
-                                                                ),
-                                                                'path': t_path_to_path.extend_context_path(
-                                                                    path_to_test_data,
-                                                                    {
-                                                                        'addition': `actual`,
-                                                                    },
-                                                                ),
-                                                            },
-                                                            ($): My_Error => ['write directory content', $],
-                                                        ),
-                                                        _pc.fail(['failed tests', {
-                                                            'path': s_path.Context_Path(path_to_test_data),
-                                                            'tests': test_results
-                                                        }])
-                                                    ]
-                                                ),
-                                            ]
-                                        }
-                                    )
+                                    ]
+                                }
+                            )),
 
-                                ]
-                            }
-                        )
                     ]
                 )
 

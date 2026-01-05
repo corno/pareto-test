@@ -1,3 +1,4 @@
+import * as _pi from 'pareto-core-interface'
 
 import { Directory_to_Test_Collection_Result_Transformer } from "../../implementation/temp/higher_order_functions/generic_testset/temp"
 
@@ -5,18 +6,56 @@ export type Package = {
     'schemas': { [key: string]: Schema }
 }
 
-export type Testset_for_set_of_algorithms = undefined | {
-    [key: string]: Directory_to_Test_Collection_Result_Transformer
+
+export type Serializer = {
+    extension: string
+    process: (
+        $: string,
+        abort: _pi.Abort<string>
+    ) => string
+}
+
+export type Deserializer = {
+    extension: string
+    process: (
+        $: string,
+        abort: _pi.Abort<string>
+    ) => string
 }
 
 export type Schema = {
-    'deserializers'?: Testset_for_set_of_algorithms
-    'refiners'?: {
-        [key: string]: Testset_for_set_of_algorithms
-    }
-    'transformers'?: {
-        [key: string]: Testset_for_set_of_algorithms
-    }
-    'serializers'?: Testset_for_set_of_algorithms
-    'text_to_text'?: Testset_for_set_of_algorithms
+    'deserializers': _pi.Dictionary<Deserializer>
+    'refiners': _pi.Dictionary<_pi.Dictionary<Refiner>>
+    'transformers': _pi.Dictionary<_pi.Dictionary<Transformer>>
+    'serializers': _pi.Dictionary<Serializer>
+    'text_to_text': _pi.Dictionary<Text_to_Text>
+}
+
+export type Transformer = {
+    process: (
+        $: string,
+        abort: _pi.Abort<string>
+    ) => string
+}
+
+
+export type Refiner = {
+    process: (
+        $: string,
+        abort: {
+            initialize: _pi.Abort<string>
+            refine: _pi.Abort<string>
+        }
+    ) => string
+}
+
+
+
+export type Text_to_Text = {
+    in_extension: string
+    out_extension: string
+    process: (
+        $: string,
+        abort: _pi.Abort<string>
+    ) => string
 }
