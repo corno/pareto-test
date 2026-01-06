@@ -13,6 +13,7 @@ export const Parameters = (
 ): d.Parameters => {
     return {
         'path to test data': ds_path.Context_Path(iterator.consume(
+            ($) => $,
             () => abort("expected path to test data")
         )),
     }

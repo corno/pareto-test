@@ -13,13 +13,13 @@ export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Re
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'collection': return _p.ss($, ($) => _p.sg($, ($) => _p.sg($.result, ($) => {
+            case 'collection': return _p.ss($, ($) => _p.sg($.result, ($) => {
                 switch ($[0]) {
                     case 'source invalid': return _p.ss($, ($) => structural_problem_incrementer)
                     case 'source valid': return _p.ss($, ($) => Test_Group_Result($, $p))
                     default: return _p.au($[0])
                 }
-            })))
+            }))
             case 'individual test': return _p.ss($, ($) => _p.sg($.result, ($) => {
                 switch ($[0]) {
                     case 'source invalid': return _p.ss($, ($) => structural_problem_incrementer)

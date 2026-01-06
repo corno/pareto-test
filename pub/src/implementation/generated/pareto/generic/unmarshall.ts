@@ -1,6 +1,5 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pr from 'pareto-core-refiner'
-import * as _pinternals from 'pareto-core-internals'
 
 import * as t from "../../../../interface/generated/pareto/core/astn_source"
 import * as unconstrained from "../../../../interface/generated/pareto/core/unconstrained"

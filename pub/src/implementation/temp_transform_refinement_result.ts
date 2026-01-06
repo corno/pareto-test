@@ -1,7 +1,8 @@
-import * as _pinternals from 'pareto-core-internals'
+import { $$ as panic } from 'pareto-core-internals/dist/misc/panic'
+import { Refinement_Result } from 'pareto-core-internals/dist/async/create_refinement_context'
 
 export const transform_refinement_result = <Out, Success, Error>(
-    $: _pinternals.Refinement_Result<Success, Error>,
+    $: Refinement_Result<Success, Error>,
     on_success: ($: Success) => Out,
     on_error: ($: Error) => Out,
 ): Out => {
@@ -15,7 +16,7 @@ export const transform_refinement_result = <Out, Success, Error>(
         }
     )
     if (out === null) {
-        _pinternals.panic("unreachable")
+        panic("unreachable")
     }
     return out
 }

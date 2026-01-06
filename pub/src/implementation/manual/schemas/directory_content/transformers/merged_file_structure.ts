@@ -1,6 +1,6 @@
 import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
-import * as _pinternals from 'pareto-core-internals'
+import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/merged_filesystem_nodes"
@@ -17,13 +17,13 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
     const support_directory = $p.support
     return _p.sg($, ($): d_out.Node => {
         switch ($[0]) {
-            case 'other': return _p.ss($, ($): d_out.Node => _pinternals.panic(`expected a file or a directory`))
+            case 'other': return _p.ss($, ($): d_out.Node => _pdev.implement_me(`expected a file or a directory`))
             case 'file': return _p.ss($, ($): d_out.Node => ['file', {
-                'support': support_directory.get_possible_entry(key + $p['support suffix'])
+                'support': support_directory.__get_possible_entry(key + $p['support suffix'])
             }])
             case 'directory': return _p.ss($, ($) => {
                 const main_node = $
-                return ['directory', support_directory.get_possible_entry(key).transform(
+                return ['directory', support_directory.__get_possible_entry(key).transform(
                     ($): d_out.Directory => _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'directory': return _p.ss($, ($) => ['valid', Directory(

@@ -1,7 +1,6 @@
 import * as _pc from 'pareto-core-command'
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
-import * as _pinternals from 'pareto-core-internals'
 
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
@@ -83,7 +82,7 @@ export const $$ = (
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
-                        _pinternals.sg($, ($parent) =>
+                        _pt.deprecated_cc($, ($parent) =>
                             //read input dir
                             _pc.query(
                                 $qr['read directory content'](
@@ -148,8 +147,8 @@ export const $$ = (
                                                             'suffix settings': $.suffix,
                                                         }
                                                     ))
-                                                    const expected_node = $v.get_possible_entry(key)
-                                                    const input_node = $parent.get_possible_entry(key)
+                                                    const expected_node = $v.__get_possible_entry(key)
+                                                    const input_node = $parent.__get_possible_entry(key)
                                                     return ['collection', {
                                                         'type': ['group', null],
                                                         'result': input_node.transform(
@@ -202,7 +201,7 @@ export const $$ = (
                                                         [
                                                             $cr['log'].execute(
                                                                 {
-                                                                    'lines': _pt.list.literal([
+                                                                    'lines': _pt.list.nested_literal([
                                                                         t_fountain_pen_to_lines.Group_Part(
                                                                             t_test_result_to_fountain_pen.Test_Collection_Result(
                                                                                 test_results,
@@ -215,9 +214,13 @@ export const $$ = (
                                                                                 'indentation': `   `
                                                                             }
                                                                         ),
-                                                                        _pt.list.literal([``]),
-                                                                        _pt.list.literal([`${GREEN}All tests passed!${ENDCOLOR}`]),
-                                                                    ]).flatten(($) => $)
+                                                                        [
+                                                                            ``,
+                                                                            GREEN,
+                                                                            `All tests passed!`,
+                                                                            ENDCOLOR
+                                                                        ],
+                                                                    ])
 
                                                                 },
                                                                 ($): My_Error => ['writing to stdout', null]
@@ -263,15 +266,15 @@ export const $$ = (
                             switch ($[0]) {
                                 case 'command line': return _pt.ss($, ($) => _pt.list.literal([`command line error`]))
                                 case 'writing to stdout': return _pt.ss($, ($) => _pt.list.literal([`stdout error`]))
-                                case 'read directory content': return _pt.ss($, ($) => _pt.list.literal([
+                                case 'read directory content': return _pt.ss($, ($) => _pt.list.nested_literal([
                                     _pt.list.literal([`read dir error`]),
                                     t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
-                                ])).flatten(($) => $)
-                                case 'write directory content': return _pt.ss($, ($) => _pt.list.literal([
+                                ]))
+                                case 'write directory content': return _pt.ss($, ($) => _pt.list.nested_literal([
                                     _pt.list.literal([`write dir error`]),
                                     t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
-                                ])).flatten(($) => $)
-                                case 'failed tests': return _pt.ss($, ($) => _pt.list.literal([
+                                ]))
+                                case 'failed tests': return _pt.ss($, ($) => _pt.list.nested_literal<string>([
                                     t_fountain_pen_to_lines.Group_Part(
                                         t_test_result_to_fountain_pen.Test_Collection_Result(
                                             $.tests,
@@ -284,14 +287,19 @@ export const $$ = (
                                             'indentation': `   `
                                         }
                                     ),
-                                    _pt.list.literal([`${RED}${t_test_result_to_summary.Test_Group_Result(
-                                        $.tests,
-                                        {
-                                            'include passed tests': false,
-                                            'include structural problems': true,
-                                        }
-                                    )} test failed${ENDCOLOR}`]),
-                                ]).flatten(($) => $))
+                                    [
+                                        RED,
+                                        "" + t_test_result_to_summary.Test_Group_Result(
+                                            $.tests,
+                                            {
+                                                'include passed tests': false,
+                                                'include structural problems': true,
+                                            }
+                                        ),
+                                        ` test failed$`,
+                                        ENDCOLOR
+                                    ],
+                                ]))
                                 default: return _pt.au($[0])
                             }
                         })

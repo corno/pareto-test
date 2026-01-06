@@ -1,7 +1,8 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
 import * as _pt from 'pareto-core-transformer'
-import * as _pinternals from 'pareto-core-internals'
+
+import { create_refinement_context } from 'pareto-core-internals/dist/async/create_refinement_context'
 
 import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
 
@@ -39,7 +40,7 @@ export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Erro
     return ['test', {
         'passed': transform_refinement_result(
 
-            _pinternals.create_refinement_context<Expected_Output, Expected_Error>(
+            create_refinement_context<Expected_Output, Expected_Error>(
                 (abort) => implementation($.input.input, abort, $.input.parameters)
             ),
             ($) => {
@@ -74,7 +75,7 @@ export const run_refiner_tests_without_parameters = <Expected_Output, Expected_E
         const expected = $.expected
         return ['test', {
             'passed': transform_refinement_result(
-                _pinternals.create_refinement_context<Expected_Output, Expected_Error>(
+                create_refinement_context<Expected_Output, Expected_Error>(
                     (abort) => implementation($.input, abort)
                 ),
                 ($) => {

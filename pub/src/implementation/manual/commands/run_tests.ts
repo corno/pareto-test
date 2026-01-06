@@ -26,13 +26,15 @@ export type Signature = _pi.Command_Procedure<
 
 import * as t_test_result_to_text from "../schemas/test_result/transformers/lines"
 
-const has_passed = (results: d_test.Results): boolean => results.filter<null>(($) => _pt.sg($, ($) => {
-    switch ($[0]) {
-        case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
-        case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))
-        default: return _pt.au($[0])
-    }
-})).is_empty()
+const has_passed = (results: d_test.Results): boolean => _pt.boolean.dictionary_is_empty(
+    _pt.dictionary.filter(results, ($) => _pt.sg($, ($): _pi.Optional_Value<null> => {
+        switch ($[0]) {
+            case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
+            case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))
+            default: return _pt.au($[0])
+        }
+    }))
+)
 
 export const $$: Signature = _p.command_procedure(
     ($p, $cr) => [
@@ -49,13 +51,13 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr.log.execute(
                     {
-                        'lines': _pt.list.literal([
+                        'lines': _pt.list.nested_literal([
                             t_test_result_to_text.Results($p['test results']),
-                            _pt.list.literal([
+                            [
                                 ``,
                                 `all tests successful.`
-                            ]),
-                        ]).flatten(($) => $)
+                            ],
+                        ])
                     },
                     ($) => $,
                 ),
@@ -66,13 +68,13 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr['log error'].execute(
                     {
-                        'lines': _pt.list.literal([
+                        'lines': _pt.list.nested_literal([
                             t_test_result_to_text.Results($p['test results']),
-                            _pt.list.literal([
+                            [
                                 ``,
                                 `some tests failed`
-                            ]),
-                        ]).flatten(($) => $)
+                            ],
+                        ])
                     },
                     ($) => $,
                 ),

@@ -1,6 +1,6 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
-import * as _pinternals from 'pareto-core-internals'
+import { create_refinement_context } from 'pareto-core-internals/dist/async/create_refinement_context'
 
 import * as d_out from "../../../../interface/to_be_generated/test_result"
 
@@ -14,7 +14,14 @@ import * as temp from "./temp"
 import * as s_serialize from "../../../generated/pareto/generic/serialize"
 import { transform_refinement_result } from '../../../temp_transform_refinement_result'
 
-export const test_collection = (type: 'group' | 'dictionary', $: { [key: string]: temp.Directory_to_Test_Collection_Result_Transformer }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(type, _pt.dictionary.literal($).map(($2) => _pt.sg($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)))
+export const test_collection = (type: 'group' | 'dictionary', $: {
+    [key: string]: temp.Directory_to_Test_Collection_Result_Transformer
+}): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
+    type,
+    _pt.dictionary.literal($).map(
+        ($2) => _pt.deprecated_cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
+    )
+)
 
 // export const parse = ($: string): _pinternals.Refinement_Result<d_astn_source._T_Document, d_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
 export const serialize = s_serialize.Document
@@ -26,7 +33,7 @@ export const transformer = (
     ) => string
 ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
     ($p) => transform_refinement_result(
-        _pinternals.create_refinement_context<d_out.Tested, string>(
+        create_refinement_context<d_out.Tested, string>(
             (abort) => {
 
                 const out = transformer(
@@ -58,10 +65,10 @@ export const refiner = (
 
     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
         ($p) => transform_refinement_result(
-            _pinternals.create_refinement_context<d_out.Tested, string>(
+            create_refinement_context<d_out.Tested, string>(
                 (initialize_abort) => {
                     return transform_refinement_result(
-                        _pinternals.create_refinement_context<string, string>(
+                        create_refinement_context<string, string>(
                             (refine_abort) => refiner(
                                 $p.input,
                                 {

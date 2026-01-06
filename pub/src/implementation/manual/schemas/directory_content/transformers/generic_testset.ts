@@ -1,18 +1,18 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pds from 'pareto-core-deserializer'
-import * as _pinternals from 'pareto-core-internals'
+import { $$ as panic } from 'pareto-core-internals/dist/misc/panic'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/generic_testset"
 
 const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> => {
     let suffix_matches = true
-    const stripped = _pds.text.build(($i) => {
+    const stripped = _pds.text.deprecated_build(($i) => {
         const main_as_characters = _pds.list.from_text($, ($) => $)
         const suffix_as_characters = _pds.list.from_text(suffix, ($) => $)
-        const main_length = main_as_characters.get_number_of_elements()
-        const suffix_length = suffix_as_characters.get_number_of_elements()
+        const main_length = main_as_characters.__get_number_of_elements()
+        const suffix_length = suffix_as_characters.__get_number_of_elements()
         let index = -1
         main_as_characters.__for_each(($) => {
             index += 1
@@ -59,13 +59,13 @@ export type Suffix_Settings = {
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
     'nodes': $.map(($, key) => _p.sg($, ($): d_out.Node => {
         switch ($[0]) {
-            case 'other': return _p.ss($, ($): d_out.Node => _pinternals.panic(`expected a file or a directory`))
+            case 'other': return _p.ss($, ($): d_out.Node => panic(`expected a file or a directory`))
             case 'file': return _p.ss($, ($): d_out.Node => {
 
 
 
                 const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-                    const expected_node = $p.expected.get_possible_entry($ + $p['suffix settings']['to be appended to expected'].transform(
+                    const expected_node = $p.expected.__get_possible_entry($ + $p['suffix settings']['to be appended to expected'].transform(
                         ($) => $,
                         () => ``
                     ))
@@ -96,7 +96,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                 }]
             })
             case 'directory': return _p.ss($, ($) => {
-                const expected_node = $p.expected.get_possible_entry(key)
+                const expected_node = $p.expected.__get_possible_entry(key)
                 const input_node = $
                 return ['directory', expected_node.transform(
                     ($) => _p.sg($, ($) => {

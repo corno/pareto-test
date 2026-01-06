@@ -26,31 +26,34 @@ const dict_to_test_group_result_transformer = <T>(type: 'group' | 'dictionary', 
     return sh.test_collection(type, dict_to_raw(_pt.dictionary.literal($ === undefined ? {} : $).map(($): Directory_to_Test_Collection_Result_Transformer => map($))))
 }
 
-namespace t_package_tester_to_test_group_result_transformer {
+// namespace t_package_tester_to_test_group_result_transformer {
 
-    export const Package: ($: testers.Package) => Directory_to_Test_Collection_Result_Transformer = ($) => dict_to_test_group_result_transformer('group', {
-        "schemas": Schema($.schemas)
-    }, ($) => $)
+//     export const Package: ($: testers.Package) => Directory_to_Test_Collection_Result_Transformer = ($) => dict_to_test_group_result_transformer('group', {
+//         "schemas": Schema($.schemas)
+//     }, ($) => $)
 
-    const xx = ($: testers.Testset_for_set_of_algorithms) => dict_to_test_group_result_transformer('dictionary', $, ($) => $)
+//     const xx = ($: testers.Testset_for_set_of_algorithms) => dict_to_test_group_result_transformer('dictionary', $, ($) => $)
 
-    export const Schema: ($: testers.Schema) => Directory_to_Test_Collection_Result_Transformer = ($) => {
-        return dict_to_test_group_result_transformer('group', {
-            "deserializers": xx($.deserializers),
-            "refiners": dict_to_test_group_result_transformer('dictionary', $.refiners, ($) => xx($)),
-            "transformers": dict_to_test_group_result_transformer('dictionary', $.transformers, ($) => xx($)),
-            "serializers": xx($.serializers),
-            "text_to_text": xx($.text_to_text),
-        }, ($) => $)
-    }
+//     export const Schema: ($: testers.Schema) => Directory_to_Test_Collection_Result_Transformer = ($) => {
+//         return dict_to_test_group_result_transformer('group', {
+//             "deserializers": xx($.deserializers),
+//             "refiners": dict_to_test_group_result_transformer('dictionary', $.refiners, ($) => xx($)),
+//             "transformers": dict_to_test_group_result_transformer('dictionary', $.transformers, ($) => xx($)),
+//             "serializers": xx($.serializers),
+//             "text_to_text": xx($.text_to_text),
+//         }, ($) => $)
+//     }
 
-}
+// }
+
 export const $$ = (package_: Package) => ($r: _pn.Available_Standard_Resources) => {
     return command_creator(
         {
             'text to astn': sh.test_collection('group', {}),
             'astn to astn': sh.test_collection('group', {}),
-            'astn to text': t_package_tester_to_test_group_result_transformer.Package(package_),
+            'astn to text': sh.test_collection('group', {}),
+            //'astn to text': t_package_tester_to_test_group_result_transformer.Package(package_),
+
         }
     )(
         {
