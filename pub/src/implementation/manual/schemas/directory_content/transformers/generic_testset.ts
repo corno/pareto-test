@@ -1,5 +1,5 @@
-import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
 import * as _pds from 'pareto-core-deserializer'
 import * as _pinternals from 'pareto-core-internals'
 
@@ -57,7 +57,7 @@ export type Suffix_Settings = {
 
 
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-    'nodes': $.map(($, key) => _p.cc($, ($): d_out.Node => {
+    'nodes': $.map(($, key) => _p.sg($, ($): d_out.Node => {
         switch ($[0]) {
             case 'other': return _p.ss($, ($): d_out.Node => _pinternals.panic(`expected a file or a directory`))
             case 'file': return _p.ss($, ($): d_out.Node => {
@@ -70,7 +70,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                         () => ``
                     ))
                     return expected_node.transform(
-                        ($) => _p.cc($, ($): d_out.Node__file__expected => {
+                        ($) => _p.sg($, ($): d_out.Node__file__expected => {
                             switch ($[0]) {
                                 case 'file': return _p.ss($, ($) => ['valid', $])
                                 case 'directory': return _p.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
@@ -86,13 +86,11 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                 return ['file', {
                     'input': top_node,
                     'matching': $p['suffix settings']['to be removed from input'].transform(
-                        ($) => {
-                            return remove_suffix(key, $).transform(
+                        ($) => remove_suffix(key, $).transform(
                                 ($): d_out.Node__file__expected => get_matching_expect_file($),
                                 (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
 
-                            )
-                        },
+                            ),
                         (): d_out.Node__file__expected => get_matching_expect_file(key)
                     )
                 }]
@@ -101,7 +99,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                 const expected_node = $p.expected.get_possible_entry(key)
                 const input_node = $
                 return ['directory', expected_node.transform(
-                    ($) => _p.cc($, ($) => {
+                    ($) => _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'other': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
                             case 'file': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
@@ -124,7 +122,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
     // 'superfluous nodes': _p.block(() => {
     //     const temp: { [key: string]: null } = {}
     //     $.map(($, key) => {
-    //         const key_of_expected = _p.cc($, ($): string => {
+    //         const key_of_expected = _p.sg($, ($): string => {
     //             switch ($[0]) {
 
     //                 case 'other': return _p.ss($, ($) => key)

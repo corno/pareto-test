@@ -4,13 +4,13 @@
 // import * as d_out from "../../../interface/data/generic_testset"
 
 // export const Group: _pi.Transformer<d_out.Node__group, d_in.Directory> = ($) => {
-//     return _p.cc($, ($): d_out.Node__group => {
+//     return _p.sg($, ($): d_out.Node__group => {
 //         switch ($[0]) {
 //             case 'invalid': return _p.ss($, ($): d_out.Node__group => ['expected does not exist'])
 //             case 'valid': return _p.ss($, ($) => {
 //                 return $.map(($, key) => {
 //                     const expected_node = $p.expected.get_entry(key)
-//                     return _p.cc($, ($): d_out.Node => {
+//                     return _p.sg($, ($): d_out.Node => {
 //                         switch ($[0]) {
 //                             case 'other': return _p.ss($, ($): d_out.Node => {
 //                                 return _pinternals.panic(`expected a file or a directory`)
@@ -20,7 +20,7 @@
 //                                 return ['test', {
 //                                     'input': top_node,
 //                                     'expected': expected_node.transform(
-//                                         ($) => _p.cc($, ($) => {
+//                                         ($) => _p.sg($, ($) => {
 //                                             switch ($[0]) {
 //                                                 case 'file': return _p.ss($, ($) => ['valid', $])
 //                                                 case 'directory': return _p.ss($, ($) => ['is not a file', null])
@@ -35,7 +35,7 @@
 //                             case 'directory': return _p.ss($, ($) => {
 //                                 const input_node = $
 //                                 return ['group', expected_node.transform(
-//                                     ($) => _p.cc($, ($) => {
+//                                     ($) => _p.sg($, ($) => {
 //                                         switch ($[0]) {
 //                                             case 'other': return _p.ss($, ($) => ['expected is not a group', null])
 //                                             case 'file': return _p.ss($, ($) => ['expected is not a group', null])

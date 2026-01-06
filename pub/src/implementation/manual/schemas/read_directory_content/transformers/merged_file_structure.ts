@@ -16,7 +16,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
 }> = ($, $p) => {
     return $.map(($, key) => {
         const support_directory = $p.support
-        return _p.cc($, ($): d_out.Node => {
+        return _p.sg($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
                     return _pinternals.panic(`expected a file or a directory`)
@@ -29,7 +29,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
                 case 'directory': return _p.ss($, ($) => {
                     const main_node = $
                     return ['directory', support_directory.get_possible_entry(key).transform(
-                        ($): d_out.Directory => _p.cc($, ($) => {
+                        ($): d_out.Directory => _p.sg($, ($) => {
                             switch ($[0]) {
                                 case 'directory': return _p.ss($, ($) => ['valid', Directory(
                                     main_node,

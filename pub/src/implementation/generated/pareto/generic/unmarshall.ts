@@ -13,11 +13,11 @@ export const process_unconstrained_state_group = <Mapped_Value>(
     }
 
 ): Mapped_Value => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'tagged value': return _pr.ss($, ($) => {
                 const data = $.value
-                return $p.states.get_possible_entry(
+                return $p.states.__get_possible_entry(
                     $.state.value
                 ).transform(
                     ($) => $(data),
@@ -36,13 +36,13 @@ export const process_unresolved_state_group = <Mapped_Value>(
     }
 
 ): unresolved.State_Group<t._T_Range, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'tagged value': return _pr.ss($, ($) => {
                 const data = $.value
                 return {
                     'location': $["|"].range,
-                    'state group': $p.states.get_possible_entry(
+                    'state group': $p.states.__get_possible_entry(
                         $.state.value
                     ).transform(
                         ($) => $(data),
@@ -62,9 +62,9 @@ export const process_group = <Mapped_Value>(
     }
 
 ): Mapped_Value => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
-            case 'indexed collection': return _pr.ss($, ($) => _pr.cc($, ($) => {
+            case 'indexed collection': return _pr.ss($, ($) => _pr.deprecated_cc($, ($) => {
                 switch ($[0]) {
                     case 'verbose group': return _pr.ss($, ($) => {
                         return $p.properties(_pr.deprecated_build_dictionary(($i) => {
@@ -91,7 +91,7 @@ export const get_entry = (
     }
 
 ): t._T_Value => {
-    return $.get_possible_entry($p.key).transform(
+    return $.__get_possible_entry($p.key).transform(
         ($) => $,
         () => _pr.fixme_abort(`no such entry: ${$p.key}`)
     )
@@ -103,9 +103,9 @@ export const process_unresolved_dictionary = <Mapped_Value>(
         'value': ($: t._T_Value) => Mapped_Value
     }
 ): unresolved.Dictionary<t._T_Range, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
-            case 'indexed collection': return _pr.ss($, ($) => _pr.cc($, ($) => {
+            case 'indexed collection': return _pr.ss($, ($) => _pr.deprecated_cc($, ($) => {
                 switch ($[0]) {
                     case 'dictionary': return _pr.ss($, ($) => {
                         return {
@@ -141,9 +141,9 @@ export const process_unconstrained_dictionary = <Mapped_Value>(
         'value': ($: t._T_Value) => Mapped_Value
     }
 ): unconstrained.Dictionary<null, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
-            case 'indexed collection': return _pr.ss($, ($) => _pr.cc($, ($) => {
+            case 'indexed collection': return _pr.ss($, ($) => _pr.deprecated_cc($, ($) => {
                 switch ($[0]) {
                     case 'dictionary': return _pr.ss($, ($) => {
                         return _pr.deprecated_build_dictionary(($i) => {
@@ -170,7 +170,7 @@ export const process_number = (
         'deserializer': ($: string, $p: null) => number
     }
 ): number => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'string': return _pr.ss($, ($) => $p.deserializer($.value, null))
             default: return _pr.fixme_abort(`Unexpected type for number: ${$[0]}`)
@@ -186,7 +186,7 @@ export const process_boolean = (
     }
 
 ): boolean => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'string': return _pr.ss($, ($) => $p.deserializer($.value, null))
             default: return _pr.fixme_abort(`Unexpected type for boolean: ${$[0]}`)
@@ -199,7 +199,7 @@ export const process_text = (
     $p: null
 
 ): string => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'string': return _pr.ss($, ($) => $.value)
             default: return _pr.fixme_abort(`Unexpected type for text: ${$[0]}`)
@@ -213,9 +213,9 @@ export const process_unresolved_list = <Mapped_Value>(
         'value': ($: t._T_Value) => Mapped_Value
     }
 ): unresolved.List<t._T_Range, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
-            case 'ordered collection': return _pr.ss($, ($) => _pr.cc($, ($) => {
+            case 'ordered collection': return _pr.ss($, ($) => _pr.deprecated_cc($, ($) => {
                 switch ($[0]) {
                     case 'list': return _pr.ss($, ($) => {
                         const temp = $["["]
@@ -242,9 +242,9 @@ export const process_unconstrained_list = <Mapped_Value>(
     }
 
 ): unconstrained.List<null, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
-            case 'ordered collection': return _pr.ss($, ($) => _pr.cc($, ($) => {
+            case 'ordered collection': return _pr.ss($, ($) => _pr.deprecated_cc($, ($) => {
                 switch ($[0]) {
                     case 'list': return _pr.ss($, ($) => {
                         return $["elements"].map(($) => $p.value($.value))
@@ -264,7 +264,7 @@ export const process_optional = <Mapped_Value>(
     }
 
 ): _pi.Optional_Value<Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'not set': return _pr.ss($, ($) => _pr.optional.not_set())
             case 'set optional value': return _pr.ss($, ($) => _pr.optional.set($p.value($.value)))
@@ -278,7 +278,7 @@ export const process_nothing = (
     $: t._T_Value,
     $p: null
 ): null => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'not set': return _pr.ss($, ($) => null)
             default: return _pr.fixme_abort(`Unexpected type for nothing: ${$[0]}`)
@@ -291,7 +291,7 @@ export const process_selected_reference = <Mapped_Value>(
     $: t._T_Value,
     $p: null
 ): unresolved.Reference_To_Normal_Dictionary_Entry<t._T_Range, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'string': return _pr.ss($, ($) => ({
                 'key': $.value,
@@ -306,7 +306,7 @@ export const process_stack_reference = <Mapped_Value>(
     $: t._T_Value,
     $p: null
 ): unresolved.Reference_To_Stacked_Dictionary_Entry<t._T_Range, Mapped_Value> => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'string': return _pr.ss($, ($) => ({
                 'key': $.value,
@@ -321,7 +321,7 @@ export const process_derived_reference = (
     $: t._T_Value,
     $p: null
 ): null => {
-    return _pr.cc($, ($) => {
+    return _pr.deprecated_cc($, ($) => {
         switch ($[0]) {
             case 'not set': return _pr.ss($, ($) => null)
             default: return _pr.fixme_abort(`Unexpected type for derived reference: ${$[0]}`)

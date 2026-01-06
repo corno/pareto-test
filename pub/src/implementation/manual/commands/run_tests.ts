@@ -26,17 +26,13 @@ export type Signature = _pi.Command_Procedure<
 
 import * as t_test_result_to_text from "../schemas/test_result/transformers/lines"
 
-const has_passed = (results: d_test.Results): boolean => {
-    return results.filter<null>(($) => {
-        return _pt.cc($, ($) => {
-            switch ($[0]) {
-                case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
-                case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))
-                default: return _pt.au($[0])
-            }
-        })
-    }).is_empty()
-}
+const has_passed = (results: d_test.Results): boolean => results.filter<null>(($) => _pt.sg($, ($) => {
+    switch ($[0]) {
+        case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
+        case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))
+        default: return _pt.au($[0])
+    }
+})).is_empty()
 
 export const $$: Signature = _p.command_procedure(
     ($p, $cr) => [

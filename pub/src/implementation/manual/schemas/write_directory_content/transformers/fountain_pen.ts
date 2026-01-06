@@ -9,14 +9,14 @@ import * as t_write_file_to_fountain_pen from "pareto-resources/dist/implementat
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-export const Error: _pi.Transformer<d_in.Error, d_out.Block_Part> = ($) => _p.cc($, ($) => {
+export const Error: _pi.Transformer<d_in.Error, d_out.Block_Part> = ($) => _p.sg($, ($) => {
     switch ($[0]) {
         case 'directory content': return _p.ss($, ($) => sh.b.sub([
             sh.b.indent([
-                sh.g.sub($.to_list(($, key) => sh.g.nested_block([
+                sh.g.sub(_p.list.from_dictionary($, ($, key) => sh.g.nested_block([
                     sh.b.snippet(key),
                     sh.b.snippet(": "),
-                    _p.cc($, ($) => {
+                    _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'file': return _p.ss($, ($) => t_write_file_to_fountain_pen.Error($))
                             case 'directory': return _p.ss($, ($) => Error($))
