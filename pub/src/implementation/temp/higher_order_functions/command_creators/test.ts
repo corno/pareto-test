@@ -288,16 +288,13 @@ export const $$ = (
                                         }
                                     ),
                                     [
-                                        RED,
-                                        "" + t_test_result_to_summary.Test_Group_Result(
+                                        RED + t_test_result_to_summary.Test_Group_Result(
                                             $.tests,
                                             {
                                                 'include passed tests': false,
                                                 'include structural problems': true,
                                             }
-                                        ),
-                                        ` test failed$`,
-                                        ENDCOLOR
+                                        ) +  ` test(s) failed` + ENDCOLOR
                                     ],
                                 ]))
                                 default: return _pt.au($[0])
