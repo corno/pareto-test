@@ -18,7 +18,7 @@ export const test_collection = (type: 'group' | 'dictionary', $: {
     [key: string]: temp.Directory_to_Test_Collection_Result_Transformer
 }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
     type,
-    _pt.dictionary.literal($).map(
+    _pt.dictionary.literal($).__d_map(
         ($2) => _pt.deprecated_cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
     )
 )
@@ -31,7 +31,7 @@ export const transformer = (
         $: string,
         abort: ($: string) => never
     ) => string
-): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
     ($p) => transform_refinement_result(
         create_refinement_context<d_out.Tested, string>(
             (abort) => {
@@ -63,7 +63,7 @@ export const refiner = (
     ) => string
 ): temp.Directory_to_Test_Collection_Result_Transformer => {
 
-    const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+    const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
         ($p) => transform_refinement_result(
             create_refinement_context<d_out.Tested, string>(
                 (initialize_abort) => {

@@ -13,7 +13,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
      * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
      */
     'support suffix': string
-}> = ($, $p) => $.map(($, key) => {
+}> = ($, $p) => $.__d_map(($, key) => {
     const support_directory = $p.support
     return _p.sg($, ($): d_out.Node => {
         switch ($[0]) {

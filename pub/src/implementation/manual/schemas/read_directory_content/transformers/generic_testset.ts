@@ -56,7 +56,7 @@ export type Suffix_Settings = {
 
 
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-    'nodes': $.map(($, key) => {
+    'nodes': $.__d_map(($, key) => {
         return _p.sg($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
@@ -126,7 +126,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
     }),
     // 'superfluous nodes': _p.block(() => {
     //     const temp: { [key: string]: null } = {}
-    //     $.map(($, key) => {
+    //     $.__d_map(($, key) => {
     //         const key_of_expected = _p.sg($, ($): string => {
     //             switch ($[0]) {
 
@@ -148,8 +148,8 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
     //         temp[key_of_expected] = null
     //     })
     //     const main = _p.dictionary.literal(temp)
-    //     return op_filter_dictionary($p.expected.map(($, key) => {
-    //         return main.get_entry(key).map(() => null)
+    //     return op_filter_dictionary($p.expected.__d_map(($, key) => {
+    //         return main.get_entry(key).__d_map(() => null)
     //     }))
     // })
 })

@@ -40,6 +40,6 @@ export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Re
 
 export const Test_Group_Result: _pi.Transformer_With_Parameters<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
-    $.map(($): number => Test_Node_Result($, $p)).map(($) => count += $)
+    $.__d_map(($): number => Test_Node_Result($, $p)).__d_map(($) => count += $)
     return count
 }

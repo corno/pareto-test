@@ -16,8 +16,8 @@ export const schema = (
     text_to_text: Raw_Dictionary<testers.Text_to_Text>,
 ): testers.Schema => ({
     'deserializers': _pt.dictionary.literal(deserializers),
-    'refiners': _pt.dictionary.literal(refiners).map(($) => _pt.dictionary.literal($)),
-    'transformers': _pt.dictionary.literal(transformers).map(($) => _pt.dictionary.literal($)),
+    'refiners': _pt.dictionary.literal(refiners).__d_map(($) => _pt.dictionary.literal($)),
+    'transformers': _pt.dictionary.literal(transformers).__d_map(($) => _pt.dictionary.literal($)),
     'serializers': _pt.dictionary.literal(serializers),
     'text_to_text': _pt.dictionary.literal(text_to_text),
 })

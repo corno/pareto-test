@@ -14,7 +14,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
      */
     'support suffix': string
 }> = ($, $p) => {
-    return $.map(($, key) => {
+    return $.__d_map(($, key) => {
         const support_directory = $p.support
         return _p.sg($, ($): d_out.Node => {
             switch ($[0]) {

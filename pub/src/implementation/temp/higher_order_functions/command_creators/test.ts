@@ -136,7 +136,7 @@ export const $$ = (
                                                             'to be removed from input': _pt.optional.set(`.astn`),
                                                         }
                                                     },
-                                                }).map(($, key): d_test_result.Test_Node_Result => {
+                                                }).__d_map(($, key): d_test_result.Test_Node_Result => {
                                                     const the_func = ($x: {
                                                         'input': d_directory_content.Directory,
                                                         'expected': d_directory_content.Directory,

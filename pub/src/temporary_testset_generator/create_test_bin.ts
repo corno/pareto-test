@@ -15,7 +15,7 @@ import { Package } from './interface/testers'
 
 const dict_to_raw = <T>($: _pi.Dictionary<T>) => {
     const temp: { [key: string]: T } = {}
-    $.map(($, key) => {
+    $.__d_map(($, key) => {
         temp[key] = $
     })
     return temp
@@ -23,7 +23,7 @@ const dict_to_raw = <T>($: _pi.Dictionary<T>) => {
 
 const dict_to_test_group_result_transformer = <T>(type: 'group' | 'dictionary', $: undefined | { [key: string]: T }, map: ($: T) => Directory_to_Test_Collection_Result_Transformer): Directory_to_Test_Collection_Result_Transformer => {
 
-    return sh.test_collection(type, dict_to_raw(_pt.dictionary.literal($ === undefined ? {} : $).map(($): Directory_to_Test_Collection_Result_Transformer => map($))))
+    return sh.test_collection(type, dict_to_raw(_pt.dictionary.literal($ === undefined ? {} : $).__d_map(($): Directory_to_Test_Collection_Result_Transformer => map($))))
 }
 
 // namespace t_package_tester_to_test_group_result_transformer {

@@ -45,7 +45,7 @@ export const create_individual_test_transformer = (
     })
 }]
 
-export const create_collection_transformer = (type: 'group' | 'dictionary', $: _pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.map(($, key) => {
+export const create_collection_transformer = (type: 'group' | 'dictionary', $: _pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.__d_map(($, key) => {
     const group_to_test_group_result = $
     return ['collection', {
         'type': type === 'group' ? ['group', null] : ['dictionary', null],
