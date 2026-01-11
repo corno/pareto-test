@@ -23,7 +23,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
             }])
             case 'directory': return _p.ss($, ($) => {
                 const main_node = $
-                return ['directory', support_directory.__get_possible_entry(key).transform(
+                return ['directory', support_directory.__get_possible_entry(key).__decide(
                     ($): d_out.Directory => _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'directory': return _p.ss($, ($) => ['valid', Directory(

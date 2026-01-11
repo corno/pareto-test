@@ -151,12 +151,12 @@ export const $$ = (
                                                     const input_node = $parent.__get_possible_entry(key)
                                                     return ['collection', {
                                                         'type': ['group', null],
-                                                        'result': input_node.transform(
+                                                        'result': input_node.__decide(
                                                             ($): d_test_result.Test_Node_Result__collection__result => _pt.sg($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                 switch ($[0]) {
                                                                     case 'directory': return _pt.ss($, ($) => {
                                                                         const input_dir = $
-                                                                        return expected_node.transform(
+                                                                        return expected_node.__decide(
                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
                                                                                 return _pt.sg($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                                     switch ($[0]) {

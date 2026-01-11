@@ -12,7 +12,7 @@ export const Test_Node_Result: _pi.Transformer<d_in.Test_Node_Result, _pi.Option
         case 'collection': return _p.ss($, ($) => _p.sg($.result, ($) => {
             switch ($[0]) {
                 case 'source invalid': return _p.ss($, ($) => _p.optional.not_set())
-                case 'source valid': return _p.ss($, ($): _pi.Optional_Value<d_out.Node> => op_cast_to_non_empty_dictionary(Test_Group_Result($)).map(($) => ['directory', $]))
+                case 'source valid': return _p.ss($, ($): _pi.Optional_Value<d_out.Node> => op_cast_to_non_empty_dictionary(Test_Group_Result($)).__o_map(($) => ['directory', $]))
                 default: return _p.au($[0])
             }
         }))

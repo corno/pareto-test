@@ -22,7 +22,7 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                suffix_as_characters.__get_possible_element_at(suffix_index).map(($) => {
+                suffix_as_characters.__get_possible_element_at(suffix_index).__o_map(($) => {
                     if (cur_char !== $) {
                         suffix_matches = false
                     }
@@ -65,11 +65,11 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
 
 
                 const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-                    const expected_node = $p.expected.__get_possible_entry($ + $p['suffix settings']['to be appended to expected'].transform(
+                    const expected_node = $p.expected.__get_possible_entry($ + $p['suffix settings']['to be appended to expected'].__decide(
                         ($) => $,
                         () => ``
                     ))
-                    return expected_node.transform(
+                    return expected_node.__decide(
                         ($) => _p.sg($, ($): d_out.Node__file__expected => {
                             switch ($[0]) {
                                 case 'file': return _p.ss($, ($) => ['valid', $])
@@ -85,8 +85,8 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                 const top_node = $
                 return ['file', {
                     'input': top_node,
-                    'matching': $p['suffix settings']['to be removed from input'].transform(
-                        ($) => remove_suffix(key, $).transform(
+                    'matching': $p['suffix settings']['to be removed from input'].__decide(
+                        ($) => remove_suffix(key, $).__decide(
                                 ($): d_out.Node__file__expected => get_matching_expect_file($),
                                 (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
 
@@ -98,7 +98,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
             case 'directory': return _p.ss($, ($) => {
                 const expected_node = $p.expected.__get_possible_entry(key)
                 const input_node = $
-                return ['directory', expected_node.transform(
+                return ['directory', expected_node.__decide(
                     ($) => _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'other': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
@@ -126,9 +126,9 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
     //             switch ($[0]) {
 
     //                 case 'other': return _p.ss($, ($) => key)
-    //                 case 'file': return _p.ss($, ($): string => $p['suffix settings']['to be removed from input'].transform(
+    //                 case 'file': return _p.ss($, ($): string => $p['suffix settings']['to be removed from input'].__decide(
     //                     ($) => {
-    //                         return remove_suffix(key, $).transform(
+    //                         return remove_suffix(key, $).__decide(
     //                             ($) => $,
     //                             () => key
 

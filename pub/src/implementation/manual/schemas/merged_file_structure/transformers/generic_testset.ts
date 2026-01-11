@@ -19,7 +19,7 @@
 //                                 const top_node = $
 //                                 return ['test', {
 //                                     'input': top_node,
-//                                     'expected': expected_node.transform(
+//                                     'expected': expected_node.__decide(
 //                                         ($) => _p.sg($, ($) => {
 //                                             switch ($[0]) {
 //                                                 case 'file': return _p.ss($, ($) => ['valid', $])
@@ -34,7 +34,7 @@
 //                             })
 //                             case 'directory': return _p.ss($, ($) => {
 //                                 const input_node = $
-//                                 return ['group', expected_node.transform(
+//                                 return ['group', expected_node.__decide(
 //                                     ($) => _p.sg($, ($) => {
 //                                         switch ($[0]) {
 //                                             case 'other': return _p.ss($, ($) => ['expected is not a group', null])
