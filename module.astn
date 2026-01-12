@@ -1,6 +1,6 @@
 (
-    'operations': {
-    }
     'schema tree': | 'set' {
+    }
+    'operations': {
     }
 )
