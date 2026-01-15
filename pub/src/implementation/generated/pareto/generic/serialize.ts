@@ -1,13 +1,13 @@
 import * as _ea from 'pareto-core-serializer'
 import * as _pi from 'pareto-core-interface'
 
-import * as astn_target from "../../../../interface/generated/pareto/core/astn_target"
+import * as d_astn_target from "astn-core/dist/interface/generated/pareto/schemas/sealed_target/data"
 
 
 const indentation = `    `
 
 export const Document = (
-    $: astn_target.Document
+    $: d_astn_target.Document
 ): string => {
     return _ea.text.deprecated_build(($i) => {
         Value($, ``, $i)
@@ -15,7 +15,7 @@ export const Document = (
 }
 
 export const Value = (
-    $: astn_target.Value,
+    $: d_astn_target.Value,
     indent: string,
     $i: _pi.Text_Builder
 ) => {
@@ -29,7 +29,7 @@ export const Value = (
                 })
                 $i['add snippet'](`\n${indent}}`)
             })
-            case 'verbose group': return _ea.ss($, ($) => {
+            case 'group': return _ea.ss($, ($) => {
                 $i['add snippet'](`(`)
                 $.__d_map(($, key) => {
                     $i['add snippet'](`\n${indent}${indentation}'${key}': `) //FIXME escape key
@@ -45,10 +45,7 @@ export const Value = (
                 })
                 $i['add snippet'](` ]`)
             })
-            case 'state': return _ea.ss($, ($) => {
-                $i['add snippet'](`| '${$.state}' `)
-                Value($.value, indent, $i)
-            })
+            case 'nothing': return _ea.ss($, ($) => $i['add snippet'](`~`))
             case 'optional': return _ea.ss($, ($) => _ea.deprecated_cc($, ($) => {
                 switch ($[0]) {
                     case 'not set': return _ea.ss($, ($) => $i['add snippet'](`~`))
@@ -60,7 +57,6 @@ export const Value = (
                     default: return _ea.au($[0])
                 }
             }))
-            case 'nothing': return _ea.ss($, ($) => $i['add snippet'](`~`))
             case 'text': return _ea.ss($, ($) => {
                 const value = $.value
                 return _ea.deprecated_cc($.delimiter, ($) => {
@@ -71,6 +67,10 @@ export const Value = (
                         default: return _ea.au($[0])
                     }
                 })
+            })
+            case 'state group': return _ea.ss($, ($) => {
+                $i['add snippet'](`| '${$.state}' `)
+                Value($.value, indent, $i)
             })
             default: return _ea.au($[0])
         }
