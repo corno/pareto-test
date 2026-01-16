@@ -1,7 +1,7 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pds from 'pareto-core-deserializer'
-import { $$ as panic } from 'pareto-core-internals/dist/misc/panic'
+import { $$ as panic } from 'pareto-core-internals/dist/sync/expression/special/panic'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/generic_testset"

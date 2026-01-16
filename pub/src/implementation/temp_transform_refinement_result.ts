@@ -1,4 +1,4 @@
-import { $$ as panic } from 'pareto-core-internals/dist/misc/panic'
+import { $$ as panic } from 'pareto-core-internals/dist/sync/expression/special/panic'
 import { Refinement_Result } from 'pareto-core-internals/dist/async/create_refinement_context'
 
 export const transform_refinement_result = <Out, Success, Error>(
