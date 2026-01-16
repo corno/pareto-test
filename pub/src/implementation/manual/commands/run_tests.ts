@@ -3,8 +3,8 @@ import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-command'
 
 import * as d_test from "../../../interface/temp/generic"
-import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
-import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
+import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data"
+import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log/data"
 
 import * as resources_exupery from "pareto-resources/dist/interface/resources"
 

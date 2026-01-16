@@ -4,7 +4,7 @@ import * as _pt from 'pareto-core-transformer'
 
 import { create_refinement_context } from 'pareto-core-internals/dist/async/create_refinement_context'
 
-import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
+import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data"
 
 import * as generic from "../interface/temp/generic"
 
