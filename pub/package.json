@@ -8,9 +8,9 @@
     "dist"
   ],
   "dependencies": {
-    "astn-core": "^0.1.0",
-    "pareto-fountain-pen": "^0.3.33",
-    "pareto-host-nodejs": "^0.1.8",
+    "astn-core": "^0.1.1",
+    "pareto-fountain-pen": "^0.3.34",
+    "pareto-host-nodejs": "^0.1.9",
     "pareto-resources": "^0.1.14"
   }
 }
