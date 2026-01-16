@@ -4,14 +4,8 @@ import { create_refinement_context } from 'pareto-core-internals/dist/async/crea
 
 import * as d_out from "../../../../interface/to_be_generated/test_result"
 
-import * as d_astn_target from "../../../../interface/generated/pareto/core/astn_target"
-import * as d_astn_source from "../../../../interface/generated/pareto/core/astn_source"
-import * as d_parse_result from "../../../../interface/generated/pareto/core/parse_result"
-
-
 import * as temp from "./temp"
 
-import * as s_serialize from "../../../generated/pareto/generic/serialize"
 import { transform_refinement_result } from '../../../temp_transform_refinement_result'
 
 export const test_collection = (type: 'group' | 'dictionary', $: {
@@ -24,7 +18,6 @@ export const test_collection = (type: 'group' | 'dictionary', $: {
 )
 
 // export const parse = ($: string): _pinternals.Refinement_Result<d_astn_source._T_Document, d_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
-export const serialize = s_serialize.Document
 
 export const transformer = (
     transformer: (
