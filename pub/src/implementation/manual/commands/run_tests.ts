@@ -1,6 +1,6 @@
+import * as _p from 'pareto-core-command'
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
-import * as _p from 'pareto-core-command'
 
 import * as d_test from "../../../interface/temp/generic"
 import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data"
@@ -51,7 +51,7 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr.log.execute(
                     {
-                        'lines': _pt.list.nested_literal([
+                        'lines': _pt.list.nested_literal_old([
                             t_test_result_to_text.Results($p['test results']),
                             [
                                 ``,
@@ -68,7 +68,7 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr['log error'].execute(
                     {
-                        'lines': _pt.list.nested_literal([
+                        'lines': _pt.list.nested_literal_old([
                             t_test_result_to_text.Results($p['test results']),
                             [
                                 ``,

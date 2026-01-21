@@ -1,13 +1,14 @@
 import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-refiner'
 import * as _pds from 'pareto-core-deserializer'
+import * as _ps from 'pareto-core-serializer'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/generic_testset"
 
 const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> => {
     let suffix_matches = true
-    const stripped = _pds.text.deprecated_build(($i) => {
+    const stripped = _ps.text.deprecated_build(($i) => {
         const main_as_characters = _pds.list.from_text($, ($) => $)
         const suffix_as_characters = _pds.list.from_text(suffix, ($) => $)
         const main_length = main_as_characters.__get_number_of_elements()
