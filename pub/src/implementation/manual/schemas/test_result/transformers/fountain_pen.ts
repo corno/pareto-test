@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core/dist/transformer'
 
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 import * as d_in from "../../../../../interface/temp/generic"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"

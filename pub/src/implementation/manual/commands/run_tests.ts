@@ -3,8 +3,8 @@ import * as _pt from 'pareto-core/dist/transformer'
 import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_test from "../../../interface/temp/generic"
-import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data"
-import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log/data"
+import * as d_log_error from "pareto-resources/dist/interface/generated/liana/schemas/log_error/data"
+import * as d_log from "pareto-resources/dist/interface/generated/liana/schemas/log/data"
 
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
 

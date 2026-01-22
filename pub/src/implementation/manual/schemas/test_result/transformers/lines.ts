@@ -1,5 +1,5 @@
 
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/lines/data"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/lines/data"
 import * as d_in from "../../../../../interface/temp/generic"
 
 import * as t_fp from "./fountain_pen"
