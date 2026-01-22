@@ -6,7 +6,7 @@ import * as d_test from "../../../interface/temp/generic"
 import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data"
 import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas/log/data"
 
-import * as resources_exupery from "pareto-resources/dist/interface/resources"
+import * as resources_pareto from "pareto-resources/dist/interface/resources"
 
 
 export type Parameters = {
@@ -18,8 +18,8 @@ export type Command = _pi.Command<null, Parameters>
 export type Signature = _pi.Command_Procedure<
     Command,
     {
-        'log error': resources_exupery.commands.log_error,
-        'log': resources_exupery.commands.log,
+        'log error': resources_pareto.commands.log_error,
+        'log': resources_pareto.commands.log,
     },
     null
 >

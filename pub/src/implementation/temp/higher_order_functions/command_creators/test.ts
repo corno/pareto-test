@@ -28,20 +28,20 @@ const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
 
-import * as resources_exupery from "pareto-resources/dist/interface/resources"
+import * as resources_pareto from "pareto-resources/dist/interface/resources"
 
 export type Procedure = _pi.Command_Procedure<
-    resources_exupery.commands.main,
+    resources_pareto.commands.main,
     {
-        'write to stdout': resources_exupery.commands.write_to_stdout
-        'log error': resources_exupery.commands.log_error
-        'log': resources_exupery.commands.log
-        'write directory content': resources_exupery.commands.write_directory_content,
+        'write to stdout': resources_pareto.commands.write_to_stdout
+        'log error': resources_pareto.commands.log_error
+        'log': resources_pareto.commands.log
+        'write directory content': resources_pareto.commands.write_directory_content,
     },
     {
-        'read directory': resources_exupery.queries.read_directory
-        'read file': resources_exupery.queries.read_file
-        'read directory content': resources_exupery.queries.read_directory_content
+        'read directory': resources_pareto.queries.read_directory
+        'read file': resources_pareto.queries.read_file
+        'read directory content': resources_pareto.queries.read_directory_content
     }
 >
 

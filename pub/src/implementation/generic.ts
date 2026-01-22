@@ -8,13 +8,13 @@ import * as d_log from "pareto-resources/dist/interface/generated/pareto/schemas
 
 import * as generic from "../interface/temp/generic"
 
-import * as resources_exupery from "pareto-resources/dist/interface/resources"
+import * as resources_pareto from "pareto-resources/dist/interface/resources"
 import { transform_refinement_result } from './temp_transform_refinement_result'
 
 export type Resources = {
     'commands': {
-        'log error': resources_exupery.commands.log_error
-        'log': resources_exupery.commands.log
+        'log error': resources_pareto.commands.log_error
+        'log': resources_pareto.commands.log
     }
 }
 
