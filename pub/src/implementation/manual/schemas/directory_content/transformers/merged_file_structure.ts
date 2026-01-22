@@ -1,5 +1,5 @@
-import * as _pi from 'pareto-core-interface'
-import * as _p from 'pareto-core-transformer'
+import * as _pi from 'pareto-core/dist/interface'
+import * as _p from 'pareto-core/dist/transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"

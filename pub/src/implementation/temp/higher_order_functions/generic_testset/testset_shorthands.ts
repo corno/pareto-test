@@ -1,6 +1,6 @@
-import * as _pi from 'pareto-core-interface'
-import * as _pt from 'pareto-core-transformer'
-import { create_refinement_context } from 'pareto-core-internals/dist/__internals/async/create_refinement_context'
+import * as _pi from 'pareto-core/dist/interface'
+import * as _pt from 'pareto-core/dist/transformer'
+import { create_refinement_context } from 'pareto-core/dist/__internals/async/create_refinement_context'
 
 import * as d_out from "../../../../interface/to_be_generated/test_result"
 

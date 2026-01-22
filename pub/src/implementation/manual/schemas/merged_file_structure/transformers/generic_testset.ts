@@ -1,4 +1,4 @@
-// import * as _pi from 'pareto-core-interface'
+// import * as _pi from 'pareto-core/dist/interface'
 
 // import * as d_in from "../../../interface/data/merged_filesystem_nodes"
 // import * as d_out from "../../../interface/data/generic_testset"

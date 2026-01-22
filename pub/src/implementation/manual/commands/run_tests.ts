@@ -1,6 +1,6 @@
-import * as _p from 'pareto-core-command'
-import * as _pt from 'pareto-core-transformer'
-import * as _pi from 'pareto-core-interface'
+import * as _p from 'pareto-core/dist/command'
+import * as _pt from 'pareto-core/dist/transformer'
+import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_test from "../../../interface/temp/generic"
 import * as d_log_error from "pareto-resources/dist/interface/generated/pareto/schemas/log_error/data"

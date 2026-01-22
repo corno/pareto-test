@@ -1,5 +1,5 @@
-import { panic } from 'pareto-core-internals/dist/__internals/sync/expression/special'
-import { Refinement_Result } from 'pareto-core-internals/dist/__internals/async/create_refinement_context'
+import { panic } from 'pareto-core/dist/__internals/sync/expression/special'
+import { Refinement_Result } from 'pareto-core/dist/__internals/async/create_refinement_context'
 
 export const transform_refinement_result = <Out, Success, Error>(
     $: Refinement_Result<Success, Error>,

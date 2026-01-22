@@ -1,5 +1,5 @@
-import * as _pi from 'pareto-core-interface'
-import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core/dist/interface'
+import * as _pt from 'pareto-core/dist/transformer'
 
 import * as testers from './interface/testers'
 
