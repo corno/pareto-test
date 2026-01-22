@@ -18,7 +18,7 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
         main_as_characters.__for_each(($) => {
             index += 1
             if (index < main_length - suffix_length) {
-                $i['add character']($)
+                $i.add_character($)
             } else {
                 //validate the right suffix
                 const cur_char = $
