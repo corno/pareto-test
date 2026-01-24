@@ -31,9 +31,9 @@ export const Test_Collection_Result = (
     ])
     return sh.g.sub(
         _p.list.from_dictionary($, ($, key): d_out.Group_Part => sh.g.nested_block([
-            _p.sg($, ($) => {
+            _p.decide.state($, ($) => {
                 switch ($[0]) {
-                    case 'collection': return _p.ss($, ($) => _p.sg($.type, ($) => {
+                    case 'collection': return _p.ss($, ($) => _p.decide.state($.type, ($) => {
                         switch ($[0]) {
                             case 'group': return _p.ss($, ($) => sh.b.snippet(CYAN))
                             case 'dictionary': return _p.ss($, ($) => sh.b.snippet(BLUE))
@@ -46,7 +46,7 @@ export const Test_Collection_Result = (
             }),
             sh.b.snippet(key),
             sh.b.snippet(ENDCOLOR),
-            _p.sg($, ($) => {
+            _p.decide.state($, ($) => {
                 const do_node_path = (which: string) => sh.b.sub([
                     sh.b.snippet($p['path to test data']),
                     sh.b.snippet(`/`),
@@ -56,9 +56,9 @@ export const Test_Collection_Result = (
                     sh.b.snippet(key),
                 ])
                 switch ($[0]) {
-                    case 'individual test': return _p.ss($, ($) => _p.sg($.result, ($) => {
+                    case 'individual test': return _p.ss($, ($) => _p.decide.state($.result, ($) => {
                         switch ($[0]) {
-                            case 'source invalid': return _p.ss($, ($) => _p.sg($, ($) => {
+                            case 'source invalid': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                 switch ($[0]) {
                                     case 'not an individual test': return sh.b.sub([
                                         sh.b.snippet(YELLOW),
@@ -66,7 +66,7 @@ export const Test_Collection_Result = (
                                         do_node_path(`input`),
                                         sh.b.snippet(ENDCOLOR),
                                     ])
-                                    case 'problem with expected': return _p.ss($, ($) => _p.sg($, ($) => {
+                                    case 'problem with expected': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
                                             case 'required input suffix missing': return _p.ss($, ($) => sh.b.sub([
                                                 sh.b.snippet(YELLOW),
@@ -76,7 +76,7 @@ export const Test_Collection_Result = (
                                                 do_node_path(`input`),
                                                 sh.b.snippet(ENDCOLOR),
                                             ]))
-                                            case 'expected': return _p.ss($, ($) => _p.sg($, ($) => {
+                                            case 'expected': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                                 switch ($[0]) {
                                                     case 'does not exist': return sh.b.sub([
                                                         sh.b.snippet(YELLOW),
@@ -100,7 +100,7 @@ export const Test_Collection_Result = (
                                     default: return _p.au($[0])
                                 }
                             }))
-                            case 'tested': return _p.ss($, ($) => _p.sg($, ($) => {
+                            case 'tested': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                 switch ($[0]) {
                                     case 'passed': return sh.b.sub([
                                         sh.b.snippet(GREEN),
@@ -120,16 +120,16 @@ export const Test_Collection_Result = (
                                             sh.g.nested_block([
                                                 do_node_path(`expected`),
                                             ]),
-                                            _p.sg($, ($) => {
+                                            _p.decide.state($, ($) => {
                                                 switch ($[0]) {
-                                                    case 'transform': return _p.ss($, ($) => _p.sg($, ($) => {
+                                                    case 'transform': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                                         switch ($[0]) {
                                                             case 'initialization': return _p.ss($, ($) => sh.g.simple_block(`initialization`))
                                                             case 'unexpected output': return _p.ss($, ($) => sh.g.simple_block(`unexpected output`))
                                                             default: return _p.au($[0])
                                                         }
                                                     }))
-                                                    case 'refine': return _p.ss($, ($) => _p.sg($, ($) => {
+                                                    case 'refine': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                                         switch ($[0]) {
                                                             case 'initialization': return _p.ss($, ($) => sh.g.simple_block(`initialization`))
                                                             case 'should have failed but succeeded': return _p.ss($, ($) => sh.g.simple_block(`should have failed but succeeded`))
@@ -150,7 +150,7 @@ export const Test_Collection_Result = (
                             default: return _p.au($[0])
                         }
                     }))
-                    case 'collection': return _p.ss($, ($) => _p.sg($.result, ($) => {
+                    case 'collection': return _p.ss($, ($) => _p.decide.state($.result, ($) => {
                         switch ($[0]) {
 
                             case 'source valid': return _p.ss($, ($) => sh.b.sub([
@@ -164,7 +164,7 @@ export const Test_Collection_Result = (
                                     )
                                 ])
                             ]))
-                            case 'source invalid': return _p.ss($, ($) => _p.sg($, ($) => {
+                            case 'source invalid': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                 switch ($[0]) {
                                     case 'missing': return sh.b.sub([
                                         sh.b.snippet(YELLOW),
@@ -172,7 +172,7 @@ export const Test_Collection_Result = (
                                         do_context_path(`input`),
                                         sh.b.snippet(ENDCOLOR),
                                     ])
-                                    case 'problem with expected': return _p.ss($, ($) => _p.sg($, ($) => {
+                                    case 'problem with expected': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
 
                                             case 'node for expected is not a directory': return sh.b.sub([

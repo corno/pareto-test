@@ -58,7 +58,7 @@ export type Suffix_Settings = {
 
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
     'nodes': $.__d_map(($, key) => {
-        return _p.sg($, ($): d_out.Node => {
+        return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
                     return _p.fixme_abort(`expected a file or a directory`)
@@ -73,7 +73,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                             () => ``
                         ))
                         return expected_node.__decide(
-                            ($) => _p.sg($, ($): d_out.Node__file__expected => {
+                            ($) => _p.decide.state($, ($): d_out.Node__file__expected => {
                                 switch ($[0]) {
                                     case 'file': return _p.ss($, ($) => ['valid', $])
                                     case 'directory': return _p.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
@@ -104,7 +104,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                     const expected_node = $p.expected.__get_possible_entry(key)
                     const input_node = $
                     return ['directory', expected_node.__decide(
-                        ($) => _p.sg($, ($) => {
+                        ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'other': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
                                 case 'file': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
@@ -128,7 +128,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
     // 'superfluous nodes': _p.block(() => {
     //     const temp: { [key: string]: null } = {}
     //     $.__d_map(($, key) => {
-    //         const key_of_expected = _p.sg($, ($): string => {
+    //         const key_of_expected = _p.decide.state($, ($): string => {
     //             switch ($[0]) {
 
     //                 case 'other': return _p.ss($, ($) => key)

@@ -15,7 +15,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
     'support suffix': string
 }> = ($, $p) => $.__d_map(($, key) => {
     const support_directory = $p.support
-    return _p.sg($, ($): d_out.Node => {
+    return _p.decide.state($, ($): d_out.Node => {
         switch ($[0]) {
             case 'other': return _p.ss($, ($): d_out.Node => _pdev.implement_me(`expected a file or a directory`))
             case 'file': return _p.ss($, ($): d_out.Node => ['file', {
@@ -24,7 +24,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
             case 'directory': return _p.ss($, ($) => {
                 const main_node = $
                 return ['directory', support_directory.__get_possible_entry(key).__decide(
-                    ($): d_out.Directory => _p.sg($, ($) => {
+                    ($): d_out.Directory => _p.decide.state($, ($) => {
                         switch ($[0]) {
                             case 'directory': return _p.ss($, ($) => ['valid', Directory(
                                 main_node,
