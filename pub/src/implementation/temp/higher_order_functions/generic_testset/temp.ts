@@ -20,11 +20,11 @@ export type Node_to_Test_Node_Result_Transformer = ($: d_in.Node) => d_out.Test_
 export const create_individual_test_transformer = (
     tester: Tester
 ): Node_to_Test_Node_Result_Transformer => ($) => ['individual test', {
-    'result': _pt.sg($, ($): d_out.Individual_Test_Result__result => {
+    'result': _pt.decide.state($, ($): d_out.Individual_Test_Result__result => {
         switch ($[0]) {
             case 'file': return _pt.ss($, ($): d_out.Individual_Test_Result__result => {
                 const input = $.input
-                return _pt.sg($['matching'], ($): d_out.Individual_Test_Result__result => {
+                return _pt.decide.state($['matching'], ($): d_out.Individual_Test_Result__result => {
                     switch ($[0]) {
                         case 'valid': return _pt.ss($, ($) => {
                             const expected_text = $
@@ -50,9 +50,9 @@ export const create_collection_transformer = (type: 'group' | 'dictionary', $: _
     return ['collection', {
         'type': type === 'group' ? ['group', null] : ['dictionary', null],
         'result': dir_group.nodes.__get_possible_entry(key).__decide(
-            ($): d_out.Test_Node_Result__collection__result => _pt.sg($, ($): d_out.Test_Node_Result__collection__result => {
+            ($): d_out.Test_Node_Result__collection__result => _pt.decide.state($, ($): d_out.Test_Node_Result__collection__result => {
                 switch ($[0]) {
-                    case 'directory': return _pt.ss($, ($) => _pt.sg($, ($) => {
+                    case 'directory': return _pt.ss($, ($) => _pt.decide.state($, ($) => {
                         switch ($[0]) {
                             case 'invalid': return _pt.ss($, ($): d_out.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', $]])
                             case 'valid': return _pt.ss($, ($): d_out.Test_Node_Result__collection__result => {

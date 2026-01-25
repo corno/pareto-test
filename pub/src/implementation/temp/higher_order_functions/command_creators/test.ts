@@ -152,13 +152,13 @@ export const $$ = (
                                                     return ['collection', {
                                                         'type': ['group', null],
                                                         'result': input_node.__decide(
-                                                            ($): d_test_result.Test_Node_Result__collection__result => _pt.sg($, ($): d_test_result.Test_Node_Result__collection__result => {
+                                                            ($): d_test_result.Test_Node_Result__collection__result => _pt.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                 switch ($[0]) {
                                                                     case 'directory': return _pt.ss($, ($) => {
                                                                         const input_dir = $
                                                                         return expected_node.__decide(
                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
-                                                                                return _pt.sg($, ($): d_test_result.Test_Node_Result__collection__result => {
+                                                                                return _pt.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                                     switch ($[0]) {
                                                                                         case 'directory': return _pt.ss($, ($) => {
                                                                                             const expected_dir = $
@@ -262,7 +262,7 @@ export const $$ = (
             ($) => [
                 $cr['log error'].execute(
                     {
-                        'lines': _pt.sg($, ($) => {
+                        'lines': _pt.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'command line': return _pt.ss($, ($) => _pt.list.literal([`command line error`]))
                                 case 'writing to stdout': return _pt.ss($, ($) => _pt.list.literal([`stdout error`]))

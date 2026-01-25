@@ -27,7 +27,7 @@ export type Signature = _pi.Command_Procedure<
 import * as t_test_result_to_text from "../schemas/test_result/transformers/lines"
 
 const has_passed = (results: d_test.Results): boolean => _pt.boolean.dictionary_is_empty(
-    _pt.dictionary.filter(results, ($) => _pt.sg($, ($): _pi.Optional_Value<null> => {
+    _pt.dictionary.filter(results, ($) => _pt.decide.state($, ($): _pi.Optional_Value<null> => {
         switch ($[0]) {
             case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
             case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))

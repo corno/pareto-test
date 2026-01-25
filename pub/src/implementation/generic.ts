@@ -45,7 +45,7 @@ export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Erro
             ),
             ($) => {
                 const output = $
-                return _pt.sg(expected, ($) => {
+                return _pt.decide.state(expected, ($) => {
                     switch ($[0]) {
                         case 'output': return _pt.ss($, ($) => output === $)
                         case 'error': return _pt.ss($, ($) => false)
@@ -55,7 +55,7 @@ export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Erro
             },
             ($) => {
                 const error = $
-                return _pt.sg(expected, ($) => {
+                return _pt.decide.state(expected, ($) => {
                     switch ($[0]) {
                         case 'output': return _pt.ss($, ($) => false)
                         case 'error': return _pt.ss($, ($) => error === $)
@@ -80,7 +80,7 @@ export const run_refiner_tests_without_parameters = <Expected_Output, Expected_E
                 ),
                 ($) => {
                     const output = $
-                    return _pt.sg(expected, ($) => {
+                    return _pt.decide.state(expected, ($) => {
                         switch ($[0]) {
                             case 'output': return _pt.ss($, ($) => output === $)
                             case 'error': return _pt.ss($, ($) => false)
@@ -90,7 +90,7 @@ export const run_refiner_tests_without_parameters = <Expected_Output, Expected_E
                 },
                 ($) => {
                     const error = $
-                    return _pt.sg(expected, ($) => {
+                    return _pt.decide.state(expected, ($) => {
                         switch ($[0]) {
                             case 'output': return _pt.ss($, ($) => false)
                             case 'error': return _pt.ss($, ($) => error === $)
