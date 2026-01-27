@@ -11,8 +11,8 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
     const stripped = _ps.text.deprecated_build(($i) => {
         const main_as_characters = _pds.list.from_text($, ($) => $)
         const suffix_as_characters = _pds.list.from_text(suffix, ($) => $)
-        const main_length = main_as_characters.__get_number_of_elements()
-        const suffix_length = suffix_as_characters.__get_number_of_elements()
+        const main_length = main_as_characters.__get_number_of_items()
+        const suffix_length = suffix_as_characters.__get_number_of_items()
         let index = -1
         main_as_characters.__for_each(($) => {
             index += 1
@@ -22,7 +22,7 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                suffix_as_characters.__get_possible_element_at(suffix_index).__o_map(($) => {
+                suffix_as_characters.__get_possible_item_at(suffix_index).__o_map(($) => {
                     if (cur_char !== $) {
                         suffix_matches = false
                     }
