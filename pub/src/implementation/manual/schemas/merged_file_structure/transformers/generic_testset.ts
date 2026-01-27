@@ -8,7 +8,7 @@
 //         switch ($[0]) {
 //             case 'invalid': return _p.ss($, ($): d_out.Node__group => ['expected does not exist'])
 //             case 'valid': return _p.ss($, ($) => {
-//                 return $.__d_map(($, key) => {
+//                 return $.__d_map(($, id) => {
 //                     const expected_node = $p.expected.get_entry(key)
 //                     return _p.decide.state($, ($): d_out.Node => {
 //                         switch ($[0]) {

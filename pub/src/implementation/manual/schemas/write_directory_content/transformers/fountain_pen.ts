@@ -13,8 +13,8 @@ export const Error: _pi.Transformer<d_in.Error, d_out.Block_Part> = ($) => _p.de
     switch ($[0]) {
         case 'directory content': return _p.ss($, ($) => sh.b.sub([
             sh.b.indent([
-                sh.g.sub(_p.list.from_dictionary($, ($, key) => sh.g.nested_block([
-                    sh.b.snippet(key),
+                sh.g.sub(_p.list.from_dictionary($, ($, id) => sh.g.nested_block([
+                    sh.b.snippet(id),
                     sh.b.snippet(": "),
                     _p.decide.state($, ($) => {
                         switch ($[0]) {

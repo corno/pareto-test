@@ -13,17 +13,17 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
      * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
      */
     'support suffix': string
-}> = ($, $p) => $.__d_map(($, key) => {
+}> = ($, $p) => $.__d_map(($, id) => {
     const support_directory = $p.support
     return _p.decide.state($, ($): d_out.Node => {
         switch ($[0]) {
             case 'other': return _p.ss($, ($): d_out.Node => _pdev.implement_me(`expected a file or a directory`))
             case 'file': return _p.ss($, ($): d_out.Node => ['file', {
-                'support': support_directory.__get_possible_entry(key + $p['support suffix'])
+                'support': support_directory.__get_possible_entry(id + $p['support suffix'])
             }])
             case 'directory': return _p.ss($, ($) => {
                 const main_node = $
-                return ['directory', support_directory.__get_possible_entry(key).__decide(
+                return ['directory', support_directory.__get_possible_entry(id).__decide(
                     ($): d_out.Directory => _p.decide.state($, ($) => {
                         switch ($[0]) {
                             case 'directory': return _p.ss($, ($) => ['valid', Directory(

@@ -30,7 +30,7 @@ export const Test_Collection_Result = (
         sh.b.snippet($p['path to test']),
     ])
     return sh.g.sub(
-        _p.list.from_dictionary($, ($, key): d_out.Group_Part => sh.g.nested_block([
+        _p.list.from_dictionary($, ($, id): d_out.Group_Part => sh.g.nested_block([
             _p.decide.state($, ($) => {
                 switch ($[0]) {
                     case 'collection': return _p.ss($, ($) => _p.decide.state($.type, ($) => {
@@ -44,7 +44,7 @@ export const Test_Collection_Result = (
                     default: return _p.au($[0])
                 }
             }),
-            sh.b.snippet(key),
+            sh.b.snippet(id),
             sh.b.snippet(ENDCOLOR),
             _p.decide.state($, ($) => {
                 const do_node_path = (which: string) => sh.b.sub([
@@ -53,7 +53,7 @@ export const Test_Collection_Result = (
                     sh.b.snippet(which),
                     sh.b.snippet($p['path to test']),
                     sh.b.snippet(`/`),
-                    sh.b.snippet(key),
+                    sh.b.snippet(id),
                 ])
                 switch ($[0]) {
                     case 'individual test': return _p.ss($, ($) => _p.decide.state($.result, ($) => {
@@ -159,7 +159,7 @@ export const Test_Collection_Result = (
                                         $,
                                         {
                                             'path to test data': $p['path to test data'],
-                                            'path to test': `${$p['path to test']}/${key}`,
+                                            'path to test': `${$p['path to test']}/${id}`,
                                         }
                                     )
                                 ])

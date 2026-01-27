@@ -57,7 +57,7 @@ export type Suffix_Settings = {
 
 
 export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-    'nodes': $.__d_map(($, key) => {
+    'nodes': $.__d_map(($, id) => {
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
@@ -90,18 +90,18 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                         'input': top_node,
                         'matching': $p['suffix settings']['to be removed from input'].__decide(
                             ($) => {
-                                return remove_suffix(key, $).__decide(
+                                return remove_suffix(id, $).__decide(
                                     ($): d_out.Node__file__expected => get_matching_expect_file($),
                                     (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
 
                                 )
                             },
-                            (): d_out.Node__file__expected => get_matching_expect_file(key)
+                            (): d_out.Node__file__expected => get_matching_expect_file(id)
                         )
                     }]
                 })
                 case 'directory': return _p.ss($, ($) => {
-                    const expected_node = $p.expected.__get_possible_entry(key)
+                    const expected_node = $p.expected.__get_possible_entry(id)
                     const input_node = $
                     return ['directory', expected_node.__decide(
                         ($) => _p.decide.state($, ($) => {
@@ -126,8 +126,8 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
         })
     }),
     // 'superfluous nodes': _p.block(() => {
-    //     const temp: { [key: string]: null } = {}
-    //     $.__d_map(($, key) => {
+    //     const temp: { [id: string]: null } = {}
+    //     $.__d_map(($, id) => {
     //         const key_of_expected = _p.decide.state($, ($): string => {
     //             switch ($[0]) {
 
@@ -149,7 +149,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
     //         temp[key_of_expected] = null
     //     })
     //     const main = _p.dictionary.literal(temp)
-    //     return op_filter_dictionary($p.expected.__d_map(($, key) => {
+    //     return op_filter_dictionary($p.expected.__d_map(($, id) => {
     //         return main.get_entry(key).__d_map(() => null)
     //     }))
     // })

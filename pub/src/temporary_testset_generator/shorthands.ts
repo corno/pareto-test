@@ -6,7 +6,7 @@ import * as testers from './interface/testers'
 
 export const package_: ($: testers.Package) => testers.Package = ($) => $
 
-type Raw_Dictionary<T> = { [key: string]: T }
+type Raw_Dictionary<T> = { [id: string]: T }
 
 export const schema = (
     deserializers: Raw_Dictionary<testers.Deserializer>,

@@ -9,7 +9,7 @@ import * as temp from "./temp"
 import { transform_refinement_result } from '../../../temp_transform_refinement_result'
 
 export const test_collection = (type: 'group' | 'dictionary', $: {
-    [key: string]: temp.Directory_to_Test_Collection_Result_Transformer
+    [id: string]: temp.Directory_to_Test_Collection_Result_Transformer
 }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
     type,
     _pt.dictionary.literal($).__d_map(
@@ -24,7 +24,7 @@ export const transformer = (
         $: string,
         abort: ($: string) => never
     ) => string
-): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
     ($p) => transform_refinement_result(
         create_refinement_context<d_out.Tested, string>(
             (abort) => {
@@ -56,7 +56,7 @@ export const refiner = (
     ) => string
 ): temp.Directory_to_Test_Collection_Result_Transformer => {
 
-    const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, key): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+    const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
         ($p) => transform_refinement_result(
             create_refinement_context<d_out.Tested, string>(
                 (initialize_abort) => {

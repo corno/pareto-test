@@ -136,7 +136,7 @@ export const $$ = (
                                                             'to be removed from input': _pt.optional.set(`.astn`),
                                                         }
                                                     },
-                                                }).__d_map(($, key): d_test_result.Test_Node_Result => {
+                                                }).__d_map(($, id): d_test_result.Test_Node_Result => {
                                                     const the_func = ($x: {
                                                         'input': d_directory_content.Directory,
                                                         'expected': d_directory_content.Directory,
@@ -147,8 +147,8 @@ export const $$ = (
                                                             'suffix settings': $.suffix,
                                                         }
                                                     ))
-                                                    const expected_node = $v.__get_possible_entry(key)
-                                                    const input_node = $parent.__get_possible_entry(key)
+                                                    const expected_node = $v.__get_possible_entry(id)
+                                                    const input_node = $parent.__get_possible_entry(id)
                                                     return ['collection', {
                                                         'type': ['group', null],
                                                         'result': input_node.__decide(

@@ -10,8 +10,8 @@ export const Results = ($: d_in.Results): d_out.Group => sh.group([
 ])
 
 
-export const Branch = ($: d_in.Results): d_out.Group_Part => sh.g.sub(_p.list.from_dictionary($, ($, key) => sh.g.nested_block([
-    sh.b.snippet(key),
+export const Branch = ($: d_in.Results): d_out.Group_Part => sh.g.sub(_p.list.from_dictionary($, ($, id) => sh.g.nested_block([
+    sh.b.snippet(id),
     sh.b.snippet(": "),
     _p.decide.state($, ($) => {
         switch ($[0]) {

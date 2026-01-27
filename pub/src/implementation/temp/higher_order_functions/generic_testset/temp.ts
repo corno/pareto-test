@@ -45,11 +45,11 @@ export const create_individual_test_transformer = (
     })
 }]
 
-export const create_collection_transformer = (type: 'group' | 'dictionary', $: _pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.__d_map(($, key) => {
+export const create_collection_transformer = (type: 'group' | 'dictionary', $: _pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.__d_map(($, id) => {
     const group_to_test_group_result = $
     return ['collection', {
         'type': type === 'group' ? ['group', null] : ['dictionary', null],
-        'result': dir_group.nodes.__get_possible_entry(key).__decide(
+        'result': dir_group.nodes.__get_possible_entry(id).__decide(
             ($): d_out.Test_Node_Result__collection__result => _pt.decide.state($, ($): d_out.Test_Node_Result__collection__result => {
                 switch ($[0]) {
                     case 'directory': return _pt.ss($, ($) => _pt.decide.state($, ($) => {

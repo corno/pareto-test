@@ -14,7 +14,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
      */
     'support suffix': string
 }> = ($, $p) => {
-    return $.__d_map(($, key) => {
+    return $.__d_map(($, id) => {
         const support_directory = $p.support
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
@@ -23,12 +23,12 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Va
                 })
                 case 'file': return _p.ss($, ($): d_out.Node => {
                     return ['file', {
-                        'support': support_directory.__get_possible_entry(key + $p['support suffix'])
+                        'support': support_directory.__get_possible_entry(id + $p['support suffix'])
                     }]
                 })
                 case 'directory': return _p.ss($, ($) => {
                     const main_node = $
-                    return ['directory', support_directory.__get_possible_entry(key).__decide(
+                    return ['directory', support_directory.__get_possible_entry(id).__decide(
                         ($): d_out.Directory => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'directory': return _p.ss($, ($) => ['valid', Directory(
