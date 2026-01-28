@@ -66,7 +66,7 @@ export const $$ = (
 ): Procedure => _pc.command_procedure(
     ($p, $cr, $qr) => [
 
-        _pc.create_error_handling_context<d_main.Error, My_Error>(
+        _pc.handle_error<d_main.Error, My_Error>(
             [
 
                 _pc.refine_without_error_transformation(
