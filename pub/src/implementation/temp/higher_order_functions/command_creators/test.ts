@@ -1,6 +1,7 @@
 import * as _pc from 'pareto-core/dist/command'
 import * as _pt from 'pareto-core/dist/transformer'
 import * as _pi from 'pareto-core/dist/interface'
+import { _p_cc } from 'pareto-core/dist/change_context'
 
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
@@ -82,7 +83,7 @@ export const $$ = (
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
-                        _pt.deprecated_cc($, ($parent) =>
+                        _p_cc($, ($parent) =>
                             //read input dir
                             _pc.query(
                                 $qr['read directory content'](

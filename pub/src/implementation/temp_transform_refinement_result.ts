@@ -1,4 +1,5 @@
-import { panic } from 'pareto-core/dist/__internals/sync/expression/special'
+import { _p_unreachable_code_path } from 'pareto-core/dist/unreachable_code_path'
+
 import { Refinement_Result } from 'pareto-core/dist/__internals/async/create_refinement_context'
 
 export const transform_refinement_result = <Out, Success, Error>(
@@ -16,7 +17,7 @@ export const transform_refinement_result = <Out, Success, Error>(
         }
     )
     if (out === null) {
-        panic("unreachable")
+        _p_unreachable_code_path()
     }
     return out
 }

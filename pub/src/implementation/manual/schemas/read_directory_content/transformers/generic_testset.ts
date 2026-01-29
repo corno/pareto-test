@@ -2,6 +2,7 @@ import * as _pi from 'pareto-core/dist/interface'
 import * as _p from 'pareto-core/dist/refiner'
 import * as _pds from 'pareto-core/dist/deserializer'
 import * as _ps from 'pareto-core/dist/serializer'
+import { _p_unreachable_code_path } from 'pareto-core/dist/unreachable_code_path'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/generic_testset"
@@ -22,7 +23,7 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                suffix_as_characters.__get_possible_item_at(suffix_index).__o_map(($) => {
+                suffix_as_characters.__deprecated_get_possible_item_at(suffix_index).__o_map(($) => {
                     if (cur_char !== $) {
                         suffix_matches = false
                     }
@@ -61,7 +62,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
-                    return _p.fixme_abort(`expected a file or a directory`)
+                    return _p_unreachable_code_path()//`expected a file or a directory`
                 })
                 case 'file': return _p.ss($, ($): d_out.Node => {
 
