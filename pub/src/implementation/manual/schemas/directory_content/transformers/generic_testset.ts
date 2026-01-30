@@ -23,11 +23,14 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                suffix_as_characters.__deprecated_get_possible_item_at(suffix_index).__o_map(($) => {
-                    if (cur_char !== $) {
-                        suffix_matches = false
+                _p.optional.map(
+                    suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
+                    ($) => {
+                        if (cur_char !== $) {
+                            suffix_matches = false
+                        }
                     }
-                })
+                )
             }
         })
     })
@@ -88,10 +91,10 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                     'input': top_node,
                     'matching': $p['suffix settings']['to be removed from input'].__decide(
                         ($) => remove_suffix(id, $).__decide(
-                                ($): d_out.Node__file__expected => get_matching_expect_file($),
-                                (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
+                            ($): d_out.Node__file__expected => get_matching_expect_file($),
+                            (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
 
-                            ),
+                        ),
                         (): d_out.Node__file__expected => get_matching_expect_file(id)
                     )
                 }]

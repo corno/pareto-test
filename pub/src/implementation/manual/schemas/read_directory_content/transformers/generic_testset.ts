@@ -23,11 +23,14 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                suffix_as_characters.__deprecated_get_possible_item_at(suffix_index).__o_map(($) => {
-                    if (cur_char !== $) {
-                        suffix_matches = false
+                _p.optional.map(
+                    suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
+                    ($) => {
+                        if (cur_char !== $) {
+                            suffix_matches = false
+                        }
                     }
-                })
+                )
             }
         })
     })
