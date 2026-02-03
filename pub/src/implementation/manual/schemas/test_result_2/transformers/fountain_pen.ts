@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 
 import * as d_in from "../../../../../interface/to_be_generated/test_result"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
@@ -24,10 +24,10 @@ export const Test_Collection_Result = (
 ): d_out.Group_Part => {
 
     const do_context_path = (which: string) => sh.b.sub([
-        sh.b.snippet($p['path to test data']),
-        sh.b.snippet(`/`),
-        sh.b.snippet(which),
-        sh.b.snippet($p['path to test']),
+        sh.b.literal($p['path to test data']),
+        sh.b.literal("/"),
+        sh.b.literal(which),
+        sh.b.literal($p['path to test']),
     ])
     return sh.g.sub(
         _p.list.from_dictionary($, ($, id): d_out.Group_Part => sh.g.nested_block([
@@ -35,25 +35,25 @@ export const Test_Collection_Result = (
                 switch ($[0]) {
                     case 'collection': return _p.ss($, ($) => _p.decide.state($.type, ($) => {
                         switch ($[0]) {
-                            case 'group': return _p.ss($, ($) => sh.b.snippet(CYAN))
-                            case 'dictionary': return _p.ss($, ($) => sh.b.snippet(BLUE))
+                            case 'group': return _p.ss($, ($) => sh.b.literal(CYAN))
+                            case 'dictionary': return _p.ss($, ($) => sh.b.literal(BLUE))
                             default: return _p.au($[0])
                         }
                     }))
-                    case 'individual test': return _p.ss($, ($) => sh.b.snippet(MAGENTA))
+                    case 'individual test': return _p.ss($, ($) => sh.b.literal(MAGENTA))
                     default: return _p.au($[0])
                 }
             }),
-            sh.b.snippet(id),
-            sh.b.snippet(ENDCOLOR),
+            sh.b.literal(id),
+            sh.b.literal(ENDCOLOR),
             _p.decide.state($, ($) => {
                 const do_node_path = (which: string) => sh.b.sub([
-                    sh.b.snippet($p['path to test data']),
-                    sh.b.snippet(`/`),
-                    sh.b.snippet(which),
-                    sh.b.snippet($p['path to test']),
-                    sh.b.snippet(`/`),
-                    sh.b.snippet(id),
+                    sh.b.literal($p['path to test data']),
+                    sh.b.literal("/"),
+                    sh.b.literal(which),
+                    sh.b.literal($p['path to test']),
+                    sh.b.literal("/"),
+                    sh.b.literal(id),
                 ])
                 switch ($[0]) {
                     case 'individual test': return _p.ss($, ($) => _p.decide.state($.result, ($) => {
@@ -61,34 +61,34 @@ export const Test_Collection_Result = (
                             case 'source invalid': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                 switch ($[0]) {
                                     case 'not an individual test': return sh.b.sub([
-                                        sh.b.snippet(YELLOW),
-                                        sh.b.snippet(` not a file: `),
+                                        sh.b.literal(YELLOW),
+                                        sh.b.literal(" not a file: "),
                                         do_node_path(`input`),
-                                        sh.b.snippet(ENDCOLOR),
+                                        sh.b.literal(ENDCOLOR),
                                     ])
                                     case 'problem with expected': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
                                             case 'required input suffix missing': return _p.ss($, ($) => sh.b.sub([
-                                                sh.b.snippet(YELLOW),
-                                                sh.b.snippet(` does not have the required suffix '`),
-                                                sh.b.snippet($),
-                                                sh.b.snippet(`': `),
+                                                sh.b.literal(YELLOW),
+                                                sh.b.literal(" does not have the required suffix '"),
+                                                sh.b.literal($),
+                                                sh.b.literal("': "),
                                                 do_node_path(`input`),
-                                                sh.b.snippet(ENDCOLOR),
+                                                sh.b.literal(ENDCOLOR),
                                             ]))
                                             case 'expected': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                                 switch ($[0]) {
                                                     case 'does not exist': return sh.b.sub([
-                                                        sh.b.snippet(YELLOW),
-                                                        sh.b.snippet(` missing in the 'expected' file structure: `),
+                                                        sh.b.literal(YELLOW),
+                                                        sh.b.literal(" missing in the 'expected' file structure: "),
                                                         do_context_path(`expected`),
-                                                        sh.b.snippet(ENDCOLOR),
+                                                        sh.b.literal(ENDCOLOR),
                                                     ])
                                                     case 'is not a file': return sh.b.sub([
-                                                        sh.b.snippet(YELLOW),
-                                                        sh.b.snippet(` node in 'expected' file structure is not a file: `),
+                                                        sh.b.literal(YELLOW),
+                                                        sh.b.literal(" node in 'expected' file structure is not a file: "),
                                                         do_node_path(`expected`),
-                                                        sh.b.snippet(ENDCOLOR),
+                                                        sh.b.literal(ENDCOLOR),
                                                     ])
                                                     default: return _p.au($[0])
                                                 }
@@ -103,15 +103,15 @@ export const Test_Collection_Result = (
                             case 'tested': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                 switch ($[0]) {
                                     case 'passed': return sh.b.sub([
-                                        sh.b.snippet(GREEN),
-                                        sh.b.snippet(` ✅ pass`),
-                                        sh.b.snippet(ENDCOLOR),
+                                        sh.b.literal(GREEN),
+                                        sh.b.literal(" ✅ pass"),
+                                        sh.b.literal(ENDCOLOR),
                                     ])
                                     case 'failed': return _p.ss($, ($) => sh.b.sub([
                                         sh.b.sub([
-                                            sh.b.snippet(RED),
-                                            sh.b.snippet(` ❌ fail`),
-                                            sh.b.snippet(ENDCOLOR),
+                                            sh.b.literal(RED),
+                                            sh.b.literal(" ❌ fail"),
+                                            sh.b.literal(ENDCOLOR),
                                         ]),
                                         sh.b.indent([
                                             sh.g.nested_block([
@@ -167,35 +167,35 @@ export const Test_Collection_Result = (
                             case 'source invalid': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                 switch ($[0]) {
                                     case 'missing': return sh.b.sub([
-                                        sh.b.snippet(YELLOW),
-                                        sh.b.snippet(` missing: `),
+                                        sh.b.literal(YELLOW),
+                                        sh.b.literal(" missing: "),
                                         do_context_path(`input`),
-                                        sh.b.snippet(ENDCOLOR),
+                                        sh.b.literal(ENDCOLOR),
                                     ])
                                     case 'problem with expected': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
 
                                             case 'node for expected is not a directory': return sh.b.sub([
-                                                sh.b.snippet(YELLOW),
-                                                sh.b.snippet(` node in 'expected' file structure is not a directory: `),
+                                                sh.b.literal(YELLOW),
+                                                sh.b.literal(" node in 'expected' file structure is not a directory: "),
                                                 do_node_path(`expected`),
-                                                sh.b.snippet(ENDCOLOR),
+                                                sh.b.literal(ENDCOLOR),
 
                                             ])
                                             case 'directory for expected does not exist': return sh.b.sub([
-                                                sh.b.snippet(YELLOW),
-                                                sh.b.snippet(` missing in 'expected' file structure: `),
+                                                sh.b.literal(YELLOW),
+                                                sh.b.literal(" missing in 'expected' file structure: "),
                                                 do_context_path(`expected`),
-                                                sh.b.snippet(ENDCOLOR),
+                                                sh.b.literal(ENDCOLOR),
                                             ])
                                             default: return _p.au($[0])
                                         }
                                     }))
                                     case 'not a collection': return _p.ss($, ($) => sh.b.sub([
-                                        sh.b.snippet(YELLOW),
-                                        sh.b.snippet(` not a directory: `),
+                                        sh.b.literal(YELLOW),
+                                        sh.b.literal(" not a directory: "),
                                         do_node_path(`input`),
-                                        sh.b.snippet(ENDCOLOR),
+                                        sh.b.literal(ENDCOLOR),
                                     ]))
                                     default: return _p.au($[0])
                                 }

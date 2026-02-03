@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/write_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
@@ -14,8 +14,8 @@ export const Error: _pi.Transformer<d_in.Error, d_out.Block_Part> = ($) => _p.de
         case 'directory content': return _p.ss($, ($) => sh.b.sub([
             sh.b.indent([
                 sh.g.sub(_p.list.from_dictionary($, ($, id) => sh.g.nested_block([
-                    sh.b.snippet(id),
-                    sh.b.snippet(": "),
+                    sh.b.literal(id),
+                    sh.b.literal(": "),
                     _p.decide.state($, ($) => {
                         switch ($[0]) {
                             case 'file': return _p.ss($, ($) => t_write_file_to_fountain_pen.Error($))

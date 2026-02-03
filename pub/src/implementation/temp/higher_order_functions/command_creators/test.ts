@@ -1,7 +1,8 @@
 import * as _pc from 'pareto-core/dist/command'
-import * as _pt from 'pareto-core/dist/transformer'
+import * as _pt from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import { _p_cc } from 'pareto-core/dist/change_context'
+import _p_change_context from 'pareto-core/dist/_p_change_context'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
@@ -23,7 +24,7 @@ import * as t_test_result_to_summary from "../../../manual/schemas/test_result_2
 import * as t_test_result_to_actual_tree from "../../../manual/schemas/test_result_2/transformers/actual_tree"
 
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
-import * as s_path from "pareto-resources/dist/implementation/manual/schemas/path/serializers"
+import * as t_path_to_text from "pareto-resources/dist/implementation/manual/schemas/path/transformers/text"
 
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
@@ -79,11 +80,11 @@ export const $$ = (
 
                         //write the path to stdout
                         $cr['write to stdout'].execute(
-                            `Testing with data from: ${s_path.Context_Path($['path to test data'])}\n`,
+                            `Testing with data from: ${_p_text_from_list(t_path_to_text.Context_Path($['path to test data']), ($) => $)}\n`,
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
-                        _p_cc($, ($parent) =>
+                        _p_change_context($, ($parent) =>
                             //read input dir
                             _pc.query(
                                 $qr['read directory content'](
@@ -207,7 +208,7 @@ export const $$ = (
                                                                             t_test_result_to_fountain_pen.Test_Collection_Result(
                                                                                 test_results,
                                                                                 {
-                                                                                    'path to test data': s_path.Context_Path(path_to_test_data),
+                                                                                    'path to test data': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
                                                                                     'path to test': ``
                                                                                 }
                                                                             ),
@@ -243,7 +244,7 @@ export const $$ = (
                                                                 ($): My_Error => ['write directory content', $],
                                                             ),
                                                             _pc.fail(['failed tests', {
-                                                                'path': s_path.Context_Path(path_to_test_data),
+                                                                'path': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
                                                                 'tests': test_results
                                                             }])
                                                         ]

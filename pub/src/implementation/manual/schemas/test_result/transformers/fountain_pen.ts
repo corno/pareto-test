@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 import * as d_in from "../../../../../interface/temp/generic"
@@ -11,13 +11,13 @@ export const Results = ($: d_in.Results): d_out.Group => sh.group([
 
 
 export const Branch = ($: d_in.Results): d_out.Group_Part => sh.g.sub(_p.list.from_dictionary($, ($, id) => sh.g.nested_block([
-    sh.b.snippet(id),
-    sh.b.snippet(": "),
+    sh.b.literal(id),
+    sh.b.literal(": "),
     _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'test': return _p.ss($, ($) => $.passed
-                ? sh.b.snippet("✅ PASS")
-                : sh.b.snippet("❌ FAIL")
+                ? sh.b.literal("✅ PASS")
+                : sh.b.literal("❌ FAIL")
             )
             case 'group': return _p.ss($, ($) => sh.b.sub([
                 sh.b.indent([

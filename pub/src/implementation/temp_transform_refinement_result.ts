@@ -1,4 +1,4 @@
-import { _p_unreachable_code_path } from 'pareto-core/dist/unreachable_code_path'
+import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import { Refinement_Result } from 'pareto-core/dist/__internals/async/create_refinement_context'
 

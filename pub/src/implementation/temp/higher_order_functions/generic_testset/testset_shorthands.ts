@@ -1,6 +1,6 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _pt from 'pareto-core/dist/transformer'
-import { _p_cc } from 'pareto-core/dist/change_context'
+import * as _pt from 'pareto-core/dist/expression'
+import _p_change_context from 'pareto-core/dist/_p_change_context'
 import { create_refinement_context } from 'pareto-core/dist/__internals/async/create_refinement_context'
 
 import * as d_out from "../../../../interface/to_be_generated/test_result"
@@ -14,7 +14,7 @@ export const test_collection = (type: 'group' | 'dictionary', $: {
 }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
     type,
     _pt.dictionary.literal($).__d_map(
-        ($2) => _p_cc($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
+        ($2) => _p_change_context($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
     )
 )
 

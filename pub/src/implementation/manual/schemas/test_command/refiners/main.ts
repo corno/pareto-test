@@ -1,6 +1,6 @@
-import * as _p from 'pareto-core/dist/refiner'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import { _p_iterate } from 'pareto-core/dist/iterate'
+import _p_iterate from 'pareto-core/dist/_p_iterate'
 
 import * as builders from "../productions/text"
 
