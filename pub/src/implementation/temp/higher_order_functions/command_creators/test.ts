@@ -91,7 +91,7 @@ export const $$ = (
                                     {
                                         'path': t_path_to_path.create_node_path(
                                             $['path to test data'],
-                                            `input`,
+                                            { 'node': `input` },
                                         ),
                                     },
                                     ($): My_Error => ['read directory content', $]
@@ -108,7 +108,7 @@ export const $$ = (
                                                 {
                                                     'path': t_path_to_path.create_node_path(
                                                         $parent['path to test data'],
-                                                        `expected`,
+                                                        { 'node': `expected` },
                                                     ),
                                                 },
                                                 ($): My_Error => ['read directory content', $]

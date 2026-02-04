@@ -1,24 +1,26 @@
 import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
-import _p_text_build_deprecated from 'pareto-core/dist/_p_text_build_deprecated'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../../interface/to_be_generated/generic_testset"
 
 const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> => {
     let suffix_matches = true
-    const stripped = _p_text_build_deprecated(($i) => {
-        const main_as_characters = _p_list_from_text($, ($) => $)
-        const suffix_as_characters = _p_list_from_text(suffix, ($) => $)
-        const main_length = main_as_characters.__get_number_of_items()
-        const suffix_length = suffix_as_characters.__get_number_of_items()
+    const main_as_characters = _p_list_from_text($, ($) => $)
+    const suffix_as_characters = _p_list_from_text(suffix, ($) => $)
+    const main_length = main_as_characters.__get_number_of_items()
+    const suffix_length = suffix_as_characters.__get_number_of_items()
+    
+    const stripped = _p_list_build_deprecated<number>(($i) => {
         let index = -1
         main_as_characters.__l_map(($) => {
             index += 1
             if (index < main_length - suffix_length) {
-                $i.add_character($)
+                $i['add item']($)
             } else {
                 //validate the right suffix
                 const cur_char = $
@@ -35,7 +37,7 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
         })
     })
     if (suffix_matches) {
-        return _p.optional.set(stripped)
+        return _p.optional.set(_p_text_from_list(stripped, ($) => $))
     }
     return _p.optional.set($)
 }

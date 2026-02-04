@@ -1,5 +1,6 @@
 import * as _pt from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 import * as d from "../../../../../interface/to_be_generated/test_command"
 
@@ -12,9 +13,14 @@ export const Parameters = (
     abort: _pi.Abort<string>,
 ): d.Parameters => {
     return {
-        'path to test data': r_path_from_text.Context_Path(iterator.consume(
-            ($) => $,
-            () => abort("expected path to test data")
-        )),
+        'path to test data': r_path_from_text.Context_Path(
+            _p_list_from_text(
+                iterator.consume(
+                    ($) => $,
+                    () => abort("expected path to test data")
+                ),
+                ($) => $
+            ),
+        )
     }
 }
