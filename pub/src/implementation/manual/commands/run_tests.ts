@@ -8,6 +8,8 @@ import * as d_log from "pareto-resources/dist/interface/generated/liana/schemas/
 
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
 
+//shorthands
+import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 export type Parameters = {
     'test results': d_test.Results,
@@ -24,7 +26,7 @@ export type Signature = _pi.Command_Procedure<
     null
 >
 
-import * as t_test_result_to_text from "../schemas/test_result/transformers/lines"
+import * as t_test_result_to_fp from "../schemas/test_result/transformers/fountain_pen"
 
 const has_passed = (results: d_test.Results): boolean => _pt.boolean.dictionary_is_empty(
     _pt.dictionary.filter(results, ($) => _pt.decide.state($, ($): _pi.Optional_Value<null> => {
@@ -40,9 +42,9 @@ export const $$: Signature = _p.command_procedure(
     ($p, $cr) => [
         $cr.log.execute(
             {
-                'lines': _pt.list.literal([
-                    `Running tests...`,
-                ])
+                'message': sh.pg.sentences([
+                    sh.ph.literal("running tests..."),
+                ]),
             },
             ($) => $,
         ),
@@ -51,13 +53,10 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr.log.execute(
                     {
-                        'lines': _pt.list.nested_literal_old([
-                            t_test_result_to_text.Results($p['test results']),
-                            [
-                                ``,
-                                `all tests successful.`
-                            ],
-                        ])
+                        'message': sh.pg.sentences([
+                            sh.ph.literal(""),
+                            sh.ph.literal("all tests successful."),
+                        ]),
                     },
                     ($) => $,
                 ),
@@ -68,12 +67,12 @@ export const $$: Signature = _p.command_procedure(
             [
                 $cr['log error'].execute(
                     {
-                        'lines': _pt.list.nested_literal_old([
-                            t_test_result_to_text.Results($p['test results']),
-                            [
-                                ``,
-                                `some tests failed`
-                            ],
+                        'message': sh.pg.composed([
+                            t_test_result_to_fp.Results($p['test results']),
+                            sh.pg.sentences([
+                                sh.ph.literal(""),
+                                sh.ph.literal("some tests failed"),
+                            ]),
                         ])
                     },
                     ($) => $,

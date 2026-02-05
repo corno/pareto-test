@@ -9,13 +9,13 @@ import * as t_write_file_to_fountain_pen from "pareto-resources/dist/implementat
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-export const Error: _pi.Transformer<d_in.Error, d_out.Block_Part> = ($) => _p.decide.state($, ($) => {
+export const Error: _pi.Transformer<d_in.Error, d_out.Phrase> = ($) => _p.decide.state($, ($) => {
     switch ($[0]) {
-        case 'directory content': return _p.ss($, ($) => sh.b.sub([
-            sh.b.indent([
-                sh.g.sub(_p.list.from_dictionary($, ($, id) => sh.g.nested_block([
-                    sh.b.literal(id),
-                    sh.b.literal(": "),
+        case 'directory content': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.indent(
+                sh.pg.sentences(_p.list.from_dictionary($, ($, id) => sh.ph.composed([
+                    sh.ph.literal(id),
+                    sh.ph.literal(": "),
                     _p.decide.state($, ($) => {
                         switch ($[0]) {
                             case 'file': return _p.ss($, ($) => t_write_file_to_fountain_pen.Error($))
@@ -24,7 +24,7 @@ export const Error: _pi.Transformer<d_in.Error, d_out.Block_Part> = ($) => _p.de
                         }
                     })
                 ])))
-            ])
+            )
         ]))
         // case 'make directory': return _p.ss($, ($) => t_make_directory_to_fountain_pen.Error($))
         default: return _p.au($[0])

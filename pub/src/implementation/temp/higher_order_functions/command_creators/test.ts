@@ -26,6 +26,8 @@ import * as t_test_result_to_actual_tree from "../../../manual/schemas/test_resu
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as t_path_to_text from "pareto-resources/dist/implementation/manual/schemas/path/transformers/text"
 
+import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
@@ -203,25 +205,23 @@ export const $$ = (
                                                         [
                                                             $cr['log'].execute(
                                                                 {
-                                                                    'lines': _pt.list.nested_literal_old([
-                                                                        t_fountain_pen_to_lines.Group_Part(
-                                                                            t_test_result_to_fountain_pen.Test_Collection_Result(
-                                                                                test_results,
-                                                                                {
-                                                                                    'path to test data': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
-                                                                                    'path to test': ``
-                                                                                }
-                                                                            ),
+                                                                    'message': sh.pg.composed([
+                                                                        t_test_result_to_fountain_pen.Test_Collection_Result(
+                                                                            test_results,
                                                                             {
-                                                                                'indentation': `   `
+                                                                                'path to test data': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
+                                                                                'path to test': ``
                                                                             }
                                                                         ),
-                                                                        [
-                                                                            ``,
-                                                                            GREEN,
-                                                                            `All tests passed!`,
-                                                                            ENDCOLOR
-                                                                        ],
+                                                                        sh.pg.sentences([
+
+                                                                            sh.ph.literal(""),
+                                                                            sh.ph.composed([
+                                                                                sh.ph.literal(GREEN),
+                                                                                sh.ph.literal(`All tests passed!`),
+                                                                                sh.ph.literal(ENDCOLOR),
+                                                                            ])
+                                                                        ])
                                                                     ])
 
                                                                 },
@@ -264,40 +264,39 @@ export const $$ = (
             ($) => [
                 $cr['log error'].execute(
                     {
-                        'lines': _pt.decide.state($, ($) => {
+                        'message': _pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'command line': return _pt.ss($, ($) => _pt.list.literal([`command line error`]))
-                                case 'writing to stdout': return _pt.ss($, ($) => _pt.list.literal([`stdout error`]))
-                                case 'read directory content': return _pt.ss($, ($) => _pt.list.nested_literal_old([
-                                    _pt.list.literal([`read dir error`]),
-                                    t_fountain_pen_to_lines.Block_Part(t_read_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
+                                case 'command line': return _pt.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal(`command line error`)
                                 ]))
-                                case 'write directory content': return _pt.ss($, ($) => _pt.list.nested_literal_old([
-                                    _pt.list.literal([`write dir error`]),
-                                    t_fountain_pen_to_lines.Block_Part(t_write_directory_content_to_fountain_pen.Error($), { 'indentation': `   ` })
+                                case 'writing to stdout': return _pt.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal(`error writing to stdout`)
                                 ]))
-                                case 'failed tests': return _pt.ss($, ($) => _pt.list.nested_literal_old<string>([
-                                    t_fountain_pen_to_lines.Group_Part(
-                                        t_test_result_to_fountain_pen.Test_Collection_Result(
-                                            $.tests,
-                                            {
-                                                'path to test data': $.path,
-                                                'path to test': ``
-                                            }
-                                        ),
+                                case 'read directory content': return _pt.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal(`read dir error`),
+                                    t_read_directory_content_to_fountain_pen.Error($)
+                                ]))
+                                case 'write directory content': return _pt.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal(`write dir error`),
+                                    t_write_directory_content_to_fountain_pen.Error($)
+                                ]))
+                                case 'failed tests': return _pt.ss($, ($) => sh.pg.composed([
+                                    t_test_result_to_fountain_pen.Test_Collection_Result(
+                                        $.tests,
                                         {
-                                            'indentation': `   `
+                                            'path to test data': $.path,
+                                            'path to test': ``
                                         }
                                     ),
-                                    [
-                                        RED + t_test_result_to_summary.Test_Group_Result(
+                                    sh.pg.sentences([
+                                        sh.ph.literal(RED + t_test_result_to_summary.Test_Group_Result(
                                             $.tests,
                                             {
                                                 'include passed tests': false,
                                                 'include structural problems': true,
                                             }
-                                        ) +  ` test(s) failed` + ENDCOLOR
-                                    ],
+                                        ) + ` test(s) failed` + ENDCOLOR)
+                                    ],)
                                 ]))
                                 default: return _pt.au($[0])
                             }
