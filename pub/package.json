@@ -10,7 +10,7 @@
   "dependencies": {
     "astn-core": "^0.5.27",
     "pareto-core-dev": "^0.12.7",
-    "pareto-fountain-pen": "^0.4.20",
+    "pareto-fountain-pen": "^0.4.21",
     "pareto-host-nodejs": "^0.2.21",
     "pareto-resources": "^0.2.33"
   }
