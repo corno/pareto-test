@@ -289,13 +289,16 @@ export const $$ = (
                                         }
                                     ),
                                     sh.pg.sentences([
-                                        sh.ph.literal(RED + t_test_result_to_summary.Test_Group_Result(
+                                        sh.ph.literal(RED),
+                                        sh.ph.decimal(t_test_result_to_summary.Test_Group_Result(
                                             $.tests,
                                             {
                                                 'include passed tests': false,
                                                 'include structural problems': true,
                                             }
-                                        ) + " test(s) failed" + ENDCOLOR)
+                                        )),
+                                        sh.ph.literal(" test(s) failed"),
+                                        sh.ph.literal(ENDCOLOR),
                                     ],)
                                 ]))
                                 default: return _p.au($[0])
