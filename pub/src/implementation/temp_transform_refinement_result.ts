@@ -17,7 +17,7 @@ export const transform_refinement_result = <Out, Success, Error>(
         }
     )
     if (out === null) {
-        _p_unreachable_code_path()
+        _p_unreachable_code_path("the refinement result should always be either success or error")
     }
     return out
 }

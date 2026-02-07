@@ -1,5 +1,5 @@
 import * as _p from 'pareto-core/dist/command'
-import * as _pt from 'pareto-core/dist/expression'
+import * as _pt from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_test from "../../../interface/temp/generic"
@@ -28,15 +28,18 @@ export type Signature = _pi.Command_Procedure<
 
 import * as t_test_result_to_fp from "../schemas/test_result/transformers/fountain_pen"
 
-const has_passed = (results: d_test.Results): boolean => _pt.boolean.dictionary_is_empty(
-    _pt.dictionary.filter(results, ($) => _pt.decide.state($, ($): _pi.Optional_Value<null> => {
-        switch ($[0]) {
-            case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.not_set() : _pt.optional.set(null))
-            case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.not_set() : _pt.optional.set(null))
-            default: return _pt.au($[0])
-        }
-    }))
-)
+const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictionary(
+    _pt.dictionary.from.dictionary(results,
+    ).filter(
+        ($) => _pt.decide.state($, ($): _pi.Optional_Value<null> => {
+            switch ($[0]) {
+                case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
+                case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
+                default: return _pt.au($[0])
+            }
+        })
+    )
+).is_empty()
 
 export const $$: Signature = _p.command_procedure(
     ($p, $cr) => [

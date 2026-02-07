@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
@@ -19,7 +19,7 @@ export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Val
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
-                    return _pdev.implement_me(`expected a file or a directory`)
+                    return _pdev.implement_me("expected a file or a directory")
                 })
                 case 'file': return _p.ss($, ($): d_out.Node => {
                     return ['file', {

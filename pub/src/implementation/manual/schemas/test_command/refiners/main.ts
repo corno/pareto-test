@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import _p_iterate from 'pareto-core/dist/_p_iterate'
 
@@ -14,6 +14,6 @@ export const Parameters: _pi.Refiner<d.Parameters, string, d_main.Parameters> = 
             iterator,
             abort,
         ),
-        ($) => abort(`too many arguments`)
+        ($) => abort("too many arguments")
     )
 )

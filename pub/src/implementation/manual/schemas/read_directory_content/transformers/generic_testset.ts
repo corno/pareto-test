@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
@@ -24,8 +24,9 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
                 //validate the right suffix
                 const cur_char = $
                 const suffix_index = index - (main_length - suffix_length)
-                _p.optional.map(
+                _p.optional.from.optional(
                     suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
+                ).map(
                     ($) => {
                         if (cur_char !== $) {
                             suffix_matches = false
@@ -36,9 +37,9 @@ const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> =>
         })
     })
     if (suffix_matches) {
-        return _p.optional.set(_p_text_from_list(stripped, ($) => $))
+        return _p.optional.literal.set(_p_text_from_list(stripped, ($) => $))
     }
-    return _p.optional.set($)
+    return _p.optional.literal.set($)
 }
 
 export type Parameters = {
@@ -66,7 +67,7 @@ export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Dir
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
                 case 'other': return _p.ss($, ($): d_out.Node => {
-                    return _p_unreachable_code_path()//`expected a file or a directory`
+                    return _p_unreachable_code_path("needs proper handling")//"expected a file or a directory"
                 })
                 case 'file': return _p.ss($, ($): d_out.Node => {
 
@@ -75,7 +76,7 @@ export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Dir
                     const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
                         const expected_node = $p.expected.__get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__decide(
                             ($) => $,
-                            () => ``
+                            () => ""
                         ))
                         return expected_node.__decide(
                             ($) => _p.decide.state($, ($): d_out.Node__file__expected => {

@@ -1,6 +1,6 @@
 import * as _pi from 'pareto-core/dist/interface'
 import * as _pdev from 'pareto-core-dev'
-import * as _pt from 'pareto-core/dist/expression'
+import * as _pt from 'pareto-core/dist/assign'
 
 import { create_refinement_context } from 'pareto-core/dist/__internals/async/create_refinement_context'
 

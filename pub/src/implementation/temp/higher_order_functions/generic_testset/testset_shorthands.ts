@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core/dist/interface'
-import * as _pt from 'pareto-core/dist/expression'
+import * as _pt from 'pareto-core/dist/assign'
 import _p_change_context from 'pareto-core/dist/_p_change_context'
 import { create_refinement_context } from 'pareto-core/dist/__internals/async/create_refinement_context'
 

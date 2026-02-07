@@ -1,5 +1,5 @@
 import * as _pc from 'pareto-core/dist/command'
-import * as _pt from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import _p_change_context from 'pareto-core/dist/_p_change_context'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
@@ -93,7 +93,7 @@ export const $$ = (
                                     {
                                         'path': t_path_to_path.create_node_path(
                                             $['path to test data'],
-                                            { 'node': `input` },
+                                            { 'node': "input" },
                                         ),
                                     },
                                     ($): My_Error => ['read directory content', $]
@@ -110,7 +110,7 @@ export const $$ = (
                                                 {
                                                     'path': t_path_to_path.create_node_path(
                                                         $parent['path to test data'],
-                                                        { 'node': `expected` },
+                                                        { 'node': "expected" },
                                                     ),
                                                 },
                                                 ($): My_Error => ['read directory content', $]
@@ -118,26 +118,26 @@ export const $$ = (
                                             $,
                                             ($v, $parent) => {
 
-                                                const test_results: d_test_result.Test_Collection_Result = _pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
+                                                const test_results: d_test_result.Test_Collection_Result = _p.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
                                                     'astn_to_astn': {
                                                         'transformer': $x['astn to astn'],
                                                         'suffix': {
-                                                            'to be appended to expected': _pt.optional.not_set(),
-                                                            'to be removed from input': _pt.optional.not_set(),
+                                                            'to be appended to expected': _p.optional.literal.not_set(),
+                                                            'to be removed from input': _p.optional.literal.not_set(),
                                                         }
                                                     },
                                                     'text_to_astn': {
                                                         'transformer': $x['text to astn'],
                                                         'suffix': {
-                                                            'to be appended to expected': _pt.optional.set(`.astn`),
-                                                            'to be removed from input': _pt.optional.not_set(),
+                                                            'to be appended to expected': _p.optional.literal.set(".astn"),
+                                                            'to be removed from input': _p.optional.literal.not_set(),
                                                         }
                                                     },
                                                     'astn_to_text': {
                                                         'transformer': $x['astn to text'],
                                                         'suffix': {
-                                                            'to be appended to expected': _pt.optional.not_set(),
-                                                            'to be removed from input': _pt.optional.set(`.astn`),
+                                                            'to be appended to expected': _p.optional.literal.not_set(),
+                                                            'to be removed from input': _p.optional.literal.set(".astn"),
                                                         }
                                                     },
                                                 }).__d_map(($, id): d_test_result.Test_Node_Result => {
@@ -156,15 +156,15 @@ export const $$ = (
                                                     return ['collection', {
                                                         'type': ['group', null],
                                                         'result': input_node.__decide(
-                                                            ($): d_test_result.Test_Node_Result__collection__result => _pt.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
+                                                            ($): d_test_result.Test_Node_Result__collection__result => _p.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                 switch ($[0]) {
-                                                                    case 'directory': return _pt.ss($, ($) => {
+                                                                    case 'directory': return _p.ss($, ($) => {
                                                                         const input_dir = $
                                                                         return expected_node.__decide(
                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
-                                                                                return _pt.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
+                                                                                return _p.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
                                                                                     switch ($[0]) {
-                                                                                        case 'directory': return _pt.ss($, ($) => {
+                                                                                        case 'directory': return _p.ss($, ($) => {
                                                                                             const expected_dir = $
                                                                                             return ['source valid', the_func(
                                                                                                 {
@@ -210,7 +210,7 @@ export const $$ = (
                                                                             test_results,
                                                                             {
                                                                                 'path to test data': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
-                                                                                'path to test': ``
+                                                                                'path to test': ""
                                                                             }
                                                                         ),
                                                                         sh.pg.sentences([
@@ -218,7 +218,7 @@ export const $$ = (
                                                                             sh.ph.literal(""),
                                                                             sh.ph.composed([
                                                                                 sh.ph.literal(GREEN),
-                                                                                sh.ph.literal(`All tests passed!`),
+                                                                                sh.ph.literal("All tests passed!"),
                                                                                 sh.ph.literal(ENDCOLOR),
                                                                             ])
                                                                         ])
@@ -237,7 +237,7 @@ export const $$ = (
                                                                     'path': t_path_to_path.extend_context_path(
                                                                         path_to_test_data,
                                                                         {
-                                                                            'addition': `actual`,
+                                                                            'addition': "actual",
                                                                         },
                                                                     ),
                                                                 },
@@ -264,28 +264,28 @@ export const $$ = (
             ($) => [
                 $cr['log error'].execute(
                     {
-                        'message': _pt.decide.state($, ($) => {
+                        'message': _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'command line': return _pt.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal(`command line error`)
+                                case 'command line': return _p.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal("command line error")
                                 ]))
-                                case 'writing to stdout': return _pt.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal(`error writing to stdout`)
+                                case 'writing to stdout': return _p.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal("error writing to stdout")
                                 ]))
-                                case 'read directory content': return _pt.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal(`read dir error`),
+                                case 'read directory content': return _p.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal("read dir error"),
                                     t_read_directory_content_to_fountain_pen.Error($)
                                 ]))
-                                case 'write directory content': return _pt.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal(`write dir error`),
+                                case 'write directory content': return _p.ss($, ($) => sh.pg.sentences([
+                                    sh.ph.literal("write dir error"),
                                     t_write_directory_content_to_fountain_pen.Error($)
                                 ]))
-                                case 'failed tests': return _pt.ss($, ($) => sh.pg.composed([
+                                case 'failed tests': return _p.ss($, ($) => sh.pg.composed([
                                     t_test_result_to_fountain_pen.Test_Collection_Result(
                                         $.tests,
                                         {
                                             'path to test data': $.path,
-                                            'path to test': ``
+                                            'path to test': ""
                                         }
                                     ),
                                     sh.pg.sentences([
@@ -295,10 +295,10 @@ export const $$ = (
                                                 'include passed tests': false,
                                                 'include structural problems': true,
                                             }
-                                        ) + ` test(s) failed` + ENDCOLOR)
+                                        ) + " test(s) failed" + ENDCOLOR)
                                     ],)
                                 ]))
-                                default: return _pt.au($[0])
+                                default: return _p.au($[0])
                             }
                         })
                     },

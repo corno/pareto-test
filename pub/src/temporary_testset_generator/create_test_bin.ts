@@ -1,6 +1,6 @@
 import * as _pn from 'pareto-host-nodejs'
 import * as _pi from 'pareto-core/dist/interface'
-import * as _pt from 'pareto-core/dist/expression'
+import * as _pt from 'pareto-core/dist/assign'
 import { $$ as command_creator } from "../implementation/temp/higher_order_functions/command_creators/test"
 
 
