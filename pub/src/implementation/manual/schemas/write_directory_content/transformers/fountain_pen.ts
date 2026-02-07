@@ -16,7 +16,7 @@ export const Error: _pi.Transformer<d_in.Error, d_out.Phrase> = ($) => _p.decide
                 sh.pg.sentences(_p.list.from.dictionary(
                     $,
                 ).convert(
-                    ($, id) => sh.ph.composed([
+                    ($, id) => sh.sentence([
                         sh.ph.literal(id),
                         sh.ph.literal(": "),
                         _p.decide.state($, ($) => {

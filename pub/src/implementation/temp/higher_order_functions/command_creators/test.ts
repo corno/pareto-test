@@ -215,8 +215,8 @@ export const $$ = (
                                                                         ),
                                                                         sh.pg.sentences([
 
-                                                                            sh.ph.literal(""),
-                                                                            sh.ph.composed([
+                                                                            sh.sentence([]),
+                                                                            sh.sentence([
                                                                                 sh.ph.literal(GREEN),
                                                                                 sh.ph.literal("All tests passed!"),
                                                                                 sh.ph.literal(ENDCOLOR),
@@ -267,18 +267,30 @@ export const $$ = (
                         'message': _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'command line': return _p.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal("command line error")
+                                    sh.sentence([
+                                        sh.ph.literal("command line error")
+                                    ])
                                 ]))
                                 case 'writing to stdout': return _p.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal("error writing to stdout")
+                                    sh.sentence([
+                                        sh.ph.literal("error writing to stdout")
+                                    ])
                                 ]))
                                 case 'read directory content': return _p.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal("read dir error"),
-                                    t_read_directory_content_to_fountain_pen.Error($)
+                                    sh.sentence([
+                                        sh.ph.literal("read dir error")
+                                    ]),
+                                    sh.sentence([
+                                        t_read_directory_content_to_fountain_pen.Error($)
+                                    ])
                                 ]))
                                 case 'write directory content': return _p.ss($, ($) => sh.pg.sentences([
-                                    sh.ph.literal("write dir error"),
-                                    t_write_directory_content_to_fountain_pen.Error($)
+                                    sh.sentence([
+                                        sh.ph.literal("write dir error")
+                                    ]),
+                                    sh.sentence([
+                                        t_write_directory_content_to_fountain_pen.Error($)
+                                    ])
                                 ]))
                                 case 'failed tests': return _p.ss($, ($) => sh.pg.composed([
                                     t_test_result_to_fountain_pen.Test_Collection_Result(
@@ -289,17 +301,19 @@ export const $$ = (
                                         }
                                     ),
                                     sh.pg.sentences([
-                                        sh.ph.literal(RED),
-                                        sh.ph.decimal(t_test_result_to_summary.Test_Group_Result(
-                                            $.tests,
-                                            {
-                                                'include passed tests': false,
-                                                'include structural problems': true,
-                                            }
-                                        )),
-                                        sh.ph.literal(" test(s) failed"),
-                                        sh.ph.literal(ENDCOLOR),
-                                    ],)
+                                        sh.sentence([
+                                            sh.ph.literal(RED),
+                                            sh.ph.decimal(t_test_result_to_summary.Test_Group_Result(
+                                                $.tests,
+                                                {
+                                                    'include passed tests': false,
+                                                    'include structural problems': true,
+                                                }
+                                            )),
+                                            sh.ph.literal(" test(s) failed"),
+                                            sh.ph.literal(ENDCOLOR),
+                                        ])
+                                    ])
                                 ]))
                                 default: return _p.au($[0])
                             }

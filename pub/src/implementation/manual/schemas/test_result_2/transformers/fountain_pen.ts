@@ -33,7 +33,7 @@ export const Test_Collection_Result = (
         _p.list.from.dictionary(
             $,
         ).convert(
-            ($, id) => sh.ph.composed([
+            ($, id) => sh.sentence([
                 _p.decide.state($, ($) => {
                     switch ($[0]) {
                         case 'collection': return _p.ss($, ($) => _p.decide.state($.type, ($) => {
@@ -117,30 +117,36 @@ export const Test_Collection_Result = (
                                                 sh.ph.literal(ENDCOLOR),
                                             ]),
                                             sh.ph.indent(sh.pg.sentences([
-                                                do_node_path("input"),
-                                                do_node_path("expected"),
-                                                _p.decide.state($, ($) => {
-                                                    switch ($[0]) {
-                                                        case 'transform': return _p.ss($, ($) => _p.decide.state($, ($) => {
-                                                            switch ($[0]) {
-                                                                case 'initialization': return _p.ss($, ($) => sh.ph.literal("initialization"))
-                                                                case 'unexpected output': return _p.ss($, ($) => sh.ph.literal("unexpected output"))
-                                                                default: return _p.au($[0])
-                                                            }
-                                                        }))
-                                                        case 'refine': return _p.ss($, ($) => _p.decide.state($, ($) => {
-                                                            switch ($[0]) {
-                                                                case 'initialization': return _p.ss($, ($) => sh.ph.literal("initialization"))
-                                                                case 'should have failed but succeeded': return _p.ss($, ($) => sh.ph.literal("should have failed but succeeded"))
-                                                                case 'should have succeeded but failed': return _p.ss($, ($) => sh.ph.literal("should have succeeded but failed"))
-                                                                case 'unexpected output': return _p.ss($, ($) => sh.ph.literal("unexpected output"))
-                                                                case 'unexpected error': return _p.ss($, ($) => sh.ph.literal("unexpected error"))
-                                                                default: return _p.au($[0])
-                                                            }
-                                                        }))
-                                                        default: return _p.au($[0])
-                                                    }
-                                                })
+                                                sh.sentence([
+                                                    do_node_path("input"),
+                                                ]),
+                                                sh.sentence([
+                                                    do_node_path("expected"),
+                                                ]),
+                                                sh.sentence([
+                                                    _p.decide.state($, ($) => {
+                                                        switch ($[0]) {
+                                                            case 'transform': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                                                switch ($[0]) {
+                                                                    case 'initialization': return _p.ss($, ($) => sh.ph.literal("initialization"))
+                                                                    case 'unexpected output': return _p.ss($, ($) => sh.ph.literal("unexpected output"))
+                                                                    default: return _p.au($[0])
+                                                                }
+                                                            }))
+                                                            case 'refine': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                                                switch ($[0]) {
+                                                                    case 'initialization': return _p.ss($, ($) => sh.ph.literal("initialization"))
+                                                                    case 'should have failed but succeeded': return _p.ss($, ($) => sh.ph.literal("should have failed but succeeded"))
+                                                                    case 'should have succeeded but failed': return _p.ss($, ($) => sh.ph.literal("should have succeeded but failed"))
+                                                                    case 'unexpected output': return _p.ss($, ($) => sh.ph.literal("unexpected output"))
+                                                                    case 'unexpected error': return _p.ss($, ($) => sh.ph.literal("unexpected error"))
+                                                                    default: return _p.au($[0])
+                                                                }
+                                                            }))
+                                                            default: return _p.au($[0])
+                                                        }
+                                                    })
+                                                ])
                                             ]))
                                         ]))
                                         default: return _p.au($[0])

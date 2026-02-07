@@ -11,7 +11,7 @@ export const Results = ($: d_in.Results): d_out.Paragraph => Branch($)
 export const Branch = ($: d_in.Results): d_out.Paragraph => sh.pg.sentences(_p.list.from.dictionary(
     $,
 ).convert(
-    ($, id) => sh.ph.composed([
+    ($, id) => sh.sentence([
         sh.ph.literal(id),
         sh.ph.literal(": "),
         _p.decide.state($, ($) => {

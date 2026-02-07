@@ -46,7 +46,9 @@ export const $$: Signature = _p.command_procedure(
         $cr.log.execute(
             {
                 'message': sh.pg.sentences([
-                    sh.ph.literal("running tests..."),
+                    sh.sentence([
+                        sh.ph.literal("running tests..."),
+                    ])
                 ]),
             },
             ($) => $,
@@ -57,8 +59,10 @@ export const $$: Signature = _p.command_procedure(
                 $cr.log.execute(
                     {
                         'message': sh.pg.sentences([
-                            sh.ph.literal(""),
-                            sh.ph.literal("all tests successful."),
+                            sh.sentence([]),
+                            sh.sentence([
+                                sh.ph.literal("all tests successful."),
+                            ]),
                         ]),
                     },
                     ($) => $,
@@ -73,8 +77,10 @@ export const $$: Signature = _p.command_procedure(
                         'message': sh.pg.composed([
                             t_test_result_to_fp.Results($p['test results']),
                             sh.pg.sentences([
-                                sh.ph.literal(""),
-                                sh.ph.literal("some tests failed"),
+                                sh.sentence([]),
+                                sh.sentence([
+                                    sh.ph.literal("some tests failed"),
+                                ])
                             ]),
                         ])
                     },
