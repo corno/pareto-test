@@ -19,8 +19,8 @@ export type Resources = {
 }
 
 export const run_transformer_tests_with_parameters = <Input, Expected, Parameters>(
-    tests: _pi.Dictionary<generic.Transformer_With_Parameters<Input, Expected, Parameters>>,
-    implementation: _pi.Transformer_With_Parameters<Input, Expected, Parameters>
+    tests: _pi.Dictionary<generic.Transformer_With_Parameter<Input, Expected, Parameters>>,
+    implementation: _pi.Transformer_With_Parameter<Input, Expected, Parameters>
 ): generic.Results => tests.__d_map(($) => ['test', {
     'passed': implementation($.input.input, $.input.parameters) === $.expected
 }])
@@ -33,8 +33,8 @@ export const run_transformer_tests_without_parameters = <Input, Expected>(
 }])
 
 export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Error, Input, Parameters>(
-    tests: _pi.Dictionary<generic.Refiner_With_Parameters<Expected_Output, Expected_Error, Input, Parameters>>,
-    implementation: _pi.Refiner_With_Parameters<Expected_Output, Expected_Error, Input, Parameters>
+    tests: _pi.Dictionary<generic.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>>,
+    implementation: _pi.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>
 ): generic.Results => tests.__d_map(($) => {
     const expected = $.expected
     return ['test', {

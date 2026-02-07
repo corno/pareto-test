@@ -151,8 +151,8 @@ export const $$ = (
                                                             'suffix settings': $.suffix,
                                                         }
                                                     ))
-                                                    const expected_node = $v.__get_possible_entry(id)
-                                                    const input_node = $parent.__get_possible_entry(id)
+                                                    const expected_node = $v.__get_possible_entry_deprecated(id)
+                                                    const input_node = $parent.__get_possible_entry_deprecated(id)
                                                     return ['collection', {
                                                         'type': ['group', null],
                                                         'result': input_node.__decide(

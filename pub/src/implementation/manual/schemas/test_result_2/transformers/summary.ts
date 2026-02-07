@@ -9,7 +9,7 @@ export type Parameters = {
     'include structural problems': boolean
 }
 
-export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Node_Result: _pi.Transformer_With_Parameter<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
     return _p.decide.state($, ($) => {
         switch ($[0]) {
@@ -38,7 +38,7 @@ export const Test_Node_Result: _pi.Transformer_With_Parameters<d_in.Test_Node_Re
     })
 }
 
-export const Test_Group_Result: _pi.Transformer_With_Parameters<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Group_Result: _pi.Transformer_With_Parameter<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
     $.__d_map(($): number => Test_Node_Result($, $p)).__d_map(($) => count += $)
     return count

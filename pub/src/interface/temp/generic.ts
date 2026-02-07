@@ -11,14 +11,14 @@ export type Output_Or_Error<Output, Error> =
 
 export type Transformer<Input, Expected_Output> = Input_And_Expected<Input, Expected_Output>
 
-export type Transformer_With_Parameters<Input, Expected_Output, Parameters> = Input_And_Expected<{
+export type Transformer_With_Parameter<Input, Expected_Output, Parameters> = Input_And_Expected<{
     'input': Input
     'parameters': Parameters
 }, Expected_Output>
 
 export type Refiner_Without_Parameters<Expected_Result, Expected_Error, Input> = Input_And_Expected<Input, Output_Or_Error<Expected_Result, Expected_Error>>
 
-export type Refiner_With_Parameters<Expected_Result, Expected_Error, Input, Parameters> = {
+export type Refiner_With_Parameter<Expected_Result, Expected_Error, Input, Parameters> = {
     'input': {
         'input': Input
         'parameters': Parameters

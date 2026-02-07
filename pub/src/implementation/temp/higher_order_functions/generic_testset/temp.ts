@@ -49,7 +49,7 @@ export const create_collection_transformer = (type: 'group' | 'dictionary', $: _
     const group_to_test_group_result = $
     return ['collection', {
         'type': type === 'group' ? ['group', null] : ['dictionary', null],
-        'result': dir_group.nodes.__get_possible_entry(id).__decide(
+        'result': dir_group.nodes.__get_possible_entry_deprecated(id).__decide(
             ($): d_out.Test_Node_Result__collection__result => _pt.decide.state($, ($): d_out.Test_Node_Result__collection__result => {
                 switch ($[0]) {
                     case 'directory': return _pt.ss($, ($) => _pt.decide.state($, ($) => {

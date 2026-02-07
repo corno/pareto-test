@@ -61,7 +61,7 @@ export type Suffix_Settings = {
 }
 
 
-export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
+export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
     'nodes': $.__d_map(($, id) => {
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
@@ -73,7 +73,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
 
 
                     const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-                        const expected_node = $p.expected.__get_possible_entry($ + $p['suffix settings']['to be appended to expected'].__decide(
+                        const expected_node = $p.expected.__get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__decide(
                             ($) => $,
                             () => ``
                         ))
@@ -106,7 +106,7 @@ export const Directory: _pi.Transformer_With_Parameters<d_in.Directory, d_out.Di
                     }]
                 })
                 case 'directory': return _p.ss($, ($) => {
-                    const expected_node = $p.expected.__get_possible_entry(id)
+                    const expected_node = $p.expected.__get_possible_entry_deprecated(id)
                     const input_node = $
                     return ['directory', expected_node.__decide(
                         ($) => _p.decide.state($, ($) => {
