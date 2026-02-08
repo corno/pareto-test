@@ -14,6 +14,8 @@ export const Parameters: _pi.Refiner<d.Parameters, string, d_main.Parameters> = 
             iterator,
             abort,
         ),
-        ($) => abort("too many arguments")
+        {
+            not_finished: ($) => abort("too many arguments")
+        }
     )
 )

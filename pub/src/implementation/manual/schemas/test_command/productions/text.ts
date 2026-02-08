@@ -17,7 +17,9 @@ export const Parameters = (
             _p_list_from_text(
                 iterator.consume(
                     ($) => $,
-                    () => abort("expected path to test data")
+                    {
+                        no_more_tokens: () => abort("expected path to test data")
+                    }
                 ),
                 ($) => $
             ),
