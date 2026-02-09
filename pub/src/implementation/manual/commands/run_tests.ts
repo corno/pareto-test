@@ -9,7 +9,7 @@ import * as d_log from "pareto-resources/dist/interface/generated/liana/schemas/
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/block"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 export type Parameters = {
     'test results': d_test.Results,
