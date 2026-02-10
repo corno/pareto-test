@@ -22,8 +22,8 @@ import * as t_test_result_to_fountain_pen from "../../../manual/transformers/tes
 import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary"
 import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree"
 
-import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
-import * as t_path_to_text from "pareto-resources/dist/implementation/manual/schemas/path/transformers/text"
+import * as t_path_to_path from "pareto-resources/dist/implementation/manual/transformers/path/path"
+import * as t_path_to_text from "pareto-resources/dist/implementation/manual/transformers/path/text"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 

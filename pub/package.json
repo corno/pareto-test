@@ -11,8 +11,8 @@
   ],
   "dependencies": {
     "pareto-core-dev": "^0.12.8",
-    "pareto-fountain-pen": "^0.4.43",
-    "pareto-host-nodejs": "^0.2.29",
-    "pareto-resources": "^0.2.48"
+    "pareto-fountain-pen": "^0.4.44",
+    "pareto-host-nodejs": "^0.2.30",
+    "pareto-resources": "^0.2.49"
   }
 }

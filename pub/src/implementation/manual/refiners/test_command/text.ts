@@ -5,7 +5,7 @@ import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 import * as d from "../../../../interface/to_be_generated/test_command"
 
 
-import * as r_path_from_text from "pareto-resources/dist/implementation/manual/schemas/context_path/refiners/text"
+import * as r_path_from_text from "pareto-resources/dist/implementation/manual/refiners/context_path/text"
 
 
 export const Parameters = (
