@@ -1,7 +1,7 @@
 import * as _pi from 'pareto-core/dist/interface'
 import * as _p from 'pareto-core/dist/assign'
 
-import * as d_in from "../../../../../interface/to_be_generated/test_result"
+import * as d_in from "../../../../interface/to_be_generated/test_result"
 import * as d_out from "pareto-resources/dist/interface/to_be_generated/directory_content"
 
 

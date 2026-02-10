@@ -3,7 +3,7 @@ import * as _p from 'pareto-core/dist/assign'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
-import * as d_out from "../../../../../interface/to_be_generated/merged_filesystem_nodes"
+import * as d_out from "../../../../interface/to_be_generated/merged_filesystem_nodes"
 
 export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Valid_Directory, {
     'support': d_in.Directory

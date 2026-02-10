@@ -12,15 +12,15 @@ import * as d_write_directory_content from "pareto-resources/dist/interface/to_b
 
 import * as d_generic_testset from "../../../../interface/to_be_generated/generic_testset"
 
-import * as r_test_command_refiner from "../../../manual/schemas/test_command/refiners/main"
+import * as r_test_command_refiner from "../../../manual/refiners/test_command/main"
 
-import * as t_directory_content_to_generic_testset from "../../../manual/schemas/directory_content/transformers/generic_testset"
-import * as t_read_directory_content_to_fountain_pen from "../../../manual/schemas/read_directory_content/transformers/fountain_pen"
-import * as t_write_directory_content_to_fountain_pen from "../../../manual/schemas/write_directory_content/transformers/fountain_pen"
+import * as t_directory_content_to_generic_testset from "../../../manual/transformers/directory_content/generic_testset"
+import * as t_read_directory_content_to_fountain_pen from "../../../manual/transformers/read_directory_content/fountain_pen"
+import * as t_write_directory_content_to_fountain_pen from "../../../manual/transformers/write_directory_content/fountain_pen"
 
-import * as t_test_result_to_fountain_pen from "../../../manual/schemas/test_result_2/transformers/fountain_pen"
-import * as t_test_result_to_summary from "../../../manual/schemas/test_result_2/transformers/summary"
-import * as t_test_result_to_actual_tree from "../../../manual/schemas/test_result_2/transformers/actual_tree"
+import * as t_test_result_to_fountain_pen from "../../../manual/transformers/test_result_2/fountain_pen"
+import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary"
+import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree"
 
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as t_path_to_text from "pareto-resources/dist/implementation/manual/schemas/path/transformers/text"

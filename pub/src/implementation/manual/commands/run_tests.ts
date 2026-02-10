@@ -26,7 +26,7 @@ export type Signature = _pi.Command_Procedure<
     null
 >
 
-import * as t_test_result_to_fp from "../schemas/test_result/transformers/fountain_pen"
+import * as t_test_result_to_fp from "../transformers/test_result/fountain_pen"
 
 const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictionary(
     _pt.dictionary.from.dictionary(results,
