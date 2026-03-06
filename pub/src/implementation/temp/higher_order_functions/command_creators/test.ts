@@ -81,7 +81,7 @@ export const $$ = (
 
                         //write the path to stdout
                         $cr['write to stdout'].execute(
-                            `Testing with data from: ${_p_text_from_list(t_path_to_text.Context_Path($['path to test data']), ($) => $)}\n`,
+                            `Testing with data from: ${t_path_to_text.Context_Path($['path to test data'])}\n`,
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
@@ -208,7 +208,7 @@ export const $$ = (
                                                                         t_test_result_to_fountain_pen.Test_Collection_Result(
                                                                             test_results,
                                                                             {
-                                                                                'path to test data': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
+                                                                                'path to test data': t_path_to_text.Context_Path(path_to_test_data),
                                                                                 'path to test': ""
                                                                             }
                                                                         ),
@@ -243,7 +243,7 @@ export const $$ = (
                                                                 ($): My_Error => ['write directory content', $],
                                                             ),
                                                             _pc.fail(['failed tests', {
-                                                                'path': _p_text_from_list(t_path_to_text.Context_Path(path_to_test_data), ($) => $),
+                                                                'path': t_path_to_text.Context_Path(path_to_test_data),
                                                                 'tests': test_results
                                                             }])
                                                         ]
