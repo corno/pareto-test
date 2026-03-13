@@ -10,7 +10,7 @@
     "dist"
   ],
   "dependencies": {
-    "pareto-core-dev": "^0.12.11",
+    "pareto-core-dev": "^0.12.13",
     "pareto-fountain-pen": "^0.4.51",
     "pareto-host-nodejs": "^0.2.38",
     "pareto-resources": "^0.2.65"
