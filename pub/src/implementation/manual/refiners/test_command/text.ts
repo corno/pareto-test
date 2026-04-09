@@ -14,12 +14,9 @@ export const Parameters = (
 ): d.Parameters => {
     return {
         'path to test data': r_path_from_text.Context_Path(
-            _p_list_from_text(
-                iterator.consume(
-                    ($) => $,
-                    () => abort("expected path to test data")
-                ),
-                ($) => $
+            iterator.consume(
+                ($) => $,
+                () => abort("expected path to test data")
             ),
         )
     }
