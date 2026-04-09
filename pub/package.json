@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.84",
+  "version": "0.13.85",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A testing framework for Pareto projects",
@@ -10,9 +10,9 @@
     "dist"
   ],
   "dependencies": {
-    "pareto-core-dev": "0.12.14",
-    "pareto-fountain-pen": "0.4.52",
-    "pareto-host-nodejs": "0.2.39",
-    "pareto-resources": "0.2.70"
+    "pareto-core-dev": "0.12.15",
+    "pareto-fountain-pen": "0.4.53",
+    "pareto-host-nodejs": "0.2.40",
+    "pareto-resources": "0.2.71"
   }
 }
