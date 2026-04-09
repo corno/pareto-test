@@ -9,7 +9,7 @@ import * as r_path_from_text from "pareto-resources/dist/implementation/manual/r
 
 
 export const Parameters = (
-    iterator: _pi.Iterator<string>,
+    iterator: _pi.Iterator<string, null>,
     abort: _pi.Abort<string>,
 ): d.Parameters => {
     return {
@@ -17,9 +17,7 @@ export const Parameters = (
             _p_list_from_text(
                 iterator.consume(
                     ($) => $,
-                    {
-                        no_more_tokens: () => abort("expected path to test data")
-                    }
+                    () => abort("expected path to test data")
                 ),
                 ($) => $
             ),

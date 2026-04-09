@@ -9,6 +9,7 @@ import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_ma
 
 export const Parameters: _pi.Refiner<d.Parameters, string, d_main.Parameters> = ($, abort) => _p_iterate(
     $.arguments,
+    null,
     (iterator) => iterator.assert_finished(
         () => builders.Parameters(
             iterator,
