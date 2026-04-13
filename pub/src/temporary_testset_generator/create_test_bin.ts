@@ -1,4 +1,3 @@
-import * as _pn from 'pareto-host-nodejs'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _pt from 'pareto-core/dist/assign'
 import { $$ as command_creator } from "../implementation/temp/higher_order_functions/command_creators/test"
@@ -46,36 +45,36 @@ const dict_to_test_group_result_transformer = <T>(type: 'group' | 'dictionary', 
 
 // }
 
-export const $$ = (package_: Package) => ($r: _pn.Available_Standard_Resources) => {
-    return command_creator(
-        {
-            'text to astn': sh.test_collection('group', {}),
-            'astn to astn': sh.test_collection('group', {}),
-            'astn to text': sh.test_collection('group', {}),
-            //'astn to text': t_package_tester_to_test_group_result_transformer.Package(package_),
+// export const $$ = (package_: Package) => ($r: _pn.Available_Standard_Resources) => {
+//     return command_creator(
+//         {
+//             'text to astn': sh.test_collection('group', {}),
+//             'astn to astn': sh.test_collection('group', {}),
+//             'astn to text': sh.test_collection('group', {}),
+//             //'astn to text': t_package_tester_to_test_group_result_transformer.Package(package_),
 
-        }
-    )(
-        {
-            'write to stdout': $r.commands['write to stdout'],
-            'log error': $r.commands['log error'],
-            'log': $r.commands['log'],
-            'write directory content': c_write_directory_content(
-                {
-                    'write file': $r.commands['write file'],
-                },
-                null,
-            )
-        },
-        {
-            'read directory': $r.queries['read directory'],
-            'read file': $r.queries['read file'],
-            'read directory content': q_read_directory_content(
-                {
-                    'read directory': $r.queries['read directory'],
-                    'read file': $r.queries['read file'],
-                }
-            ),
-        },
-    )
-}
+//         }
+//     )(
+//         {
+//             'write to stdout': $r.commands['write to stdout'],
+//             'log error': $r.commands['log error'],
+//             'log': $r.commands['log'],
+//             'write directory content': c_write_directory_content(
+//                 {
+//                     'write file': $r.commands['write file'],
+//                 },
+//                 null,
+//             )
+//         },
+//         {
+//             'read directory': $r.queries['read directory'],
+//             'read file': $r.queries['read file'],
+//             'read directory content': q_read_directory_content(
+//                 {
+//                     'read directory': $r.queries['read directory'],
+//                     'read file': $r.queries['read file'],
+//                 }
+//             ),
+//         },
+//     )
+// }
