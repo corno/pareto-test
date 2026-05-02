@@ -90,9 +90,9 @@ export const $$ = (
                             _pc.query(
                                 $qr['read directory content'](
                                     {
-                                        'path': t_path_to_path.create_node_path(
+                                        'path': t_path_to_path.extend_context_path_with_single_step(
                                             $['path to test data'],
-                                            { 'node': "input" },
+                                            { 'addition': "input" },
                                         ),
                                     },
                                     ($): My_Error => ['read directory content', $]
@@ -107,9 +107,9 @@ export const $$ = (
                                         _pc.query_stacked(
                                             $qr['read directory content'](
                                                 {
-                                                    'path': t_path_to_path.create_node_path(
+                                                    'path': t_path_to_path.extend_context_path_with_single_step(
                                                         $parent['path to test data'],
-                                                        { 'node': "expected" },
+                                                        { 'addition': "expected" },
                                                     ),
                                                 },
                                                 ($): My_Error => ['read directory content', $]
