@@ -233,7 +233,7 @@ export const $$ = (
                                                                     'directory': t_test_result_to_actual_tree.Test_Group_Result(
                                                                         test_results,
                                                                     ),
-                                                                    'path': t_path_to_path.extend_context_path(
+                                                                    'path': t_path_to_path.extend_context_path_with_single_step(
                                                                         path_to_test_data,
                                                                         {
                                                                             'addition': "actual",
