@@ -7,8 +7,6 @@ import * as d_out from "../../../../interface/to_be_generated/test_result"
 
 import * as temp from "./temp"
 
-import { transform_refinement_result } from '../../../temp_transform_refinement_result'
-
 export const test_collection = (type: 'group' | 'dictionary', $: {
     [id: string]: temp.Directory_to_Test_Collection_Result_Transformer
 }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
@@ -26,25 +24,24 @@ export const transformer = (
         abort: ($: string) => never
     ) => string
 ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
-    ($p) => transform_refinement_result(
-        create_refinement_context<d_out.Tested, string>(
-            (abort) => {
+    ($p) => create_refinement_context<d_out.Tested, string>(
+        (abort) => {
 
-                const out = transformer(
-                    $p.input,
-                    abort
-                )
-                return out === $p.expected
-                    ? ['passed', null]
-                    : ['failed', ['transform', ['unexpected output', {
-                        'expected': $p.expected,
-                        'actual': out,
-                    }]]]
-            }
-        ),
+            const out = transformer(
+                $p.input,
+                abort
+            )
+            return out === $p.expected
+                ? ['passed', null]
+                : ['failed', ['transform', ['unexpected output', {
+                    'expected': $p.expected,
+                    'actual': out,
+                }]]]
+        }
+    ).__extract_data(
         ($) => $,
         ($): d_out.Tested => ['failed', ['transform', ['initialization', $]]],
-    )
+    ),
 )($))
 
 export const refiner = (
@@ -58,41 +55,39 @@ export const refiner = (
 ): temp.Directory_to_Test_Collection_Result_Transformer => {
 
     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
-        ($p) => transform_refinement_result(
-            create_refinement_context<d_out.Tested, string>(
-                (initialize_abort) => {
-                    return transform_refinement_result(
-                        create_refinement_context<string, string>(
-                            (refine_abort) => refiner(
-                                $p.input,
-                                {
-                                    'setup': initialize_abort,
-                                    'refine': refine_abort,
-                                }
-                            )
-                        ),
-                        ($): d_out.Tested => expect_error
-                            ? ['failed', ['refine', ['should have failed but succeeded', $]]]
-                            : $ === $p.expected
-                                ? ['passed', null]
-                                : ['failed', ['refine', ['unexpected output', {
-                                    'expected': $p.expected,
-                                    'actual': $,
-                                }]]],
-                        ($): d_out.Tested => expect_error
-                            ? $ === $p.expected
-                                ? ['passed', null]
-                                : ['failed', ['refine', ['unexpected output', {
-                                    'expected': $p.expected,
-                                    'actual': $,
-                                }]]]
-                            : ['failed', ['refine', ['should have succeeded but failed', $]]],
+        ($p) => create_refinement_context<d_out.Tested, string>(
+            (initialize_abort) => {
+                return create_refinement_context<string, string>(
+                    (refine_abort) => refiner(
+                        $p.input,
+                        {
+                            'setup': initialize_abort,
+                            'refine': refine_abort,
+                        }
                     )
-                }
-            ),
+                ).__extract_data(
+                    ($): d_out.Tested => expect_error
+                        ? ['failed', ['refine', ['should have failed but succeeded', $]]]
+                        : $ === $p.expected
+                            ? ['passed', null]
+                            : ['failed', ['refine', ['unexpected output', {
+                                'expected': $p.expected,
+                                'actual': $,
+                            }]]],
+                    ($): d_out.Tested => expect_error
+                        ? $ === $p.expected
+                            ? ['passed', null]
+                            : ['failed', ['refine', ['unexpected output', {
+                                'expected': $p.expected,
+                                'actual': $,
+                            }]]]
+                        : ['failed', ['refine', ['should have succeeded but failed', $]]],
+                )
+            }
+        ).__extract_data(
             ($) => $,
             ($): d_out.Tested => ['failed', ['refine', ['initialization', $]]],
-        )
+        ),
     )($))
     return temp.create_collection_transformer('dictionary', _pt.dictionary.literal<temp.Directory_to_Test_Collection_Result_Transformer>({
         "error": x(true),

@@ -6,7 +6,6 @@ import create_refinement_context from 'pareto-core/dist/__internals/async/create
 import * as generic from "../interface/temp/generic"
 
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
-import { transform_refinement_result } from './temp_transform_refinement_result'
 
 export type Resources = {
     'commands': {
@@ -35,11 +34,9 @@ export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Erro
 ): generic.Results => tests.__d_map(($) => {
     const expected = $.expected
     return ['test', {
-        'passed': transform_refinement_result(
-
-            create_refinement_context<Expected_Output, Expected_Error>(
-                (abort) => implementation($.input.input, abort, $.input.parameters)
-            ),
+        'passed': create_refinement_context<Expected_Output, Expected_Error>(
+            (abort) => implementation($.input.input, abort, $.input.parameters)
+        ).__extract_data(
             ($) => {
                 const output = $
                 return _pt.decide.state(expected, ($) => {
@@ -71,10 +68,9 @@ export const run_refiner_tests_without_parameters = <Expected_Output, Expected_E
     return $.__d_map(($) => {
         const expected = $.expected
         return ['test', {
-            'passed': transform_refinement_result(
-                create_refinement_context<Expected_Output, Expected_Error>(
-                    (abort) => implementation($.input, abort)
-                ),
+            'passed': create_refinement_context<Expected_Output, Expected_Error>(
+                (abort) => implementation($.input, abort)
+            ).__extract_data(
                 ($) => {
                     const output = $
                     return _pt.decide.state(expected, ($) => {
