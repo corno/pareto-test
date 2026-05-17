@@ -66,7 +66,7 @@ export type Suffix_Settings = {
 export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
     'nodes': $.__d_map(($, id) => _p.decide.state($, ($): d_out.Node => {
         switch ($[0]) {
-            case 'other': return _p.ss($, ($): d_out.Node => _p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
+            case 'other': return _p.ss($, () => _p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
             case 'file': return _p.ss($, ($): d_out.Node => {
 
 

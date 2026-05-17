@@ -66,9 +66,7 @@ export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Dir
     'nodes': $.__d_map(($, id) => {
         return _p.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
-                case 'other': return _p.ss($, ($): d_out.Node => {
-                    return _p_unreachable_code_path("needs proper handling")//"expected a file or a directory"
-                })
+                case 'other': return _p.ss($, () => _p_unreachable_code_path("needs proper handling"))
                 case 'file': return _p.ss($, ($): d_out.Node => {
 
 
