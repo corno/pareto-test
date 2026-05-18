@@ -30,7 +30,7 @@ import * as t_test_result_to_fp from "../transformers/test_result/fountain_pen"
 
 const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictionary(
     _pt.dictionary.from.dictionary(results,
-    ).filter(
+    ).map_optionally(
         ($) => _pt.decide.state($, ($): _pi.Optional_Value<null> => {
             switch ($[0]) {
                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))

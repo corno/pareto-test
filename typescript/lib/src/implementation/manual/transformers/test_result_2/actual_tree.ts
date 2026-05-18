@@ -60,6 +60,6 @@ export const Test_Node_Result: _pi.Transformer<d_in.Test_Node_Result, _pi.Option
 
 export const Test_Group_Result: _pi.Transformer<d_in.Test_Collection_Result, d_out.Directory> = ($) => _p.dictionary.from.dictionary(
     $,
-).filter(
+).map_optionally(
     ($) => Test_Node_Result($)
 )
