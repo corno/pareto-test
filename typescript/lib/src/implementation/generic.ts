@@ -9,8 +9,8 @@ import * as resources_pareto from "pareto-resources/dist/interface/resources"
 
 export type Resources = {
     'commands': {
-        'log error': resources_pareto.commands.stream_log_error
-        'log': resources_pareto.commands.stream_log
+        'log error': resources_pareto.stream.commands.log_error
+        'log': resources_pareto.stream.commands.log
     }
 }
 
