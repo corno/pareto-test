@@ -36,14 +36,14 @@ import * as resources_pareto from "pareto-resources/dist/interface/resources"
 export type Procedure = _pi.Command_Procedure<
     resources_pareto.commands.main,
     {
-        'write to stdout': resources_pareto.commands.write_to_stdout
-        'log error': resources_pareto.commands.log_error
-        'log': resources_pareto.commands.log
+        'write to stdout': resources_pareto.commands.stream_write_to_stdout
+        'log error': resources_pareto.commands.stream_log_error
+        'log': resources_pareto.commands.stream_log
         'write directory content': resources_pareto.commands.write_directory_content,
     },
     {
-        'read directory': resources_pareto.queries.read_directory
-        'read file': resources_pareto.queries.read_file
+        'read directory': resources_pareto.queries.fs_unrestricted_read_directory
+        'read file': resources_pareto.queries.fs_unrestricted_read_file
         'read directory content': resources_pareto.queries.read_directory_content
     }
 >
