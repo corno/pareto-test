@@ -45,7 +45,8 @@ export type Procedure = _pi.Command_Procedure<
         'read directory': resources_pareto.filesystem_unrestricted.queries.read_directory
         'read file': resources_pareto.filesystem_unrestricted.queries.read_file
         'read directory content': resources_pareto.resources.queries.read_directory_content
-    }
+    },
+    null
 >
 
 

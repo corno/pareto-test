@@ -21,6 +21,7 @@ export type Signature = _pi.Command_Procedure<
         'log error': resources_pareto.stream.commands.log_error,
         'log': resources_pareto.stream.commands.log,
     },
+    null,
     null
 >
 
