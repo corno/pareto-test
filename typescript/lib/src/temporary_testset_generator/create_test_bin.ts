@@ -3,7 +3,7 @@ import * as _pt from 'pareto-core/dist/assign'
 import { $$ as command_creator } from "../implementation/temp/higher_order_functions/command_creators/test"
 
 
-import { $$ as q_read_directory_content } from "pareto-resources/dist/implementation/manual/queries/read_directory_content"
+// import { $$ as q_read_directory_content } from "pareto-resources/dist/implementation/manual/queries/read_directory_content"
 import { $$ as c_write_directory_content } from "pareto-resources/dist/implementation/manual/commands/write_directory_content"
 
 import * as sh from "../implementation/temp/higher_order_functions/generic_testset/testset_shorthands"
