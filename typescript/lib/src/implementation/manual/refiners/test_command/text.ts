@@ -18,6 +18,7 @@ export const Parameters = (
                 ($) => $,
                 () => abort("expected path to test data")
             ),
+            //($) => abort(`invalid path to test data: ${$}`),
         )
     }
 }
