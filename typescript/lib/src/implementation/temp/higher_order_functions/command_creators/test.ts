@@ -32,13 +32,14 @@ const GREEN = "\x1b[32m"
 const ENDCOLOR = "\x1b[0m"
 
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
+import * as resources_pareto_stream from "pareto-stream/dist/interface/resources"
 
 export type Procedure = _pi.Command_Procedure<
     resources_pareto.resources.commands.main,
     {
-        'write to stdout': resources_pareto.stream.commands.write_to_stdout
-        'log error': resources_pareto.stream.commands.log_error
-        'log': resources_pareto.stream.commands.log
+        'write to stdout': resources_pareto_stream.stream.commands.write_to_stdout
+        'log error': resources_pareto_stream.stream.commands.log_error
+        'log': resources_pareto_stream.stream.commands.log
         'write directory content': resources_pareto.resources.commands.write_directory_content,
     },
     {

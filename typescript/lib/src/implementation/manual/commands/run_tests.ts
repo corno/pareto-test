@@ -4,7 +4,7 @@ import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_test from "../../../interface/temp/generic"
 
-import * as resources_pareto from "pareto-resources/dist/interface/resources"
+import * as resources_pareto from "pareto-stream/dist/interface/resources"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"

@@ -5,7 +5,7 @@ import create_refinement_context from 'pareto-core/dist/__internals/async/create
 
 import * as generic from "../interface/temp/generic"
 
-import * as resources_pareto from "pareto-resources/dist/interface/resources"
+import * as resources_pareto from "pareto-stream/dist/interface/resources"
 
 export type Resources = {
     'commands': {
