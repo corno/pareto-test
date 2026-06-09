@@ -18,8 +18,8 @@ export type Command = _pi.Command<null, Parameters>
 export type Signature = _pi.Command_Procedure<
     Command,
     {
-        'log error': resources_pareto.stream.commands.log_error,
-        'log': resources_pareto.stream.commands.log,
+        'log error': resources_pareto.commands.log_error,
+        'log': resources_pareto.commands.log,
     },
     null,
     null
