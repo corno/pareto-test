@@ -36,18 +36,18 @@ import * as resources_pareto_stream from "pareto-stream/dist/interface/resources
 
 export type Procedure = _pi.Command_Procedure<
     resources_pareto.resources.commands.main,
-    {
-        'write to stdout': resources_pareto_stream.commands.write_to_stdout
-        'log error': resources_pareto_stream.commands.log_error
-        'log': resources_pareto_stream.commands.log
-        'write directory content': resources_pareto.resources.commands.write_directory_content,
-    },
+    null,
     {
         'read directory': resources_pareto.filesystem_unrestricted.queries.read_directory
         'read file': resources_pareto.filesystem_unrestricted.queries.read_file
         'read directory content': resources_pareto.resources.queries.read_directory_content
     },
-    null
+    {
+        'write to stdout': resources_pareto_stream.commands.write_to_stdout
+        'log error': resources_pareto_stream.commands.log_error
+        'log': resources_pareto_stream.commands.log
+        'write directory content': resources_pareto.resources.commands.write_directory_content,
+    }
 >
 
 
@@ -69,28 +69,30 @@ export const $$ = (
         'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
     }
 ): Procedure => _pc.command_procedure(
-    ($p, $cr, $qr) => [
+    ($d, $s, $q, $c) => [
 
         _pc.handle_error<d_main.Error, My_Error>(
             [
 
                 _pc.refine_without_error_transformation(
                     (abort) => r_test_command_refiner.Parameters(
-                        $p,
+                        $d,
                         ($) => abort(['command line', null])
                     ),
                     ($) => [
 
                         //write the path to stdout
-                        $cr['write to stdout'].execute(
-                            `Testing with data from: ${t_path_to_text.Context_Path($['path to test data'])}\n`,
+                        $c['write to stdout'].execute(
+                            {
+                                'data': `Testing with data from: ${t_path_to_text.Context_Path($['path to test data'])}\n`
+                            },
                             ($): My_Error => ['writing to stdout', null]
                         ),
 
                         _p_change_context($, ($parent) =>
                             //read input dir
                             _pc.query(
-                                $qr['read directory content'](
+                                $q['read directory content'](
                                     {
                                         'path': t_path_to_path.extend_context_path_with_single_step(
                                             $['path to test data'],
@@ -107,7 +109,7 @@ export const $$ = (
 
                                         //read expected dir
                                         _pc.query_stacked(
-                                            $qr['read directory content'](
+                                            $q['read directory content'](
                                                 {
                                                     'path': t_path_to_path.extend_context_path_with_single_step(
                                                         $parent['path to test data'],
@@ -204,7 +206,7 @@ export const $$ = (
                                                     _pc.if_.direct(
                                                         number_of_failed_tests === 0,
                                                         [
-                                                            $cr['log'].execute(
+                                                            $c['log'].execute(
                                                                 {
                                                                     'message': sh.pg.composed([
                                                                         t_test_result_to_fountain_pen.Test_Collection_Result(
@@ -230,7 +232,7 @@ export const $$ = (
                                                             )
                                                         ],
                                                         [
-                                                            $cr['write directory content'].execute(
+                                                            $c['write directory content'].execute(
                                                                 {
                                                                     'directory': t_test_result_to_actual_tree.Test_Group_Result(
                                                                         test_results,
@@ -263,7 +265,7 @@ export const $$ = (
 
             ],
             ($) => [
-                $cr['log error'].execute(
+                $c['log error'].execute(
                     {
                         'message': _p.decide.state($, ($) => {
                             switch ($[0]) {

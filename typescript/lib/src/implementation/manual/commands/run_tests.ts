@@ -17,12 +17,12 @@ export type Command = _pi.Command<null, Parameters>
 
 export type Signature = _pi.Command_Procedure<
     Command,
+    null,
+    null,
     {
         'log error': resources_pareto.commands.log_error,
         'log': resources_pareto.commands.log,
-    },
-    null,
-    null
+    }
 >
 
 import * as t_test_result_to_fp from "../transformers/test_result/fountain_pen"
@@ -41,8 +41,8 @@ const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictio
 ).is_empty()
 
 export const $$: Signature = _p.command_procedure(
-    ($p, $cr) => [
-        $cr.log.execute(
+    ($d, $s, $q, $c) => [
+        $c.log.execute(
             {
                 'message': sh.pg.sentences([
                     sh.sentence([
@@ -53,9 +53,9 @@ export const $$: Signature = _p.command_procedure(
             ($) => $,
         ),
         _p.if_.direct(
-            has_passed($p['test results']),
+            has_passed($d['test results']),
             [
-                $cr.log.execute(
+                $c.log.execute(
                     {
                         'message': sh.pg.sentences([
                             sh.sentence([]),
@@ -69,12 +69,12 @@ export const $$: Signature = _p.command_procedure(
             ]
         ),
         _p.if_.direct(
-            !has_passed($p['test results']),
+            !has_passed($d['test results']),
             [
-                $cr['log error'].execute(
+                $c['log error'].execute(
                     {
                         'message': sh.pg.composed([
-                            t_test_result_to_fp.Results($p['test results']),
+                            t_test_result_to_fp.Results($d['test results']),
                             sh.pg.sentences([
                                 sh.sentence([]),
                                 sh.sentence([
@@ -85,7 +85,7 @@ export const $$: Signature = _p.command_procedure(
                     },
                     ($) => $,
                 ),
-                // $cr['write directory content'].execute(
+                // $c['write directory content'].execute(
                 //     {
                 //         'path': 
                 //         'content': $p,
