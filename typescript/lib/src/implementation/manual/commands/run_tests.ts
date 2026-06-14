@@ -1,4 +1,3 @@
-// import * as pt from 'pareto-core/dist/command'
 // import * as _pt from 'pareto-core/dist/assign'
 // import * as pi from 'pareto-core/dist/interface'
 // import * as pqi from 'pareto-core/dist/query_interface'
