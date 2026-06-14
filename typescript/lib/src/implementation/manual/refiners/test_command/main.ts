@@ -1,13 +1,13 @@
 import * as pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_iterate from 'pareto-core/dist/_p_iterate'
+import * as p_ri from 'pareto-core/dist/refiner/interface'
+import p_iterate from 'pareto-core/dist/specials/iterate'
 
 import * as builders from "./text"
 
 import * as d from "../../../../interface/to_be_generated/test_command"
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 
-export const Parameters: pi.Refiner<d.Parameters, string, d_main.Parameters> = ($, abort) => p_iterate(
+export const Parameters: p_ri.Refiner<d.Parameters, string, d_main.Parameters> = ($, abort) => p_iterate(
     $.arguments,
     null,
     (iterator) => iterator.assert_finished(

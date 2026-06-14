@@ -1,4 +1,4 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 
 // import { Directory_to_Test_Collection_Result_Transformer } from "../../implementation/temp/higher_order_functions/generic_testset/temp"
 
@@ -11,7 +11,7 @@
 //     extension: string
 //     process: (
 //         $: string,
-//         abort: pi.Abort<string>
+//         abort: p_i.Abort<string>
 //     ) => string
 // }
 
@@ -19,22 +19,22 @@
 //     extension: string
 //     process: (
 //         $: string,
-//         abort: pi.Abort<string>
+//         abort: p_i.Abort<string>
 //     ) => string
 // }
 
 // export type Schema = {
-//     'deserializers': pi.Dictionary<Deserializer>
-//     'refiners': pi.Dictionary<pi.Dictionary<Refiner>>
-//     'transformers': pi.Dictionary<pi.Dictionary<Transformer>>
-//     'serializers': pi.Dictionary<Serializer>
-//     'text_to_text': pi.Dictionary<Text_to_Text>
+//     'deserializers': p_di.Dictionary<Deserializer>
+//     'refiners': p_di.Dictionary<p_di.Dictionary<Refiner>>
+//     'transformers': p_di.Dictionary<p_di.Dictionary<Transformer>>
+//     'serializers': p_di.Dictionary<Serializer>
+//     'text_to_text': p_di.Dictionary<Text_to_Text>
 // }
 
 // export type Transformer = {
 //     process: (
 //         $: string,
-//         abort: pi.Abort<string>
+//         abort: p_i.Abort<string>
 //     ) => string
 // }
 
@@ -43,8 +43,8 @@
 //     process: (
 //         $: string,
 //         abort: {
-//             initialize: pi.Abort<string>
-//             refine: pi.Abort<string>
+//             initialize: p_i.Abort<string>
+//             refine: p_i.Abort<string>
 //         }
 //     ) => string
 // }
@@ -56,6 +56,6 @@
 //     out_extension: string
 //     process: (
 //         $: string,
-//         abort: pi.Abort<string>
+//         abort: p_i.Abort<string>
 //     ) => string
 // }

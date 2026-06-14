@@ -1,4 +1,4 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as _pt from 'pareto-core/dist/assign'
 
 // import create_refinement_context from 'pareto-core/dist/__internals/async/create_refinement_context'
@@ -14,23 +14,23 @@
 //     }
 // }
 
-// export const run_transformer_tests_with_parameters = <Input extends pi.Value, Expected extends pi.Value, Parameters>(
-//     tests: pi.Dictionary<generic.Transformer_With_Parameter<Input, Expected, Parameters>>,
-//     implementation: pi.Transformer_With_Parameter<Input, Expected, Parameters>
+// export const run_transformer_tests_with_parameters = <Input extends p_di.Value, Expected extends p_di.Value, Parameters>(
+//     tests: p_di.Dictionary<generic.Transformer_With_Parameter<Input, Expected, Parameters>>,
+//     implementation: p_ti.Transformer_With_Parameter<Input, Expected, Parameters>
 // ): generic.Results => tests.__d_map(($) => ['test', {
 //     'passed': implementation($.input.input, $.input.parameters) === $.expected
 // }])
 
-// export const run_transformer_tests_without_parameters = <Input extends pi.Value, Expected extends pi.Value>(
-//     $: pi.Dictionary<generic.Transformer<Input, Expected>>,
-//     implementation: pi.Transformer<Input, Expected>
+// export const run_transformer_tests_without_parameters = <Input extends p_di.Value, Expected extends p_di.Value>(
+//     $: p_di.Dictionary<generic.Transformer<Input, Expected>>,
+//     implementation: p_ti.Transformer<Input, Expected>
 // ): generic.Results => $.__d_map(($) => ['test', {
 //     'passed': implementation($.input) === $.expected
 // }])
 
 // export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Error, Input, Parameters>(
-//     tests: pi.Dictionary<generic.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>>,
-//     implementation: pi.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>
+//     tests: p_di.Dictionary<generic.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>>,
+//     implementation: p_ri.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>
 // ): generic.Results => tests.__d_map(($) => {
 //     const expected = $.expected
 //     return ['test', {
@@ -62,8 +62,8 @@
 // })
 
 // export const run_refiner_tests_without_parameters = <Expected_Output, Expected_Error, Input>(
-//     $: pi.Dictionary<generic.Refiner_Without_Parameters<Expected_Output, Expected_Error, Input>>,
-//     implementation: pi.Refiner<Expected_Output, Expected_Error, Input>
+//     $: p_di.Dictionary<generic.Refiner_Without_Parameters<Expected_Output, Expected_Error, Input>>,
+//     implementation: p_ri.Refiner<Expected_Output, Expected_Error, Input>
 // ): generic.Results => {
 //     return $.__d_map(($) => {
 //         const expected = $.expected

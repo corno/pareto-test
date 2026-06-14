@@ -1,8 +1,8 @@
-// import * as _pc from 'pareto-core/dist/command'
+// import * as _pc from 'pareto-core/dist/command/implementation'
 // import * as pt from 'pareto-core/dist/assign'
-// import * as pi from 'pareto-core/dist/interface'
-// import p_change_context from 'pareto-core/dist/_p_change_context'
-// import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+// import * as p_di from 'pareto-core/dist/data/interface'
+// import p_change_context from 'pareto-core/dist/specials/change_context'
+// import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
 
 // import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 // import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
@@ -34,7 +34,7 @@
 // import * as resources_pareto from "pareto-resources/dist/interface/resources"
 // import * as resources_pareto_stream from "pareto-stream/dist/interface/resources"
 
-// export type Procedure = pci.Command_Procedure<
+// export type Procedure = p_ci.Command_Procedure<
 //     resources_pareto.resources.commands.main,
 //     null,
 //     {
@@ -64,9 +64,9 @@
 
 // export const $$ = (
 //     $x: {
-//         'astn to astn': pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
-//         'text to astn': pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
-//         'astn to text': pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'astn to astn': p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'text to astn': p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'astn to text': p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
 //     }
 // ): Procedure => _pc.command_procedure(
 //     ($d, $s, $q, $c) => [
@@ -121,7 +121,7 @@
 //                                             $,
 //                                             ($v, $parent) => {
 
-//                                                 const test_results: d_test_result.Test_Collection_Result = pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
+//                                                 const test_results: d_test_result.Test_Collection_Result = pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
 //                                                     'astn_to_astn': {
 //                                                         'transformer': $x['astn to astn'],
 //                                                         'suffix': {

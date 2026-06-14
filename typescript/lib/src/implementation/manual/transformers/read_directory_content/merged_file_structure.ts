@@ -1,11 +1,12 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 import * as pt from 'pareto-core/dist/assign'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
+import * as p_ti from 'pareto-core/dist/transformer/interface'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../interface/to_be_generated/merged_filesystem_nodes"
 
-export const Directory: pi.Transformer_With_Parameter<d_in.Directory, d_out.Valid_Directory, {
+export const Directory: p_ti.Transformer_With_Parameter<d_in.Directory, d_out.Valid_Directory, {
     'support': d_in.Directory
 
     /**

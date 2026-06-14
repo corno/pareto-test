@@ -1,4 +1,4 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 
 // export type Input_And_Expected<In, Expected> = {
 //     'input': In
@@ -30,7 +30,7 @@
 
 // export type Results = Branch
 
-// export type Branch = pi.Dictionary<Result_Entry>
+// export type Branch = p_di.Dictionary<Result_Entry>
 
 // export type Result_Entry =
 //     | ['test', {

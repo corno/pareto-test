@@ -1,14 +1,14 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as pt from 'pareto-core/dist/assign'
-// import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
-// import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-// import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-// import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+// import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
+// import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
+// import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
+// import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
 
 // import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 // import * as d_out from "../../../../interface/to_be_generated/generic_testset"
 
-// const remove_suffix = ($: string, suffix: string): pi.Optional_Value<string> => {
+// const remove_suffix = ($: string, suffix: string): p_di.Optional_Value<string> => {
 //     let suffix_matches = true
 //         const main_as_characters = p_list_from_text($, ($) => $)
 //         const suffix_as_characters = p_list_from_text(suffix, ($) => $)
@@ -53,16 +53,16 @@
 //      * an individual file in the main file structure will be matched against the expected file/directory with this suffix appended
 //      * for esmple, to match "test1.txt" against "test1.txt.astn", the suffix would be ".astn"
 //      */
-//     'to be appended to expected': pi.Optional_Value<string>
+//     'to be appended to expected': p_di.Optional_Value<string>
 //     /**
 //      * an individual file in the expected file structure will be matched against the main file/directory with this suffix removed
 //      * for esmple, to match "test1.txt.astn" against "test1.txt", the suffix would be ".astn"
 //      */
-//     'to be removed from input': pi.Optional_Value<string>
+//     'to be removed from input': p_di.Optional_Value<string>
 // }
 
 
-// export const Directory: pi.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
+// export const Directory: p_ti.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
 //     'nodes': $.__d_map(($, id) => {
 //         return pt.decide.state($, ($): d_out.Node => {
 //             switch ($[0]) {

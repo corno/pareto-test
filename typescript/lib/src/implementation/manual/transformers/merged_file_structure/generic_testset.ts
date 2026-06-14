@@ -1,9 +1,9 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 
 // import * as d_in from "../../../interface/data/merged_filesystem_nodes"
 // import * as d_out from "../../../interface/data/generic_testset"
 
-// export const Group: pi.Transformer<d_out.Node__group, d_in.Directory> = ($) => {
+// export const Group: p_ti.Transformer<d_out.Node__group, d_in.Directory> = ($) => {
 //     return pt.decide.state($, ($): d_out.Node__group => {
 //         switch ($[0]) {
 //             case 'invalid': return pt.ss($, ($): d_out.Node__group => ['expected does not exist'])

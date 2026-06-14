@@ -1,5 +1,6 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 import * as pt from 'pareto-core/dist/assign'
+import * as p_ti from 'pareto-core/dist/transformer/interface'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/write_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
@@ -9,7 +10,7 @@ import * as t_write_file_to_fountain_pen from "pareto-resources/dist/implementat
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Error: pi.Transformer<d_in.Error, d_out.Phrase> = ($) => pt.decide.state($, ($) => {
+export const Error: p_ti.Transformer<d_in.Error, d_out.Phrase> = ($) => pt.decide.state($, ($) => {
     switch ($[0]) {
         case 'directory content': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.indent(

@@ -1,4 +1,4 @@
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 
 
@@ -10,8 +10,8 @@ import * as pi from 'pareto-core/dist/interface'
  * 
  */
 export type Directory = {
-    'nodes': pi.Dictionary<Node>
-    // 'superfluous nodes': pi.Dictionary<null>
+    'nodes': p_di.Dictionary<Node>
+    // 'superfluous nodes': p_di.Dictionary<null>
 }
 
 export type Node =

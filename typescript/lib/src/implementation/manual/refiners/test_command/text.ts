@@ -1,6 +1,6 @@
 import * as _pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as p_pi from 'pareto-core/dist/production/interface'
+import * as p_i from 'pareto-core/dist/interface'
 
 import * as d from "../../../../interface/to_be_generated/test_command"
 
@@ -9,8 +9,8 @@ import * as r_path_from_text from "pareto-resources/dist/implementation/manual/r
 
 
 export const Parameters = (
-    iterator: pi.Iterator<string, null>,
-    abort: pi.Abort<string>,
+    iterator: p_pi.Iterator<string, null>,
+    abort: p_i.Abort<string>,
 ): d.Parameters => {
     return {
         'path to test data': r_path_from_text.Context_Path(

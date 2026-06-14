@@ -1,4 +1,4 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as _pt from 'pareto-core/dist/assign'
 
 // import * as testers from './interface/testers'
@@ -41,7 +41,7 @@
 // // })
 
 // // export const transformer = <Input, Output, Initialize_Error>(
-// //     transformer: pi.Transformer<Input, Output>,
+// //     transformer: p_ti.Transformer<Input, Output>,
 // //     initialize: pi.Deserializer<Input, Initialize_Error>,
 // //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
 // //     serialize_output: pi.Serializer<Output>,
@@ -59,7 +59,7 @@
 // // })
 
 // // export const refiner = <Output, Refine_Error, Input, Initialize_Error>(
-// //     refiner: pi.Refiner<Output, Refine_Error, Input>,
+// //     refiner: p_ri.Refiner<Output, Refine_Error, Input>,
 // //     initialize: pi.Deserializer<Input, Initialize_Error>,
 // //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
 // //     serialize_output: pi.Serializer<Output>,
@@ -101,7 +101,7 @@
 // // export const text_to_text = <Deserialize_Error, Initialize_Error>(
 // //     extension_in: string,
 // //     extension_out: string,
-// //     text_to_text: pi.Refiner<string, Deserialize_Error, string>,
+// //     text_to_text: p_ri.Refiner<string, Deserialize_Error, string>,
 // //     serialize_deserialize_error: pi.Serializer<Deserialize_Error>,
 // // ): testers.Text_to_Text => ({
 // //     in_extension: extension_in,

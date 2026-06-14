@@ -1,6 +1,6 @@
-// import * as pi from 'pareto-core/dist/interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as _pt from 'pareto-core/dist/assign'
-// import p_change_context from 'pareto-core/dist/_p_change_context'
+// import p_change_context from 'pareto-core/dist/specials/change_context'
 // import create_refinement_context from 'pareto-core/dist/__internals/async/create_refinement_context'
 
 // import * as d_out from "../../../../interface/to_be_generated/test_result"

@@ -1,7 +1,7 @@
 // import * as _pt from 'pareto-core/dist/assign'
-// import * as pi from 'pareto-core/dist/interface'
-// import * as pqi from 'pareto-core/dist/query_interface'
-// import * as pci from 'pareto-core/dist/command_interface'
+// import * as p_di from 'pareto-core/dist/data/interface'
+// import * as p_qi from 'pareto-core/dist/query/interface'
+// import * as p_ci from 'pareto-core/dist/command/interface'
 
 
 
@@ -16,9 +16,9 @@
 //     'test results': d_test.Results,
 // }
 
-// export type Command = pci.Command<null, Parameters>
+// export type Command = p_ci.Command<null, Parameters>
 
-// export type Signature = pci.Command_Procedure<
+// export type Signature = p_ci.Command_Procedure<
 //     Command,
 //     null,
 //     null,
@@ -33,7 +33,7 @@
 // const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictionary(
 //     _pt.dictionary.from.dictionary(results,
 //     ).map_optionally(
-//         ($) => _pt.decide.state($, ($): pi.Optional_Value<null> => {
+//         ($) => _pt.decide.state($, ($): p_di.Optional_Value<null> => {
 //             switch ($[0]) {
 //                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
 //                 case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
