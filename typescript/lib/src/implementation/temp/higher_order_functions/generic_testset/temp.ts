@@ -1,4 +1,4 @@
-// import * as _pi from 'pareto-core/dist/interface'
+// import * as pi from 'pareto-core/dist/interface'
 // import * as _pt from 'pareto-core/dist/assign'
 
 // import * as d_in from "../../../../interface/to_be_generated/generic_testset"
@@ -45,7 +45,7 @@
 //     })
 // }]
 
-// export const create_collection_transformer = (type: 'group' | 'dictionary', $: _pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.__d_map(($, id) => {
+// export const create_collection_transformer = (type: 'group' | 'dictionary', $: pi.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.__d_map(($, id) => {
 //     const group_to_test_group_result = $
 //     return ['collection', {
 //         'type': type === 'group' ? ['group', null] : ['dictionary', null],

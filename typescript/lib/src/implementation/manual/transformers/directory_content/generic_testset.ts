@@ -1,21 +1,21 @@
-// import * as _p from 'pareto-core/dist/assign'
-// import * as _pi from 'pareto-core/dist/interface'
-// import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
-// import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-// import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-// import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+// import * as pt from 'pareto-core/dist/assign'
+// import * as pi from 'pareto-core/dist/interface'
+// import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+// import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+// import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+// import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 // import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 // import * as d_out from "../../../../interface/to_be_generated/generic_testset"
 
-// const remove_suffix = ($: string, suffix: string): _pi.Optional_Value<string> => {
+// const remove_suffix = ($: string, suffix: string): pi.Optional_Value<string> => {
 //     let suffix_matches = true
-//     const main_as_characters = _p_list_from_text($, ($) => $)
-//     const suffix_as_characters = _p_list_from_text(suffix, ($) => $)
+//     const main_as_characters = p_list_from_text($, ($) => $)
+//     const suffix_as_characters = p_list_from_text(suffix, ($) => $)
 //     const main_length = main_as_characters.__get_number_of_items()
 //     const suffix_length = suffix_as_characters.__get_number_of_items()
     
-//     const stripped = _p_list_build_deprecated<number>(($i) => {
+//     const stripped = p_list_build_deprecated<number>(($i) => {
 //         let index = -1
 //         main_as_characters.__l_map(($) => {
 //             index += 1
@@ -25,7 +25,7 @@
 //                 //validate the right suffix
 //                 const cur_char = $
 //                 const suffix_index = index - (main_length - suffix_length)
-//                 _p.optional.from.optional(
+//                 pt.optional.from.optional(
 //                     suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
 //                 ).map(
 //                     ($) => {
@@ -38,9 +38,9 @@
 //         })
 //     })
 //     if (suffix_matches) {
-//         return _p.optional.literal.set(_p_text_from_list(stripped, ($) => $))
+//         return pt.optional.literal.set(p_text_from_list(stripped, ($) => $))
 //     }
-//     return _p.optional.literal.set($)
+//     return pt.optional.literal.set($)
 // }
 
 // export type Parameters = {
@@ -54,20 +54,20 @@
 //      * an individual file in the main file structure will be matched against the expected file/directory with this suffix appended
 //      * for esmple, to match "test1.txt" against "test1.txt.astn", the suffix would be ".astn"
 //      */
-//     'to be appended to expected': _pi.Optional_Value<string>
+//     'to be appended to expected': pi.Optional_Value<string>
 //     /**
 //      * an individual file in the expected file structure will be matched against the main file/directory with this suffix removed
 //      * for esmple, to match "test1.txt.astn" against "test1.txt", the suffix would be ".astn"
 //      */
-//     'to be removed from input': _pi.Optional_Value<string>
+//     'to be removed from input': pi.Optional_Value<string>
 // }
 
 
-// export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-//     'nodes': $.__d_map(($, id) => _p.decide.state($, ($): d_out.Node => {
+// export const Directory: pi.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
+//     'nodes': $.__d_map(($, id) => pt.decide.state($, ($): d_out.Node => {
 //         switch ($[0]) {
-//             case 'other': return _p.ss($, () => _p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
-//             case 'file': return _p.ss($, ($): d_out.Node => {
+//             case 'other': return pt.ss($, () => p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
+//             case 'file': return pt.ss($, ($): d_out.Node => {
 
 
 
@@ -77,12 +77,12 @@
 //                         () => ""
 //                     ))
 //                     return expected_node.__decide(
-//                         ($) => _p.decide.state($, ($): d_out.Node__file__expected => {
+//                         ($) => pt.decide.state($, ($): d_out.Node__file__expected => {
 //                             switch ($[0]) {
-//                                 case 'file': return _p.ss($, ($) => ['valid', $])
-//                                 case 'directory': return _p.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-//                                 case 'other': return _p.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-//                                 default: return _p.au($[0])
+//                                 case 'file': return pt.ss($, ($) => ['valid', $])
+//                                 case 'directory': return pt.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+//                                 case 'other': return pt.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+//                                 default: return pt.au($[0])
 //                             }
 //                         }),
 //                         (): d_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
@@ -102,38 +102,38 @@
 //                     )
 //                 }]
 //             })
-//             case 'directory': return _p.ss($, ($) => {
+//             case 'directory': return pt.ss($, ($) => {
 //                 const expected_node = $p.expected.__get_possible_entry_deprecated(id)
 //                 const input_node = $
 //                 return ['directory', expected_node.__decide(
-//                     ($) => _p.decide.state($, ($) => {
+//                     ($) => pt.decide.state($, ($) => {
 //                         switch ($[0]) {
-//                             case 'other': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-//                             case 'file': return _p.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-//                             case 'directory': return _p.ss($, ($) => ['valid', Directory(
+//                             case 'other': return pt.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
+//                             case 'file': return pt.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
+//                             case 'directory': return pt.ss($, ($) => ['valid', Directory(
 //                                 input_node,
 //                                 {
 //                                     'expected': $,
 //                                     'suffix settings': $p['suffix settings'],
 //                                 }
 //                             )])
-//                             default: return _p.au($[0])
+//                             default: return pt.au($[0])
 //                         }
 //                     }),
 //                     () => ['invalid', ['directory for expected does not exist', null]]
 //                 )]
 //             })
-//             default: return _p.au($[0])
+//             default: return pt.au($[0])
 //         }
 //     })),
-//     // 'superfluous nodes': _p.block(() => {
+//     // 'superfluous nodes': pt.block(() => {
 //     //     const temp: { [id: string]: null } = {}
 //     //     $.__d_map(($, id) => {
-//     //         const key_of_expected = _p.decide.state($, ($): string => {
+//     //         const key_of_expected = pt.decide.state($, ($): string => {
 //     //             switch ($[0]) {
 
-//     //                 case 'other': return _p.ss($, ($) => key)
-//     //                 case 'file': return _p.ss($, ($): string => $p['suffix settings']['to be removed from input'].__decide(
+//     //                 case 'other': return pt.ss($, ($) => key)
+//     //                 case 'file': return pt.ss($, ($): string => $p['suffix settings']['to be removed from input'].__decide(
 //     //                     ($) => {
 //     //                         return remove_suffix(key, $).__decide(
 //     //                             ($) => $,
@@ -143,13 +143,13 @@
 //     //                     },
 //     //                     () => key
 //     //                 ))
-//     //                 case 'directory': return _p.ss($, ($) => key)
-//     //                 default: return _p.au($[0])
+//     //                 case 'directory': return pt.ss($, ($) => key)
+//     //                 default: return pt.au($[0])
 //     //             }
 //     //         })
 //     //         temp[key_of_expected] = null
 //     //     })
-//     //     const main = _p.dictionary.literal(temp)
+//     //     const main = pt.dictionary.literal(temp)
 //     //     return op_filter_dictionary($p.expected.__d_map(($, id) => {
 //     //         return main.get_entry(key).__d_map(() => null)
 //     //     }))

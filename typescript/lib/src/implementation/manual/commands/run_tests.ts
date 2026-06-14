@@ -1,8 +1,8 @@
-import * as _p from 'pareto-core/dist/command'
+import * as pt from 'pareto-core/dist/command'
 import * as _pt from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import * as _pqi from 'pareto-core/dist/query_interface'
-import * as _pci from 'pareto-core/dist/command_interface'
+import * as pi from 'pareto-core/dist/interface'
+import * as pqi from 'pareto-core/dist/query_interface'
+import * as pci from 'pareto-core/dist/command_interface'
 
 
 
@@ -17,9 +17,9 @@ export type Parameters = {
     'test results': d_test.Results,
 }
 
-export type Command = _pci.Command<null, Parameters>
+export type Command = pci.Command<null, Parameters>
 
-export type Signature = _pci.Command_Procedure<
+export type Signature = pci.Command_Procedure<
     Command,
     null,
     null,
@@ -34,7 +34,7 @@ import * as t_test_result_to_fp from "../transformers/test_result/fountain_pen"
 const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictionary(
     _pt.dictionary.from.dictionary(results,
     ).map_optionally(
-        ($) => _pt.decide.state($, ($): _pi.Optional_Value<null> => {
+        ($) => _pt.decide.state($, ($): pi.Optional_Value<null> => {
             switch ($[0]) {
                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
                 case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
@@ -44,7 +44,7 @@ const has_passed = (results: d_test.Results): boolean => _pt.boolean.from.dictio
     )
 ).is_empty()
 
-export const $$: Signature = _p.command_procedure(
+export const $$: Signature = pt.command_procedure(
     ($d, $s, $q, $c) => [
         $c.log.execute(
             {
@@ -56,7 +56,7 @@ export const $$: Signature = _p.command_procedure(
             },
             ($) => $,
         ),
-        _p.if_.direct(
+        pt.if_.direct(
             has_passed($d['test results']),
             [
                 $c.log.execute(
@@ -72,7 +72,7 @@ export const $$: Signature = _p.command_procedure(
                 ),
             ]
         ),
-        _p.if_.direct(
+        pt.if_.direct(
             !has_passed($d['test results']),
             [
                 $c['log error'].execute(

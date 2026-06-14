@@ -1,11 +1,11 @@
-import * as _pi from 'pareto-core/dist/interface'
-import * as _p from 'pareto-core/dist/assign'
-import _p_implement_me from 'pareto-core-dev/dist/implement_me'
+import * as pi from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core/dist/assign'
+import p_implement_me from 'pareto-core-dev/dist/implement_me'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 import * as d_out from "../../../../interface/to_be_generated/merged_filesystem_nodes"
 
-export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Valid_Directory, {
+export const Directory: pi.Transformer_With_Parameter<d_in.Directory, d_out.Valid_Directory, {
     'support': d_in.Directory
 
     /**
@@ -16,22 +16,22 @@ export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Val
 }> = ($, $p) => {
     return $.__d_map(($, id) => {
         const support_directory = $p.support
-        return _p.decide.state($, ($): d_out.Node => {
+        return pt.decide.state($, ($): d_out.Node => {
             switch ($[0]) {
-                case 'other': return _p.ss($, ($): d_out.Node => {
-                    return _p_implement_me("expected a file or a directory")
+                case 'other': return pt.ss($, ($): d_out.Node => {
+                    return p_implement_me("expected a file or a directory")
                 })
-                case 'file': return _p.ss($, ($): d_out.Node => {
+                case 'file': return pt.ss($, ($): d_out.Node => {
                     return ['file', {
                         'support': support_directory.__get_possible_entry_deprecated(id + $p['support suffix'])
                     }]
                 })
-                case 'directory': return _p.ss($, ($) => {
+                case 'directory': return pt.ss($, ($) => {
                     const main_node = $
                     return ['directory', support_directory.__get_possible_entry_deprecated(id).__decide(
-                        ($): d_out.Directory => _p.decide.state($, ($) => {
+                        ($): d_out.Directory => pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'directory': return _p.ss($, ($) => ['valid', Directory(
+                                case 'directory': return pt.ss($, ($) => ['valid', Directory(
                                     main_node,
                                     {
                                         'support': $,
@@ -49,7 +49,7 @@ export const Directory: _pi.Transformer_With_Parameter<d_in.Directory, d_out.Val
                         }]
                     )]
                 })
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         })
     })

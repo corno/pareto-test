@@ -1,4 +1,4 @@
-// import * as _pi from 'pareto-core/dist/interface'
+// import * as pi from 'pareto-core/dist/interface'
 // import * as _pt from 'pareto-core/dist/assign'
 
 // import * as testers from './interface/testers'
@@ -25,9 +25,9 @@
 
 // // export const serializer = <Input, Initialize_Error>(
 // //     extension: string,
-// //     serializer: _pi.Serializer<Input>,
-// //     initialize: _pi.Deserializer<Input, Initialize_Error>,
-// //     serialize_initialize_error: _pi.Serializer<Initialize_Error>,
+// //     serializer: pi.Serializer<Input>,
+// //     initialize: pi.Deserializer<Input, Initialize_Error>,
+// //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
 // // ): testers.Serializer => ({
 // //     extension: extension,
 // //     process: ($, abort) => serializer(
@@ -41,10 +41,10 @@
 // // })
 
 // // export const transformer = <Input, Output, Initialize_Error>(
-// //     transformer: _pi.Transformer<Input, Output>,
-// //     initialize: _pi.Deserializer<Input, Initialize_Error>,
-// //     serialize_initialize_error: _pi.Serializer<Initialize_Error>,
-// //     serialize_output: _pi.Serializer<Output>,
+// //     transformer: pi.Transformer<Input, Output>,
+// //     initialize: pi.Deserializer<Input, Initialize_Error>,
+// //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
+// //     serialize_output: pi.Serializer<Output>,
 // // ): testers.Transformer => ({
 // //     process: ($, abort) => serialize_output(
 // //         transformer(
@@ -59,11 +59,11 @@
 // // })
 
 // // export const refiner = <Output, Refine_Error, Input, Initialize_Error>(
-// //     refiner: _pi.Refiner<Output, Refine_Error, Input>,
-// //     initialize: _pi.Deserializer<Input, Initialize_Error>,
-// //     serialize_initialize_error: _pi.Serializer<Initialize_Error>,
-// //     serialize_output: _pi.Serializer<Output>,
-// //     serialize_refine_error: _pi.Serializer<Refine_Error>,
+// //     refiner: pi.Refiner<Output, Refine_Error, Input>,
+// //     initialize: pi.Deserializer<Input, Initialize_Error>,
+// //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
+// //     serialize_output: pi.Serializer<Output>,
+// //     serialize_refine_error: pi.Serializer<Refine_Error>,
 // // ): testers.Refiner => ({
 // //     process: ($, abort) => serialize_output(
 // //         refiner(
@@ -82,9 +82,9 @@
 
 // // export const deserializer = <Output, Deserialize_Error, Initialize_Error>(
 // //     extension: string,
-// //     deserializer: _pi.Deserializer<Output, Deserialize_Error>,
-// //     serialize_output: _pi.Serializer<Output>,
-// //     serialize_deserialize_error: _pi.Serializer<Deserialize_Error>,
+// //     deserializer: pi.Deserializer<Output, Deserialize_Error>,
+// //     serialize_output: pi.Serializer<Output>,
+// //     serialize_deserialize_error: pi.Serializer<Deserialize_Error>,
 // // ): testers.Deserializer => ({
 // //     extension: extension,
 // //     process: ($, abort) => serialize_output(
@@ -101,8 +101,8 @@
 // // export const text_to_text = <Deserialize_Error, Initialize_Error>(
 // //     extension_in: string,
 // //     extension_out: string,
-// //     text_to_text: _pi.Refiner<string, Deserialize_Error, string>,
-// //     serialize_deserialize_error: _pi.Serializer<Deserialize_Error>,
+// //     text_to_text: pi.Refiner<string, Deserialize_Error, string>,
+// //     serialize_deserialize_error: pi.Serializer<Deserialize_Error>,
 // // ): testers.Text_to_Text => ({
 // //     in_extension: extension_in,
 // //     out_extension: extension_out,

@@ -1,8 +1,8 @@
 // import * as _pc from 'pareto-core/dist/command'
-// import * as _p from 'pareto-core/dist/assign'
-// import * as _pi from 'pareto-core/dist/interface'
-// import _p_change_context from 'pareto-core/dist/_p_change_context'
-// import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+// import * as pt from 'pareto-core/dist/assign'
+// import * as pi from 'pareto-core/dist/interface'
+// import p_change_context from 'pareto-core/dist/_p_change_context'
+// import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 // import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 // import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
@@ -34,7 +34,7 @@
 // import * as resources_pareto from "pareto-resources/dist/interface/resources"
 // import * as resources_pareto_stream from "pareto-stream/dist/interface/resources"
 
-// export type Procedure = _pci.Command_Procedure<
+// export type Procedure = pci.Command_Procedure<
 //     resources_pareto.resources.commands.main,
 //     null,
 //     {
@@ -64,9 +64,9 @@
 
 // export const $$ = (
 //     $x: {
-//         'astn to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
-//         'text to astn': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
-//         'astn to text': _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'astn to astn': pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'text to astn': pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'astn to text': pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
 //     }
 // ): Procedure => _pc.command_procedure(
 //     ($d, $s, $q, $c) => [
@@ -89,7 +89,7 @@
 //                             ($): My_Error => ['writing to stdout', null]
 //                         ),
 
-//                         _p_change_context($, ($parent) =>
+//                         p_change_context($, ($parent) =>
 //                             //read input dir
 //                             _pc.query(
 //                                 $q['read directory content'](
@@ -121,26 +121,26 @@
 //                                             $,
 //                                             ($v, $parent) => {
 
-//                                                 const test_results: d_test_result.Test_Collection_Result = _p.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: _pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
+//                                                 const test_results: d_test_result.Test_Collection_Result = pt.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: pi.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
 //                                                     'astn_to_astn': {
 //                                                         'transformer': $x['astn to astn'],
 //                                                         'suffix': {
-//                                                             'to be appended to expected': _p.optional.literal.not_set(),
-//                                                             'to be removed from input': _p.optional.literal.not_set(),
+//                                                             'to be appended to expected': pt.optional.literal.not_set(),
+//                                                             'to be removed from input': pt.optional.literal.not_set(),
 //                                                         }
 //                                                     },
 //                                                     'text_to_astn': {
 //                                                         'transformer': $x['text to astn'],
 //                                                         'suffix': {
-//                                                             'to be appended to expected': _p.optional.literal.set(".astn"),
-//                                                             'to be removed from input': _p.optional.literal.not_set(),
+//                                                             'to be appended to expected': pt.optional.literal.set(".astn"),
+//                                                             'to be removed from input': pt.optional.literal.not_set(),
 //                                                         }
 //                                                     },
 //                                                     'astn_to_text': {
 //                                                         'transformer': $x['astn to text'],
 //                                                         'suffix': {
-//                                                             'to be appended to expected': _p.optional.literal.not_set(),
-//                                                             'to be removed from input': _p.optional.literal.set(".astn"),
+//                                                             'to be appended to expected': pt.optional.literal.not_set(),
+//                                                             'to be removed from input': pt.optional.literal.set(".astn"),
 //                                                         }
 //                                                     },
 //                                                 }).__d_map(($, id): d_test_result.Test_Node_Result => {
@@ -159,15 +159,15 @@
 //                                                     return ['collection', {
 //                                                         'type': ['group', null],
 //                                                         'result': input_node.__decide(
-//                                                             ($): d_test_result.Test_Node_Result__collection__result => _p.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
+//                                                             ($): d_test_result.Test_Node_Result__collection__result => pt.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                 switch ($[0]) {
-//                                                                     case 'directory': return _p.ss($, ($) => {
+//                                                                     case 'directory': return pt.ss($, ($) => {
 //                                                                         const input_dir = $
 //                                                                         return expected_node.__decide(
 //                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
-//                                                                                 return _p.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
+//                                                                                 return pt.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                                     switch ($[0]) {
-//                                                                                         case 'directory': return _p.ss($, ($) => {
+//                                                                                         case 'directory': return pt.ss($, ($) => {
 //                                                                                             const expected_dir = $
 //                                                                                             return ['source valid', the_func(
 //                                                                                                 {
@@ -267,19 +267,19 @@
 //             ($) => [
 //                 $c['log error'].execute(
 //                     {
-//                         'message': _p.decide.state($, ($) => {
+//                         'message': pt.decide.state($, ($) => {
 //                             switch ($[0]) {
-//                                 case 'command line': return _p.ss($, ($) => sh.pg.sentences([
+//                                 case 'command line': return pt.ss($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("command line error")
 //                                     ])
 //                                 ]))
-//                                 case 'writing to stdout': return _p.ss($, ($) => sh.pg.sentences([
+//                                 case 'writing to stdout': return pt.ss($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("error writing to stdout")
 //                                     ])
 //                                 ]))
-//                                 case 'read directory content': return _p.ss($, ($) => sh.pg.sentences([
+//                                 case 'read directory content': return pt.ss($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("read dir error")
 //                                     ]),
@@ -287,7 +287,7 @@
 //                                         t_read_directory_content_to_fountain_pen.Error($)
 //                                     ])
 //                                 ]))
-//                                 case 'write directory content': return _p.ss($, ($) => sh.pg.sentences([
+//                                 case 'write directory content': return pt.ss($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("write dir error")
 //                                     ]),
@@ -295,7 +295,7 @@
 //                                         t_write_directory_content_to_fountain_pen.Error($)
 //                                     ])
 //                                 ]))
-//                                 case 'failed tests': return _p.ss($, ($) => sh.pg.composed([
+//                                 case 'failed tests': return pt.ss($, ($) => sh.pg.composed([
 //                                     t_test_result_to_fountain_pen.Test_Collection_Result(
 //                                         $.tests,
 //                                         {
@@ -318,7 +318,7 @@
 //                                         ])
 //                                     ])
 //                                 ]))
-//                                 default: return _p.au($[0])
+//                                 default: return pt.au($[0])
 //                             }
 //                         })
 //                     },

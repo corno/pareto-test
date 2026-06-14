@@ -1,4 +1,4 @@
-import * as _pi from 'pareto-core/dist/interface'
+import * as pi from 'pareto-core/dist/interface'
 
 export type Input_And_Expected<In, Expected> = {
     'input': In
@@ -30,7 +30,7 @@ export type Refiner_With_Parameter<Expected_Result, Expected_Error, Input, Param
 
 export type Results = Branch
 
-export type Branch = _pi.Dictionary<Result_Entry>
+export type Branch = pi.Dictionary<Result_Entry>
 
 export type Result_Entry =
     | ['test', {

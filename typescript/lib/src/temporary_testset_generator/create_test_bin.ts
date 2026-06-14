@@ -1,4 +1,4 @@
-// import * as _pi from 'pareto-core/dist/interface'
+// import * as pi from 'pareto-core/dist/interface'
 // import * as _pt from 'pareto-core/dist/assign'
 // import { $$ as command_creator } from "../implementation/temp/higher_order_functions/command_creators/test"
 
@@ -12,7 +12,7 @@
 // import { Directory_to_Test_Collection_Result_Transformer } from '../implementation/temp/higher_order_functions/generic_testset/temp'
 // import { Package } from './interface/testers'
 
-// const dict_to_raw = <T>($: _pi.Dictionary<T>) => {
+// const dict_to_raw = <T>($: pi.Dictionary<T>) => {
 //     const temp: { [id: string]: T } = {}
 //     $.__d_map(($, id) => {
 //         temp[id] = $
@@ -45,7 +45,7 @@
 
 // // }
 
-// // export const $$ = (package_: Package) => ($r: _pn.Available_Standard_Resources) => {
+// // export const $$ = (package_: Package) => ($r: ph.Available_Standard_Resources) => {
 // //     return command_creator(
 // //         {
 // //             'text to astn': sh.test_collection('group', {}),
