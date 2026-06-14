@@ -1,6 +1,10 @@
 import * as _p from 'pareto-core/dist/command'
 import * as _pt from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
+import * as _pqi from 'pareto-core/dist/query_interface'
+import * as _pci from 'pareto-core/dist/command_interface'
+
+
 
 import * as d_test from "../../../interface/temp/generic"
 
@@ -13,9 +17,9 @@ export type Parameters = {
     'test results': d_test.Results,
 }
 
-export type Command = _pi.Command<null, Parameters>
+export type Command = _pci.Command<null, Parameters>
 
-export type Signature = _pi.Command_Procedure<
+export type Signature = _pci.Command_Procedure<
     Command,
     null,
     null,

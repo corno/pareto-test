@@ -34,7 +34,7 @@
 // import * as resources_pareto from "pareto-resources/dist/interface/resources"
 // import * as resources_pareto_stream from "pareto-stream/dist/interface/resources"
 
-// export type Procedure = _pi.Command_Procedure<
+// export type Procedure = _pci.Command_Procedure<
 //     resources_pareto.resources.commands.main,
 //     null,
 //     {
