@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as pt from 'pareto-core/dist/transformer/implementation'
 // import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
 // import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
@@ -37,9 +36,9 @@
 //         })
 //     })
 //     if (suffix_matches) {
-//         return pt.optional.literal.set(p_text_from_list(stripped, ($) => $))
+//         return pt.literal.set(p_text_from_list(stripped, ($) => $))
 //     }
-//     return pt.optional.literal.set($)
+//     return pt.literal.set($)
 // }
 
 // export type Parameters = {
@@ -152,7 +151,7 @@
 //     //         })
 //     //         temp[key_of_expected] = null
 //     //     })
-//     //     const main = pt.dictionary.literal(temp)
+//     //     const main = pt.literal.dictionary(temp)
 //     //     return op_filter_dictionary($p.expected.__d_map(($, id) => {
 //     //         return main.get_entry(key).__d_map(() => null)
 //     //     }))

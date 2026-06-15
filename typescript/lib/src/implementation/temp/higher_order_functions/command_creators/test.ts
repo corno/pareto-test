@@ -1,5 +1,4 @@
 // import * as _pc from 'pareto-core/dist/command/implementation'
-// import * as p_di from 'pareto-core/dist/data/interface'
 // import p_change_context from 'pareto-core/dist/specials/change_context'
 // import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
 
@@ -124,22 +123,22 @@
 //                                                     'astn_to_astn': {
 //                                                         'transformer': $x['astn to astn'],
 //                                                         'suffix': {
-//                                                             'to be appended to expected': pt.optional.literal.not_set(),
-//                                                             'to be removed from input': pt.optional.literal.not_set(),
+//                                                             'to be appended to expected': pt.literal.not_set(),
+//                                                             'to be removed from input': pt.literal.not_set(),
 //                                                         }
 //                                                     },
 //                                                     'text_to_astn': {
 //                                                         'transformer': $x['text to astn'],
 //                                                         'suffix': {
-//                                                             'to be appended to expected': pt.optional.literal.set(".astn"),
-//                                                             'to be removed from input': pt.optional.literal.not_set(),
+//                                                             'to be appended to expected': pt.literal.set(".astn"),
+//                                                             'to be removed from input': pt.literal.not_set(),
 //                                                         }
 //                                                     },
 //                                                     'astn_to_text': {
 //                                                         'transformer': $x['astn to text'],
 //                                                         'suffix': {
-//                                                             'to be appended to expected': pt.optional.literal.not_set(),
-//                                                             'to be removed from input': pt.optional.literal.set(".astn"),
+//                                                             'to be appended to expected': pt.literal.not_set(),
+//                                                             'to be removed from input': pt.literal.set(".astn"),
 //                                                         }
 //                                                     },
 //                                                 }).__d_map(($, id): d_test_result.Test_Node_Result => {

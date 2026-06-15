@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 // import * as p_qi from 'pareto-core/dist/query/interface'
 // import * as p_ci from 'pareto-core/dist/command/interface'
 
@@ -34,8 +33,8 @@
 //     ).map_optionally(
 //         ($) => _pt.decide.state($, ($): p_di.Optional_Value<null> => {
 //             switch ($[0]) {
-//                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
-//                 case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.optional.literal.not_set() : _pt.optional.literal.set(null))
+//                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.literal.not_set() : _pt.literal.set(null))
+//                 case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.literal.not_set() : _pt.literal.set(null))
 //                 default: return _pt.au($[0])
 //             }
 //         })

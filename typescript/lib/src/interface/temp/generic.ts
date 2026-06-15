@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 
 // export type Input_And_Expected<In, Expected> = {
 //     'input': In

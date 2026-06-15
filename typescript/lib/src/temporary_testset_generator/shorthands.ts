@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 
 // import * as testers from './interface/testers'
 
@@ -14,11 +13,11 @@
 //     serializers: Raw_Dictionary<testers.Serializer>,
 //     text_to_text: Raw_Dictionary<testers.Text_to_Text>,
 // ): testers.Schema => ({
-//     'deserializers': _pt.dictionary.literal(deserializers),
-//     'refiners': _pt.dictionary.literal(refiners).__d_map(($) => _pt.dictionary.literal($)),
-//     'transformers': _pt.dictionary.literal(transformers).__d_map(($) => _pt.dictionary.literal($)),
-//     'serializers': _pt.dictionary.literal(serializers),
-//     'text_to_text': _pt.dictionary.literal(text_to_text),
+//     'deserializers': _pt.literal.dictionary(deserializers),
+//     'refiners': _pt.literal.dictionary(refiners).__d_map(($) => _pt.literal.dictionary($)),
+//     'transformers': _pt.literal.dictionary(transformers).__d_map(($) => _pt.literal.dictionary($)),
+//     'serializers': _pt.literal.dictionary(serializers),
+//     'text_to_text': _pt.literal.dictionary(text_to_text),
 // })
 
 

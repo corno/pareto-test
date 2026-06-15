@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 // import p_change_context from 'pareto-core/dist/specials/change_context'
 // import create_refinement_context from 'pareto-core/dist/__internals/async/create_refinement_context'
 
@@ -10,7 +9,7 @@
 //     [id: string]: temp.Directory_to_Test_Collection_Result_Transformer
 // }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
 //     type,
-//     _pt.dictionary.literal($).__d_map(
+//     _pt.literal.dictionary($).__d_map(
 //         ($2) => p_change_context($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
 //     )
 // )

@@ -1,7 +1,7 @@
 import * as p_ri from 'pareto-core/dist/refiner/interface'
 import p_iterate from 'pareto-core/dist/specials/iterate'
 
-import * as builders from "./text"
+import * as builders from "../../productions/test_command/text"
 
 import * as d from "../../../../interface/to_be_generated/test_command"
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"

@@ -1,4 +1,3 @@
-// import * as p_di from 'pareto-core/dist/data/interface'
 
 // import * as d_in from "../../../../interface/to_be_generated/generic_testset"
 // import * as d_out from "../../../../interface/to_be_generated/test_result"

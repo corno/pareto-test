@@ -3,9 +3,7 @@ import * as p_pi from 'pareto-core/dist/production/interface'
 
 import * as d from "../../../../interface/to_be_generated/test_command"
 
-
 import * as r_path_from_text from "pareto-resources/dist/implementation/manual/refiners/path_unrestricted/text"
-
 
 export const Parameters: p_pi.Production<
     d.Parameters,
@@ -22,7 +20,6 @@ export const Parameters: p_pi.Production<
                 ($) => $,
                 () => abort("expected path to test data")
             ),
-            //($) => abort(`invalid path to test data: ${$}`),
         )
     }
 }

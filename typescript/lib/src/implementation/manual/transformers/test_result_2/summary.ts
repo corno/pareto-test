@@ -1,4 +1,3 @@
-import * as p_di from 'pareto-core/dist/data/interface'
 import * as pt from 'pareto-core/dist/transformer/implementation'
 import * as p_ti from 'pareto-core/dist/transformer/interface'
 
