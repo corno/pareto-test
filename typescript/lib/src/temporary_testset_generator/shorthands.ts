@@ -1,5 +1,4 @@
 // import * as p_di from 'pareto-core/dist/data/interface'
-// import * as _pt from 'pareto-core/dist/assign'
 
 // import * as testers from './interface/testers'
 

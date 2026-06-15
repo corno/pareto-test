@@ -1,5 +1,4 @@
 // import * as p_di from 'pareto-core/dist/data/interface'
-// import * as _pt from 'pareto-core/dist/assign'
 // import { $$ as command_creator } from "../implementation/temp/higher_order_functions/command_creators/test"
 
 

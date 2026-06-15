@@ -1,5 +1,5 @@
 // import * as p_di from 'pareto-core/dist/data/interface'
-// import * as pt from 'pareto-core/dist/assign'
+// import * as pt from 'pareto-core/dist/transformer/implementation'
 // import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
 // import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
 // import p_list_from_text from 'pareto-core/dist/specials/list_from_text'

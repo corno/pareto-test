@@ -1,5 +1,5 @@
 // import * as p_di from 'pareto-core/dist/data/interface'
-// import * as pt from 'pareto-core/dist/assign'
+// import * as pt from 'pareto-core/dist/transformer/implementation'
 
 // import * as d_in from "../../../../interface/to_be_generated/test_result"
 // import * as d_out from "pareto-resources/dist/interface/to_be_generated/directory_content"

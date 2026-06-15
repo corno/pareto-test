@@ -1,5 +1,5 @@
 import * as p_di from 'pareto-core/dist/data/interface'
-import * as pt from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/transformer/implementation'
 import * as p_ti from 'pareto-core/dist/transformer/interface'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/write_directory_content"
