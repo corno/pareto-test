@@ -1,5 +1,5 @@
 // import * as p_qi from 'pareto-core/dist/query/interface'
-// import * as p_ci from 'pareto-core/dist/command/interface'
+// import * as p_i from 'pareto-core/dist/command/interface'
 
 
 
@@ -14,9 +14,9 @@
 //     'test results': d_test.Results,
 // }
 
-// export type Command = p_ci.Command<null, Parameters>
+// export type Command = p_i.Command<null, Parameters>
 
-// export type Signature = p_ci.Command_Procedure<
+// export type Signature = p_i.Command_Procedure<
 //     Command,
 //     null,
 //     null,

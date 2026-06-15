@@ -61,7 +61,7 @@
 // }
 
 
-// export const Directory: p_ti.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
+// export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
 //     'nodes': $.__d_map(($, id) => {
 //         return pt.decide.state($, ($): d_out.Node => {
 //             switch ($[0]) {

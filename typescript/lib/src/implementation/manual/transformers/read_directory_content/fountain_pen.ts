@@ -1,5 +1,5 @@
 import * as pt from 'pareto-core/dist/transformer/implementation'
-import * as p_ti from 'pareto-core/dist/transformer/interface'
+import * as p_i from 'pareto-core/dist/transformer/interface'
 
 import * as d_in from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
@@ -9,7 +9,7 @@ import * as t_read_file_to_fountain_pen from "pareto-resources/dist/implementati
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Error: p_ti.Transformer<d_in.Error, d_out.Phrase> = ($) => pt.decide.state($, ($) => {
+export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => pt.decide.state($, ($) => {
     switch ($[0]) {
         case 'directory content processing': return pt.ss($, ($) => sh.ph.indent(
             sh.pg.sentences(pt.list.from.dictionary(

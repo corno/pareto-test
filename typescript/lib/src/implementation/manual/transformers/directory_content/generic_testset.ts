@@ -62,7 +62,7 @@
 // }
 
 
-// export const Directory: p_ti.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
+// export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
 //     'nodes': $.__d_map(($, id) => pt.decide.state($, ($): d_out.Node => {
 //         switch ($[0]) {
 //             case 'other': return pt.ss($, () => p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"

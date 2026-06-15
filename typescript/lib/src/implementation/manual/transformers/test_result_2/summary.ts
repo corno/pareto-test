@@ -1,5 +1,5 @@
 import * as pt from 'pareto-core/dist/transformer/implementation'
-import * as p_ti from 'pareto-core/dist/transformer/interface'
+import * as p_i from 'pareto-core/dist/transformer/interface'
 
 import * as d_in from "../../../../interface/to_be_generated/test_result"
 import * as d_out from "../../../../interface/to_be_generated/summary"
@@ -9,7 +9,7 @@ export type Parameters = {
     'include structural problems': boolean
 }
 
-export const Test_Node_Result: p_ti.Transformer_With_Parameter<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Node_Result: p_i.Transformer_With_Parameter<d_in.Test_Node_Result, d_out.Test_count, Parameters> = ($, $p) => {
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
     return pt.decide.state($, ($) => {
         switch ($[0]) {
@@ -38,7 +38,7 @@ export const Test_Node_Result: p_ti.Transformer_With_Parameter<d_in.Test_Node_Re
     })
 }
 
-export const Test_Group_Result: p_ti.Transformer_With_Parameter<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
+export const Test_Group_Result: p_i.Transformer_With_Parameter<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
     $.__d_map(($): number => Test_Node_Result($, $p)).__d_map(($) => count += $)
     return count

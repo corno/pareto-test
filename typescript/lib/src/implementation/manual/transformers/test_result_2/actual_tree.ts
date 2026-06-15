@@ -6,7 +6,7 @@
 
 // const op_cast_to_non_empty_dictionary = <T>($: p_di.Dictionary<T>): p_di.Optional_Value<p_di.Dictionary<T>> => pt.boolean.from.dictionary($).is_empty() ? pt.literal.not_set() : pt.literal.set($)
 
-// export const Test_Node_Result: p_ti.Transformer<d_in.Test_Node_Result, p_di.Optional_Value<d_out.Node>> = ($) => pt.decide.state($, ($): p_di.Optional_Value<d_out.Node> => {
+// export const Test_Node_Result: p_i.Transformer<d_in.Test_Node_Result, p_di.Optional_Value<d_out.Node>> = ($) => pt.decide.state($, ($): p_di.Optional_Value<d_out.Node> => {
 //     switch ($[0]) {
 //         case 'collection': return pt.ss($, ($) => pt.decide.state($.result, ($) => {
 //             switch ($[0]) {
@@ -57,7 +57,7 @@
 //     }
 // })
 
-// export const Test_Group_Result: p_ti.Transformer<d_in.Test_Collection_Result, d_out.Directory> = ($) => pt.dictionary.from.dictionary(
+// export const Test_Group_Result: p_i.Transformer<d_in.Test_Collection_Result, d_out.Directory> = ($) => pt.dictionary.from.dictionary(
 //     $,
 // ).map_optionally(
 //     ($) => Test_Node_Result($)
