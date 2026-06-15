@@ -1,4 +1,4 @@
-// import p_change_context from 'pareto-core/dist/specials/change_context'
+// import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
 // import create_refinement_context from 'pareto-core/dist/__internals/async/create_refinement_context'
 
 // import * as d_out from "../../../../interface/to_be_generated/test_result"

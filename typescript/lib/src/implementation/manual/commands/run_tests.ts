@@ -1,5 +1,5 @@
-// import * as p_qi from 'pareto-core/dist/query/interface'
-// import * as p_i from 'pareto-core/dist/command/interface'
+// import * as p_qi from 'pareto-core/dist/interface/query'
+// import * as p_i from 'pareto-core/dist/interface/command'
 
 
 

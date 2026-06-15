@@ -1,6 +1,5 @@
-// import * as _pc from 'pareto-core/dist/command/implementation'
-// import p_change_context from 'pareto-core/dist/specials/change_context'
-// import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+// import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
+// import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
 // import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 // import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"

@@ -1,5 +1,4 @@
-import * as _pt from 'pareto-core/dist/assign'
-import * as p_pi from 'pareto-core/dist/production/interface'
+import * as p_pi from 'pareto-core/dist/interface/production'
 
 import * as d from "../../../../interface/to_be_generated/test_command"
 

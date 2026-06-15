@@ -1,8 +1,8 @@
-// import * as pt from 'pareto-core/dist/transformer/implementation'
-// import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
-// import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
-// import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
-// import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+// import * as pt from 'pareto-core/dist/implementation/transformer'
+// import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
+// import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
+// import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
+// import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
 // import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
 // import * as d_out from "../../../../interface/to_be_generated/generic_testset"
