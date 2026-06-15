@@ -1,4 +1,4 @@
-// import * as pt from 'pareto-core/dist/implementation/transformer'
+// import * as p_ from 'pareto-core/dist/implementation/transformer'
 
 // import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 // import * as d_in from "../../../../interface/temp/generic"
@@ -8,24 +8,24 @@
 // export const Results = ($: d_in.Results): d_out.Paragraph => Branch($)
 
 
-// export const Branch = ($: d_in.Results): d_out.Paragraph => sh.pg.sentences(pt.list.from.dictionary(
+// export const Branch = ($: d_in.Results): d_out.Paragraph => sh.pg.sentences(p_.list.from.dictionary(
 //     $,
 // ).convert(
 //     ($, id) => sh.sentence([
 //         sh.ph.literal(id),
 //         sh.ph.literal(": "),
-//         pt.decide.state($, ($) => {
+//         p_.decide.state($, ($) => {
 //             switch ($[0]) {
-//                 case 'test': return pt.ss($, ($) => $.passed
+//                 case 'test': return p_.ss($, ($) => $.passed
 //                     ? sh.ph.literal("✅ PASS")
 //                     : sh.ph.literal("❌ FAIL")
 //                 )
-//                 case 'group': return pt.ss($, ($) => sh.ph.composed([
+//                 case 'group': return p_.ss($, ($) => sh.ph.composed([
 //                     sh.ph.indent(
 //                         Branch($)
 //                     )
 //                 ]))
-//                 default: return pt.au($[0])
+//                 default: return p_.au($[0])
 //             }
 //         })
 //     ])

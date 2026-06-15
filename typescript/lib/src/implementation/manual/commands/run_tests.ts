@@ -41,7 +41,7 @@
 //     )
 // ).is_empty()
 
-// export const $$: Signature = pt.command_procedure(
+// export const $$: Signature = p_.command_procedure(
 //     ($d, $s, $q, $c) => [
 //         $c.log.execute(
 //             {
@@ -53,7 +53,7 @@
 //             },
 //             ($) => $,
 //         ),
-//         pt.if_.direct(
+//         p_.if_.direct(
 //             has_passed($d['test results']),
 //             [
 //                 $c.log.execute(
@@ -69,7 +69,7 @@
 //                 ),
 //             ]
 //         ),
-//         pt.if_.direct(
+//         p_.if_.direct(
 //             !has_passed($d['test results']),
 //             [
 //                 $c['log error'].execute(

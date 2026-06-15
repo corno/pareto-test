@@ -3,54 +3,54 @@
 // import * as d_out from "../../../interface/data/generic_testset"
 
 // export const Group: p_i.Transformer<d_out.Node__group, d_in.Directory> = ($) => {
-//     return pt.decide.state($, ($): d_out.Node__group => {
+//     return p_.decide.state($, ($): d_out.Node__group => {
 //         switch ($[0]) {
-//             case 'invalid': return pt.ss($, ($): d_out.Node__group => ['expected does not exist'])
-//             case 'valid': return pt.ss($, ($) => {
+//             case 'invalid': return p_.ss($, ($): d_out.Node__group => ['expected does not exist'])
+//             case 'valid': return p_.ss($, ($) => {
 //                 return $.__d_map(($, id) => {
 //                     const expected_node = $p.expected.get_entry(key)
-//                     return pt.decide.state($, ($): d_out.Node => {
+//                     return p_.decide.state($, ($): d_out.Node => {
 //                         switch ($[0]) {
-//                             case 'other': return pt.ss($, ($): d_out.Node => {
+//                             case 'other': return p_.ss($, ($): d_out.Node => {
 //                                 return _pinternals.panic("expected a file or a directory")
 //                             })
-//                             case 'file': return pt.ss($, ($): d_out.Node => {
+//                             case 'file': return p_.ss($, ($): d_out.Node => {
 //                                 const top_node = $
 //                                 return ['test', {
 //                                     'input': top_node,
 //                                     'expected': expected_node.__decide(
-//                                         ($) => pt.decide.state($, ($) => {
+//                                         ($) => p_.decide.state($, ($) => {
 //                                             switch ($[0]) {
-//                                                 case 'file': return pt.ss($, ($) => ['valid', $])
-//                                                 case 'directory': return pt.ss($, ($) => ['is not a file', null])
-//                                                 case 'other': return pt.ss($, ($) => ['is not a file', null])
-//                                                 default: return pt.au($[0])
+//                                                 case 'file': return p_.ss($, ($) => ['valid', $])
+//                                                 case 'directory': return p_.ss($, ($) => ['is not a file', null])
+//                                                 case 'other': return p_.ss($, ($) => ['is not a file', null])
+//                                                 default: return p_.au($[0])
 //                                             }
 //                                         }),
 //                                         () => ['does not exist', null]
 //                                     )
 //                                 }]
 //                             })
-//                             case 'directory': return pt.ss($, ($) => {
+//                             case 'directory': return p_.ss($, ($) => {
 //                                 const input_node = $
 //                                 return ['group', expected_node.__decide(
-//                                     ($) => pt.decide.state($, ($) => {
+//                                     ($) => p_.decide.state($, ($) => {
 //                                         switch ($[0]) {
-//                                             case 'other': return pt.ss($, ($) => ['expected is not a group', null])
-//                                             case 'file': return pt.ss($, ($) => ['expected is not a group', null])
-//                                             case 'directory': return pt.ss($, ($) => ['valid', Group(input_node, { 'expected': $ })])
-//                                             default: return pt.au($[0])
+//                                             case 'other': return p_.ss($, ($) => ['expected is not a group', null])
+//                                             case 'file': return p_.ss($, ($) => ['expected is not a group', null])
+//                                             case 'directory': return p_.ss($, ($) => ['valid', Group(input_node, { 'expected': $ })])
+//                                             default: return p_.au($[0])
 //                                         }
 //                                     }),
 //                                     () => ['expected does not exist', null]
 //                                 )]
 //                             })
-//                             default: return pt.au($[0])
+//                             default: return p_.au($[0])
 //                         }
 //                     })
 //                 })
 //             })
-//             default: return pt.au($[0])
+//             default: return p_.au($[0])
 //         }
 //     })
 // }

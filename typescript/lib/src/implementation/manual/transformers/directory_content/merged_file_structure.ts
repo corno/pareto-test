@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 
@@ -15,18 +15,18 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
     'support suffix': string
 }> = ($, $p) => $.__d_map(($, id) => {
     const support_directory = $p.support
-    return pt.decide.state($, ($): d_out.Node => {
+    return p_.decide.state($, ($): d_out.Node => {
         switch ($[0]) {
-            case 'other': return pt.ss($, ($): d_out.Node => p_implement_me("expected a file or a directory"))
-            case 'file': return pt.ss($, ($): d_out.Node => ['file', {
+            case 'other': return p_.ss($, ($): d_out.Node => p_implement_me("expected a file or a directory"))
+            case 'file': return p_.ss($, ($): d_out.Node => ['file', {
                 'support': support_directory.__get_possible_entry_deprecated(id + $p['support suffix'])
             }])
-            case 'directory': return pt.ss($, ($) => {
+            case 'directory': return p_.ss($, ($) => {
                 const main_node = $
                 return ['directory', support_directory.__get_possible_entry_deprecated(id).__decide(
-                    ($): d_out.Directory => pt.decide.state($, ($) => {
+                    ($): d_out.Directory => p_.decide.state($, ($) => {
                         switch ($[0]) {
-                            case 'directory': return pt.ss($, ($) => ['valid', Directory(
+                            case 'directory': return p_.ss($, ($) => ['valid', Directory(
                                 main_node,
                                 {
                                     'support': $,
@@ -44,7 +44,7 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
                     }]
                 )]
             })
-            default: return pt.au($[0])
+            default: return p_.au($[0])
         }
     })
 })
