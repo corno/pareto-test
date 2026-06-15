@@ -1,8 +1,8 @@
 import * as pt from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 
-import * as d_in from "../../../../interface/to_be_generated/test_result"
-import * as d_out from "../../../../interface/to_be_generated/summary"
+import * as d_in from "../../../../interface/data/test_result"
+import * as d_out from "../../../../interface/data/summary"
 
 export type Parameters = {
     'include passed tests': boolean

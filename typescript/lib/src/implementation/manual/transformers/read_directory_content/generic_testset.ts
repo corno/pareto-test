@@ -5,7 +5,7 @@
 // import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
 // import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
-// import * as d_out from "../../../../interface/to_be_generated/generic_testset"
+// import * as d_out from "../../../../interface/data/generic_testset"
 
 // const remove_suffix = ($: string, suffix: string): p_di.Optional_Value<string> => {
 //     let suffix_matches = true

@@ -1,6 +1,6 @@
 // import * as pt from 'pareto-core/dist/implementation/transformer'
 
-// import * as d_in from "../../../../interface/to_be_generated/test_result"
+// import * as d_in from "../../../../interface/data/test_result"
 // import * as d_out from "pareto-resources/dist/interface/to_be_generated/directory_content"
 
 
