@@ -53,7 +53,7 @@
 //             },
 //             ($) => $,
 //         ),
-//         p_.if_.direct(
+//         p_.s.if_.direct(
 //             has_passed($d['test results']),
 //             [
 //                 $c.log.execute(
@@ -69,7 +69,7 @@
 //                 ),
 //             ]
 //         ),
-//         p_.if_.direct(
+//         p_.s.if_.direct(
 //             !has_passed($d['test results']),
 //             [
 //                 $c['log error'].execute(
