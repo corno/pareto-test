@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 
 //data types
-import * as d_in from "pareto-resources/dist/interface/to_be_generated/write_directory_content"
+import * as d_in from "pareto-resources/dist/interface/data/write_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 //dependencies

@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/dist/implementation/transformer'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 
-import * as d_in from "pareto-resources/dist/interface/to_be_generated/directory_content"
+import * as d_in from "pareto-resources/dist/interface/data/directory_content"
 import * as d_out from "../../../../interface/data/merged_filesystem_nodes"
 
 export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Valid_Directory, {
