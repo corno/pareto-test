@@ -15,7 +15,7 @@
 //     'parameters': Parameters
 // }, Expected_Output>
 
-// export type Refiner_Without_Parameters<Expected_Result, Expected_Error, Input> = Input_And_Expected<Input, Output_Or_Error<Expected_Result, Expected_Error>>
+// export type Refiner_  Without_Parameters<Expected_Result, Expected_Error, Input> = Input_And_Expected<Input, Output_Or_Error<Expected_Result, Expected_Error>>
 
 // export type Refiner_With_Parameter<Expected_Result, Expected_Error, Input, Parameters> = {
 //     'input': {
