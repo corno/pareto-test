@@ -1,8 +1,8 @@
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_ from 'pareto-core/dist/interface/data'
 
 import * as d_generic from "./generic_testset"
 
-export type Test_Collection_Result = p_di.Dictionary<Test_Node_Result>
+export type Test_Collection_Result = p_.Dictionary<Test_Node_Result>
 
 export type Test_Node_Result =
     | ['collection', Test_Node_Result__collection]
