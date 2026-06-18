@@ -9,8 +9,10 @@
 
 // const remove_suffix = ($: string, suffix: string): p_di.Optional_Value<string> => {
 //     let suffix_matches = true
-//         const main_as_characters = p_list_from_text($, ($) => $)
-//         const suffix_as_characters = p_list_from_text(suffix, ($) => $)
+//         const main_as_characters = p_list_from_text(
+// $, ($) => $)
+//         const suffix_as_characters = p_list_from_text(
+// suffix, ($) => $)
 //         const main_length = main_as_characters.__get_number_of_items()
 //         const suffix_length = suffix_as_characters.__get_number_of_items()
 //     const stripped = p_list_build_deprecated<number>(($i) => {
@@ -36,7 +38,8 @@
 //         })
 //     })
 //     if (suffix_matches) {
-//         return p_.literal.set(p_text_from_list(stripped, ($) => $))
+//         return p_.literal.set(p_text_from_list(
+// stripped, ($) => $))
 //     }
 //     return p_.literal.set($)
 // }
