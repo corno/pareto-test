@@ -3,13 +3,13 @@
 // import * as d_out from "../../../interface/data/generic_testset"
 
 // export const Group: p_i.Transformer<d_out.Node__group, d_in.Directory> = ($) => {
-//     return p_.decide.state($, ($): d_out.Node__group => {
+//     return p_.from.state($).decide(($): d_out.Node__group => {
 //         switch ($[0]) {
 //             case 'invalid': return p_.ss($, ($): d_out.Node__group => ['expected does not exist'])
 //             case 'valid': return p_.ss($, ($) => {
-//                 return $.__d_map(($, id) => {
+//                 return $.__d_map_deprecated(($, id) => {
 //                     const expected_node = $p.expected.get_entry(key)
-//                     return p_.decide.state($, ($): d_out.Node => {
+//                     return p_.from.state($).decide(($): d_out.Node => {
 //                         switch ($[0]) {
 //                             case 'other': return p_.ss($, ($): d_out.Node => {
 //                                 return _pinternals.panic("expected a file or a directory")
@@ -19,7 +19,7 @@
 //                                 return ['test', {
 //                                     'input': top_node,
 //                                     'expected': expected_node.__decide(
-//                                         ($) => p_.decide.state($, ($) => {
+//                                         ($) => p_.from.state($).decide(($) => {
 //                                             switch ($[0]) {
 //                                                 case 'file': return p_.ss($, ($) => ['valid', $])
 //                                                 case 'directory': return p_.ss($, ($) => ['is not a file', null])
@@ -34,7 +34,7 @@
 //                             case 'directory': return p_.ss($, ($) => {
 //                                 const input_node = $
 //                                 return ['group', expected_node.__decide(
-//                                     ($) => p_.decide.state($, ($) => {
+//                                     ($) => p_.from.state($).decide(($) => {
 //                                         switch ($[0]) {
 //                                             case 'other': return p_.ss($, ($) => ['expected is not a group', null])
 //                                             case 'file': return p_.ss($, ($) => ['expected is not a group', null])

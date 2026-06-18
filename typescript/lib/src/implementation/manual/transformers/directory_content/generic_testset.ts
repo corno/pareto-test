@@ -22,7 +22,7 @@
     
 //     const stripped = p_list_build_deprecated<number>(($i) => {
 //         let index = -1
-//         main_as_characters.__l_map(($) => {
+//         main_as_characters.__l_map_deprecated(($) => {
 //             index += 1
 //             if (index < main_length - suffix_length) {
 //                 $i['add item']($)
@@ -30,7 +30,7 @@
 //                 //validate the right suffix
 //                 const cur_char = $
 //                 const suffix_index = index - (main_length - suffix_length)
-//                 p_.optional.from.optional(
+//                 p_.from.optional(
 //                     suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
 //                 ).map(
 //                     ($) => {
@@ -70,7 +70,7 @@
 
 
 // export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-//     'nodes': $.__d_map(($, id) => p_.decide.state($, ($): d_out.Node => {
+//     'nodes': $.__d_map_deprecated(($, id) => p_.from.state($).decide(($): d_out.Node => {
 //         switch ($[0]) {
 //             case 'other': return p_.ss($, () => p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
 //             case 'file': return p_.ss($, ($): d_out.Node => {
@@ -83,7 +83,7 @@
 //                         () => ""
 //                     ))
 //                     return expected_node.__decide(
-//                         ($) => p_.decide.state($, ($): d_out.Node__file__expected => {
+//                         ($) => p_.from.state($).decide(($): d_out.Node__file__expected => {
 //                             switch ($[0]) {
 //                                 case 'file': return p_.ss($, ($) => ['valid', $])
 //                                 case 'directory': return p_.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
@@ -112,7 +112,7 @@
 //                 const expected_node = $p.expected.__get_possible_entry_deprecated(id)
 //                 const input_node = $
 //                 return ['directory', expected_node.__decide(
-//                     ($) => p_.decide.state($, ($) => {
+//                     ($) => p_.from.state($).decide(($) => {
 //                         switch ($[0]) {
 //                             case 'other': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
 //                             case 'file': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
@@ -134,8 +134,8 @@
 //     })),
 //     // 'superfluous nodes': p_.block(() => {
 //     //     const temp: { [id: string]: null } = {}
-//     //     $.__d_map(($, id) => {
-//     //         const key_of_expected = p_.decide.state($, ($): string => {
+//     //     $.__d_map_deprecated(($, id) => {
+//     //         const key_of_expected = p_.from.state($).decide(($): string => {
 //     //             switch ($[0]) {
 
 //     //                 case 'other': return p_.ss($, ($) => key)
@@ -156,8 +156,8 @@
 //     //         temp[key_of_expected] = null
 //     //     })
 //     //     const main = p_.literal.dictionary(temp)
-//     //     return op_filter_dictionary($p.expected.__d_map(($, id) => {
-//     //         return main.get_entry(key).__d_map(() => null)
+//     //     return op_filter_dictionary($p.expected.__d_map_deprecated(($, id) => {
+//     //         return main.get_entry(key).__d_map_deprecated(() => null)
 //     //     }))
 //     // })
 // })

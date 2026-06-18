@@ -140,7 +140,7 @@
 //                                                             'to be removed from input': p_.literal.set(".astn"),
 //                                                         }
 //                                                     },
-//                                                 }).__d_map(($, id): d_test_result.Test_Node_Result => {
+//                                                 }).__d_map_deprecated(($, id): d_test_result.Test_Node_Result => {
 //                                                     const the_func = ($x: {
 //                                                         'input': d_directory_content.Directory,
 //                                                         'expected': d_directory_content.Directory,
@@ -156,13 +156,13 @@
 //                                                     return ['collection', {
 //                                                         'type': ['group', null],
 //                                                         'result': input_node.__decide(
-//                                                             ($): d_test_result.Test_Node_Result__collection__result => p_.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
+//                                                             ($): d_test_result.Test_Node_Result__collection__result => p_.from.state($).decide(($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                 switch ($[0]) {
 //                                                                     case 'directory': return p_.ss($, ($) => {
 //                                                                         const input_dir = $
 //                                                                         return expected_node.__decide(
 //                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
-//                                                                                 return p_.decide.state($, ($): d_test_result.Test_Node_Result__collection__result => {
+//                                                                                 return p_.from.state($).decide(($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                                     switch ($[0]) {
 //                                                                                         case 'directory': return p_.ss($, ($) => {
 //                                                                                             const expected_dir = $
@@ -264,7 +264,7 @@
 //             ($) => [
 //                 $c['log error'].execute(
 //                     {
-//                         'message': p_.decide.state($, ($) => {
+//                         'message': p_.from.state($).decide(($) => {
 //                             switch ($[0]) {
 //                                 case 'command line': return p_.ss($, ($) => sh.pg.sentences([
 //                                     sh.sentence([

@@ -12,7 +12,7 @@
 
 // const dict_to_raw = <T>($: p_di.Dictionary<T>) => {
 //     const temp: { [id: string]: T } = {}
-//     $.__d_map(($, id) => {
+//     $.__d_map_deprecated(($, id) => {
 //         temp[id] = $
 //     })
 //     return temp
@@ -20,7 +20,7 @@
 
 // const dict_to_test_group_result_transformer = <T>(type: 'group' | 'dictionary', $: undefined | { [id: string]: T }, map: ($: T) => Directory_to_Test_Collection_Result_Transformer): Directory_to_Test_Collection_Result_Transformer => {
 
-//     return sh.test_collection(type, dict_to_raw(_pt.literal.dictionary($ === undefined ? {} : $).__d_map(($): Directory_to_Test_Collection_Result_Transformer => map($))))
+//     return sh.test_collection(type, dict_to_raw(_pt.literal.dictionary($ === undefined ? {} : $).__d_map_deprecated(($): Directory_to_Test_Collection_Result_Transformer => map($))))
 // }
 
 // // namespace t_package_tester_to_test_group_result_transformer {

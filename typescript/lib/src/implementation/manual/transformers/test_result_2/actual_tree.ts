@@ -4,14 +4,14 @@
 // import * as d_out from "pareto-resources/dist/interface/to_be_generated/directory_content"
 
 
-// const op_cast_to_non_empty_dictionary = <T>($: p_di.Dictionary<T>): p_di.Optional_Value<p_di.Dictionary<T>> => p_.boolean.from.dictionary($).is_empty() ? p_.literal.not_set() : p_.literal.set($)
+// const op_cast_to_non_empty_dictionary = <T>($: p_di.Dictionary<T>): p_di.Optional_Value<p_di.Dictionary<T>> => p_.from.dictionary($).is_empty() ? p_.literal.not_set() : p_.literal.set($)
 
-// export const Test_Node_Result: p_i.Transformer<d_in.Test_Node_Result, p_di.Optional_Value<d_out.Node>> = ($) => p_.decide.state($, ($): p_di.Optional_Value<d_out.Node> => {
+// export const Test_Node_Result: p_i.Transformer<d_in.Test_Node_Result, p_di.Optional_Value<d_out.Node>> = ($) => p_.from.state($).decide(($): p_di.Optional_Value<d_out.Node> => {
 //     switch ($[0]) {
-//         case 'collection': return p_.ss($, ($) => p_.decide.state($.result, ($) => {
+//         case 'collection': return p_.ss($, ($) => p_.from.state($.result).decide(($) => {
 //             switch ($[0]) {
 //                 case 'source invalid': return p_.ss($, ($) => p_.literal.not_set())
-//                 case 'source valid': return p_.ss($, ($): p_di.Optional_Value<d_out.Node> => p_.optional.from.optional(
+//                 case 'source valid': return p_.ss($, ($): p_di.Optional_Value<d_out.Node> => p_.from.optional(
 //                     op_cast_to_non_empty_dictionary(Test_Group_Result($)),
 //                 ).map(
 //                     ($) => ['directory', $])
@@ -22,19 +22,19 @@
 //         case 'individual test': return p_.ss($, ($) => p_.decide.state($.result, ($): p_di.Optional_Value<d_out.Node> => {
 //             switch ($[0]) {
 //                 case 'source invalid': return p_.ss($, ($) => p_.literal.not_set())
-//                 case 'tested': return p_.ss($, ($) => p_.decide.state($, ($) => {
+//                 case 'tested': return p_.ss($, ($) => p_.from.state($).decide(($) => {
 //                     switch ($[0]) {
 //                         case 'passed': return p_.ss($, ($) => p_.literal.not_set())
-//                         case 'failed': return p_.ss($, ($) => p_.decide.state($, ($) => {
+//                         case 'failed': return p_.ss($, ($) => p_.from.state($).decide(($) => {
 //                             switch ($[0]) {
-//                                 case 'transform': return p_.ss($, ($) => p_.decide.state($, ($) => {
+//                                 case 'transform': return p_.ss($, ($) => p_.from.state($).decide(($) => {
 //                                     switch ($[0]) {
 //                                         case 'initialization': return p_.ss($, ($) => p_.literal.not_set())
 //                                         case 'unexpected output': return p_.ss($, ($) => p_.literal.set(['file', $.actual]))
 //                                         default: return p_.au($[0])
 //                                     }
 //                                 }))
-//                                 case 'refine': return p_.ss($, ($) => p_.decide.state($, ($) => {
+//                                 case 'refine': return p_.ss($, ($) => p_.from.state($).decide(($) => {
 //                                     switch ($[0]) {
 //                                         case 'initialization': return p_.ss($, ($) => p_.literal.not_set())
 //                                         case 'unexpected output': return p_.ss($, ($) => p_.literal.set(['file', $.actual]))
@@ -57,7 +57,7 @@
 //     }
 // })
 
-// export const Test_Group_Result: p_i.Transformer<d_in.Test_Collection_Result, d_out.Directory> = ($) => p_.dictionary.from.dictionary(
+// export const Test_Group_Result: p_i.Transformer<d_in.Test_Collection_Result, d_out.Directory> = ($) => p_.from.dictionary(
 //     $,
 // ).map_optionally(
 //     ($) => Test_Node_Result($)

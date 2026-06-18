@@ -9,16 +9,16 @@ import * as t_read_file_to_fountain_pen from "pareto-resources/dist/implementati
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => p_.decide.state($, ($) => {
+export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => p_.from.state($).decide(($) => {
     switch ($[0]) {
         case 'directory content processing': return p_.ss($, ($) => sh.ph.indent(
-            sh.pg.sentences(p_.list.from.dictionary(
+            sh.pg.sentences(p_.from.dictionary(
                 $,
-            ).convert(
+            ).convert_to_list(
                 ($, id) => sh.sentence([
                     sh.ph.literal(id),
                     sh.ph.literal(": "),
-                    p_.decide.state($, ($) => {
+                    p_.from.state($).decide(($) => {
                         switch ($[0]) {
                             case 'file': return p_.ss($, ($) => t_read_file_to_fountain_pen.Error($))
                             case 'directory': return p_.ss($, ($) => Error($))

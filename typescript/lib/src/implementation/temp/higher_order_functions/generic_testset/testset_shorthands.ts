@@ -9,7 +9,7 @@
 //     [id: string]: temp.Directory_to_Test_Collection_Result_Transformer
 // }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
 //     type,
-//     _pt.literal.dictionary($).__d_map(
+//     _pt.literal.dictionary($).__d_map_deprecated(
 //         ($2) => p_change_context($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
 //     )
 // )
@@ -21,7 +21,7 @@
 //         $: string,
 //         abort: ($: string) => never
 //     ) => string
-// ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+// ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map_deprecated(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
 //     ($p) => create_refinement_context<d_out.Tested, string>(
 //         (abort) => {
 
@@ -52,7 +52,7 @@
 //     ) => string
 // ): temp.Directory_to_Test_Collection_Result_Transformer => {
 
-//     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+//     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => $.nodes.__d_map_deprecated(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
 //         ($p) => create_refinement_context<d_out.Tested, string>(
 //             (initialize_abort) => {
 //                 return create_refinement_context<string, string>(

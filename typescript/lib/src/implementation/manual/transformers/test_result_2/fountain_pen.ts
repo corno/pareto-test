@@ -29,13 +29,13 @@ export const Test_Collection_Result = (
         sh.ph.literal($p['path to test']),
     ])
     return sh.pg.sentences(
-        p_.list.from.dictionary(
+        p_.from.dictionary(
             $,
-        ).convert(
+        ).convert_to_list(
             ($, id) => sh.sentence([
-                p_.decide.state($, ($) => {
+                p_.from.state($).decide(($) => {
                     switch ($[0]) {
-                        case 'collection': return p_.ss($, ($) => p_.decide.state($.type, ($) => {
+                        case 'collection': return p_.ss($, ($) => p_.from.state($.type).decide(($) => {
                             switch ($[0]) {
                                 case 'group': return p_.ss($, ($) => sh.ph.literal(CYAN))
                                 case 'dictionary': return p_.ss($, ($) => sh.ph.literal(BLUE))
@@ -48,7 +48,7 @@ export const Test_Collection_Result = (
                 }),
                 sh.ph.literal(id),
                 sh.ph.literal(ENDCOLOR),
-                p_.decide.state($, ($) => {
+                p_.from.state($).decide(($) => {
                     const do_node_path = (which: string) => sh.ph.composed([
                         sh.ph.literal($p['path to test data']),
                         sh.ph.literal("/"),
@@ -58,9 +58,9 @@ export const Test_Collection_Result = (
                         sh.ph.literal(id),
                     ])
                     switch ($[0]) {
-                        case 'individual test': return p_.ss($, ($) => p_.decide.state($.result, ($) => {
+                        case 'individual test': return p_.ss($, ($) => p_.from.state($.result).decide(($) => {
                             switch ($[0]) {
-                                case 'source invalid': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                case 'source invalid': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
                                         case 'not an individual test': return sh.ph.composed([
                                             sh.ph.literal(YELLOW),
@@ -68,7 +68,7 @@ export const Test_Collection_Result = (
                                             do_node_path("input"),
                                             sh.ph.literal(ENDCOLOR),
                                         ])
-                                        case 'problem with expected': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                        case 'problem with expected': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                             switch ($[0]) {
                                                 case 'required input suffix missing': return p_.ss($, ($) => sh.ph.composed([
                                                     sh.ph.literal(YELLOW),
@@ -78,7 +78,7 @@ export const Test_Collection_Result = (
                                                     do_node_path("input"),
                                                     sh.ph.literal(ENDCOLOR),
                                                 ]))
-                                                case 'expected': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                                case 'expected': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                                     switch ($[0]) {
                                                         case 'does not exist': return sh.ph.composed([
                                                             sh.ph.literal(YELLOW),
@@ -102,7 +102,7 @@ export const Test_Collection_Result = (
                                         default: return p_.au($[0])
                                     }
                                 }))
-                                case 'tested': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                case 'tested': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
                                         case 'passed': return sh.ph.composed([
                                             sh.ph.literal(GREEN),
@@ -123,16 +123,16 @@ export const Test_Collection_Result = (
                                                     do_node_path("expected"),
                                                 ]),
                                                 sh.sentence([
-                                                    p_.decide.state($, ($) => {
+                                                    p_.from.state($).decide(($) => {
                                                         switch ($[0]) {
-                                                            case 'transform': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                                            case 'transform': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                                                 switch ($[0]) {
                                                                     case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
                                                                     case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
                                                                     default: return p_.au($[0])
                                                                 }
                                                             }))
-                                                            case 'refine': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                                            case 'refine': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                                                 switch ($[0]) {
                                                                     case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
                                                                     case 'should have failed but succeeded': return p_.ss($, ($) => sh.ph.literal("should have failed but succeeded"))
@@ -154,7 +154,7 @@ export const Test_Collection_Result = (
                                 default: return p_.au($[0])
                             }
                         }))
-                        case 'collection': return p_.ss($, ($) => p_.decide.state($.result, ($) => {
+                        case 'collection': return p_.ss($, ($) => p_.from.state($.result).decide(($) => {
                             switch ($[0]) {
 
                                 case 'source valid': return p_.ss($, ($) => sh.ph.composed([
@@ -168,7 +168,7 @@ export const Test_Collection_Result = (
                                         )
                                     )
                                 ]))
-                                case 'source invalid': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                case 'source invalid': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
                                         case 'missing': return sh.ph.composed([
                                             sh.ph.literal(YELLOW),
@@ -176,7 +176,7 @@ export const Test_Collection_Result = (
                                             do_context_path("input"),
                                             sh.ph.literal(ENDCOLOR),
                                         ])
-                                        case 'problem with expected': return p_.ss($, ($) => p_.decide.state($, ($) => {
+                                        case 'problem with expected': return p_.ss($, ($) => p_.from.state($).decide(($) => {
                                             switch ($[0]) {
 
                                                 case 'node for expected is not a directory': return sh.ph.composed([

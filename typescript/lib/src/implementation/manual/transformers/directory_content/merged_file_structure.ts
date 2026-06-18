@@ -13,9 +13,9 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
      * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
      */
     'support suffix': string
-}> = ($, $p) => $.__d_map(($, id) => {
+}> = ($, $p) => $.__d_map_deprecated(($, id) => {
     const support_directory = $p.support
-    return p_.decide.state($, ($): d_out.Node => {
+    return p_.from.state($).decide(($): d_out.Node => {
         switch ($[0]) {
             case 'other': return p_.ss($, ($): d_out.Node => p_implement_me("expected a file or a directory"))
             case 'file': return p_.ss($, ($): d_out.Node => ['file', {
@@ -24,7 +24,7 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
             case 'directory': return p_.ss($, ($) => {
                 const main_node = $
                 return ['directory', support_directory.__get_possible_entry_deprecated(id).__decide(
-                    ($): d_out.Directory => p_.decide.state($, ($) => {
+                    ($): d_out.Directory => p_.from.state($).decide(($) => {
                         switch ($[0]) {
                             case 'directory': return p_.ss($, ($) => ['valid', Directory(
                                 main_node,
