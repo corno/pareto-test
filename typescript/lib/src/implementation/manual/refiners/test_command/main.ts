@@ -1,5 +1,5 @@
 import * as p_i from 'pareto-core/dist/interface/refiner'
-import p_iterate from 'pareto-core/dist/implementation/specials/iterate'
+import p_iterate from 'pareto-core/dist/implementation/refiner/specials/iterate'
 
 import * as builders from "../../productions/test_command/text"
 
