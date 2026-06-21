@@ -1,6 +1,4 @@
 // import * as p_ from 'pareto-core/dist/implementation/transformer'
-// import p_unreachable_code_path from 'pareto-core/dist/implementation/transformer/specials/unreachable_code_path'
-// import p_list_build_deprecated from 'pareto-core/dist/implementation/refiner/specials/list_build_deprecated'
 // import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
 // import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
 
@@ -15,7 +13,7 @@
 // suffix, ($) => $)
 //         const main_length = main_as_characters.__get_number_of_items()
 //         const suffix_length = suffix_as_characters.__get_number_of_items()
-//     const stripped = p_list_build_deprecated<number>(($i) => {
+//     const stripped = p_list_build_ deprecated<number>(($i) => {
 //         let index = -1
 //         main_as_characters.__l_map_deprecated(($) => {
 //             index += 1
