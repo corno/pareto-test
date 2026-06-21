@@ -7,7 +7,7 @@
 //         switch ($[0]) {
 //             case 'invalid': return p_.ss($, ($): d_out.Node__group => ['expected does not exist'])
 //             case 'valid': return p_.ss($, ($) => {
-//                 return $.__d_map_deprecated(($, id) => {
+//                 return $.__ d_map_deprecated(($, id) => {
 //                     const expected_node = $p.expected.get_entry(key)
 //                     return p_.from.state($).decide(($): d_out.Node => {
 //                         switch ($[0]) {
@@ -18,7 +18,7 @@
 //                                 const top_node = $
 //                                 return ['test', {
 //                                     'input': top_node,
-//                                     'expected': expected_node.__decide(
+//                                     'expected': expected_node.__ decide(
 //                                         ($) => p_.from.state($).decide(($) => {
 //                                             switch ($[0]) {
 //                                                 case 'file': return p_.ss($, ($) => ['valid', $])
@@ -33,7 +33,7 @@
 //                             })
 //                             case 'directory': return p_.ss($, ($) => {
 //                                 const input_node = $
-//                                 return ['group', expected_node.__decide(
+//                                 return ['group', expected_node.__ decide(
 //                                     ($) => p_.from.state($).decide(($) => {
 //                                         switch ($[0]) {
 //                                             case 'other': return p_.ss($, ($) => ['expected is not a group', null])

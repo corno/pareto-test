@@ -15,7 +15,7 @@
 //         const suffix_length = suffix_as_characters.__get_number_of_items()
 //     const stripped = p_list_build_ deprecated<number>(($i) => {
 //         let index = -1
-//         main_as_characters.__l_map_deprecated(($) => {
+//         main_as_characters.__ l_map_deprecated(($) => {
 //             index += 1
 //             if (index < main_length - suffix_length) {
 //                 $i['add item']($)
@@ -63,7 +63,7 @@
 
 
 // export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-//     'nodes': $.__d_map_deprecated(($, id) => {
+//     'nodes': $.__ d_map_deprecated(($, id) => {
 //         return p_.from.state($).decide(($): d_out.Node => {
 //             switch ($[0]) {
 //                 case 'other': return p_.ss($, () => p_unreachable_code_path("needs proper handling"))
@@ -72,11 +72,11 @@
 
 
 //                     const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-//                         const expected_node = $p.expected.__get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__decide(
+//                         const expected_node = $p.expected.__get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__ decide(
 //                             ($) => $,
 //                             () => ""
 //                         ))
-//                         return expected_node.__decide(
+//                         return expected_node.__ decide(
 //                             ($) => p_.from.state($).decide(($): d_out.Node__file__expected => {
 //                                 switch ($[0]) {
 //                                     case 'file': return p_.ss($, ($) => ['valid', $])
@@ -92,9 +92,9 @@
 //                     const top_node = $
 //                     return ['file', {
 //                         'input': top_node,
-//                         'matching': $p['suffix settings']['to be removed from input'].__decide(
+//                         'matching': $p['suffix settings']['to be removed from input'].__ decide(
 //                             ($) => {
-//                                 return remove_suffix(id, $).__decide(
+//                                 return remove_suffix(id, $).__ decide(
 //                                     ($): d_out.Node__file__expected => get_matching_expect_file($),
 //                                     (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
 
@@ -107,7 +107,7 @@
 //                 case 'directory': return p_.ss($, ($) => {
 //                     const expected_node = $p.expected.__get_possible_entry_deprecated(id)
 //                     const input_node = $
-//                     return ['directory', expected_node.__decide(
+//                     return ['directory', expected_node.__ decide(
 //                         ($) => p_.from.state($).decide(($) => {
 //                             switch ($[0]) {
 //                                 case 'other': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
@@ -131,14 +131,14 @@
 //     }),
 //     // 'superfluous nodes': p_.block(() => {
 //     //     const temp: { [id: string]: null } = {}
-//     //     $.__d_map_deprecated(($, id) => {
+//     //     $.__ d_map_deprecated(($, id) => {
 //     //         const key_of_expected = p_.from.state($).decide(($): string => {
 //     //             switch ($[0]) {
 
 //     //                 case 'other': return p_.ss($, ($) => key)
-//     //                 case 'file': return p_.ss($, ($): string => $p['suffix settings']['to be removed from input'].__decide(
+//     //                 case 'file': return p_.ss($, ($): string => $p['suffix settings']['to be removed from input'].__ decide(
 //     //                     ($) => {
-//     //                         return remove_suffix(key, $).__decide(
+//     //                         return remove_suffix(key, $).__ decide(
 //     //                             ($) => $,
 //     //                             () => key
 
@@ -153,8 +153,8 @@
 //     //         temp[key_of_expected] = null
 //     //     })
 //     //     const main = p_.literal.dictionary(temp)
-//     //     return op_filter_dictionary($p.expected.__d_map_deprecated(($, id) => {
-//     //         return main.get_entry(key).__d_map_deprecated(() => null)
+//     //     return op_filter_dictionary($p.expected.__ d_map_deprecated(($, id) => {
+//     //         return main.get_entry(key).__ d_map_deprecated(() => null)
 //     //     }))
 //     // })
 // })

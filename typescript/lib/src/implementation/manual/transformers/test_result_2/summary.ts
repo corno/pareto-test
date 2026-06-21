@@ -40,6 +40,10 @@ export const Test_Node_Result: p_i.Transformer_With_Parameter<d_in.Test_Node_Res
 
 export const Test_Group_Result: p_i.Transformer_With_Parameter<d_in.Test_Collection_Result, d_out.Test_count, Parameters> = ($, $p) => {
     let count = 0
-    $.__d_map_deprecated(($): number => Test_Node_Result($, $p)).__d_map_deprecated(($) => count += $)
+    p_.from.dictionary(
+        p_.from.dictionary($).map(
+            ($): number => Test_Node_Result($, $p)
+        )
+    ).map(($) => count += $)
     return count
 }

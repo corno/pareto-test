@@ -14,7 +14,7 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
      */
     'support suffix': string
 }> = ($, $p) => {
-    return $.__d_map_deprecated(($, id) => {
+    return p_.from.dictionary($).map(($, id) => {
         const support_directory = $p.support
         return p_.from.state($).decide(($): d_out.Node => {
             switch ($[0]) {
@@ -28,7 +28,7 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
                 })
                 case 'directory': return p_.ss($, ($) => {
                     const main_node = $
-                    return ['directory', support_directory.__get_possible_entry_deprecated(id).__decide(
+                    return ['directory', p_.from.optional(support_directory.__get_possible_entry_deprecated(id)).decide(
                         ($): d_out.Directory => p_.from.state($).decide(($) => {
                             switch ($[0]) {
                                 case 'directory': return p_.ss($, ($) => ['valid', Directory(
