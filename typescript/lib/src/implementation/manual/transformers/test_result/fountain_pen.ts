@@ -8,13 +8,13 @@
 // export const Results = ($: d_in.Results): d_out.Paragraph => Branch($)
 
 
-// export const Branch = ($: d_in.Results): d_out.Paragraph => sh.pg.sentences(p_.from.dictionary(
-//     $,
+// export const Branch = ($: d_in.Results): d_out.Paragraph => sh.pg.sentences(p_.from.dictionary(//     $,
 // ).convert(
 //     ($, id) => sh.sentence([
 //         sh.ph.literal(id),
 //         sh.ph.literal(": "),
-//         p_.from.state($).decide(($) => {
+//         p_.from.state($).decide(
+//($) => {
 //             switch ($[0]) {
 //                 case 'test': return p_.ss($, ($) => $.passed
 //                     ? sh.ph.literal("✅ PASS")

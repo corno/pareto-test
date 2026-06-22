@@ -9,26 +9,27 @@ import * as t_read_file_to_fountain_pen from "pareto-resources/dist/implementati
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => p_.from.state($).decide(($) => {
-    switch ($[0]) {
-        case 'directory content processing': return p_.ss($, ($) => sh.ph.indent(
-            sh.pg.sentences(p_.from.dictionary(
-                $,
-            ).convert_to_list(
-                ($, id) => sh.sentence([
-                    sh.ph.literal(id),
-                    sh.ph.literal(": "),
-                    p_.from.state($).decide(($) => {
-                        switch ($[0]) {
-                            case 'file': return p_.ss($, ($) => t_read_file_to_fountain_pen.Error($))
-                            case 'directory': return p_.ss($, ($) => Error($))
-                            default: return p_.au($[0])
-                        }
-                    })
-                ])
+export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => p_.from.state($).decide(
+    ($) => {
+        switch ($[0]) {
+            case 'directory content processing': return p_.ss($, ($) => sh.ph.indent(
+                sh.pg.sentences(p_.from.dictionary($,
+                ).convert_to_list(
+                    ($, id) => sh.sentence([
+                        sh.ph.literal(id),
+                        sh.ph.literal(": "),
+                        p_.from.state($).decide(
+                            ($) => {
+                                switch ($[0]) {
+                                    case 'file': return p_.ss($, ($) => t_read_file_to_fountain_pen.Error($))
+                                    case 'directory': return p_.ss($, ($) => Error($))
+                                    default: return p_.au($[0])
+                                }
+                            })
+                    ])
+                ))
             ))
-        ))
-        case 'read directory': return p_.ss($, ($) => t_read_directory_to_fountain_pen.Error($))
-        default: return p_.au($[0])
-    }
-})
+            case 'read directory': return p_.ss($, ($) => t_read_directory_to_fountain_pen.Error($))
+            default: return p_.au($[0])
+        }
+    })

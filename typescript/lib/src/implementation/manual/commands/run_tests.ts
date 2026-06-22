@@ -28,10 +28,10 @@
 
 // import * as t_test_result_to_fp from "../transformers/test_result/fountain_pen"
 
-// const has_passed = (results: d_test.Results): boolean => _pt.from.dictionary(
-//     _pt.from .dictionary(results,
+// const has_passed = (results: d_test.Results): boolean => _pt.from.dictionary(//     _pt.from .dictionary(results,
 //     ).map_optionally(
-//         ($) => _pt.from.state($).decide(($): p_di.Optional_Value<null> => {
+//         ($) => _pt.from.state($).decide(
+//($): p_di.Optional_Value<null> => {
 //             switch ($[0]) {
 //                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.literal.not_set() : _pt.literal.set(null))
 //                 case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.literal.not_set() : _pt.literal.set(null))

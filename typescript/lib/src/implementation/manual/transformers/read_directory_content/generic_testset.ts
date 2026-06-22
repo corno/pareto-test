@@ -13,9 +13,11 @@
 // suffix, ($) => $)
 //         const main_length = main_as_characters.__get_number_of_items()
 //         const suffix_length = suffix_as_characters.__get_number_of_items()
-//     const stripped = p_list_build_ deprecated<number>(($i) => {
+//     const stripped = p_list_build_ deprecated<number>(
+// ($i) => {
 //         let index = -1
-//         main_as_characters.__ l_map_deprecated(($) => {
+//         main_as_characters.__ l_map_deprecated(
+// ($) => {
 //             index += 1
 //             if (index < main_length - suffix_length) {
 //                 $i['add item']($)
@@ -23,8 +25,7 @@
 //                 //validate the right suffix
 //                 const cur_char = $
 //                 const suffix_index = index - (main_length - suffix_length)
-//                 p_.from.optional(
-//                     suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
+//                 p_.from.optional(//                     suffix_as_characters.__deprecated_get_possible_item_at(suffix_index),
 //                 ).map(
 //                     ($) => {
 //                         if (cur_char !== $) {
@@ -63,8 +64,10 @@
 
 
 // export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-//     'nodes': $.__ d_map_deprecated(($, id) => {
-//         return p_.from.state($).decide(($): d_out.Node => {
+//     'nodes': $.__ d_map_deprecated(
+// ($, id) => {
+//         return p_.from.state($).decide(
+// ($): d_out.Node => {
 //             switch ($[0]) {
 //                 case 'other': return p_.ss($, () => p_unreachable_code_path("needs proper handling"))
 //                 case 'file': return p_.ss($, ($): d_out.Node => {
@@ -77,7 +80,8 @@
 //                             () => ""
 //                         ))
 //                         return expected_node.__ decide(
-//                             ($) => p_.from.state($).decide(($): d_out.Node__file__expected => {
+//                             ($) => p_.from.state($).decide(
+// ($): d_out.Node__file__expected => {
 //                                 switch ($[0]) {
 //                                     case 'file': return p_.ss($, ($) => ['valid', $])
 //                                     case 'directory': return p_.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
@@ -108,7 +112,8 @@
 //                     const expected_node = $p.expected.__ get_possible_entry_deprecated(id)
 //                     const input_node = $
 //                     return ['directory', expected_node.__ decide(
-//                         ($) => p_.from.state($).decide(($) => {
+//                         ($) => p_.from.state($).decide(
+// ($) => {
 //                             switch ($[0]) {
 //                                 case 'other': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
 //                                 case 'file': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
@@ -129,10 +134,13 @@
 //             }
 //         })
 //     }),
-//     // 'superfluous nodes': p_.block(() => {
+//     // 'superfluous nodes': p_.block(
+// () => {
 //     //     const temp: { [id: string]: null } = {}
-//     //     $.__ d_map_deprecated(($, id) => {
-//     //         const key_of_expected = p_.from.state($).decide(($): string => {
+//     //     $.__ d_map_deprecated(
+// ($, id) => {
+//     //         const key_of_expected = p_.from.state($).decide(
+// ($): string => {
 //     //             switch ($[0]) {
 
 //     //                 case 'other': return p_.ss($, ($) => key)
@@ -153,8 +161,10 @@
 //     //         temp[key_of_expected] = null
 //     //     })
 //     //     const main = p_.literal.dictionary(temp)
-//     //     return op_filter_dictionary($p.expected.__ d_map_deprecated(($, id) => {
-//     //         return main.get_entry(key).__ d_map_deprecated(() => null)
+//     //     return op_filter_dictionary($p.expected.__ d_map_deprecated(
+// ($, id) => {
+//     //         return main.get_entry(key).__ d_map_deprecated(
+// () => null)
 //     //     }))
 //     // })
 // })

@@ -14,49 +14,52 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
      */
     'support suffix': string
 }> = ($, $p) => {
-    return p_.from.dictionary($).map(($, id) => {
-        const support_directory = $p.support
-        return p_.from.state($).decide(($): d_out.Node => {
-            switch ($[0]) {
-                case 'other': return p_.ss($, ($): d_out.Node => {
-                    return p_implement_me("expected a file or a directory")
-                })
-                case 'file': return p_.ss($, ($): d_out.Node => {
-                    return ['file', {
-                        'support': p_.from.dictionary(support_directory).get_possible_entry(
-                            id + $p['support suffix'],
-                            ($) => p_.literal.set($),
-                            () => p_.literal.not_set()
-                        )
-                    }]
-                })
-                case 'directory': return p_.ss($, ($) => {
-                    const main_node = $
-                    return ['directory', p_.from.dictionary(support_directory).get_possible_entry(
-                        id,
-                        ($): d_out.Directory => p_.from.state($).decide(($) => {
-                            switch ($[0]) {
-                                case 'directory': return p_.ss($, ($) => ['valid', Directory(
-                                    main_node,
-                                    {
-                                        'support': $,
-                                        'support suffix': $p['support suffix']
-                                    })])
-                                default: return ['invalid', {
-                                    'support': ['is not a directory', null],
+    return p_.from.dictionary($).map(
+        ($, id) => {
+            const $v_support_directory = $p.support
+            return p_.from.state($).decide(
+                ($): d_out.Node => {
+                    switch ($[0]) {
+                        case 'other': return p_.ss($, ($): d_out.Node => {
+                            return p_implement_me("expected a file or a directory")
+                        })
+                        case 'file': return p_.ss($, ($): d_out.Node => {
+                            return ['file', {
+                                'support': p_.from.dictionary($v_support_directory).get_possible_entry(
+                                    id + $p['support suffix'],
+                                    ($) => p_.literal.set($),
+                                    () => p_.literal.not_set()
+                                )
+                            }]
+                        })
+                        case 'directory': return p_.ss($, ($) => {
+                            const main_node = $
+                            return ['directory', p_.from.dictionary($v_support_directory).get_possible_entry(
+                                id,
+                                ($): d_out.Directory => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'directory': return p_.ss($, ($) => ['valid', Directory(
+                                                main_node,
+                                                {
+                                                    'support': $,
+                                                    'support suffix': $p['support suffix']
+                                                })])
+                                            default: return ['invalid', {
+                                                'support': ['is not a directory', null],
+                                                'nodes': main_node
+                                            }]
+                                        }
+                                    }),
+                                (): d_out.Directory => ['invalid', {
+                                    'support': ['does not exist', null],
                                     'nodes': main_node
                                 }]
-                            }
-                        }),
-                        (): d_out.Directory => ['invalid', {
-                            'support': ['does not exist', null],
-                            'nodes': main_node
-                        }]
-                    )]
+                            )]
+                        })
+                        default: return p_.au($[0])
+                    }
                 })
-                default: return p_.au($[0])
-            }
         })
-    })
 }
 

@@ -14,8 +14,10 @@
 //     text_to_text: Raw_Dictionary<testers.Text_to_Text>,
 // ): testers.Schema => ({
 //     'deserializers': _pt.literal.dictionary(deserializers),
-//     'refiners': _pt.literal.dictionary(refiners).__d_map_deprecated(($) => _pt.literal.dictionary($)),
-//     'transformers': _pt.literal.dictionary(transformers).__d_map_deprecated(($) => _pt.literal.dictionary($)),
+//     'refiners': _pt.literal.dictionary(refiners).__ d_map_deprecated(
+//($) => _pt.literal.dictionary($)),
+//     'transformers': _pt.literal.dictionary(transformers).__ d_map_deprecated(
+//($) => _pt.literal.dictionary($)),
 //     'serializers': _pt.literal.dictionary(serializers),
 //     'text_to_text': _pt.literal.dictionary(text_to_text),
 // })

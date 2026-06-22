@@ -9,7 +9,7 @@
 //     [id: string]: temp.Directory_to_Test_Collection_Result_Transformer
 // }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
 //     type,
-//     _pt.literal.dictionary($).__d_map_deprecated(
+//     _pt.literal.dictionary($).__d_ map_deprecated(
 //         ($2) => p_change_context($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
 //     )
 // )
@@ -21,38 +21,40 @@
 //         $: string,
 //         abort: ($: string) => never
 //     ) => string
-// ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => p_.from.dictionary($.nodes).map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
-//     ($p) => create_refinement_context<d_out.Tested, string>(
-//         (abort) => {
+// ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => p_.from.dictionary($.nodes).map(
+//($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+    //     ($p) => create_refinement_context<d_out.Tested, string>(
+    //         (abort) => {
 
-//             const out = transformer(
-//                 $p.input,
-//                 abort
-//             )
-//             return out === $p.expected
-//                 ? ['passed', null]
-//                 : ['failed', ['transform', ['unexpected output', {
-//                     'expected': $p.expected,
-//                     'actual': out,
-//                 }]]]
-//         }
-//     ).__extract_data(
-//         ($) => $,
-//         ($): d_out.Tested => ['failed', ['transform', ['initialization', $]]],
-//     ),
-// )($))
+    //             const out = transformer(
+    //                 $p.input,
+    //                 abort
+    //             )
+    //             return out === $p.expected
+    //                 ? ['passed', null]
+    //                 : ['failed', ['transform', ['unexpected output', {
+    //                     'expected': $p.expected,
+    //                     'actual': out,
+    //                 }]]]
+    //         }
+    //     ).__extract_data(
+    //         ($) => $,
+    //         ($): d_out.Tested => ['failed', ['transform', ['initialization', $]]],
+    //     ),
+    // )($))
 
-// export const refiner = (
-//     refiner: (
-//         $: string,
-//         abort: {
-//             'setup': ($: string) => never
-//             'refine': ($: string) => never
-//         }
-//     ) => string
-// ): temp.Directory_to_Test_Collection_Result_Transformer => {
+    // export const refiner = (
+    //     refiner: (
+    //         $: string,
+    //         abort: {
+    //             'setup': ($: string) => never
+    //             'refine': ($: string) => never
+    //         }
+    //     ) => string
+    // ): temp.Directory_to_Test_Collection_Result_Transformer => {
 
-//     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => p_.from.dictionary($.nodes).map(($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
+    //     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => p_.from.dictionary($.nodes).map(
+    //($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
 //         ($p) => create_refinement_context<d_out.Tested, string>(
 //             (initialize_abort) => {
 //                 return create_refinement_context<string, string>(
