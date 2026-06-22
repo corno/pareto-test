@@ -155,12 +155,12 @@
 //                                                     const input_node = $parent.__ get_possible_entry_deprecated(id)
 //                                                     return ['collection', {
 //                                                         'type': ['group', null],
-//                                                         'result': input_node.__decide(
+//                                                         'result': input_node.__ decide(
 //                                                             ($): d_test_result.Test_Node_Result__collection__result => p_.from.state($).decide(($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                 switch ($[0]) {
 //                                                                     case 'directory': return p_.ss($, ($) => {
 //                                                                         const input_dir = $
-//                                                                         return expected_node.__decide(
+//                                                                         return expected_node.__ decide(
 //                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                                 return p_.from.state($).decide(($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                                     switch ($[0]) {
