@@ -76,7 +76,7 @@
 
 
 //                 const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
-//                     const expected_node = $p.expected.__get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__ decide(
+//                     const expected_node = $p.expected.__ get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__ decide(
 //                         ($) => $,
 //                         () => ""
 //                     ))
@@ -107,7 +107,7 @@
 //                 }]
 //             })
 //             case 'directory': return p_.ss($, ($) => {
-//                 const expected_node = $p.expected.__get_possible_entry_deprecated(id)
+//                 const expected_node = $p.expected.__ get_possible_entry_deprecated(id)
 //                 const input_node = $
 //                 return ['directory', expected_node.__ decide(
 //                     ($) => p_.from.state($).decide(($) => {
