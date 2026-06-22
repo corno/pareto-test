@@ -39,7 +39,7 @@
 //             }
 //         })
 //     )
-// ).is_empty()
+// ).is_ empty()
 
 // export const $$: Signature = p_.command_procedure(
 //     ($d, $s, $q, $c) => [

@@ -13,7 +13,7 @@ export const Directory: p_i.Transformer_With_Parameter<d_in.Directory, d_out.Val
      * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
      */
     'support suffix': string
-}> = ($, $p) => $.__d_map_deprecated(($, id) => {
+}> = ($, $p) => p_.from.dictionary($).map(($, id) => {
     const support_directory = $p.support
     return p_.from.state($).decide(($): d_out.Node => {
         switch ($[0]) {

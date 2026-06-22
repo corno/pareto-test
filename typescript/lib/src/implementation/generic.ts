@@ -22,7 +22,7 @@
 // export const run_transformer_tests_without_parameters = <Input extends p_di.Value, Expected extends p_di.Value>(
 //     $: p_di.Dictionary<generic.Transformer<Input, Expected>>,
 //     implementation: p_ti.Transformer<Input, Expected>
-// ): generic.Results => $.__d_map_deprecated(($) => ['test', {
+// ): generic.Results => p_.from.dictionary($).map(($) => ['test', {
 //     'passed': implementation($.input) === $.expected
 // }])
 
@@ -63,7 +63,7 @@
 //     $: p_di.Dictionary<generic.Refiner_  Without_Parameters<Expected_Output, Expected_Error, Input>>,
 //     implementation: p_ri.Refiner<Expected_Output, Expected_Error, Input>
 // ): generic.Results => {
-//     return $.__d_map_deprecated(($) => {
+//     return p_.from.dictionary($).map(($) => {
 //         const expected = $.expected
 //         return ['test', {
 //             'passed': create_refinement_context<Expected_Output, Expected_Error>(

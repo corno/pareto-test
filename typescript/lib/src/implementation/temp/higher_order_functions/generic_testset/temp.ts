@@ -43,7 +43,7 @@
 //     })
 // }]
 
-// export const create_collection_transformer = (type: 'group' | 'dictionary', $: p_di.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => $.__d_map_deprecated(($, id) => {
+// export const create_collection_transformer = (type: 'group' | 'dictionary', $: p_di.Dictionary<Directory_to_Test_Collection_Result_Transformer>): Directory_to_Test_Collection_Result_Transformer => (dir_group) => p_.from.dictionary($).map(($, id) => {
 //     const group_to_test_group_result = $
 //     return ['collection', {
 //         'type': type === 'group' ? ['group', null] : ['dictionary', null],

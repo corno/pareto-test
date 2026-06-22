@@ -4,7 +4,7 @@
 // import * as d_out from "pareto-resources/dist/interface/to_be_generated/directory_content"
 
 
-// const op_cast_to_non_empty_dictionary = <T>($: p_di.Dictionary<T>): p_di.Optional_Value<p_di.Dictionary<T>> => p_.from.dictionary($).is_empty() ? p_.literal.not_set() : p_.literal.set($)
+// const op_cast_to_non_empty_dictionary = <T>($: p_di.Dictionary<T>): p_di.Optional_Value<p_di.Dictionary<T>> => p_.from.dictionary($).is _empty() ? p_.literal.not_set() : p_.literal.set($)
 
 // export const Test_Node_Result: p_i.Transformer<d_in.Test_Node_Result, p_di.Optional_Value<d_out.Node>> = ($) => p_.from.state($).decide(($): p_di.Optional_Value<d_out.Node> => {
 //     switch ($[0]) {

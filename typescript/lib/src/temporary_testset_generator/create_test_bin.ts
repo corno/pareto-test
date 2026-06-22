@@ -12,7 +12,7 @@
 
 // const dict_to_raw = <T>($: p_di.Dictionary<T>) => {
 //     const temp: { [id: string]: T } = {}
-//     $.__d_map_deprecated(($, id) => {
+//     p_.from.dictionary($).map(($, id) => {
 //         temp[id] = $
 //     })
 //     return temp
