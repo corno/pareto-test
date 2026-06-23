@@ -13,16 +13,20 @@
 // }
 
 // export const run_transformer_tests_with_parameters = <Input extends p_di.Value, Expected extends p_di.Value, Parameters>(
-//     tests: p_di.Dictionary<generic.Transformer_With_Parameter<Input, Expected, Parameters>>,
-//     implementation: p_ti.Transformer_With_Parameter<Input, Expected, Parameters>
+//     tests: p_di.Dictionary<generic.Transformer_With_Parameter<
+// Input, Expected, Parameters>>,
+//     implementation: p_ti.Transformer_With_Parameter<
+// Input, Expected, Parameters>
 // ): generic.Results => tests.__d_ map_deprecated(
 // ($) => ['test', {
 //     'passed': implementation($.input.input, $.input.parameters) === $.expected
 // }])
 
 // export const run_transformer_tests_without_parameters = <Input extends p_di.Value, Expected extends p_di.Value>(
-//     $: p_di.Dictionary<generic.Transformer<Input, Expected>>,
-//     implementation: p_ti.Transformer<Input, Expected>
+//     $: p_di.Dictionary<generic.Transformer<
+// Input, Expected>>,
+//     implementation: p_ti.Transformer<
+// Input, Expected>
 // ): generic.Results => p_.from.dictionary($).map(
 //($) => ['test', {
 //     'passed': implementation($.input) === $.expected

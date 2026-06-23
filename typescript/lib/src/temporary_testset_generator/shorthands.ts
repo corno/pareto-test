@@ -41,7 +41,9 @@
 // // })
 
 // // export const transformer = <Input, Output, Initialize_Error>(
-// //     transformer: p_ti.Transformer<Input, Output>,
+// //     transformer: p_ti.Transformer<
+// Input, Output
+// >,
 // //     initialize: pi.Deserializer<Input, Initialize_Error>,
 // //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
 // //     serialize_output: pi.Serializer<Output>,

@@ -8,9 +8,12 @@
 //     | ['output', Output]
 //     | ['error', Error]
 
-// export type Transformer<Input, Expected_Output> = Input_And_Expected<Input, Expected_Output>
+// export type Transformer<
+// Input, Expected_Output
+// > = Input_And_Expected<Input, Expected_Output>
 
-// export type Transformer_With_Parameter<Input, Expected_Output, Parameters> = Input_And_Expected<{
+// export type Transformer_With_Parameter<
+// Input, Expected_Output, Parameters> = Input_And_Expected<{
 //     'input': Input
 //     'parameters': Parameters
 // }, Expected_Output>

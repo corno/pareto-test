@@ -11,7 +11,9 @@ import * as t_write_file_to_fountain_pen from "pareto-resources/dist/implementat
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => p_.from.state($).decide(
+export const Error: p_i.Transformer<
+d_in.Error, d_out.Phrase
+> = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'directory content': return p_.ss($, ($) => sh.ph.composed([

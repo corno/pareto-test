@@ -61,9 +61,15 @@
 
 // export const $$ = (
 //     $x: {
-//         'astn to astn': p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
-//         'text to astn': p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
-//         'astn to text': p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result>
+//         'astn to astn': p_ti.Transformer<
+// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// >
+// //         'text to astn': p_ti.Transformer<
+// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// >
+// //         'astn to text': p_ti.Transformer<
+// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// >
 //     }
 // ): Procedure => _pc.command_procedure(
 //     ($d, $s, $q, $c) => [
@@ -118,7 +124,9 @@
 //                                             $,
 //                                             ($v, $parent) => {
 
-//                                                 const test_results: d_test_result.Test_Collection_Result = p_.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: p_ti.Transformer<d_generic_testset.Directory, d_test_result.Test_Collection_Result> }>({
+//                                                 const test_results: d_test_result.Test_Collection_Result = p_.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: p_ti.Transformer<
+// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// > }>({
 //                                                     'astn_to_astn': {
 //                                                         'transformer': $x['astn to astn'],
 //                                                         'suffix': {

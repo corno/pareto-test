@@ -2,7 +2,9 @@
 // import * as d_in from "../../../interface/data/merged_filesystem_nodes"
 // import * as d_out from "../../../interface/data/generic_testset"
 
-// export const Group: p_i.Transformer<d_out.Node__group, d_in.Directory> = ($) => {
+// export const Group: p_i.Transformer<
+// d_out.Node__group, d_in.Directory
+// > = ($) => {
 //     return p_.from.state($).decide(
 //($): d_out.Node__group => {
 //         switch ($[0]) {
