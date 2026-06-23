@@ -3,7 +3,7 @@
 // import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 // import * as d_in from "../../../../interface/temp/generic"
 
-// import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+// import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 // export const Results = ($: d_in.Results): d_out.Paragraph => Branch($)
 

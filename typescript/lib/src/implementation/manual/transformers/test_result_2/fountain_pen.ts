@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as d_in from "../../../../interface/data/test_result"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 const RED = "\x1b[31m"
 const GREEN = "\x1b[32m"

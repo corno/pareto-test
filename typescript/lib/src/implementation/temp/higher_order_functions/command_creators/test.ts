@@ -22,7 +22,7 @@
 // import * as t_path_to_path from "pareto-resources/dist/implementation/manual/transformers/unrestricted_path/unrestricted_path"
 // import * as t_path_to_text from "pareto-resources/dist/implementation/manual/transformers/unrestricted_path/text"
 
-// import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+// import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 // const RED = "\x1b[31m"
 // const GREEN = "\x1b[32m"

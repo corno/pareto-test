@@ -8,7 +8,7 @@
 // import * as resources_pareto from "pareto-stream/dist/interface/resources"
 
 // //shorthands
-// import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+// import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 // export type Parameters = {
 //     'test results': d_test.Results,
