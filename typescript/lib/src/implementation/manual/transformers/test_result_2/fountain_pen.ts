@@ -121,41 +121,42 @@ export const Test_Collection_Result = (
                                                             sh.ph.literal(" ❌ fail"),
                                                             sh.ph.literal(ENDCOLOR),
                                                         ]),
-                                                        sh.ph.indent(sh.pg.sentences([
-                                                            sh.sentence([
-                                                                do_node_path("input"),
-                                                            ]),
-                                                            sh.sentence([
-                                                                do_node_path("expected"),
-                                                            ]),
-                                                            sh.sentence([
-                                                                p_.from.state($).decide(
-                                                                    ($) => {
-                                                                        switch ($[0]) {
-                                                                            case 'transform': return p_.ss($, ($) => p_.from.state($).decide(
-                                                                                ($) => {
-                                                                                    switch ($[0]) {
-                                                                                        case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
-                                                                                        case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
-                                                                                        default: return p_.au($[0])
-                                                                                    }
-                                                                                }))
-                                                                            case 'refine': return p_.ss($, ($) => p_.from.state($).decide(
-                                                                                ($) => {
-                                                                                    switch ($[0]) {
-                                                                                        case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
-                                                                                        case 'should have failed but succeeded': return p_.ss($, ($) => sh.ph.literal("should have failed but succeeded"))
-                                                                                        case 'should have succeeded but failed': return p_.ss($, ($) => sh.ph.literal("should have succeeded but failed"))
-                                                                                        case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
-                                                                                        case 'unexpected error': return p_.ss($, ($) => sh.ph.literal("unexpected error"))
-                                                                                        default: return p_.au($[0])
-                                                                                    }
-                                                                                }))
-                                                                            default: return p_.au($[0])
-                                                                        }
-                                                                    })
-                                                            ])
-                                                        ]))
+                                                        sh.ph.indent(
+                                                            sh.pg.sentences([
+                                                                sh.sentence([
+                                                                    do_node_path("input"),
+                                                                ]),
+                                                                sh.sentence([
+                                                                    do_node_path("expected"),
+                                                                ]),
+                                                                sh.sentence([
+                                                                    p_.from.state($).decide(
+                                                                        ($) => {
+                                                                            switch ($[0]) {
+                                                                                case 'transform': return p_.ss($, ($) => p_.from.state($).decide(
+                                                                                    ($) => {
+                                                                                        switch ($[0]) {
+                                                                                            case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
+                                                                                            case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
+                                                                                            default: return p_.au($[0])
+                                                                                        }
+                                                                                    }))
+                                                                                case 'refine': return p_.ss($, ($) => p_.from.state($).decide(
+                                                                                    ($) => {
+                                                                                        switch ($[0]) {
+                                                                                            case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
+                                                                                            case 'should have failed but succeeded': return p_.ss($, ($) => sh.ph.literal("should have failed but succeeded"))
+                                                                                            case 'should have succeeded but failed': return p_.ss($, ($) => sh.ph.literal("should have succeeded but failed"))
+                                                                                            case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
+                                                                                            case 'unexpected error': return p_.ss($, ($) => sh.ph.literal("unexpected error"))
+                                                                                            default: return p_.au($[0])
+                                                                                        }
+                                                                                    }))
+                                                                                default: return p_.au($[0])
+                                                                            }
+                                                                        })
+                                                                ])
+                                                            ]))
                                                     ]))
                                                     default: return p_.au($[0])
                                                 }
@@ -166,7 +167,6 @@ export const Test_Collection_Result = (
                             case 'collection': return p_.ss($, ($) => p_.from.state($.result).decide(
                                 ($) => {
                                     switch ($[0]) {
-
                                         case 'source valid': return p_.ss($, ($) => sh.ph.composed([
                                             sh.ph.indent(
                                                 Test_Collection_Result(
