@@ -13,8 +13,7 @@ export const Error: p_i.Transformer<d_in.Error, d_out.Phrase> = ($) => p_.from.s
     ($) => {
         switch ($[0]) {
             case 'directory content processing': return p_.ss($, ($) => sh.ph.indent(
-                sh.pg.sentences(p_.from.dictionary($,
-                ).convert_to_list(
+                sh.pg.sentences(p_.from.dictionary($).convert_to_list(
                     ($, id) => sh.sentence([
                         sh.ph.literal(id),
                         sh.ph.literal(": "),

@@ -29,8 +29,7 @@ export const Test_Collection_Result = (
         sh.ph.literal($p['path to test']),
     ])
     return sh.pg.sentences(
-        p_.from.dictionary($,
-        ).convert_to_list(
+        p_.from.dictionary($,).convert_to_list(
             ($, id) => sh.sentence([
                 p_.from.state($).decide(
                     ($) => {
