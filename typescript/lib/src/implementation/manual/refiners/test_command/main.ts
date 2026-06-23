@@ -6,7 +6,9 @@ import * as builders from "../../productions/test_command/text"
 import * as d from "../../../../interface/data/test_command"
 import * as d_main from "pareto-resources/dist/interface/data/temp_main"
 
-export const Parameters: p_i.Refiner<d.Parameters, string, d_main.Parameters> = ($, abort) => p_iterate(
+export const Parameters: p_i.Refiner<
+d.Parameters, string, d_main.Parameters
+> = ($, abort) => p_iterate(
     $.arguments,
     null,
     (iterator) => iterator.assert_finished(

@@ -61,7 +61,9 @@
 // // })
 
 // // export const refiner = <Output, Refine_Error, Input, Initialize_Error>(
-// //     refiner: p_ri.Refiner<Output, Refine_Error, Input>,
+// //     refiner: p_ri.Refiner<
+// Output, Refine_Error, Input
+// >,
 // //     initialize: pi.Deserializer<Input, Initialize_Error>,
 // //     serialize_initialize_error: pi.Serializer<Initialize_Error>,
 // //     serialize_output: pi.Serializer<Output>,
@@ -103,7 +105,9 @@
 // // export const text_to_text = <Deserialize_Error, Initialize_Error>(
 // //     extension_in: string,
 // //     extension_out: string,
-// //     text_to_text: p_ri.Refiner<string, Deserialize_Error, string>,
+// //     text_to_text: p_ri.Refiner<
+// string, Deserialize_Error, string
+// >,
 // //     serialize_deserialize_error: pi.Serializer<Deserialize_Error>,
 // // ): testers.Text_to_Text => ({
 // //     in_extension: extension_in,

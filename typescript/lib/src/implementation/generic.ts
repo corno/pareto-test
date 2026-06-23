@@ -33,8 +33,12 @@
 // }])
 
 // export const run_refiner_tests_with_parameters = <Expected_Output, Expected_Error, Input, Parameters>(
-//     tests: p_di.Dictionary<generic.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>>,
-//     implementation: p_ri.Refiner_With_Parameter<Expected_Output, Expected_Error, Input, Parameters>
+//     tests: p_di.Dictionary<generic.Refiner_With_Parameter<
+// Expected_Output, Expected_Error, Input, Parameters
+// >>,
+//     implementation: p_ri.Refiner_With_Parameter<
+// Expected_Output, Expected_Error, Input, Parameters
+// >
 // ): generic.Results => tests.__d _map_deprecated(
 // ($) => {
 //     const expected = $.expected
@@ -68,7 +72,9 @@
 
 // export const run_refiner_tests_without_parameters = <Expected_Output, Expected_Error, Input>(
 //     $: p_di.Dictionary<generic.Refiner_  Without_Parameters<Expected_Output, Expected_Error, Input>>,
-//     implementation: p_ri.Refiner<Expected_Output, Expected_Error, Input>
+//     implementation: p_ri.Refiner<
+// Expected_Output, Expected_Error, Input
+// >
 // ): generic.Results => {
 //     return p_.from.dictionary($).map(
 // ($) => {
