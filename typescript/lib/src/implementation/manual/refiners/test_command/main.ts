@@ -12,12 +12,19 @@ import * as pr_text_command_from_text from "../../productions/test_command/text"
 
 export const Parameters: p_i.Refiner<
     d.Parameters, string, d_main.Parameters
-> = ($, abort) => p_iterate(
-    $.arguments,
+> = ($, abort) => p_iterate<
+    d.Parameters,
+    string,
     null,
-    () => p_.literal.set<string>("too many arguments"),
-    abort,
-    (iterator) => pr_text_command_from_text.Parameters(
+    string,
+    null
+>({
+    list: $.arguments,
+    end_info: null,
+    create_dangling_item_error: () => p_.literal.set<string>("too many arguments"),
+    abort: abort,
+    assign: (iterator) => pr_text_command_from_text.Parameters(
         iterator,
-    )
-)
+    ),
+    create_expectation_error: ($, expected) => "missing",
+})
