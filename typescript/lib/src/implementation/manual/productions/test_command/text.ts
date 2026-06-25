@@ -12,9 +12,9 @@ export const Parameters: p_pi.Production<
 > = (iterator, abort) => {
     return {
         'path to test data': r_path_from_text.Context_Path(
-            iterator.consume.text(
+            iterator.consume(
+                ($) => abort("expected path to test data"),
                 ($) => $,
-                (end_info) => abort("expected path to test data")
             ),
         )
     }
