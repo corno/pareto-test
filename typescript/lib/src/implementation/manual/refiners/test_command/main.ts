@@ -15,16 +15,14 @@ export const Parameters: p_i.Refiner<
 > = ($, abort) => p_iterate<
     d.Parameters,
     string,
-    null,
-    string,
     null
 >({
     list: $.arguments,
     end_info: null,
-    create_dangling_item_error: () => p_.literal.set<string>("too many arguments"),
-    abort: abort,
+    on_dangling_item: () => abort("too many arguments"),
     assign: (iterator) => pr_text_command_from_text.Parameters(
         iterator,
+        abort,
     ),
-    create_expectation_error: ($, expected) => "missing",
+    // create_expectation_error: ($, expected) => "missing",
 })
