@@ -19,10 +19,9 @@ export const Parameters: p_i.Refiner<
 >({
     list: $.arguments,
     end_info: null,
-    on_dangling_item: () => abort("too many arguments"),
     assign: (iterator) => pr_text_command_from_text.Parameters(
         iterator,
         abort,
     ),
-    // create_expectation_error: ($, expected) => "missing",
+    on_dangling_item: () => abort("too many arguments"),
 })
