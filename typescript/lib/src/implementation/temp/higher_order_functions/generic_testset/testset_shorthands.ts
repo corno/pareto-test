@@ -9,7 +9,7 @@
 //     [id: string]: temp.Directory_to_Test_Collection_Result_Transformer
 // }): temp.Directory_to_Test_Collection_Result_Transformer => temp.create_collection_transformer(
 //     type,
-//     _pt.literal.dictionary($).__d_ map_deprecated(
+//     _pt.literal.dictionary($).__d_ map_ deprecated(
 //         ($2) => p_change_context($2, ($): temp.Directory_to_Test_Collection_Result_Transformer => $)
 //     )
 // )

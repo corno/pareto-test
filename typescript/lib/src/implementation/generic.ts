@@ -17,7 +17,7 @@
 // Input, Expected, Parameters>>,
 //     implementation: p_ti.Transformer_With_Parameter<
 // Input, Expected, Parameters>
-// ): generic.Results => tests.__d_ map_deprecated(
+// ): generic.Results => tests.__d_ map_ deprecated(
 // ($) => ['test', {
 //     'passed': implementation($.input.input, $.input.parameters) === $.expected
 // }])
