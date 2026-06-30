@@ -168,14 +168,14 @@
 //                                                             ($): d_test_result.Test_Node_Result__collection__result => p_.from.state($).decide(
 // ($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                 switch ($[0]) {
-//                                                                     case 'directory': return p_.ss($, ($) => {
+//                                                                     case 'directory': return p_.option($, ($) => {
 //                                                                         const input_dir = $
 //                                                                         return expected_node.__ decide(
 //                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                                 return p_.from.state($).decide(
 // ($): d_test_result.Test_Node_Result__collection__result => {
 //                                                                                     switch ($[0]) {
-//                                                                                         case 'directory': return p_.ss($, ($) => {
+//                                                                                         case 'directory': return p_.option($, ($) => {
 //                                                                                             const expected_dir = $
 //                                                                                             return ['source valid', the_func(
 //                                                                                                 {
@@ -278,17 +278,17 @@
 //                         'message': p_.from.state($).decide(
 // ($) => {
 //                             switch ($[0]) {
-//                                 case 'command line': return p_.ss($, ($) => sh.pg.sentences([
+//                                 case 'command line': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("command line error")
 //                                     ])
 //                                 ]))
-//                                 case 'writing to stdout': return p_.ss($, ($) => sh.pg.sentences([
+//                                 case 'writing to stdout': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("error writing to stdout")
 //                                     ])
 //                                 ]))
-//                                 case 'read directory content': return p_.ss($, ($) => sh.pg.sentences([
+//                                 case 'read directory content': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("read dir error")
 //                                     ]),
@@ -296,7 +296,7 @@
 //                                         t_read_directory_content_to_fountain_pen.Error($)
 //                                     ])
 //                                 ]))
-//                                 case 'write directory content': return p_.ss($, ($) => sh.pg.sentences([
+//                                 case 'write directory content': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
 //                                         sh.ph.literal("write dir error")
 //                                     ]),
@@ -304,7 +304,7 @@
 //                                         t_write_directory_content_to_fountain_pen.Error($)
 //                                     ])
 //                                 ]))
-//                                 case 'failed tests': return p_.ss($, ($) => sh.pg.composed([
+//                                 case 'failed tests': return p_.option($, ($) => sh.pg.composed([
 //                                     t_test_result_to_fountain_pen.Test_Collection_Result(
 //                                         $.tests,
 //                                         {

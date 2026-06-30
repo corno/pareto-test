@@ -33,15 +33,15 @@ export const Test_Collection_Result = (
                 p_.from.state($).decide(
                     ($) => {
                         switch ($[0]) {
-                            case 'collection': return p_.ss($, ($) => p_.from.state($.type).decide(
+                            case 'collection': return p_.option($, ($) => p_.from.state($.type).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'group': return p_.ss($, ($) => sh.ph.literal(CYAN))
-                                        case 'dictionary': return p_.ss($, ($) => sh.ph.literal(BLUE))
+                                        case 'group': return p_.option($, ($) => sh.ph.literal(CYAN))
+                                        case 'dictionary': return p_.option($, ($) => sh.ph.literal(BLUE))
                                         default: return p_.au($[0])
                                     }
                                 }))
-                            case 'individual test': return p_.ss($, ($) => sh.ph.literal(MAGENTA))
+                            case 'individual test': return p_.option($, ($) => sh.ph.literal(MAGENTA))
                             default: return p_.au($[0])
                         }
                     }),
@@ -58,10 +58,10 @@ export const Test_Collection_Result = (
                             sh.ph.literal(id),
                         ])
                         switch ($[0]) {
-                            case 'individual test': return p_.ss($, ($) => p_.from.state($.result).decide(
+                            case 'individual test': return p_.option($, ($) => p_.from.state($.result).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'source invalid': return p_.ss($, ($) => p_.from.state($).decide(
+                                        case 'source invalid': return p_.option($, ($) => p_.from.state($).decide(
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'not an individual test': return sh.ph.composed([
@@ -70,10 +70,10 @@ export const Test_Collection_Result = (
                                                         do_node_path("input"),
                                                         sh.ph.literal(ENDCOLOR),
                                                     ])
-                                                    case 'problem with expected': return p_.ss($, ($) => p_.from.state($).decide(
+                                                    case 'problem with expected': return p_.option($, ($) => p_.from.state($).decide(
                                                         ($) => {
                                                             switch ($[0]) {
-                                                                case 'required input suffix missing': return p_.ss($, ($) => sh.ph.composed([
+                                                                case 'required input suffix missing': return p_.option($, ($) => sh.ph.composed([
                                                                     sh.ph.literal(YELLOW),
                                                                     sh.ph.literal(" does not have the required suffix '"),
                                                                     sh.ph.literal($),
@@ -81,7 +81,7 @@ export const Test_Collection_Result = (
                                                                     do_node_path("input"),
                                                                     sh.ph.literal(ENDCOLOR),
                                                                 ]))
-                                                                case 'expected': return p_.ss($, ($) => p_.from.state($).decide(
+                                                                case 'expected': return p_.option($, ($) => p_.from.state($).decide(
                                                                     ($) => {
                                                                         switch ($[0]) {
                                                                             case 'does not exist': return sh.ph.composed([
@@ -106,7 +106,7 @@ export const Test_Collection_Result = (
                                                     default: return p_.au($[0])
                                                 }
                                             }))
-                                        case 'tested': return p_.ss($, ($) => p_.from.state($).decide(
+                                        case 'tested': return p_.option($, ($) => p_.from.state($).decide(
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'passed': return sh.ph.composed([
@@ -114,7 +114,7 @@ export const Test_Collection_Result = (
                                                         sh.ph.literal(" ✅ pass"),
                                                         sh.ph.literal(ENDCOLOR),
                                                     ])
-                                                    case 'failed': return p_.ss($, ($) => sh.ph.composed([
+                                                    case 'failed': return p_.option($, ($) => sh.ph.composed([
                                                         sh.ph.composed([
                                                             sh.ph.literal(RED),
                                                             sh.ph.literal(" ❌ fail"),
@@ -132,22 +132,22 @@ export const Test_Collection_Result = (
                                                                     p_.from.state($).decide(
                                                                         ($) => {
                                                                             switch ($[0]) {
-                                                                                case 'transform': return p_.ss($, ($) => p_.from.state($).decide(
+                                                                                case 'transform': return p_.option($, ($) => p_.from.state($).decide(
                                                                                     ($) => {
                                                                                         switch ($[0]) {
-                                                                                            case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
-                                                                                            case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
+                                                                                            case 'initialization': return p_.option($, ($) => sh.ph.literal("initialization"))
+                                                                                            case 'unexpected output': return p_.option($, ($) => sh.ph.literal("unexpected output"))
                                                                                             default: return p_.au($[0])
                                                                                         }
                                                                                     }))
-                                                                                case 'refine': return p_.ss($, ($) => p_.from.state($).decide(
+                                                                                case 'refine': return p_.option($, ($) => p_.from.state($).decide(
                                                                                     ($) => {
                                                                                         switch ($[0]) {
-                                                                                            case 'initialization': return p_.ss($, ($) => sh.ph.literal("initialization"))
-                                                                                            case 'should have failed but succeeded': return p_.ss($, ($) => sh.ph.literal("should have failed but succeeded"))
-                                                                                            case 'should have succeeded but failed': return p_.ss($, ($) => sh.ph.literal("should have succeeded but failed"))
-                                                                                            case 'unexpected output': return p_.ss($, ($) => sh.ph.literal("unexpected output"))
-                                                                                            case 'unexpected error': return p_.ss($, ($) => sh.ph.literal("unexpected error"))
+                                                                                            case 'initialization': return p_.option($, ($) => sh.ph.literal("initialization"))
+                                                                                            case 'should have failed but succeeded': return p_.option($, ($) => sh.ph.literal("should have failed but succeeded"))
+                                                                                            case 'should have succeeded but failed': return p_.option($, ($) => sh.ph.literal("should have succeeded but failed"))
+                                                                                            case 'unexpected output': return p_.option($, ($) => sh.ph.literal("unexpected output"))
+                                                                                            case 'unexpected error': return p_.option($, ($) => sh.ph.literal("unexpected error"))
                                                                                             default: return p_.au($[0])
                                                                                         }
                                                                                     }))
@@ -163,10 +163,10 @@ export const Test_Collection_Result = (
                                         default: return p_.au($[0])
                                     }
                                 }))
-                            case 'collection': return p_.ss($, ($) => p_.from.state($.result).decide(
+                            case 'collection': return p_.option($, ($) => p_.from.state($.result).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'source valid': return p_.ss($, ($) => sh.ph.composed([
+                                        case 'source valid': return p_.option($, ($) => sh.ph.composed([
                                             sh.ph.indent(
                                                 Test_Collection_Result(
                                                     $,
@@ -177,7 +177,7 @@ export const Test_Collection_Result = (
                                                 )
                                             )
                                         ]))
-                                        case 'source invalid': return p_.ss($, ($) => p_.from.state($).decide(
+                                        case 'source invalid': return p_.option($, ($) => p_.from.state($).decide(
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'missing': return sh.ph.composed([
@@ -186,7 +186,7 @@ export const Test_Collection_Result = (
                                                         do_context_path("input"),
                                                         sh.ph.literal(ENDCOLOR),
                                                     ])
-                                                    case 'problem with expected': return p_.ss($, ($) => p_.from.state($).decide(
+                                                    case 'problem with expected': return p_.option($, ($) => p_.from.state($).decide(
                                                         ($) => {
                                                             switch ($[0]) {
 
@@ -206,7 +206,7 @@ export const Test_Collection_Result = (
                                                                 default: return p_.au($[0])
                                                             }
                                                         }))
-                                                    case 'not a collection': return p_.ss($, ($) => sh.ph.composed([
+                                                    case 'not a collection': return p_.option($, ($) => sh.ph.composed([
                                                         sh.ph.literal(YELLOW),
                                                         sh.ph.literal(" not a directory: "),
                                                         do_node_path("input"),

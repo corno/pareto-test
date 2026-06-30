@@ -23,22 +23,22 @@ export const Directory: p_i.Transformer_With_Parameter<
         return p_.from.state($).decide(
             ($): d_out.Node => {
                 switch ($[0]) {
-                    case 'other': return p_.ss($, ($): d_out.Node => p_implement_me("expected a file or a directory"))
-                    case 'file': return p_.ss($, ($): d_out.Node => ['file', {
+                    case 'other': return p_.option($, ($): d_out.Node => p_implement_me("expected a file or a directory"))
+                    case 'file': return p_.option($, ($): d_out.Node => ['file', {
                         'support': p_.from.dictionary($v_support_directory).get_possible_entry(
                             id + $p['support suffix'],
                             ($) => p_.literal.set($),
                             () => p_.literal.not_set()
                         )
                     }])
-                    case 'directory': return p_.ss($, ($) => {
+                    case 'directory': return p_.option($, ($) => {
                         const main_node = $
                         return ['directory', p_.from.dictionary($v_support_directory).get_possible_entry(
                             id,
                             ($): d_out.Directory => p_.from.state($).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'directory': return p_.ss($, ($) => ['valid', Directory(
+                                        case 'directory': return p_.option($, ($) => ['valid', Directory(
                                             main_node,
                                             {
                                                 'support': $,

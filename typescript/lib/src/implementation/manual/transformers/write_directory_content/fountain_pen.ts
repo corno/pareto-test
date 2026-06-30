@@ -16,7 +16,7 @@ d_in.Error, d_out.Phrase
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'directory content': return p_.ss($, ($) => sh.ph.composed([
+            case 'directory content': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.indent(
                     sh.pg.sentences(p_.from.dictionary($    ).convert_to_list(
                         ($, id) => sh.sentence([
@@ -25,8 +25,8 @@ d_in.Error, d_out.Phrase
                             p_.from.state($).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'file': return p_.ss($, ($) => t_write_file_to_fountain_pen.Error($))
-                                        case 'directory': return p_.ss($, ($) => Error($))
+                                        case 'file': return p_.option($, ($) => t_write_file_to_fountain_pen.Error($))
+                                        case 'directory': return p_.option($, ($) => Error($))
                                         default: return p_.au($[0])
                                     }
                                 })
@@ -34,7 +34,7 @@ d_in.Error, d_out.Phrase
                     ))
                 )
             ]))
-            // case 'make directory': return p_.ss($, ($) => t_make_directory_to_fountain_pen.Error($))
+            // case 'make directory': return p_.option($, ($) => t_make_directory_to_fountain_pen.Error($))
             default: return p_.au($[0])
         }
     })

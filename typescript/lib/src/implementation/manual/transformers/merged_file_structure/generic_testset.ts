@@ -8,18 +8,18 @@
 //     return p_.from.state($).decide(
 //($): d_out.Node__group => {
 //         switch ($[0]) {
-//             case 'invalid': return p_.ss($, ($): d_out.Node__group => ['expected does not exist'])
-//             case 'valid': return p_.ss($, ($) => {
+//             case 'invalid': return p_.option($, ($): d_out.Node__group => ['expected does not exist'])
+//             case 'valid': return p_.option($, ($) => {
 //                 return $.__ d_map_deprecated(
 //($, id) => {
 //                     const expected_node = $p.expected.get_entry(key)
 //                     return p_.from.state($).decide(
 //($): d_out.Node => {
 //                         switch ($[0]) {
-//                             case 'other': return p_.ss($, ($): d_out.Node => {
+//                             case 'other': return p_.option($, ($): d_out.Node => {
 //                                 return _pinternals.panic("expected a file or a directory")
 //                             })
-//                             case 'file': return p_.ss($, ($): d_out.Node => {
+//                             case 'file': return p_.option($, ($): d_out.Node => {
 //                                 const top_node = $
 //                                 return ['test', {
 //                                     'input': top_node,
@@ -27,9 +27,9 @@
 //                                         ($) => p_.from.state($).decide(
 //($) => {
 //                                             switch ($[0]) {
-//                                                 case 'file': return p_.ss($, ($) => ['valid', $])
-//                                                 case 'directory': return p_.ss($, ($) => ['is not a file', null])
-//                                                 case 'other': return p_.ss($, ($) => ['is not a file', null])
+//                                                 case 'file': return p_.option($, ($) => ['valid', $])
+//                                                 case 'directory': return p_.option($, ($) => ['is not a file', null])
+//                                                 case 'other': return p_.option($, ($) => ['is not a file', null])
 //                                                 default: return p_.au($[0])
 //                                             }
 //                                         }),
@@ -37,15 +37,15 @@
 //                                     )
 //                                 }]
 //                             })
-//                             case 'directory': return p_.ss($, ($) => {
+//                             case 'directory': return p_.option($, ($) => {
 //                                 const input_node = $
 //                                 return ['group', expected_node.__ decide(
 //                                     ($) => p_.from.state($).decide(
 //($) => {
 //                                         switch ($[0]) {
-//                                             case 'other': return p_.ss($, ($) => ['expected is not a group', null])
-//                                             case 'file': return p_.ss($, ($) => ['expected is not a group', null])
-//                                             case 'directory': return p_.ss($, ($) => ['valid', Group(input_node, { 'expected': $ })])
+//                                             case 'other': return p_.option($, ($) => ['expected is not a group', null])
+//                                             case 'file': return p_.option($, ($) => ['expected is not a group', null])
+//                                             case 'directory': return p_.option($, ($) => ['valid', Group(input_node, { 'expected': $ })])
 //                                             default: return p_.au($[0])
 //                                         }
 //                                     }),

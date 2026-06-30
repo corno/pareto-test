@@ -16,11 +16,11 @@
 //         p_.from.state($).decide(
 //($) => {
 //             switch ($[0]) {
-//                 case 'test': return p_.ss($, ($) => $.passed
+//                 case 'test': return p_.option($, ($) => $.passed
 //                     ? sh.ph.literal("✅ PASS")
 //                     : sh.ph.literal("❌ FAIL")
 //                 )
-//                 case 'group': return p_.ss($, ($) => sh.ph.composed([
+//                 case 'group': return p_.option($, ($) => sh.ph.composed([
 //                     sh.ph.indent(
 //                         Branch($)
 //                     )

@@ -74,8 +74,8 @@
 //($, id) => p_.from.state($).decide(
     //($): d_out.Node => {
         //         switch ($[0]) {
-        //             case 'other': return p_.ss($, () => p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
-        //             case 'file': return p_.ss($, ($): d_out.Node => {
+        //             case 'other': return p_.option($, () => p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
+        //             case 'file': return p_.option($, ($): d_out.Node => {
 
 
 
@@ -88,9 +88,9 @@
         //                         ($) => p_.from.state($).decide(
         //($): d_out.Node__file__expected => {
             //                             switch ($[0]) {
-            //                                 case 'file': return p_.ss($, ($) => ['valid', $])
-            //                                 case 'directory': return p_.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-            //                                 case 'other': return p_.ss($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+            //                                 case 'file': return p_.option($, ($) => ['valid', $])
+            //                                 case 'directory': return p_.option($, ($) => ['invalid', ['expected', ['is not a file', null]]])
+            //                                 case 'other': return p_.option($, ($) => ['invalid', ['expected', ['is not a file', null]]])
             //                                 default: return p_.au($[0])
             //                             }
             //                         }),
@@ -111,16 +111,16 @@
             //                     )
             //                 }]
             //             })
-            //             case 'directory': return p_.ss($, ($) => {
+            //             case 'directory': return p_.option($, ($) => {
             //                 const expected_node = $p.expected.__ get_possible_entry_deprecated(id)
             //                 const input_node = $
             //                 return ['directory', expected_node.__ decide(
             //                     ($) => p_.from.state($).decide(
             //($) => {
                 //                         switch ($[0]) {
-                //                             case 'other': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-                //                             case 'file': return p_.ss($, ($) => ['invalid', ['node for expected is not a directory', null]])
-                //                             case 'directory': return p_.ss($, ($) => ['valid', Directory(
+                //                             case 'other': return p_.option($, ($) => ['invalid', ['node for expected is not a directory', null]])
+                //                             case 'file': return p_.option($, ($) => ['invalid', ['node for expected is not a directory', null]])
+                //                             case 'directory': return p_.option($, ($) => ['valid', Directory(
                 //                                 input_node,
                 //                                 {
                 //                                     'expected': $,
@@ -145,8 +145,8 @@
                 //($): string => {
                 //     //             switch ($[0]) {
 
-                //     //                 case 'other': return p_.ss($, ($) => key)
-                //     //                 case 'file': return p_.ss($, ($): string => $p['suffix settings']['to be removed from input'].__ decide(
+                //     //                 case 'other': return p_.option($, ($) => key)
+                //     //                 case 'file': return p_.option($, ($): string => $p['suffix settings']['to be removed from input'].__ decide(
                 //     //                     ($) => {
                 //     //                         return remove_suffix(key, $).__ decide(
                 //     //                             ($) => $,
@@ -156,7 +156,7 @@
                 //     //                     },
                 //     //                     () => key
                 //     //                 ))
-                //     //                 case 'directory': return p_.ss($, ($) => key)
+                //     //                 case 'directory': return p_.option($, ($) => key)
                 //     //                 default: return p_.au($[0])
                 //     //             }
                 //     //         })

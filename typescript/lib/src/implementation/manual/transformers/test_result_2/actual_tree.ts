@@ -11,43 +11,43 @@
 // >> = ($) => p_.from.state($).decide(
 //($): p_di.Optional_Value<d_out.Node> => {
 //     switch ($[0]) {
-//         case 'collection': return p_.ss($, ($) => p_.from.state($.result).decide(
+//         case 'collection': return p_.option($, ($) => p_.from.state($.result).decide(
 //($) => {
 //             switch ($[0]) {
-//                 case 'source invalid': return p_.ss($, ($) => p_.literal.not_set())
-//                 case 'source valid': return p_.ss($, ($): p_di.Optional_Value<d_out.Node> => p_.from.optional(//                     op_cast_to_non_empty_dictionary(Test_Group_Result($)),
+//                 case 'source invalid': return p_.option($, ($) => p_.literal.not_set())
+//                 case 'source valid': return p_.option($, ($): p_di.Optional_Value<d_out.Node> => p_.from.optional(//                     op_cast_to_non_empty_dictionary(Test_Group_Result($)),
 //                 ).map(
 //                     ($) => ['directory', $])
 //                 )
 //                 default: return p_.au($[0])
 //             }
 //         }))
-//         case 'individual test': return p_.ss($, ($) => p_.decide.state($.result, ($): p_di.Optional_Value<d_out.Node> => {
+//         case 'individual test': return p_.option($, ($) => p_.decide.state($.result, ($): p_di.Optional_Value<d_out.Node> => {
 //             switch ($[0]) {
-//                 case 'source invalid': return p_.ss($, ($) => p_.literal.not_set())
-//                 case 'tested': return p_.ss($, ($) => p_.from.state($).decide(
+//                 case 'source invalid': return p_.option($, ($) => p_.literal.not_set())
+//                 case 'tested': return p_.option($, ($) => p_.from.state($).decide(
 //($) => {
 //                     switch ($[0]) {
-//                         case 'passed': return p_.ss($, ($) => p_.literal.not_set())
-//                         case 'failed': return p_.ss($, ($) => p_.from.state($).decide(
+//                         case 'passed': return p_.option($, ($) => p_.literal.not_set())
+//                         case 'failed': return p_.option($, ($) => p_.from.state($).decide(
 //($) => {
 //                             switch ($[0]) {
-//                                 case 'transform': return p_.ss($, ($) => p_.from.state($).decide(
+//                                 case 'transform': return p_.option($, ($) => p_.from.state($).decide(
 //($) => {
 //                                     switch ($[0]) {
-//                                         case 'initialization': return p_.ss($, ($) => p_.literal.not_set())
-//                                         case 'unexpected output': return p_.ss($, ($) => p_.literal.set(['file', $.actual]))
+//                                         case 'initialization': return p_.option($, ($) => p_.literal.not_set())
+//                                         case 'unexpected output': return p_.option($, ($) => p_.literal.set(['file', $.actual]))
 //                                         default: return p_.au($[0])
 //                                     }
 //                                 }))
-//                                 case 'refine': return p_.ss($, ($) => p_.from.state($).decide(
+//                                 case 'refine': return p_.option($, ($) => p_.from.state($).decide(
 //($) => {
 //                                     switch ($[0]) {
-//                                         case 'initialization': return p_.ss($, ($) => p_.literal.not_set())
-//                                         case 'unexpected output': return p_.ss($, ($) => p_.literal.set(['file', $.actual]))
-//                                         case 'unexpected error': return p_.ss($, ($) => p_.literal.set(['file', $.actual]))
-//                                         case 'should have failed but succeeded': return p_.ss($, ($) => p_.literal.not_set())
-//                                         case 'should have succeeded but failed': return p_.ss($, ($) => p_.literal.not_set())
+//                                         case 'initialization': return p_.option($, ($) => p_.literal.not_set())
+//                                         case 'unexpected output': return p_.option($, ($) => p_.literal.set(['file', $.actual]))
+//                                         case 'unexpected error': return p_.option($, ($) => p_.literal.set(['file', $.actual]))
+//                                         case 'should have failed but succeeded': return p_.option($, ($) => p_.literal.not_set())
+//                                         case 'should have succeeded but failed': return p_.option($, ($) => p_.literal.not_set())
 //                                         default: return p_.au($[0])
 //                                     }
 //                                 }))
