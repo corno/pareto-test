@@ -12,13 +12,14 @@ import * as t_write_file_to_prose from "pareto-resources/dist/implementation/man
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 export const Error: p_i.Transformer<
-d_in.Error, d_out.Phrase
+    d_in.Error,
+    d_out.Phrase
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'directory content': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.indent(
-                    sh.pg.sentences(p_.from.dictionary($    ).convert_to_list(
+                    sh.pg.sentences(p_.from.dictionary($).convert_to_list(
                         ($, id) => sh.sentence([
                             sh.ph.literal(id),
                             sh.ph.literal(": "),

@@ -26,7 +26,7 @@
 //     }
 // >
 
-// import * as t_test_result_to_fp from "../transformers/test_result/fountain_pen"
+// import * as t_test_result_to_prose from "../transformers/test_result/fountain_pen"
 
 // const has_passed = (results: d_test.Results): boolean => _pt.from.dictionary(//     _pt.from .dictionary(results,
 //     ).map_optionally(
@@ -75,7 +75,7 @@
 //                 $c['log error'].execute(
 //                     {
 //                         'message': sh.pg.composed([
-//                             t_test_result_to_fp.Results($d['test results']),
+//                             t_test_result_to_prose.Results($d['test results']),
 //                             sh.pg.sentences([
 //                                 sh.sentence([]),
 //                                 sh.sentence([
