@@ -12,10 +12,10 @@
 // import * as r_test_command_refiner from "../../../manual/refiners/test_command/main"
 
 // import * as t_directory_content_to_generic_testset from "../../../manual/transformers/directory_content/generic_testset"
-// import * as t_read_directory_content_to_fountain_pen from "../../../manual/transformers/read_directory_content/fountain_pen"
-// import * as t_write_directory_content_to_fountain_pen from "../../../manual/transformers/write_directory_content/fountain_pen"
+// import * as t_read_directory_content_to_prose from "../../../manual/transformers/read_directory_content/fountain_pen"
+// import * as t_write_directory_content_to_prose from "../../../manual/transformers/write_directory_content/fountain_pen"
 
-// import * as t_test_result_to_fountain_pen from "../../../manual/transformers/test_result_2/fountain_pen"
+// import * as t_test_result_to_prose from "../../../manual/transformers/test_result_2/fountain_pen"
 // import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary"
 // import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree"
 
@@ -217,7 +217,7 @@
 //                                                             $c['log'].execute(
 //                                                                 {
 //                                                                     'message': sh.pg.composed([
-//                                                                         t_test_result_to_fountain_pen.Test_Collection_Result(
+//                                                                         t_test_result_to_prose.Test_Collection_Result(
 //                                                                             test_results,
 //                                                                             {
 //                                                                                 'path to test data': t_path_to_text.Context_Path(path_to_test_data),
@@ -293,7 +293,7 @@
 //                                         sh.ph.literal("read dir error")
 //                                     ]),
 //                                     sh.sentence([
-//                                         t_read_directory_content_to_fountain_pen.Error($)
+//                                         t_read_directory_content_to_prose.Error($)
 //                                     ])
 //                                 ]))
 //                                 case 'write directory content': return p_.option($, ($) => sh.pg.sentences([
@@ -301,11 +301,11 @@
 //                                         sh.ph.literal("write dir error")
 //                                     ]),
 //                                     sh.sentence([
-//                                         t_write_directory_content_to_fountain_pen.Error($)
+//                                         t_write_directory_content_to_prose.Error($)
 //                                     ])
 //                                 ]))
 //                                 case 'failed tests': return p_.option($, ($) => sh.pg.composed([
-//                                     t_test_result_to_fountain_pen.Test_Collection_Result(
+//                                     t_test_result_to_prose.Test_Collection_Result(
 //                                         $.tests,
 //                                         {
 //                                             'path to test data': $.path,

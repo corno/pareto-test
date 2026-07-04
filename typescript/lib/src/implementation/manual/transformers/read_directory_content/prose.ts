@@ -4,8 +4,8 @@ import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as d_in from "pareto-resources/dist/interface/data/read_directory_content"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
-import * as t_read_directory_to_fountain_pen from "pareto-resources/dist/implementation/manual/transformers/read_directory/fountain_pen"
-import * as t_read_file_to_fountain_pen from "pareto-resources/dist/implementation/manual/transformers/read_file/fountain_pen"
+import * as t_read_directory_to_prose from "pareto-resources/dist/implementation/manual/transformers/read_directory/fountain_pen"
+import * as t_read_file_to_prose from "pareto-resources/dist/implementation/manual/transformers/read_file/fountain_pen"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
@@ -22,7 +22,7 @@ d_in.Error, d_out.Phrase
                         p_.from.state($).decide(
                             ($) => {
                                 switch ($[0]) {
-                                    case 'file': return p_.option($, ($) => t_read_file_to_fountain_pen.Error($))
+                                    case 'file': return p_.option($, ($) => t_read_file_to_prose.Error($))
                                     case 'directory': return p_.option($, ($) => Error($))
                                     default: return p_.au($[0])
                                 }
@@ -30,7 +30,7 @@ d_in.Error, d_out.Phrase
                     ])
                 ))
             ))
-            case 'read directory': return p_.option($, ($) => t_read_directory_to_fountain_pen.Error($))
+            case 'read directory': return p_.option($, ($) => t_read_directory_to_prose.Error($))
             default: return p_.au($[0])
         }
     })
