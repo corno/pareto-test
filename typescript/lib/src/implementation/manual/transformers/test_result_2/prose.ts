@@ -5,13 +5,6 @@ import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schem
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
-const RED = "\x1b[31m"
-const GREEN = "\x1b[32m"
-const YELLOW = "\x1b[33m"
-const CYAN = "\x1b[36m"
-const BLUE = "\x1b[34m"
-const MAGENTA = "\x1b[35m"
-const ENDCOLOR = "\x1b[0m"
 
 export const Test_Collection_Result = (
     $: d_in.Test_Collection_Result,
@@ -20,6 +13,14 @@ export const Test_Collection_Result = (
         'path to test': string
     }
 ): d_out.Paragraph => {
+
+    const RED = "\x1b[31m"
+    const GREEN = "\x1b[32m"
+    const YELLOW = "\x1b[33m"
+    const CYAN = "\x1b[36m"
+    const BLUE = "\x1b[34m"
+    const MAGENTA = "\x1b[35m"
+    const ENDCOLOR = "\x1b[0m"
 
     const do_context_path = (which: string) => sh.ph.composed([
         sh.ph.literal($p['path to test data']),
@@ -220,7 +221,9 @@ export const Test_Collection_Result = (
                                 }))
                             default: return p_.au($[0])
                         }
-                    })
-            ]))
+                    }
+                )
+            ])
+        )
     )
 }

@@ -1,23 +1,28 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
-import p_implement_me from 'pareto-core-dev/dist/implement_me'
 import * as p_i from 'pareto-core/dist/interface/transformer'
+import p_implement_me from 'pareto-core-dev/dist/implement_me'
 
+//data types
 import * as d_in from "pareto-resources/dist/interface/data/directory_content"
 import * as d_out from "../../../../interface/data/merged_filesystem_nodes"
 
-export const Directory: p_i.Transformer_With_Parameter<
-    d_in.Directory,
-    d_out.Valid_Directory,
-    {
-        'support': d_in.Directory
+export namespace interface_ {
+    export type Directory = p_i.Transformer_With_Parameter<
+        d_in.Directory,
+        d_out.Valid_Directory,
+        {
+            'support': d_in.Directory
 
-        /**
-         * the file suffix makes it possible to match a support file that is expected to have a suffix.
-         * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
-         */
-        'support suffix': string
-    }
-> = ($, $p) => {
+            /**
+             * the file suffix makes it possible to match a support file that is expected to have a suffix.
+             * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
+             */
+            'support suffix': string
+        }
+    >
+}
+
+export const Directory: interface_.Directory = ($, $p) => {
     return p_.from.dictionary($).map(
         ($, id) => {
             const $v_support_directory = $p.support
