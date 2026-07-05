@@ -13,7 +13,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_write_file_to_prose from "pareto-resources/dist/implementation/manual/transformers/write_file/fountain_pen"
+import * as t_write_file_to_prose from "pareto-resources/dist/implementation/manual/transformers/write_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
