@@ -4,8 +4,16 @@
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A testing framework for Pareto projects",
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
+  },
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
+  "module": "./dist/index.js",
   "files": [
     "dist"
   ],

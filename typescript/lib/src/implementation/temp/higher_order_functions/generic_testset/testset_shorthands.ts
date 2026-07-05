@@ -1,9 +1,9 @@
-// import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
-// import create_refinement_context from 'pareto-core/dist/__internals/async/create_refinement_context'
+// import p_change_context from 'pareto-core/implementation/specials/change_context'
+// import create_refinement_context from 'pareto-core/__internals/async/create_refinement_context'
 
-// import * as d_out from "../../../../interface/data/test_result"
+// import * as d_out from "../../../../interface/data/test_result.js"
 
-// import * as temp from "./temp"
+// import * as temp from "./temp.js"
 
 // export const test_collection = (type: 'group' | 'dictionary', $: {
 //     [id: string]: temp.Directory_to_Test_Collection_Result_Transformer

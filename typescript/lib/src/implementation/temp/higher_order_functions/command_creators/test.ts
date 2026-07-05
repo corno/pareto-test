@@ -1,35 +1,35 @@
-// import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
-// import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
+// import p_change_context from 'pareto-core/implementation/specials/change_context'
+// import p_text_from_list from 'pareto-core/implementation/specials/text_from_list'
 
-// import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
-// import * as d_read_directory_content from "pareto-resources/dist/interface/to_be_generated/read_directory_content"
-// import * as d_directory_content from "pareto-resources/dist/interface/to_be_generated/directory_content"
-// import * as d_test_result from "../../../../interface/data/test_result"
-// import * as d_write_directory_content from "pareto-resources/dist/interface/to_be_generated/write_directory_content"
+// import * as d_main from "pareto-resources/interface/to_be_generated/temp_main"
+// import * as d_read_directory_content from "pareto-resources/interface/to_be_generated/read_directory_content"
+// import * as d_directory_content from "pareto-resources/interface/to_be_generated/directory_content"
+// import * as d_test_result from "../../../../interface/data/test_result.js"
+// import * as d_write_directory_content from "pareto-resources/interface/to_be_generated/write_directory_content"
 
-// import * as d_generic_testset from "../../../../interface/data/generic_testset"
+// import * as d_generic_testset from "../../../../interface/data/generic_testset.js"
 
-// import * as r_test_command_refiner from "../../../manual/refiners/test_command/main"
+// import * as r_test_command_refiner from "../../../manual/refiners/test_command/main.js"
 
-// import * as t_directory_content_to_generic_testset from "../../../manual/transformers/directory_content/generic_testset"
-// import * as t_read_directory_content_to_prose from "../../../manual/transformers/read_directory_content/fountain_pen"
-// import * as t_write_directory_content_to_prose from "../../../manual/transformers/write_directory_content/fountain_pen"
+// import * as t_directory_content_to_generic_testset from "../../../manual/transformers/directory_content/generic_testset.js"
+// import * as t_read_directory_content_to_prose from "../../../manual/transformers/read_directory_content/fountain_pen.js"
+// import * as t_write_directory_content_to_prose from "../../../manual/transformers/write_directory_content/fountain_pen.js"
 
-// import * as t_test_result_to_prose from "../../../manual/transformers/test_result_2/fountain_pen"
-// import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary"
-// import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree"
+// import * as t_test_result_to_prose from "../../../manual/transformers/test_result_2/fountain_pen.js"
+// import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary.js"
+// import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree.js"
 
-// import * as t_path_to_path from "pareto-resources/dist/implementation/manual/transformers/unrestricted_path/unrestricted_path"
-// import * as t_path_to_text from "pareto-resources/dist/implementation/manual/transformers/unrestricted_path/text"
+// import * as t_path_to_path from "pareto-resources/implementation/manual/transformers/unrestricted_path/unrestricted_path"
+// import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
 
-// import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
+// import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 // const RED = "\x1b[31m"
 // const GREEN = "\x1b[32m"
 // const ENDCOLOR = "\x1b[0m"
 
-// import * as resources_pareto from "pareto-resources/dist/interface/resources"
-// import * as resources_pareto_stream from "pareto-stream/dist/interface/resources"
+// import * as resources_pareto from "pareto-resources/interface/resources"
+// import * as resources_pareto_stream from "pareto-stream/interface/resources"
 
 // export type Procedure = p_ci.Command_Procedure<
 //     resources_pareto.resources.commands.main,

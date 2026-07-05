@@ -1,5 +1,5 @@
 
-// import { Directory_to_Test_Collection_Result_Transformer } from "../../implementation/temp/higher_order_functions/generic_testset/temp"
+// import { Directory_to_Test_Collection_Result_Transformer } from "../../implementation/temp/higher_order_functions/generic_testset/temp.js"
 
 // export type Package = {
 //     'schemas': { [id: string]: Schema }

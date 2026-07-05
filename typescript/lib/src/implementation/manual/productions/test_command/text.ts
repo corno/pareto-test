@@ -1,8 +1,8 @@
-import * as p_pi from 'pareto-core/dist/interface/production'
+import * as p_pi from 'pareto-core/interface/production'
 
-import * as d from "../../../../interface/data/test_command"
+import * as d from "../../../../interface/data/test_command.js"
 
-import * as r_path_from_text from "pareto-resources/dist/implementation/manual/refiners/path_unrestricted/text"
+import * as r_path_from_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"
 
 export const Parameters: p_pi.Production<
     d.Parameters,

@@ -1,14 +1,14 @@
-// import * as p_qi from 'pareto-core/dist/interface/query'
-// import * as p_i from 'pareto-core/dist/interface/command'
+// import * as p_qi from 'pareto-core/interface/query'
+// import * as p_i from 'pareto-core/interface/command'
 
 
 
-// import * as d_test from "../../../interface/temp/generic"
+// import * as d_test from "../../../interface/temp/generic.js"
 
-// import * as resources_pareto from "pareto-stream/dist/interface/resources"
+// import * as resources_pareto from "pareto-stream/interface/resources"
 
 // //shorthands
-// import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
+// import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 // export type Parameters = {
 //     'test results': d_test.Results,
@@ -26,7 +26,7 @@
 //     }
 // >
 
-// import * as t_test_result_to_prose from "../transformers/test_result/fountain_pen"
+// import * as t_test_result_to_prose from "../transformers/test_result/fountain_pen.js"
 
 // const has_passed = (results: d_test.Results): boolean => _pt.from.dictionary(//     _pt.from .dictionary(results,
 //     ).map_optionally(

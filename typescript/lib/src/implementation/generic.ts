@@ -1,9 +1,9 @@
 
-// import create_refinement_context from 'pareto-core/dist/__internals/async/create_refinement_context'
+// import create_refinement_context from 'pareto-core/__internals/async/create_refinement_context'
 
-// import * as generic from "../interface/temp/generic"
+// import * as generic from "../interface/temp/generic.js"
 
-// import * as resources_pareto from "pareto-stream/dist/interface/resources"
+// import * as resources_pareto from "pareto-stream/interface/resources"
 
 // export type Resources = {
 //     'commands': {

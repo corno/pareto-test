@@ -1,10 +1,10 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/transformer'
-import p_implement_me from 'pareto-core-dev/dist/implement_me'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/transformer'
+import p_implement_me from 'pareto-core-dev/implement_me'
 
 //data types
-import * as d_in from "pareto-resources/dist/interface/data/directory_content"
-import * as d_out from "../../../../interface/data/merged_filesystem_nodes"
+import * as d_in from "pareto-resources/interface/data/directory_content"
+import * as d_out from "../../../../interface/data/merged_filesystem_nodes.js"
 
 export namespace interface_ {
     export type Directory = p_i.Transformer_With_Parameter<

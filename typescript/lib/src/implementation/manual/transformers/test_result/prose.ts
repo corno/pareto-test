@@ -1,9 +1,9 @@
-// import * as p_ from 'pareto-core/dist/implementation/transformer'
+// import * as p_ from 'pareto-core/implementation/transformer'
 
-// import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
-// import * as d_in from "../../../../interface/temp/generic"
+// import * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
+// import * as d_in from "../../../../interface/temp/generic.js"
 
-// import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
+// import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 // export const Results = ($: d_in.Results): d_out.Paragraph => Branch($)
 
