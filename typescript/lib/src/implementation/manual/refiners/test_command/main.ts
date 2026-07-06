@@ -7,7 +7,7 @@ import * as d from "../../../../interface/data/test_command.js"
 import * as d_main from "pareto-resources/interface/data/temp_main"
 
 //dependencies
-import * as pr_text_command_from_text from "../../productions/test_command/text.js"
+import * as pr_text_command_from_text from "./text.js"
 
 export const Parameters: p_i.Refiner<
     d.Parameters, string, d_main.Parameters
