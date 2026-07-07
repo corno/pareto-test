@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.110",
+  "version": "0.13.111",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A testing framework for Pareto projects",
@@ -17,8 +17,8 @@
   "dependencies": {
     "pareto-application-api": "^0.1.0",
     "pareto-core-dev": "^0.12.0",
+    "pareto-filesystem-unrestricted-api": "^0.1.0",
     "pareto-fountain-pen": "^0.4.0",
-    "pareto-resources": "^0.2.0",
     "pareto-stream-api": "^0.1.0"
   }
 }

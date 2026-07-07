@@ -41,7 +41,7 @@
 //     )
 // ).is_ empty()
 
-// export const $$: Signature = p_.command_procedure(
+// export const $$: Signature = p_.command(
 //     ($d, $s, $q, $c) => [
 //         $c.log.execute(
 //             {

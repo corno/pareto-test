@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import * as p_i from 'pareto-core/interface/transformer'
 
 //data types
-import * as d_in from "pareto-resources/interface/data/read_directory_content"
+import * as d_in from "pareto-filesystem-unrestricted-api/interface/data/read_directory_content"
 import * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
 
 export namespace interface_ {
@@ -12,8 +12,8 @@ export namespace interface_ {
     >
 }
 //dependencies
-import * as t_read_directory_to_prose from "pareto-resources/implementation/manual/transformers/read_directory/prose"
-import * as t_read_file_to_prose from "pareto-resources/implementation/manual/transformers/read_file/prose"
+import * as t_read_directory_to_prose from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_directory/prose"
+import * as t_read_file_to_prose from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
