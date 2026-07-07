@@ -16,7 +16,7 @@
 
 // export type Command = p_i.Command<null, Parameters>
 
-// export type Signature = p_i.Command_Procedure<
+// export type Signature = p_i.Command<
 //     Command,
 //     null,
 //     null,
