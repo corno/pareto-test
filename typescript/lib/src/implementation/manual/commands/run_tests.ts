@@ -5,7 +5,7 @@
 
 // import * as d_test from "../../../interface/temp/generic.js"
 
-// import * as resources_pareto from "pareto-stream/interface/resources"
+// import * as resources_pareto from "pareto-stream-api/interface/resources"
 
 // //shorthands
 // import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

@@ -29,7 +29,7 @@
 // const ENDCOLOR = "\x1b[0m"
 
 // import * as resources_pareto from "pareto-resources/interface/resources"
-// import * as resources_pareto_stream from "pareto-stream/interface/resources"
+// import * as resources_pareto_stream from "pareto-stream-api/interface/resources"
 
 // export type Procedure = p_ci.Command_Procedure<
 //     resources_pareto.resources.commands.main,

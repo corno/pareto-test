@@ -3,7 +3,7 @@
 
 // import * as generic from "../interface/temp/generic.js"
 
-// import * as resources_pareto from "pareto-stream/interface/resources"
+// import * as resources_pareto from "pareto-stream-api/interface/resources"
 
 // export type Resources = {
 //     'commands': {
