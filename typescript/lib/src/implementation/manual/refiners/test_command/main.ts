@@ -4,7 +4,7 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 //data types
 import * as d from "../../../../interface/data/test_command.js"
-import * as d_main from "pareto-resources/interface/data/temp_main"
+import * as d_main from "pareto-application-api/interface/data/main"
 
 //dependencies
 import * as pr_text_command_from_text from "./text.js"
