@@ -21,6 +21,7 @@ export namespace interface_ {
         }
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/directory_content/merged_file_structure.js"
 
 export const Directory: interface_.Directory = ($, $p) => p_.from.dictionary($).map(
     ($, id) => {
