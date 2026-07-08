@@ -1,5 +1,5 @@
 
-import type * as p_i from 'pareto-core/interface/transformer'
+import type * as p_ from 'pareto-core/interface/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
 //data types
@@ -7,7 +7,7 @@ import type * as d_in from "pareto-filesystem-unrestricted-api/interface/data/di
 import type * as d_out from "../../../data/merged_filesystem_nodes.js"
 
 
-    export type Directory = p_i.Transformer_With_Parameter<
+    export type Directory = p_.Transformer_With_Parameter<
         d_in.Directory,
         d_out.Valid_Directory,
         {
