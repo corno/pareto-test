@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+
 import type * as p_i from 'pareto-core/interface/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
@@ -6,7 +6,7 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 import type * as d_in from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
 import type * as d_out from "../../../data/merged_filesystem_nodes.js"
 
-export namespace interface_ {
+
     export type Directory = p_i.Transformer_With_Parameter<
         d_in.Directory,
         d_out.Valid_Directory,
@@ -20,4 +20,4 @@ export namespace interface_ {
             'support suffix': string
         }
     >
-}
+
