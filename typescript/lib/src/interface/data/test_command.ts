@@ -1,4 +1,4 @@
-import * as d_path from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_path/data"
+import type * as d_path from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_path/data"
 
 export type Parameters = {
     'path to test data': d_path.Context_Path

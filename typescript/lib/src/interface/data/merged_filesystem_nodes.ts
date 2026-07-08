@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import * as d_directory_content from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
+import type * as d_directory_content from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
 
 export type Node =
     | ['file', {

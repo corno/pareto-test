@@ -3,7 +3,7 @@
 
 
 
-// import * as d_test from "../../../interface/temp/generic.js"
+// import type * as d_test from "../../../interface/temp/generic.js"
 
 // import * as resources_pareto from "pareto-stream-api/interface/resources"
 

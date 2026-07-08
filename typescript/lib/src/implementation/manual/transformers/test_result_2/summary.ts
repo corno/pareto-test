@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import * as p_i from 'pareto-core/interface/transformer'
 
-import * as d_in from "../../../../interface/data/test_result.js"
-import * as d_out from "../../../../interface/data/summary.js"
+import type * as d_in from "../../../../interface/data/test_result.js"
+import type * as d_out from "../../../../interface/data/summary.js"
 
 namespace d_function {
     

@@ -1,7 +1,7 @@
 // import p_change_context from 'pareto-core/implementation/specials/change_context'
 // import create_refinement_context from 'pareto-core/__internals/async/create_refinement_context'
 
-// import * as d_out from "../../../../interface/data/test_result.js"
+// import type * as d_out from "../../../../interface/data/test_result.js"
 
 // import * as temp from "./temp.js"
 

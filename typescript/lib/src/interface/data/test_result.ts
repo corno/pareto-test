@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import * as d_generic from "./generic_testset.js"
+import type * as d_generic from "./generic_testset.js"
 
 export type Test_Collection_Result = p_.Dictionary<Test_Node_Result>
 

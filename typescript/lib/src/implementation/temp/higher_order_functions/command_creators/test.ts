@@ -1,13 +1,13 @@
 // import p_change_context from 'pareto-core/implementation/specials/change_context'
 // import p_text_from_list from 'pareto-core/implementation/specials/text_from_list'
 
-// import * as d_main from "pareto-resources/interface/to_be_generated/temp_main"
-// import * as d_read_directory_content from "pareto-resources/interface/to_be_generated/read_directory_content"
-// import * as d_directory_content from "pareto-resources/interface/to_be_generated/directory_content"
-// import * as d_test_result from "../../../../interface/data/test_result.js"
-// import * as d_write_directory_content from "pareto-resources/interface/to_be_generated/write_directory_content"
+// import type * as d_main from "pareto-resources/interface/to_be_generated/temp_main"
+// import type * as d_read_directory_content from "pareto-resources/interface/to_be_generated/read_directory_content"
+// import type * as d_directory_content from "pareto-resources/interface/to_be_generated/directory_content"
+// import type * as d_test_result from "../../../../interface/data/test_result.js"
+// import type * as d_write_directory_content from "pareto-resources/interface/to_be_generated/write_directory_content"
 
-// import * as d_generic_testset from "../../../../interface/data/generic_testset.js"
+// import type * as d_generic_testset from "../../../../interface/data/generic_testset.js"
 
 // import * as r_test_command_refiner from "../../../manual/refiners/test_command/main.js"
 
