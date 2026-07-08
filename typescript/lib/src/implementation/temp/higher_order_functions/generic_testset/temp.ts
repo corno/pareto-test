@@ -35,7 +35,7 @@
 //                             )]
 //                         })
 //                         case 'invalid': return _pt.ss($, ($): d_out.Individual_Test_Result__result => ['source invalid', ['problem with expected', $]])
-//                         default: return _pt.au($[0])
+//                         default: return _pt.exhaustive($[0])
 //                     }
 //                 })
 //             })
@@ -61,7 +61,7 @@
 
 //                                 return ['source valid', group_to_test_group_result($)]
 //                             })
-//                             default: return _pt.au($[0])
+//                             default: return _pt.exhaustive($[0])
 //                         }
 //                     }))
 //                     default: return ['source invalid', ['not a collection', null]]

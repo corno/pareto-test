@@ -19,7 +19,7 @@
 //                 ).map(
 //                     ($) => ['directory', $])
 //                 )
-//                 default: return p_.au($[0])
+//                 default: return p_.exhaustive($[0])
 //             }
 //         }))
 //         case 'individual test': return p_.option($, ($) => p_.decide.state($.result, ($): p_di.Optional_Value<d_out.Node> => {
@@ -37,7 +37,7 @@
 //                                     switch ($[0]) {
 //                                         case 'initialization': return p_.option($, ($) => p_.literal.not_set())
 //                                         case 'unexpected output': return p_.option($, ($) => p_.literal.set(['file', $.actual]))
-//                                         default: return p_.au($[0])
+//                                         default: return p_.exhaustive($[0])
 //                                     }
 //                                 }))
 //                                 case 'refine': return p_.option($, ($) => p_.from.state($).decide(
@@ -48,19 +48,19 @@
 //                                         case 'unexpected error': return p_.option($, ($) => p_.literal.set(['file', $.actual]))
 //                                         case 'should have failed but succeeded': return p_.option($, ($) => p_.literal.not_set())
 //                                         case 'should have succeeded but failed': return p_.option($, ($) => p_.literal.not_set())
-//                                         default: return p_.au($[0])
+//                                         default: return p_.exhaustive($[0])
 //                                     }
 //                                 }))
-//                                 default: return p_.au($[0])
+//                                 default: return p_.exhaustive($[0])
 //                             }
 //                         }))
-//                         default: return p_.au($[0])
+//                         default: return p_.exhaustive($[0])
 //                     }
 //                 }))
-//                 default: return p_.au($[0])
+//                 default: return p_.exhaustive($[0])
 //             }
 //         }))
-//         default: return p_.au($[0])
+//         default: return p_.exhaustive($[0])
 //     }
 // })
 

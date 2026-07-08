@@ -91,7 +91,7 @@
             //                                 case 'file': return p_.option($, ($) => ['valid', $])
             //                                 case 'directory': return p_.option($, ($) => ['invalid', ['expected', ['is not a file', null]]])
             //                                 case 'other': return p_.option($, ($) => ['invalid', ['expected', ['is not a file', null]]])
-            //                                 default: return p_.au($[0])
+            //                                 default: return p_.exhaustive($[0])
             //                             }
             //                         }),
             //                         (): d_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
@@ -127,13 +127,13 @@
                 //                                     'suffix settings': $p['suffix settings'],
                 //                                 }
                 //                             )])
-                //                             default: return p_.au($[0])
+                //                             default: return p_.exhaustive($[0])
                 //                         }
                 //                     }),
                 //                     () => ['invalid', ['directory for expected does not exist', null]]
                 //                 )]
                 //             })
-                //             default: return p_.au($[0])
+                //             default: return p_.exhaustive($[0])
                 //         }
                 //     })),
                 //     // 'superfluous nodes': p_.block(
@@ -157,7 +157,7 @@
                 //     //                     () => key
                 //     //                 ))
                 //     //                 case 'directory': return p_.option($, ($) => key)
-                //     //                 default: return p_.au($[0])
+                //     //                 default: return p_.exhaustive($[0])
                 //     //             }
                 //     //         })
                 //     //         temp[key_of_expected] = null

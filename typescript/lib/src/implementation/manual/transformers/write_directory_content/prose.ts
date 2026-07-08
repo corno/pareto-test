@@ -32,7 +32,7 @@ export const Error: interface_.Error = ($) => p_.from.state($).decide(
                                     switch ($[0]) {
                                         case 'file': return p_.option($, ($) => t_write_file_to_prose.Error($))
                                         case 'directory': return p_.option($, ($) => Error($))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 })
                         ])
@@ -40,7 +40,7 @@ export const Error: interface_.Error = ($) => p_.from.state($).decide(
                 )
             ]))
             // case 'make directory': return p_.option($, ($) => t_make_directory_to_prose.Error($))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     }
 )

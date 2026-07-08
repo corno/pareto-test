@@ -30,7 +30,7 @@
 //                                                 case 'file': return p_.option($, ($) => ['valid', $])
 //                                                 case 'directory': return p_.option($, ($) => ['is not a file', null])
 //                                                 case 'other': return p_.option($, ($) => ['is not a file', null])
-//                                                 default: return p_.au($[0])
+//                                                 default: return p_.exhaustive($[0])
 //                                             }
 //                                         }),
 //                                         () => ['does not exist', null]
@@ -46,18 +46,18 @@
 //                                             case 'other': return p_.option($, ($) => ['expected is not a group', null])
 //                                             case 'file': return p_.option($, ($) => ['expected is not a group', null])
 //                                             case 'directory': return p_.option($, ($) => ['valid', Group(input_node, { 'expected': $ })])
-//                                             default: return p_.au($[0])
+//                                             default: return p_.exhaustive($[0])
 //                                         }
 //                                     }),
 //                                     () => ['expected does not exist', null]
 //                                 )]
 //                             })
-//                             default: return p_.au($[0])
+//                             default: return p_.exhaustive($[0])
 //                         }
 //                     })
 //                 })
 //             })
-//             default: return p_.au($[0])
+//             default: return p_.exhaustive($[0])
 //         }
 //     })
 // }

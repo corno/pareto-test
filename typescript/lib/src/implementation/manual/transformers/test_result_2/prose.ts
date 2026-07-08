@@ -39,11 +39,11 @@ export const Test_Collection_Result = (
                                     switch ($[0]) {
                                         case 'group': return p_.option($, ($) => sh.ph.literal(CYAN))
                                         case 'dictionary': return p_.option($, ($) => sh.ph.literal(BLUE))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }))
                             case 'individual test': return p_.option($, ($) => sh.ph.literal(MAGENTA))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }),
                 sh.ph.literal(id),
@@ -97,14 +97,14 @@ export const Test_Collection_Result = (
                                                                                 do_node_path("expected"),
                                                                                 sh.ph.literal(ENDCOLOR),
                                                                             ])
-                                                                            default: return p_.au($[0])
+                                                                            default: return p_.exhaustive($[0])
                                                                         }
                                                                     }))
 
-                                                                default: return p_.au($[0])
+                                                                default: return p_.exhaustive($[0])
                                                             }
                                                         }))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }))
                                         case 'tested': return p_.option($, ($) => p_.from.state($).decide(
@@ -138,7 +138,7 @@ export const Test_Collection_Result = (
                                                                                         switch ($[0]) {
                                                                                             case 'initialization': return p_.option($, ($) => sh.ph.literal("initialization"))
                                                                                             case 'unexpected output': return p_.option($, ($) => sh.ph.literal("unexpected output"))
-                                                                                            default: return p_.au($[0])
+                                                                                            default: return p_.exhaustive($[0])
                                                                                         }
                                                                                     }))
                                                                                 case 'refine': return p_.option($, ($) => p_.from.state($).decide(
@@ -149,19 +149,19 @@ export const Test_Collection_Result = (
                                                                                             case 'should have succeeded but failed': return p_.option($, ($) => sh.ph.literal("should have succeeded but failed"))
                                                                                             case 'unexpected output': return p_.option($, ($) => sh.ph.literal("unexpected output"))
                                                                                             case 'unexpected error': return p_.option($, ($) => sh.ph.literal("unexpected error"))
-                                                                                            default: return p_.au($[0])
+                                                                                            default: return p_.exhaustive($[0])
                                                                                         }
                                                                                     }))
-                                                                                default: return p_.au($[0])
+                                                                                default: return p_.exhaustive($[0])
                                                                             }
                                                                         })
                                                                 ])
                                                             ]))
                                                     ]))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }))
                             case 'collection': return p_.option($, ($) => p_.from.state($.result).decide(
@@ -204,7 +204,7 @@ export const Test_Collection_Result = (
                                                                     do_context_path("expected"),
                                                                     sh.ph.literal(ENDCOLOR),
                                                                 ])
-                                                                default: return p_.au($[0])
+                                                                default: return p_.exhaustive($[0])
                                                             }
                                                         }))
                                                     case 'not a collection': return p_.option($, ($) => sh.ph.composed([
@@ -213,13 +213,13 @@ export const Test_Collection_Result = (
                                                         do_node_path("input"),
                                                         sh.ph.literal(ENDCOLOR),
                                                     ]))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }
                 )

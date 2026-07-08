@@ -27,7 +27,7 @@ export const Test_Node_Result: p_i.Transformer_With_Parameter<
                         switch ($[0]) {
                             case 'source invalid': return p_.option($, ($) => structural_problem_incrementer)
                             case 'source valid': return p_.option($, ($) => Test_Group_Result($, $p))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }))
                 case 'individual test': return p_.option($, ($) => p_.from.state($.result).decide(
@@ -39,13 +39,13 @@ export const Test_Node_Result: p_i.Transformer_With_Parameter<
                                     switch ($[0]) {
                                         case 'passed': return p_.option($, ($) => $p['include passed tests'] ? 1 : 0)
                                         case 'failed': return p_.option($, ($) => 1)
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }
     )

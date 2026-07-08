@@ -61,7 +61,7 @@ export const Directory: interface_.Directory = ($, $p) => p_.from.dictionary($).
                             }]
                         )]
                     })
-                    default: return p_.au($[0])
+                    default: return p_.exhaustive($[0])
                 }
             }
         )

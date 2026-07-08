@@ -52,7 +52,7 @@
 //                     switch ($[0]) {
 //                         case 'output': return _pt.ss($, ($) => output === $)
 //                         case 'error': return _pt.ss($, ($) => false)
-//                         default: return _pt.au($[0])
+//                         default: return _pt.exhaustive($[0])
 //                     }
 //                 })
 //             },
@@ -62,7 +62,7 @@
 //                     switch ($[0]) {
 //                         case 'output': return _pt.ss($, ($) => false)
 //                         case 'error': return _pt.ss($, ($) => error === $)
-//                         default: return _pt.au($[0])
+//                         default: return _pt.exhaustive($[0])
 //                     }
 //                 })
 //             },
@@ -89,7 +89,7 @@
 //                         switch ($[0]) {
 //                             case 'output': return _pt.ss($, ($) => output === $)
 //                             case 'error': return _pt.ss($, ($) => false)
-//                             default: return _pt.au($[0])
+//                             default: return _pt.exhaustive($[0])
 //                         }
 //                     })
 //                 },
@@ -99,7 +99,7 @@
 //                         switch ($[0]) {
 //                             case 'output': return _pt.ss($, ($) => false)
 //                             case 'error': return _pt.ss($, ($) => error === $)
-//                             default: return _pt.au($[0])
+//                             default: return _pt.exhaustive($[0])
 //                         }
 //                     })
 //                 },
