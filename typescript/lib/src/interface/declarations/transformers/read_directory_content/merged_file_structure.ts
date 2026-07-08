@@ -7,17 +7,17 @@ import type * as d_in from "pareto-filesystem-unrestricted-api/interface/data/di
 import type * as d_out from "../../../data/merged_filesystem_nodes.js"
 
 
-    export type Directory = p_.Transformer_With_Parameter<
-        d_in.Directory,
-        d_out.Valid_Directory,
-        {
-            'support': d_in.Directory
+export type Directory = p_.Transformer_With_Parameter<
+    d_in.Directory,
+    d_out.Valid_Directory,
+    {
+        'support': d_in.Directory
 
-            /**
-             * the file suffix makes it possible to match a support file that is expected to have a suffix.
-             * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
-             */
-            'support suffix': string
-        }
-    >
+        /**
+         * the file suffix makes it possible to match a support file that is expected to have a suffix.
+         * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
+         */
+        'support suffix': string
+    }
+>
 
