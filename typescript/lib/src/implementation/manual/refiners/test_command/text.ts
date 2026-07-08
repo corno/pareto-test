@@ -1,4 +1,4 @@
-import * as p_pi from 'pareto-core/interface/refiner'
+import type * as p_pi from 'pareto-core/interface/refiner'
 
 import * as d from "../../../../interface/data/test_command.js"
 
