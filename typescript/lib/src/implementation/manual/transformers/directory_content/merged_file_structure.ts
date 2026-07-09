@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/directory_content/merged_file_structure.js"
+import type * as interface_ from "../../../../declarations/transformers/directory_content/merged_file_structure.js"
 
 //data types
 import type * as d_out from "../../../../interface/data/merged_filesystem_nodes.js"
