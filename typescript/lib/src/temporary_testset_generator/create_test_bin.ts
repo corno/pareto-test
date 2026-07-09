@@ -1,8 +1,8 @@
 // import { $$ as command_creator } from "../implementation/temp/higher_order_functions/command_creators/test.js"
 
 
-// // import { $$ as q_read_directory_content } from "pareto-resources/implementation/manual/queries/read_directory_content"
-// import { $$ as c_write_directory_content } from "pareto-resources/implementation/manual/commands/write_directory_content"
+// // import { $$ as q_read_directory_content } from "pareto-resources/implementation/queries/read_directory_content"
+// import { $$ as c_write_directory_content } from "pareto-resources/implementation/commands/write_directory_content"
 
 // import * as sh from "../implementation/temp/higher_order_functions/generic_testset/testset_shorthands.js"
 

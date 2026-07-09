@@ -19,8 +19,8 @@
 // import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary.js"
 // import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree.js"
 
-// import * as t_path_to_path from "pareto-resources/implementation/manual/transformers/unrestricted_path/unrestricted_path"
-// import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
+// import * as t_path_to_path from "pareto-resources/implementation/transformers/unrestricted_path/unrestricted_path"
+// import * as t_path_to_text from "pareto-resources/implementation/transformers/unrestricted_path/text"
 
 // import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
