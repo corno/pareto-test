@@ -2,7 +2,7 @@ import type * as p_pi from 'pareto-core/interface/refiner'
 
 import * as d from "../../../interface/data/test_command.js"
 
-import * as r_path_from_text from "pareto-filesystem-unrestricted-api/implementation/manual/refiners/path_unrestricted/text"
+import * as r_path_from_text from "pareto-filesystem-unrestricted-api/implementation/refiners/path_unrestricted/text"
 
 export const Parameters: p_pi.Production<
     d.Parameters,

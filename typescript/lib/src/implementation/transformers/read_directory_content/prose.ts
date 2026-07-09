@@ -2,8 +2,8 @@ import * as p_ from 'pareto-core/implementation/transformer'
 
 import type * as interface_ from "../../../declarations/transformers/read_directory_content/prose.js"
 //dependencies
-import * as t_read_directory_to_prose from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_directory/prose"
-import * as t_read_file_to_prose from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_file/prose"
+import * as t_read_directory_to_prose from "pareto-filesystem-unrestricted-api/implementation/transformers/read_directory/prose"
+import * as t_read_file_to_prose from "pareto-filesystem-unrestricted-api/implementation/transformers/read_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
