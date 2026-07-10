@@ -1,6 +1,6 @@
 // import * as p_ from 'pareto-core/implementation/transformer'
 
-// import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
+// import type * as d_out from "pareto-fountain-pen/interface/data/prose"
 // import type * as d_in from "../../../interface/temp/generic.js"
 
 // import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
