@@ -74,7 +74,7 @@
 //             [
 //                 $c['log error'].execute(
 //                     {
-//                         'message': sh.pg.composed([
+//                         'message': sh.pg.deprecated_composed([
 //                             t_test_result_to_prose.Results($d['test results']),
 //                             sh.pg.sentences([
 //                                 sh.sentence([]),

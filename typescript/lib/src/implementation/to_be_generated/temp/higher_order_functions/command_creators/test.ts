@@ -216,7 +216,7 @@
 //                                                         [
 //                                                             $c['log'].execute(
 //                                                                 {
-//                                                                     'message': sh.pg.composed([
+//                                                                     'message': sh.pg.deprecated_composed([
 //                                                                         t_test_result_to_prose.Test_Collection_Result(
 //                                                                             test_results,
 //                                                                             {
@@ -304,7 +304,7 @@
 //                                         t_write_directory_content_to_prose.Error($)
 //                                     ])
 //                                 ]))
-//                                 case 'failed tests': return p_.option($, ($) => sh.pg.composed([
+//                                 case 'failed tests': return p_.option($, ($) => sh.pg.deprecated_composed([
 //                                     t_test_result_to_prose.Test_Collection_Result(
 //                                         $.tests,
 //                                         {
