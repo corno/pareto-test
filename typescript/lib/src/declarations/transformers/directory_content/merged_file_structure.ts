@@ -4,7 +4,7 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 
 //data types
 import type * as d_in from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
-import type * as d_out from "../../../interface/data/merged_filesystem_nodes.js"
+import type * as d_out from "../../../interface/schemas/merged_filesystem_nodes.js"
 
 
 export type Directory = p_.Transformer_With_Parameter<

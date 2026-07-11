@@ -3,7 +3,7 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
-import * as d from "../../../interface/data/test_command.js"
+import * as d from "../../../interface/schemas/test_command.js"
 import type * as d_main from "pareto-application-api/interface/data/main"
 
 //dependencies

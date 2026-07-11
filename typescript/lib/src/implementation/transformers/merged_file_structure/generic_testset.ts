@@ -1,6 +1,6 @@
 
-// import type * as d_in from "../../../interface/data/merged_filesystem_nodes.js"
-// import type * as d_out from "../../../interface/data/generic_testset.js"
+// import type * as d_in from "../../../interface/schemas/merged_filesystem_nodes.js"
+// import type * as d_out from "../../../interface/schemas/generic_testset.js"
 
 // export const Group: p_i.Transformer<
 // d_out.Node__group, d_in.Directory

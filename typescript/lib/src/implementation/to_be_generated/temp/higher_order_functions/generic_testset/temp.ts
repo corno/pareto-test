@@ -1,6 +1,6 @@
 
-// import type * as d_in from "../../../../interface/data/generic_testset.js"
-// import type * as d_out from "../../../../interface/data/test_result.js"
+// import type * as d_in from "../../../../interface/schemas/generic_testset.js"
+// import type * as d_out from "../../../../interface/schemas/test_result.js"
 
 
 
