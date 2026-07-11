@@ -4,19 +4,19 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 import type * as interface_ from "../../../declarations/transformers/read_directory_content/merged_file_structure.js"
 
 //data types
-import type * as d_out from "../../../interface/schemas/merged_filesystem_nodes.js"
+import type * as s_out from "../../../interface/schemas/merged_filesystem_nodes.js"
 
 export const Directory: interface_.Directory = ($, $p) => {
     return p_.from.dictionary($).map(
         ($, id) => {
             const $v_support_directory = $p.support
             return p_.from.state($).decide(
-                ($): d_out.Node => {
+                ($): s_out.Node => {
                     switch ($[0]) {
-                        case 'other': return p_.option($, ($): d_out.Node => {
+                        case 'other': return p_.option($, ($): s_out.Node => {
                             return p_implement_me("expected a file or a directory")
                         })
-                        case 'file': return p_.option($, ($): d_out.Node => {
+                        case 'file': return p_.option($, ($): s_out.Node => {
                             return ['file', {
                                 'support': p_.from.dictionary($v_support_directory).get_possible_entry(
                                     id + $p['support suffix'],
@@ -29,7 +29,7 @@ export const Directory: interface_.Directory = ($, $p) => {
                             const main_node = $
                             return ['directory', p_.from.dictionary($v_support_directory).get_possible_entry(
                                 id,
-                                ($): d_out.Directory => p_.from.state($).decide(
+                                ($): s_out.Directory => p_.from.state($).decide(
                                     ($) => {
                                         switch ($[0]) {
                                             case 'directory': return p_.option($, ($) => ['valid', Directory(
@@ -44,7 +44,7 @@ export const Directory: interface_.Directory = ($, $p) => {
                                             }]
                                         }
                                     }),
-                                (): d_out.Directory => ['invalid', {
+                                (): s_out.Directory => ['invalid', {
                                     'support': ['does not exist', null],
                                     'nodes': main_node
                                 }]

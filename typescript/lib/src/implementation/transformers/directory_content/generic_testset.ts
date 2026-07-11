@@ -2,8 +2,8 @@
 // import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 // import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-// import type * as d_in from "pareto-resources/interface/to_be_generated/directory_content"
-// import type * as d_out from "../../../interface/schemas/generic_testset.js"
+// import type * as s_in from "pareto-resources/interface/to_be_generated/directory_content"
+// import type * as s_out from "../../../interface/schemas/generic_testset.js"
 
 // const remove_suffix = ($: string, suffix: string): p_di.Optional_Value<string> => {
 //     let suffix_matches = true
@@ -49,7 +49,7 @@
 // }
 
 // export type Parameters = {
-//     'expected': d_in.Directory
+//     'expected': s_in.Directory
 //     'suffix settings': Suffix_Settings
 // }
 
@@ -69,24 +69,24 @@
 
 
 // export const Directory: p_i.Transformer_With_Parameter<
-// d_in.Directory, d_out.Directory, Parameters> = ($, $p) => ({
-//     'nodes': $.__ d_map_deprecated(
+// s_in.Directory, s_out.Directory, Parameters> = ($, $p) => ({
+//     'nodes': $.__ s_map_deprecated(
 //($, id) => p_.from.state($).decide(
-    //($): d_out.Node => {
+    //($): s_out.Node => {
         //         switch ($[0]) {
         //             case 'other': return p_.option($, () => p_unreachable_code_path("this needs proper handling"))//"expected a file or a directory"
-        //             case 'file': return p_.option($, ($): d_out.Node => {
+        //             case 'file': return p_.option($, ($): s_out.Node => {
 
 
 
-        //                 const get_matching_expect_file = ($: string): d_out.Node__file__expected => {
+        //                 const get_matching_expect_file = ($: string): s_out.Node__file__expected => {
         //                     const expected_node = $p.expected.__ get_possible_entry_deprecated($ + $p['suffix settings']['to be appended to expected'].__ decide(
         //                         ($) => $,
         //                         () => ""
         //                     ))
         //                     return expected_node.__ decide(
         //                         ($) => p_.from.state($).decide(
-        //($): d_out.Node__file__expected => {
+        //($): s_out.Node__file__expected => {
             //                             switch ($[0]) {
             //                                 case 'file': return p_.option($, ($) => ['valid', $])
             //                                 case 'directory': return p_.option($, ($) => ['invalid', ['expected', ['is not a file', null]]])
@@ -94,7 +94,7 @@
             //                                 default: return p_.exhaustive($[0])
             //                             }
             //                         }),
-            //                         (): d_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
+            //                         (): s_out.Node__file__expected => ['invalid', ['expected', ['does not exist', null]]]
             //                     )
             //                 }
 
@@ -103,11 +103,11 @@
             //                     'input': top_node,
             //                     'matching': $p['suffix settings']['to be removed from input'].__ decide(
             //                         ($) => remove_suffix(id, $).__ decide(
-            //                             ($): d_out.Node__file__expected => get_matching_expect_file($),
-            //                             (): d_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
+            //                             ($): s_out.Node__file__expected => get_matching_expect_file($),
+            //                             (): s_out.Node__file__expected => ['invalid', ['required input suffix missing', $]]
 
             //                         ),
-            //                         (): d_out.Node__file__expected => get_matching_expect_file(id)
+            //                         (): s_out.Node__file__expected => get_matching_expect_file(id)
             //                     )
             //                 }]
             //             })
@@ -139,7 +139,7 @@
                 //     // 'superfluous nodes': p_.block(
                 // () => {
                 //     //     const temp: { [id: string]: null } = {}
-                //     //     $.__ d_map_deprecated(
+                //     //     $.__ s_map_deprecated(
                 //($, id) => {
                 //     //         const key_of_expected = p_.from.state($).decide(
                 //($): string => {
@@ -163,9 +163,9 @@
                 //     //         temp[key_of_expected] = null
                 //     //     })
                 //     //     const main = p_.literal.dictionary(temp)
-                //     //     return op_filter_dictionary($p.expected.__ d_map_deprecated(
+                //     //     return op_filter_dictionary($p.expected.__ s_map_deprecated(
                 //($, id) => {
-                    //     //         return main.get_entry(key).__ d_map_deprecated(
+                    //     //         return main.get_entry(key).__ s_map_deprecated(
                     //() => null)
 //     //     }))
 //     // })

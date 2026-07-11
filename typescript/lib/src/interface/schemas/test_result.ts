@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as d_generic from "./generic_testset.js"
+import type * as s_generic from "./generic_testset.js"
 
 export type Test_Collection_Result = p_.Dictionary<Test_Node_Result>
 
@@ -19,7 +19,7 @@ export type Test_Node_Result__collection__result =
     | ['source invalid',
         | ['not a collection', null]
         | ['missing', null] // the tester expected this test collection, but it was not found
-        | ['problem with expected', d_generic.Node__directory__invalid]
+        | ['problem with expected', s_generic.Node__directory__invalid]
     ]
     | ['source valid', Test_Collection_Result]
 
@@ -29,7 +29,7 @@ export type Individual_Test_Result = {
 export type Individual_Test_Result__result =
     | ['source invalid',
         | ['not an individual test', null]
-        | ['problem with expected', d_generic.Node__file__expected__invalid]
+        | ['problem with expected', s_generic.Node__file__expected__invalid]
     ]
     | ['tested', Tested
     ]

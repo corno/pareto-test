@@ -1,14 +1,14 @@
 // import * as p_ from 'pareto-core/implementation/transformer'
 
-// import type * as d_out from "pareto-fountain-pen/interface/data/prose"
-// import type * as d_in from "../../../interface/temp/generic.js"
+// import type * as s_out from "pareto-fountain-pen/interface/data/prose"
+// import type * as s_in from "../../../interface/temp/generic.js"
 
 // import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-// export const Results = ($: d_in.Results): d_out.Paragraph => Branch($)
+// export const Results = ($: s_in.Results): s_out.Paragraph => Branch($)
 
 
-// export const Branch = ($: d_in.Results): d_out.Paragraph => sh.pg.sentences(p_.from.dictionary(//     $,
+// export const Branch = ($: s_in.Results): s_out.Paragraph => sh.pg.sentences(p_.from.dictionary(//     $,
 // ).convert(
 //     ($, id) => sh.sentence([
 //         sh.ph.literal(id),

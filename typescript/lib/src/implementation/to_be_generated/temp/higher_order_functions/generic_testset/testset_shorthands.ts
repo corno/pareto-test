@@ -1,7 +1,7 @@
 // import p_change_context from 'pareto-core/implementation/specials/change_context'
 // import create_refinement_context from 'pareto-core/__internals/async/create_refinement_context'
 
-// import type * as d_out from "../../../../interface/schemas/test_result.js"
+// import type * as s_out from "../../../../interface/schemas/test_result.js"
 
 // import * as temp from "./temp.js"
 
@@ -14,7 +14,7 @@
 //     )
 // )
 
-// // export const parse = ($: string): _pinternals.Refinement_Result<d_astn_source._T_Document, d_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
+// // export const parse = ($: string): _pinternals.Refinement_Result<s_astn_source._T_Document, s_parse_result._T_Parse_Error> => p_parse.parse($, { 'tab size': 4 })
 
 // export const transformer = (
 //     transformer: (
@@ -22,8 +22,8 @@
 //         abort: ($: string) => never
 //     ) => string
 // ): temp.Directory_to_Test_Collection_Result_Transformer => ($) => p_.from.dictionary($.nodes).map(
-//($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
-    //     ($p) => create_refinement_context<d_out.Tested, string>(
+//($, id): s_out.Test_Node_Result => temp.create_individual_test_transformer(
+    //     ($p) => create_refinement_context<s_out.Tested, string>(
     //         (abort) => {
 
     //             const out = transformer(
@@ -39,7 +39,7 @@
     //         }
     //     ).__extract_data(
     //         ($) => $,
-    //         ($): d_out.Tested => ['failed', ['transform', ['initialization', $]]],
+    //         ($): s_out.Tested => ['failed', ['transform', ['initialization', $]]],
     //     ),
     // )($))
 
@@ -54,8 +54,8 @@
     // ): temp.Directory_to_Test_Collection_Result_Transformer => {
 
     //     const x = (expect_error: boolean): temp.Directory_to_Test_Collection_Result_Transformer => ($) => p_.from.dictionary($.nodes).map(
-    //($, id): d_out.Test_Node_Result => temp.create_individual_test_transformer(
-//         ($p) => create_refinement_context<d_out.Tested, string>(
+    //($, id): s_out.Test_Node_Result => temp.create_individual_test_transformer(
+//         ($p) => create_refinement_context<s_out.Tested, string>(
 //             (initialize_abort) => {
 //                 return create_refinement_context<string, string>(
 //                     (refine_abort) => refiner(
@@ -66,7 +66,7 @@
 //                         }
 //                     )
 //                 ).__extract_data(
-//                     ($): d_out.Tested => expect_error
+//                     ($): s_out.Tested => expect_error
 //                         ? ['failed', ['refine', ['should have failed but succeeded', $]]]
 //                         : $ === $p.expected
 //                             ? ['passed', null]
@@ -74,7 +74,7 @@
 //                                 'expected': $p.expected,
 //                                 'actual': $,
 //                             }]]],
-//                     ($): d_out.Tested => expect_error
+//                     ($): s_out.Tested => expect_error
 //                         ? $ === $p.expected
 //                             ? ['passed', null]
 //                             : ['failed', ['refine', ['unexpected output', {
@@ -86,7 +86,7 @@
 //             }
 //         ).__extract_data(
 //             ($) => $,
-//             ($): d_out.Tested => ['failed', ['refine', ['initialization', $]]],
+//             ($): s_out.Tested => ['failed', ['refine', ['initialization', $]]],
 //         ),
 //     )($))
 //     return temp.create_collection_transformer('dictionary', _pt.dictionary.literal<temp.Directory_to_Test_Collection_Result_Transformer>({

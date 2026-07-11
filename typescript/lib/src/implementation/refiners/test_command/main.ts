@@ -4,13 +4,13 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 //data types
 import * as d from "../../../interface/schemas/test_command.js"
-import type * as d_main from "pareto-application-api/interface/data/main"
+import type * as s_main from "pareto-application-api/interface/data/main"
 
 //dependencies
 import * as pr_text_command_from_text from "./text.js"
 
 export const Parameters: p_i.Refiner<
-    d.Parameters, string, d_main.Parameters
+    d.Parameters, string, s_main.Parameters
 > = ($, abort) => p_iterate<
     d.Parameters,
     string,

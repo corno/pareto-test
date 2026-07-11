@@ -1,18 +1,18 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import type * as d_in from "../../../interface/schemas/test_result.js"
-import type * as d_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_in from "../../../interface/schemas/test_result.js"
+import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 
 export const Test_Collection_Result = (
-    $: d_in.Test_Collection_Result,
+    $: s_in.Test_Collection_Result,
     $p: {
         'path to test data': string
         'path to test': string
     }
-): d_out.Paragraph => {
+): s_out.Paragraph => {
 
     const RED = "\x1b[31m"
     const GREEN = "\x1b[32m"

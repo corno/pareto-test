@@ -3,7 +3,7 @@
 
 
 
-// import type * as d_test from "../../../interface/temp/generic.js"
+// import type * as s_test from "../../../interface/temp/generic.js"
 
 // import * as resources_pareto from "pareto-stream-api/interface/resources"
 
@@ -11,7 +11,7 @@
 // import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 // export type Parameters = {
-//     'test results': d_test.Results,
+//     'test results': s_test.Results,
 // }
 
 // export type Command = p_i.Command<null, Parameters>
@@ -28,7 +28,7 @@
 
 // import * as t_test_result_to_prose from "../transformers/test_result/fountain_pen.js"
 
-// const has_passed = (results: d_test.Results): boolean => _pt.from.dictionary(//     _pt.from .dictionary(results,
+// const has_passed = (results: s_test.Results): boolean => _pt.from.dictionary(//     _pt.from .dictionary(results,
 //     ).map_optionally(
 //         ($) => _pt.from.state($).decide(
 //($): p_di.Optional_Value<null> => {
@@ -91,7 +91,7 @@
 //                 //         'path': 
 //                 //         'content': $p,
 //                 //     },
-//                 //     ($): d_write_directory_content.Error => ['writing test failures', $],
+//                 //     ($): s_write_directory_content.Error => ['writing test failures', $],
 //                 // ),
 //             ]
 //         )

@@ -1,10 +1,10 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import type * as d_directory_content from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
+import type * as s_directory_content from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
 
 export type Node =
     | ['file', {
-        'support': p_.Optional_Value<d_directory_content.Node>
+        'support': p_.Optional_Value<s_directory_content.Node>
     }]
     | ['directory', Directory]
 
@@ -18,5 +18,5 @@ export type Invalid_Directory = {
     'support':
     | ['does not exist', null]
     | ['is not a directory', null]
-    'nodes': p_.Dictionary<d_directory_content.Node>
+    'nodes': p_.Dictionary<s_directory_content.Node>
 }

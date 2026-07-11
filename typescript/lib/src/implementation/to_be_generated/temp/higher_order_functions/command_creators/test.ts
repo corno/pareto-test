@@ -1,13 +1,13 @@
 // import p_change_context from 'pareto-core/implementation/specials/change_context'
 // import p_text_from_list from 'pareto-core/implementation/specials/text_from_list'
 
-// import type * as d_main from "pareto-resources/interface/to_be_generated/temp_main"
-// import type * as d_read_directory_content from "pareto-resources/interface/to_be_generated/read_directory_content"
-// import type * as d_directory_content from "pareto-resources/interface/to_be_generated/directory_content"
-// import type * as d_test_result from "../../../../interface/schemas/test_result.js"
-// import type * as d_write_directory_content from "pareto-resources/interface/to_be_generated/write_directory_content"
+// import type * as s_main from "pareto-resources/interface/to_be_generated/temp_main"
+// import type * as s_read_directory_content from "pareto-resources/interface/to_be_generated/read_directory_content"
+// import type * as s_directory_content from "pareto-resources/interface/to_be_generated/directory_content"
+// import type * as s_test_result from "../../../../interface/schemas/test_result.js"
+// import type * as s_write_directory_content from "pareto-resources/interface/to_be_generated/write_directory_content"
 
-// import type * as d_generic_testset from "../../../../interface/schemas/generic_testset.js"
+// import type * as s_generic_testset from "../../../../interface/schemas/generic_testset.js"
 
 // import * as r_test_command_refiner from "../../../manual/refiners/test_command/main.js"
 
@@ -51,30 +51,30 @@
 // export type My_Error =
 //     | ['command line', null]
 //     | ['writing to stdout', null]
-//     | ['read directory content', d_read_directory_content.Error]
-//     | ['write directory content', d_write_directory_content.Error]
+//     | ['read directory content', s_read_directory_content.Error]
+//     | ['write directory content', s_write_directory_content.Error]
 //     | ['failed tests', {
 //         'path': string
-//         'tests': d_test_result.Test_Collection_Result
+//         'tests': s_test_result.Test_Collection_Result
 //     }]
 
 
 // export const $$ = (
 //     $x: {
 //         'astn to astn': p_ti.Transformer<
-// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// s_generic_testset.Directory, s_test_result.Test_Collection_Result
 // >
 // //         'text to astn': p_ti.Transformer<
-// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// s_generic_testset.Directory, s_test_result.Test_Collection_Result
 // >
 // //         'astn to text': p_ti.Transformer<
-// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+// s_generic_testset.Directory, s_test_result.Test_Collection_Result
 // >
 //     }
 // ): Procedure => _pc.command_procedure(
 //     ($d, $s, $q, $c) => [
 
-//         _pc.handle_error<d_main.Error, My_Error>(
+//         _pc.handle_error<s_main.Error, My_Error>(
 //             [
 
 //                 _pc.refine_without_error_transformation(
@@ -124,8 +124,8 @@
 //                                             $,
 //                                             ($v, $parent) => {
 
-//                                                 const test_results: d_test_result.Test_Collection_Result = p_.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: p_ti.Transformer<
-// d_generic_testset.Directory, d_test_result.Test_Collection_Result
+//                                                 const test_results: s_test_result.Test_Collection_Result = p_.dictionary.literal<{ 'suffix': t_directory_content_to_generic_testset.Suffix_Settings, transformer: p_ti.Transformer<
+// s_generic_testset.Directory, s_test_result.Test_Collection_Result
 // > }>({
 //                                                     'astn_to_astn': {
 //                                                         'transformer': $x['astn to astn'],
@@ -149,10 +149,10 @@
 //                                                         }
 //                                                     },
 //                                                 }).__d _map_deprecated(
-// ($, id): d_test_result.Test_Node_Result => {
+// ($, id): s_test_result.Test_Node_Result => {
 //                                                     const the_func = ($x: {
-//                                                         'input': d_directory_content.Directory,
-//                                                         'expected': d_directory_content.Directory,
+//                                                         'input': s_directory_content.Directory,
+//                                                         'expected': s_directory_content.Directory,
 //                                                     }) => $.transformer(t_directory_content_to_generic_testset.Directory(
 //                                                         $x.input,
 //                                                         {
@@ -165,15 +165,15 @@
 //                                                     return ['collection', {
 //                                                         'type': ['group', null],
 //                                                         'result': input_node.__ decide(
-//                                                             ($): d_test_result.Test_Node_Result__collection__result => p_.from.state($).decide(
-// ($): d_test_result.Test_Node_Result__collection__result => {
+//                                                             ($): s_test_result.Test_Node_Result__collection__result => p_.from.state($).decide(
+// ($): s_test_result.Test_Node_Result__collection__result => {
 //                                                                 switch ($[0]) {
 //                                                                     case 'directory': return p_.option($, ($) => {
 //                                                                         const input_dir = $
 //                                                                         return expected_node.__ decide(
-//                                                                             ($): d_test_result.Test_Node_Result__collection__result => {
+//                                                                             ($): s_test_result.Test_Node_Result__collection__result => {
 //                                                                                 return p_.from.state($).decide(
-// ($): d_test_result.Test_Node_Result__collection__result => {
+// ($): s_test_result.Test_Node_Result__collection__result => {
 //                                                                                     switch ($[0]) {
 //                                                                                         case 'directory': return p_.option($, ($) => {
 //                                                                                             const expected_dir = $
@@ -188,13 +188,13 @@
 //                                                                                     }
 //                                                                                 })
 //                                                                             },
-//                                                                             (): d_test_result.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', ['directory for expected does not exist', null]]]
+//                                                                             (): s_test_result.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', ['directory for expected does not exist', null]]]
 //                                                                         )
 //                                                                     })
 //                                                                     default: return ['source invalid', ['not a collection', null]]
 //                                                                 }
 //                                                             }),
-//                                                             (): d_test_result.Test_Node_Result__collection__result => ['source invalid', ['missing', null]]
+//                                                             (): s_test_result.Test_Node_Result__collection__result => ['source invalid', ['missing', null]]
 //                                                         )
 //                                                     }]
 //                                                 })
@@ -331,7 +331,7 @@
 //                             }
 //                         })
 //                     },
-//                     ($): d_main.Error => ({
+//                     ($): s_main.Error => ({
 //                         'exit code': 2
 //                     })
 //                 )

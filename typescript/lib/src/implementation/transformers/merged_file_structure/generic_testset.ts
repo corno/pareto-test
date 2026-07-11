@@ -1,25 +1,25 @@
 
-// import type * as d_in from "../../../interface/schemas/merged_filesystem_nodes.js"
-// import type * as d_out from "../../../interface/schemas/generic_testset.js"
+// import type * as s_in from "../../../interface/schemas/merged_filesystem_nodes.js"
+// import type * as s_out from "../../../interface/schemas/generic_testset.js"
 
 // export const Group: p_i.Transformer<
-// d_out.Node__group, d_in.Directory
+// s_out.Node__group, s_in.Directory
 // > = ($) => {
 //     return p_.from.state($).decide(
-//($): d_out.Node__group => {
+//($): s_out.Node__group => {
 //         switch ($[0]) {
-//             case 'invalid': return p_.option($, ($): d_out.Node__group => ['expected does not exist'])
+//             case 'invalid': return p_.option($, ($): s_out.Node__group => ['expected does not exist'])
 //             case 'valid': return p_.option($, ($) => {
-//                 return $.__ d_map_deprecated(
+//                 return $.__ s_map_deprecated(
 //($, id) => {
 //                     const expected_node = $p.expected.get_entry(key)
 //                     return p_.from.state($).decide(
-//($): d_out.Node => {
+//($): s_out.Node => {
 //                         switch ($[0]) {
-//                             case 'other': return p_.option($, ($): d_out.Node => {
+//                             case 'other': return p_.option($, ($): s_out.Node => {
 //                                 return _pinternals.panic("expected a file or a directory")
 //                             })
-//                             case 'file': return p_.option($, ($): d_out.Node => {
+//                             case 'file': return p_.option($, ($): s_out.Node => {
 //                                 const top_node = $
 //                                 return ['test', {
 //                                     'input': top_node,

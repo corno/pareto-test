@@ -1,10 +1,10 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 
-import type * as d_in from "../../../interface/schemas/test_result.js"
-import type * as d_out from "../../../interface/schemas/summary.js"
+import type * as s_in from "../../../interface/schemas/test_result.js"
+import type * as s_out from "../../../interface/schemas/summary.js"
 
-namespace d_function {
+namespace s_function {
     
     export type Parameters = {
         'include passed tests': boolean
@@ -14,9 +14,9 @@ namespace d_function {
 }
 
 export const Test_Node_Result: p_i.Transformer_With_Parameter<
-    d_in.Test_Node_Result,
-    d_out.Test_count,
-    d_function.Parameters
+    s_in.Test_Node_Result,
+    s_out.Test_count,
+    s_function.Parameters
 > = ($, $p) => {
     const structural_problem_incrementer = $p['include structural problems'] ? 1 : 0
     return p_.from.state($).decide(
@@ -52,9 +52,9 @@ export const Test_Node_Result: p_i.Transformer_With_Parameter<
 }
 
 export const Test_Group_Result: p_i.Transformer_With_Parameter<
-    d_in.Test_Collection_Result,
-    d_out.Test_count,
-    d_function.Parameters
+    s_in.Test_Collection_Result,
+    s_out.Test_count,
+    s_function.Parameters
 > = ($, $p) => {
     let count = 0
     p_.from.dictionary(
