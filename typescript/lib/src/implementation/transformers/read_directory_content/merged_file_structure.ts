@@ -1,12 +1,29 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
-import type * as interface_ from "../../../declarations/transformers/read_directory_content/merged_file_structure.js"
-
 //schemas
+import type * as s_in from "../../../interface/schemas/directory_content.js"
 import type * as s_out from "../../../interface/schemas/merged_filesystem_nodes.js"
 
-export const Directory: interface_.Directory = ($, $p) => {
+namespace declarations {
+    export type Directory = p_.Transformer_With_Parameter<
+        s_in.Directory,
+        s_out.Valid_Directory,
+        {
+        'support': s_in.Directory
+
+        /**
+         * the file suffix makes it possible to match a support file that is expected to have a suffix.
+         * for example given the suffix 'foo': /a/b/c.txt.foo is matched to /a/b/c.txt
+         */
+        'support suffix': string
+    }
+    >
+}
+
+//schemas
+
+export const Directory: declarations.Directory = ($, $p) => {
     return p_.from.dictionary($).map(
         ($, id) => {
             const $v_support_directory = $p.support

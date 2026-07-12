@@ -1,8 +1,12 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
+//schemas
 import type * as s_in from "../../../interface/schemas/test_result.js"
-import type * as s_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_out from "../../../interface/schemas/prose.js"
 
+
+
+//shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 

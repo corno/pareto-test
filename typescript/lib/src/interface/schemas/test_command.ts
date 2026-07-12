@@ -1,4 +1,4 @@
-import type * as s_path from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_path"
+import type * as s_path from "./fs_unrestricted_path.js"
 
 export type Parameters = {
     'path to test data': s_path.Context_Path
