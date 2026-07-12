@@ -2,7 +2,7 @@ import type * as p_i from 'pareto-core/interface/refiner'
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
-//data types
+//schemas
 import * as d from "../../../interface/schemas/test_command.js"
 import type * as s_main from "pareto-application-api/interface/data/main"
 

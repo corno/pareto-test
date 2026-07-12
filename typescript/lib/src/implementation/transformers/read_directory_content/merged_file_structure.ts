@@ -3,7 +3,7 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 
 import type * as interface_ from "../../../declarations/transformers/read_directory_content/merged_file_structure.js"
 
-//data types
+//schemas
 import type * as s_out from "../../../interface/schemas/merged_filesystem_nodes.js"
 
 export const Directory: interface_.Directory = ($, $p) => {

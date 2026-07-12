@@ -2,7 +2,7 @@
 import type * as p_ from 'pareto-core/interface/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
-//data types
+//schemas
 import type * as s_in from "pareto-filesystem-unrestricted-api/interface/data/directory_content"
 import type * as s_out from "../../../interface/schemas/merged_filesystem_nodes.js"
 
