@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
 import type * as s_in from "../../../interface/schemas/write_directory_content.js"
-import type * as s_out from "../../../interface/schemas/prose.js"
+import type * as s_out from "../../../interface/schemas/paragraph.js"
 
 namespace declarations {
     export type Error = p_.Transformer<
@@ -12,10 +12,10 @@ namespace declarations {
 }
 
 //dependencies
-import * as t_write_file_to_prose from "pareto-filesystem-unrestricted-api/implementation/transformers/write_file/prose"
+import * as ser_write_file from "pareto-filesystem-unrestricted-api/implementation/serializers/write_file"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
 
 export const Error: declarations.Error = ($) => p_.from.state($).decide(
     ($) => {
@@ -29,7 +29,7 @@ export const Error: declarations.Error = ($) => p_.from.state($).decide(
                             p_.from.state($).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'file': return p_.option($, ($) => t_write_file_to_prose.Error($))
+                                        case 'file': return p_.option($, ($) => sh.ph.text(ser_write_file.Error($)))
                                         case 'directory': return p_.option($, ($) => Error($))
                                         default: return p_.exhaustive($[0])
                                     }
