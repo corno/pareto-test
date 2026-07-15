@@ -8,7 +8,7 @@
 // import * as resources_pareto from "pareto-stream-api/interface/resources"
 
 // //shorthands
-// import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+// import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 // export type Parameters = {
 //     'test results': s_test.Results,
@@ -47,7 +47,7 @@
 //             {
 //                 'message': sh.pg.sentences([
 //                     sh.sentence([
-//                         sh.ph.literal("running tests..."),
+//                         sh.ph.text("running tests..."),
 //                     ])
 //                 ]),
 //             },
@@ -61,7 +61,7 @@
 //                         'message': sh.pg.sentences([
 //                             sh.sentence([]),
 //                             sh.sentence([
-//                                 sh.ph.literal("all tests successful."),
+//                                 sh.ph.text("all tests successful."),
 //                             ]),
 //                         ]),
 //                     },
@@ -79,7 +79,7 @@
 //                             sh.pg.sentences([
 //                                 sh.sentence([]),
 //                                 sh.sentence([
-//                                     sh.ph.literal("some tests failed"),
+//                                     sh.ph.text("some tests failed"),
 //                                 ])
 //                             ]),
 //                         ])

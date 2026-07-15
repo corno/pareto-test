@@ -22,7 +22,7 @@
 // import * as t_path_to_path from "pareto-resources/implementation/transformers/unrestricted_path/unrestricted_path"
 // import * as t_path_to_text from "pareto-resources/implementation/transformers/unrestricted_path/text"
 
-// import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+// import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 // const RED = "\x1b[31m"
 // const GREEN = "\x1b[32m"
@@ -228,9 +228,9 @@
 
 //                                                                             sh.sentence([]),
 //                                                                             sh.sentence([
-//                                                                                 sh.ph.literal(GREEN),
-//                                                                                 sh.ph.literal("All tests passed!"),
-//                                                                                 sh.ph.literal(ENDCOLOR),
+//                                                                                 sh.ph.text(GREEN),
+//                                                                                 sh.ph.text("All tests passed!"),
+//                                                                                 sh.ph.text(ENDCOLOR),
 //                                                                             ])
 //                                                                         ])
 //                                                                     ])
@@ -280,17 +280,17 @@
 //                             switch ($[0]) {
 //                                 case 'command line': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
-//                                         sh.ph.literal("command line error")
+//                                         sh.ph.text("command line error")
 //                                     ])
 //                                 ]))
 //                                 case 'writing to stdout': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
-//                                         sh.ph.literal("error writing to stdout")
+//                                         sh.ph.text("error writing to stdout")
 //                                     ])
 //                                 ]))
 //                                 case 'read directory content': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
-//                                         sh.ph.literal("read dir error")
+//                                         sh.ph.text("read dir error")
 //                                     ]),
 //                                     sh.sentence([
 //                                         t_read_directory_content_to_prose.Error($)
@@ -298,7 +298,7 @@
 //                                 ]))
 //                                 case 'write directory content': return p_.option($, ($) => sh.pg.sentences([
 //                                     sh.sentence([
-//                                         sh.ph.literal("write dir error")
+//                                         sh.ph.text("write dir error")
 //                                     ]),
 //                                     sh.sentence([
 //                                         t_write_directory_content_to_prose.Error($)
@@ -314,7 +314,7 @@
 //                                     ),
 //                                     sh.pg.sentences([
 //                                         sh.sentence([
-//                                             sh.ph.literal(RED),
+//                                             sh.ph.text(RED),
 //                                             sh.ph.decimal(t_test_result_to_summary.Test_Group_Result(
 //                                                 $.tests,
 //                                                 {
@@ -322,8 +322,8 @@
 //                                                     'include structural problems': true,
 //                                                 }
 //                                             )),
-//                                             sh.ph.literal(" test(s) failed"),
-//                                             sh.ph.literal(ENDCOLOR),
+//                                             sh.ph.text(" test(s) failed"),
+//                                             sh.ph.text(ENDCOLOR),
 //                                         ])
 //                                     ])
 //                                 ]))

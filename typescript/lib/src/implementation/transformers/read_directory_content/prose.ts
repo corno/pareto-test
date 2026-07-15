@@ -15,7 +15,7 @@ import * as t_read_directory_to_prose from "pareto-filesystem-unrestricted-api/i
 import * as t_read_file_to_prose from "pareto-filesystem-unrestricted-api/implementation/transformers/read_file/prose"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 export const Error: declarations.Error = ($) => p_.from.state($).decide(
     ($) => {
@@ -23,8 +23,8 @@ export const Error: declarations.Error = ($) => p_.from.state($).decide(
             case 'directory content processing': return p_.option($, ($) => sh.ph.indent(
                 sh.pg.sentences(p_.from.dictionary($).convert_to_list(
                     ($, id) => sh.sentence([
-                        sh.ph.literal(id),
-                        sh.ph.literal(": "),
+                        sh.ph.text(id),
+                        sh.ph.text(": "),
                         p_.from.state($).decide(
                             ($) => {
                                 switch ($[0]) {

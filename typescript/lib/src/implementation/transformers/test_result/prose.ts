@@ -3,7 +3,7 @@
 // import type * as s_out from "../../../interface/schemas/prose.js"
 // import type * as s_in from "../../../interface/temp/generic.js"
 
-// import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+// import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 // export const Results = ($: s_in.Results): s_out.Paragraph => Branch($)
 
@@ -11,14 +11,14 @@
 // export const Branch = ($: s_in.Results): s_out.Paragraph => sh.pg.sentences(p_.from.dictionary(//     $,
 // ).convert(
 //     ($, id) => sh.sentence([
-//         sh.ph.literal(id),
-//         sh.ph.literal(": "),
+//         sh.ph.text(id),
+//         sh.ph.text(": "),
 //         p_.from.state($).decide(
 //($) => {
 //             switch ($[0]) {
 //                 case 'test': return p_.option($, ($) => $.passed
-//                     ? sh.ph.literal("✅ PASS")
-//                     : sh.ph.literal("❌ FAIL")
+//                     ? sh.ph.text("✅ PASS")
+//                     : sh.ph.text("❌ FAIL")
 //                 )
 //                 case 'group': return p_.option($, ($) => sh.ph.composed([
 //                     sh.ph.indent(

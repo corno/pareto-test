@@ -7,7 +7,7 @@ import type * as s_out from "../../../interface/schemas/prose.js"
 
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 
 export const Test_Collection_Result = (
@@ -27,10 +27,10 @@ export const Test_Collection_Result = (
     const ENDCOLOR = "\x1b[0m"
 
     const do_context_path = (which: string) => sh.ph.composed([
-        sh.ph.literal($p['path to test data']),
-        sh.ph.literal("/"),
-        sh.ph.literal(which),
-        sh.ph.literal($p['path to test']),
+        sh.ph.text($p['path to test data']),
+        sh.ph.text("/"),
+        sh.ph.text(which),
+        sh.ph.text($p['path to test']),
     ])
     return sh.pg.sentences(
         p_.from.dictionary($,).convert_to_list(
@@ -41,26 +41,26 @@ export const Test_Collection_Result = (
                             case 'collection': return p_.option($, ($) => p_.from.state($.type).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'group': return p_.option($, ($) => sh.ph.literal(CYAN))
-                                        case 'dictionary': return p_.option($, ($) => sh.ph.literal(BLUE))
+                                        case 'group': return p_.option($, ($) => sh.ph.text(CYAN))
+                                        case 'dictionary': return p_.option($, ($) => sh.ph.text(BLUE))
                                         default: return p_.exhaustive($[0])
                                     }
                                 }))
-                            case 'individual test': return p_.option($, ($) => sh.ph.literal(MAGENTA))
+                            case 'individual test': return p_.option($, ($) => sh.ph.text(MAGENTA))
                             default: return p_.exhaustive($[0])
                         }
                     }),
-                sh.ph.literal(id),
-                sh.ph.literal(ENDCOLOR),
+                sh.ph.text(id),
+                sh.ph.text(ENDCOLOR),
                 p_.from.state($).decide(
                     ($) => {
                         const do_node_path = (which: string) => sh.ph.composed([
-                            sh.ph.literal($p['path to test data']),
-                            sh.ph.literal("/"),
-                            sh.ph.literal(which),
-                            sh.ph.literal($p['path to test']),
-                            sh.ph.literal("/"),
-                            sh.ph.literal(id),
+                            sh.ph.text($p['path to test data']),
+                            sh.ph.text("/"),
+                            sh.ph.text(which),
+                            sh.ph.text($p['path to test']),
+                            sh.ph.text("/"),
+                            sh.ph.text(id),
                         ])
                         switch ($[0]) {
                             case 'individual test': return p_.option($, ($) => p_.from.state($.result).decide(
@@ -70,36 +70,36 @@ export const Test_Collection_Result = (
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'not an individual test': return sh.ph.composed([
-                                                        sh.ph.literal(YELLOW),
-                                                        sh.ph.literal(" not a file: "),
+                                                        sh.ph.text(YELLOW),
+                                                        sh.ph.text(" not a file: "),
                                                         do_node_path("input"),
-                                                        sh.ph.literal(ENDCOLOR),
+                                                        sh.ph.text(ENDCOLOR),
                                                     ])
                                                     case 'problem with expected': return p_.option($, ($) => p_.from.state($).decide(
                                                         ($) => {
                                                             switch ($[0]) {
                                                                 case 'required input suffix missing': return p_.option($, ($) => sh.ph.composed([
-                                                                    sh.ph.literal(YELLOW),
-                                                                    sh.ph.literal(" does not have the required suffix '"),
-                                                                    sh.ph.literal($),
-                                                                    sh.ph.literal("': "),
+                                                                    sh.ph.text(YELLOW),
+                                                                    sh.ph.text(" does not have the required suffix '"),
+                                                                    sh.ph.text($),
+                                                                    sh.ph.text("': "),
                                                                     do_node_path("input"),
-                                                                    sh.ph.literal(ENDCOLOR),
+                                                                    sh.ph.text(ENDCOLOR),
                                                                 ]))
                                                                 case 'expected': return p_.option($, ($) => p_.from.state($).decide(
                                                                     ($) => {
                                                                         switch ($[0]) {
                                                                             case 'does not exist': return sh.ph.composed([
-                                                                                sh.ph.literal(YELLOW),
-                                                                                sh.ph.literal(" missing in the 'expected' file structure: "),
+                                                                                sh.ph.text(YELLOW),
+                                                                                sh.ph.text(" missing in the 'expected' file structure: "),
                                                                                 do_context_path("expected"),
-                                                                                sh.ph.literal(ENDCOLOR),
+                                                                                sh.ph.text(ENDCOLOR),
                                                                             ])
                                                                             case 'is not a file': return sh.ph.composed([
-                                                                                sh.ph.literal(YELLOW),
-                                                                                sh.ph.literal(" node in 'expected' file structure is not a file: "),
+                                                                                sh.ph.text(YELLOW),
+                                                                                sh.ph.text(" node in 'expected' file structure is not a file: "),
                                                                                 do_node_path("expected"),
-                                                                                sh.ph.literal(ENDCOLOR),
+                                                                                sh.ph.text(ENDCOLOR),
                                                                             ])
                                                                             default: return p_.exhaustive($[0])
                                                                         }
@@ -115,15 +115,15 @@ export const Test_Collection_Result = (
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'passed': return sh.ph.composed([
-                                                        sh.ph.literal(GREEN),
-                                                        sh.ph.literal(" ✅ pass"),
-                                                        sh.ph.literal(ENDCOLOR),
+                                                        sh.ph.text(GREEN),
+                                                        sh.ph.text(" ✅ pass"),
+                                                        sh.ph.text(ENDCOLOR),
                                                     ])
                                                     case 'failed': return p_.option($, ($) => sh.ph.composed([
                                                         sh.ph.composed([
-                                                            sh.ph.literal(RED),
-                                                            sh.ph.literal(" ❌ fail"),
-                                                            sh.ph.literal(ENDCOLOR),
+                                                            sh.ph.text(RED),
+                                                            sh.ph.text(" ❌ fail"),
+                                                            sh.ph.text(ENDCOLOR),
                                                         ]),
                                                         sh.ph.indent(
                                                             sh.pg.sentences([
@@ -140,19 +140,19 @@ export const Test_Collection_Result = (
                                                                                 case 'transform': return p_.option($, ($) => p_.from.state($).decide(
                                                                                     ($) => {
                                                                                         switch ($[0]) {
-                                                                                            case 'initialization': return p_.option($, ($) => sh.ph.literal("initialization"))
-                                                                                            case 'unexpected output': return p_.option($, ($) => sh.ph.literal("unexpected output"))
+                                                                                            case 'initialization': return p_.option($, ($) => sh.ph.text("initialization"))
+                                                                                            case 'unexpected output': return p_.option($, ($) => sh.ph.text("unexpected output"))
                                                                                             default: return p_.exhaustive($[0])
                                                                                         }
                                                                                     }))
                                                                                 case 'refine': return p_.option($, ($) => p_.from.state($).decide(
                                                                                     ($) => {
                                                                                         switch ($[0]) {
-                                                                                            case 'initialization': return p_.option($, ($) => sh.ph.literal("initialization"))
-                                                                                            case 'should have failed but succeeded': return p_.option($, ($) => sh.ph.literal("should have failed but succeeded"))
-                                                                                            case 'should have succeeded but failed': return p_.option($, ($) => sh.ph.literal("should have succeeded but failed"))
-                                                                                            case 'unexpected output': return p_.option($, ($) => sh.ph.literal("unexpected output"))
-                                                                                            case 'unexpected error': return p_.option($, ($) => sh.ph.literal("unexpected error"))
+                                                                                            case 'initialization': return p_.option($, ($) => sh.ph.text("initialization"))
+                                                                                            case 'should have failed but succeeded': return p_.option($, ($) => sh.ph.text("should have failed but succeeded"))
+                                                                                            case 'should have succeeded but failed': return p_.option($, ($) => sh.ph.text("should have succeeded but failed"))
+                                                                                            case 'unexpected output': return p_.option($, ($) => sh.ph.text("unexpected output"))
+                                                                                            case 'unexpected error': return p_.option($, ($) => sh.ph.text("unexpected error"))
                                                                                             default: return p_.exhaustive($[0])
                                                                                         }
                                                                                     }))
@@ -186,36 +186,36 @@ export const Test_Collection_Result = (
                                             ($) => {
                                                 switch ($[0]) {
                                                     case 'missing': return sh.ph.composed([
-                                                        sh.ph.literal(YELLOW),
-                                                        sh.ph.literal(" missing: "),
+                                                        sh.ph.text(YELLOW),
+                                                        sh.ph.text(" missing: "),
                                                         do_context_path("input"),
-                                                        sh.ph.literal(ENDCOLOR),
+                                                        sh.ph.text(ENDCOLOR),
                                                     ])
                                                     case 'problem with expected': return p_.option($, ($) => p_.from.state($).decide(
                                                         ($) => {
                                                             switch ($[0]) {
 
                                                                 case 'node for expected is not a directory': return sh.ph.composed([
-                                                                    sh.ph.literal(YELLOW),
-                                                                    sh.ph.literal(" node in 'expected' file structure is not a directory: "),
+                                                                    sh.ph.text(YELLOW),
+                                                                    sh.ph.text(" node in 'expected' file structure is not a directory: "),
                                                                     do_node_path("expected"),
-                                                                    sh.ph.literal(ENDCOLOR),
+                                                                    sh.ph.text(ENDCOLOR),
 
                                                                 ])
                                                                 case 'directory for expected does not exist': return sh.ph.composed([
-                                                                    sh.ph.literal(YELLOW),
-                                                                    sh.ph.literal(" missing in 'expected' file structure: "),
+                                                                    sh.ph.text(YELLOW),
+                                                                    sh.ph.text(" missing in 'expected' file structure: "),
                                                                     do_context_path("expected"),
-                                                                    sh.ph.literal(ENDCOLOR),
+                                                                    sh.ph.text(ENDCOLOR),
                                                                 ])
                                                                 default: return p_.exhaustive($[0])
                                                             }
                                                         }))
                                                     case 'not a collection': return p_.option($, ($) => sh.ph.composed([
-                                                        sh.ph.literal(YELLOW),
-                                                        sh.ph.literal(" not a directory: "),
+                                                        sh.ph.text(YELLOW),
+                                                        sh.ph.text(" not a directory: "),
                                                         do_node_path("input"),
-                                                        sh.ph.literal(ENDCOLOR),
+                                                        sh.ph.text(ENDCOLOR),
                                                     ]))
                                                     default: return p_.exhaustive($[0])
                                                 }
