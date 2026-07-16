@@ -11,8 +11,8 @@ namespace declarations {
     >
 }
 //dependencies
-import * as ser_read_directory from "pareto-filesystem-unrestricted-api/implementation/serializers/read_directory"
-import * as ser_read_file from "pareto-filesystem-unrestricted-api/implementation/serializers/read_file"
+import * as ser_read_directory from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_directory"
+import * as ser_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_file"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"

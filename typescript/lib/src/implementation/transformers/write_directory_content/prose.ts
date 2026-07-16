@@ -12,7 +12,7 @@ namespace declarations {
 }
 
 //dependencies
-import * as ser_write_file from "pareto-filesystem-unrestricted-api/implementation/serializers/write_file"
+import * as ser_write_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/write_file"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"

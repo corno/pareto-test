@@ -2,7 +2,7 @@ import type * as p_pi from 'pareto-core/interface/refiner'
 
 import * as d from "../../../interface/schemas/test_command.js"
 
-import * as r_path_from_text from "pareto-filesystem-unrestricted-api/implementation/refiners/path_unrestricted/text"
+import * as deser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/deserializers/path"
 
 export const Parameters: p_pi.Production<
     d.Parameters,
@@ -11,7 +11,7 @@ export const Parameters: p_pi.Production<
     null
 > = (iterator, abort) => {
     return {
-        'path to test data': r_path_from_text.Context_Path(
+        'path to test data': deser_path.Context_Path(
             iterator.consume(
                 ($) => abort("expected path to test data"),
                 ($) => $,
