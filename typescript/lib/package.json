@@ -1,6 +1,6 @@
 {
   "name": "pareto-test",
-  "version": "0.13.118",
+  "version": "0.13.119",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A testing framework for Pareto projects",
