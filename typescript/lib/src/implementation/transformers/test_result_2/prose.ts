@@ -7,7 +7,7 @@ import type * as s_out from "../../../interface/schemas/paragraph.js"
 
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/deprecated"
 
 
 export const Test_Collection_Result = (
