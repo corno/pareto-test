@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
-import type * as s_in from "../../../schemas/read_directory_content.js"
+import type * as s_in from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/read_nested_directory_content/schema"
 import type * as s_out from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/schema"
 
 namespace declarations {
@@ -11,8 +11,8 @@ namespace declarations {
     >
 }
 //dependencies
-import * as ser_read_directory from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_directory"
-import * as ser_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_file"
+import * as ser_read_directory from "pareto-filesystem-unrestricted-api/modules/unrestricted/schemas/read_directory/serializers"
+import * as ser_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/schemas/read_file/serializers"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/shorthands/deprecated"

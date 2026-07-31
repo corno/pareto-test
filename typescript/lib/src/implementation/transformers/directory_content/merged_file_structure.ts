@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
 //schemas
-import type * as s_in from "../../../schemas/directory_content_as_read.js"
+import type * as s_in from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/nested_directory_content_as_read/schema"
 import type * as s_out from "../../../schemas/merged_filesystem_nodes.js"
 
 namespace declarations {
