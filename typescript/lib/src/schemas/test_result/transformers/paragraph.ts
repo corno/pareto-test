@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
-import type * as s_in from "../../../schemas/test_result.js"
+import type * as s_in from "../schema.js"
 import type * as s_out from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/schema"
 
 
