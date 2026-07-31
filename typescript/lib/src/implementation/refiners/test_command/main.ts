@@ -3,8 +3,8 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //schemas
-import * as d from "../../../interface/schemas/test_command.js"
-import type * as s_main from "../../../interface/schemas/main.js"
+import * as d from "../../../schemas/test_command.js"
+import type * as s_main from "../../../schemas/main.js"
 
 //dependencies
 import * as pr_text_command_from_text from "./text.js"

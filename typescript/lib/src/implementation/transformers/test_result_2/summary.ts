@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 
-import type * as s_in from "../../../interface/schemas/test_result.js"
-import type * as s_out from "../../../interface/schemas/summary.js"
+import type * as s_in from "../../../schemas/test_result.js"
+import type * as s_out from "../../../schemas/summary.js"
 namespace s_parameters {
     
     export type Parameters = {

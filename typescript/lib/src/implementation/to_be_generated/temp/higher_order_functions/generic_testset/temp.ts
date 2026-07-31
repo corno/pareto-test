@@ -1,6 +1,6 @@
 
-// import type * as s_in from "../../../../interface/schemas/generic_testset.js"
-// import type * as s_out from "../../../../interface/schemas/test_result.js"
+// import type * as s_in from "../../../../schemas/generic_testset.js"
+// import type * as s_out from "../../../../schemas/test_result.js"
 
 
 

@@ -1,6 +1,6 @@
 // import * as p_ from 'pareto-core/implementation/transformer'
 
-// import type * as s_in from "../../../interface/schemas/test_result.js"
+// import type * as s_in from "../../../schemas/test_result.js"
 // import type * as s_out from "pareto-resources/interface/to_be_generated/directory_content"
 
 

@@ -1,6 +1,6 @@
 import type * as p_pi from 'pareto-core/interface/refiner'
 
-import * as d from "../../../interface/schemas/test_command.js"
+import * as d from "../../../schemas/test_command.js"
 
 import * as deser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/deserializers/path"
 
