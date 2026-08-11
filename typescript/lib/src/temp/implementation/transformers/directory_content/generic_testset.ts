@@ -2,7 +2,7 @@
 // import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 // import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-// import type * as s_in from "pareto-resources/interface/to_be_generated/directory_content"
+// import type * as s_in from "pareto-execute-unrestricted-api/interface/to_be_generated/directory_content"
 // import type * as s_out from "../../../schemas/generic_testset.js"
 
 // const remove_suffix = ($: string, suffix: string): p_di.Optional_Value<string> => {

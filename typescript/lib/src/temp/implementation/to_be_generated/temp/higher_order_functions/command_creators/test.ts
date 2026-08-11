@@ -1,11 +1,11 @@
 // import p_change_context from 'pareto-core/implementation/specials/change_context'
 // import p_text_from_list from 'pareto-core/implementation/specials/text_from_list'
 
-// import type * as s_main from "pareto-resources/interface/to_be_generated/temp_main"
-// import type * as s_read_directory_content from "pareto-resources/interface/to_be_generated/read_directory_content"
-// import type * as s_directory_content from "pareto-resources/interface/to_be_generated/directory_content"
+// import type * as s_main from "pareto-execute-unrestricted-api/interface/to_be_generated/temp_main"
+// import type * as s_read_directory_content from "pareto-execute-unrestricted-api/interface/to_be_generated/read_directory_content"
+// import type * as s_directory_content from "pareto-execute-unrestricted-api/interface/to_be_generated/directory_content"
 // import type * as s_test_result from "../../../../schemas/test_result.js"
-// import type * as s_write_directory_content from "pareto-resources/interface/to_be_generated/write_directory_content"
+// import type * as s_write_directory_content from "pareto-execute-unrestricted-api/interface/to_be_generated/write_directory_content"
 
 // import type * as s_generic_testset from "../../../../schemas/generic_testset.js"
 
@@ -19,8 +19,8 @@
 // import * as t_test_result_to_summary from "../../../manual/transformers/test_result_2/summary.js"
 // import * as t_test_result_to_actual_tree from "../../../manual/transformers/test_result_2/actual_tree.js"
 
-// import * as t_path_to_path from "pareto-resources/schemas/fs_unrestricted_path/transformers/unrestricted_path"
-// import * as t_path_to_text from "pareto-resources/schemas/fs_unrestricted_path/transformers/text"
+// import * as t_path_to_path from "pareto-execute-unrestricted-api/schemas/fs_unrestricted_path/transformers/unrestricted_path"
+// import * as t_path_to_text from "pareto-execute-unrestricted-api/schemas/fs_unrestricted_path/transformers/text"
 
 // import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
@@ -28,7 +28,7 @@
 // const GREEN = "\x1b[32m"
 // const ENDCOLOR = "\x1b[0m"
 
-// import * as resources_pareto from "pareto-resources/interface/resources"
+// import * as resources_pareto from "pareto-execute-unrestricted-api/interface/resources"
 // import * as resources_pareto_stream from "pareto-stream-api/interface/resources"
 
 // export type Procedure = p_ci.Command<

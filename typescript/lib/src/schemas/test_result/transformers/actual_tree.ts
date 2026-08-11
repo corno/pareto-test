@@ -1,7 +1,7 @@
 // import * as p_ from 'pareto-core/implementation/transformer'
 
 // import type * as s_in from "../../../schemas/test_result.js"
-// import type * as s_out from "pareto-resources/interface/to_be_generated/directory_content"
+// import type * as s_out from "pareto-execute-unrestricted-api/interface/to_be_generated/directory_content"
 
 
 // const op_cast_to_non_empty_dictionary = <T>($: p_di.Dictionary<T>): p_di.Optional_Value<p_di.Dictionary<T>> => p_.from.dictionary($).is _empty() ? p_.literal.not_set() : p_.literal.set($)
