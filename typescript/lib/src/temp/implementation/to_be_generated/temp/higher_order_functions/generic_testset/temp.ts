@@ -21,11 +21,11 @@
 //     'result': _pt.from.state($).decide(
 //($): s_out.Individual_Test_Result__result => {
 //         switch ($[0]) {
-//             case 'file': return _pt.ss($, ($): s_out.Individual_Test_Result__result => {
+//             case 'file': return _pt.option($, ($): s_out.Individual_Test_Result__result => {
 //                 const input = $.input
 //                 return _pt.decide.state($['matching'], ($): s_out.Individual_Test_Result__result => {
 //                     switch ($[0]) {
-//                         case 'valid': return _pt.ss($, ($) => {
+//                         case 'valid': return _pt.option($, ($) => {
 //                             const expected_text = $
 //                             return ['tested', tester(
 //                                 {
@@ -34,7 +34,7 @@
 //                                 }
 //                             )]
 //                         })
-//                         case 'invalid': return _pt.ss($, ($): s_out.Individual_Test_Result__result => ['source invalid', ['problem with expected', $]])
+//                         case 'invalid': return _pt.option($, ($): s_out.Individual_Test_Result__result => ['source invalid', ['problem with expected', $]])
 //                         default: return _pt.exhaustive($[0])
 //                     }
 //                 })
@@ -53,11 +53,11 @@
 //             ($): s_out.Test_Node_Result__collection__result => _pt.from.state($).decide(
 //($): s_out.Test_Node_Result__collection__result => {
 //                 switch ($[0]) {
-//                     case 'directory': return _pt.ss($, ($) => _pt.from.state($).decide(
+//                     case 'directory': return _pt.option($, ($) => _pt.from.state($).decide(
 //($) => {
 //                         switch ($[0]) {
-//                             case 'invalid': return _pt.ss($, ($): s_out.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', $]])
-//                             case 'valid': return _pt.ss($, ($): s_out.Test_Node_Result__collection__result => {
+//                             case 'invalid': return _pt.option($, ($): s_out.Test_Node_Result__collection__result => ['source invalid', ['problem with expected', $]])
+//                             case 'valid': return _pt.option($, ($): s_out.Test_Node_Result__collection__result => {
 
 //                                 return ['source valid', group_to_test_group_result($)]
 //                             })

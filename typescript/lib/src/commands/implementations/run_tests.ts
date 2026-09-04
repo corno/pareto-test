@@ -33,8 +33,8 @@
 //         ($) => _pt.from.state($).decide(
 //($): p_di.Optional_Value<null> => {
 //             switch ($[0]) {
-//                 case 'test': return _pt.ss($, ($) => $.passed ? _pt.literal.not_set() : _pt.literal.set(null))
-//                 case 'group': return _pt.ss($, ($) => has_passed($) ? _pt.literal.not_set() : _pt.literal.set(null))
+//                 case 'test': return _pt.option($, ($) => $.passed ? _pt.literal.not_set() : _pt.literal.set(null))
+//                 case 'group': return _pt.option($, ($) => has_passed($) ? _pt.literal.not_set() : _pt.literal.set(null))
 //                 default: return _pt.exhaustive($[0])
 //             }
 //         })

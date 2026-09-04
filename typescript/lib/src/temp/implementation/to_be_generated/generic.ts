@@ -50,8 +50,8 @@
 //                 const output = $
 //                 return _pt.decide.state(expected, ($) => {
 //                     switch ($[0]) {
-//                         case 'output': return _pt.ss($, ($) => output === $)
-//                         case 'error': return _pt.ss($, ($) => false)
+//                         case 'output': return _pt.option($, ($) => output === $)
+//                         case 'error': return _pt.option($, ($) => false)
 //                         default: return _pt.exhaustive($[0])
 //                     }
 //                 })
@@ -60,8 +60,8 @@
 //                 const error = $
 //                 return _pt.decide.state(expected, ($) => {
 //                     switch ($[0]) {
-//                         case 'output': return _pt.ss($, ($) => false)
-//                         case 'error': return _pt.ss($, ($) => error === $)
+//                         case 'output': return _pt.option($, ($) => false)
+//                         case 'error': return _pt.option($, ($) => error === $)
 //                         default: return _pt.exhaustive($[0])
 //                     }
 //                 })
@@ -87,8 +87,8 @@
 //                     const output = $
 //                     return _pt.decide.state(expected, ($) => {
 //                         switch ($[0]) {
-//                             case 'output': return _pt.ss($, ($) => output === $)
-//                             case 'error': return _pt.ss($, ($) => false)
+//                             case 'output': return _pt.option($, ($) => output === $)
+//                             case 'error': return _pt.option($, ($) => false)
 //                             default: return _pt.exhaustive($[0])
 //                         }
 //                     })
@@ -97,8 +97,8 @@
 //                     const error = $
 //                     return _pt.decide.state(expected, ($) => {
 //                         switch ($[0]) {
-//                             case 'output': return _pt.ss($, ($) => false)
-//                             case 'error': return _pt.ss($, ($) => error === $)
+//                             case 'output': return _pt.option($, ($) => false)
+//                             case 'error': return _pt.option($, ($) => error === $)
 //                             default: return _pt.exhaustive($[0])
 //                         }
 //                     })
