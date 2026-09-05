@@ -9,13 +9,11 @@ export const Parameters: p_pi.Production<
     string,
     string,
     null
-> = (iterator, abort) => {
-    return {
-        'path to test data': deser_path.Context_Path(
-            iterator.consume(
-                ($) => abort("expected path to test data"),
-                ($) => $,
-            ),
-        )
-    }
-}
+> = (iterator, abort) => ({
+    'path to test data': deser_path.Context_Path(
+        iterator.consume(
+            ($) => abort("expected path to test data"),
+            ($) => $,
+        ),
+    )
+})
