@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/transformer'
 import p_implement_me from 'pareto-core-dev/implement_me'
 
 //schemas

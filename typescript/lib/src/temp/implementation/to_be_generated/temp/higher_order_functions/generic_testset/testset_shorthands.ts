@@ -1,4 +1,4 @@
-// import p_change_context from 'pareto-core/implementation/specials/change_context'
+// import p_change_context from 'pareto-core/specials/change_context'
 // import create_refinement_context from 'pareto-core/__internals/async/create_refinement_context'
 
 // import type * as s_out from "../../../../schemas/test_result.js"

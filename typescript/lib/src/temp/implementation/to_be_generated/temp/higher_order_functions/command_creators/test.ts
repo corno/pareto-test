@@ -1,5 +1,5 @@
-// import p_change_context from 'pareto-core/implementation/specials/change_context'
-// import p_text_from_list from 'pareto-core/implementation/specials/text_from_list'
+// import p_change_context from 'pareto-core/specials/change_context'
+// import p_text_from_list from 'pareto-core/specials/text_from_list'
 
 // import type * as s_main from "pareto-execute-unrestricted-api/interface/to_be_generated/temp_main"
 // import type * as s_read_directory_content from "pareto-execute-unrestricted-api/interface/to_be_generated/read_directory_content"

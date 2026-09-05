@@ -1,4 +1,4 @@
-import type * as p_pi from 'pareto-core/interface/refiner'
+import type * as p_pi from 'pareto-core/refiner'
 
 import * as d from "../schema.js"
 

@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/transformer'
 
 //schemas
 import type * as s_in from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/read_nested_directory_content/schema"

@@ -1,4 +1,4 @@
-// import * as p_ from 'pareto-core/implementation/transformer'
+// import * as p_ from 'pareto-core/transformer'
 
 // import type * as s_out from "../../../schemas/prose.js"
 // import type * as s_in from "../../../interface/temp/generic.js"

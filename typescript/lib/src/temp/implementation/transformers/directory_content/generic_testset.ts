@@ -1,6 +1,6 @@
-// import * as p_ from 'pareto-core/implementation/transformer'
-// import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
-// import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
+// import * as p_ from 'pareto-core/transformer'
+// import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
+// import p_text_from_list from 'pareto-core/transformer/specials/text_from_list'
 
 // import type * as s_in from "pareto-execute-unrestricted-api/interface/to_be_generated/directory_content"
 // import type * as s_out from "../../../schemas/generic_testset.js"

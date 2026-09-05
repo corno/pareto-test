@@ -1,4 +1,4 @@
-// import * as p_ from 'pareto-core/implementation/transformer'
+// import * as p_ from 'pareto-core/transformer'
 
 // import type * as s_in from "../../../schemas/test_result.js"
 // import type * as s_out from "pareto-execute-unrestricted-api/interface/to_be_generated/directory_content"
