@@ -1,10 +1,16 @@
 import * as p_ from 'pareto-core/transformer'
+import * as p_s from 'pareto-core/serializer'
 
 //schemas
 import type * as s_in from "../schema.js"
 import type * as s_out from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/schema"
 
-
+namespace s_parameter {
+    export type Test_Collection_Result = {
+        'path to test data': string
+        'path to test': string
+    }
+}
 
 //shorthands
 import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/shorthands/deprecated"
@@ -12,10 +18,7 @@ import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/sho
 
 export const Test_Collection_Result = (
     $: s_in.Test_Collection_Result,
-    $p: {
-        'path to test data': string
-        'path to test': string
-    }
+    $p: s_parameter.Test_Collection_Result
 ): s_out.Paragraph => {
 
     const RED = "\x1b[31m"
@@ -26,7 +29,7 @@ export const Test_Collection_Result = (
     const MAGENTA = "\x1b[35m"
     const ENDCOLOR = "\x1b[0m"
 
-    const do_context_path = (which: string) => sh.ph.composed([
+    const do_context_path: p_.Transformer<string, s_out.Phrase> = (which) => sh.ph.composed([
         sh.ph.text($p['path to test data']),
         sh.ph.text("/"),
         sh.ph.text(which),
@@ -177,7 +180,11 @@ export const Test_Collection_Result = (
                                                     $,
                                                     {
                                                         'path to test data': $p['path to test data'],
-                                                        'path to test': `${$p['path to test']}/${id}`,
+                                                        'path to test': p_s.ph.list(p_.literal.list([
+                                                            $p['path to test'],
+                                                            "/",
+                                                            id,
+                                                        ])),
                                                     }
                                                 )
                                             )
